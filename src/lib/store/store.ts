@@ -4,6 +4,7 @@ import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 
 import brokerReducer from "./redux/brokerSlice";
 import memberReducer from "./redux/memberSlice";
+import organizationReducer from "./redux/organizationSlice";
 import providerReducer from "./redux/providerSlice";
 
 // Create noop storage for server-side rendering (SSR)
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
 	member: memberReducer,
 	broker: brokerReducer,
 	provider: providerReducer,
+	organization: organizationReducer,
 });
 
 // Persist configuration

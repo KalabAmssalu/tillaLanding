@@ -8,7 +8,6 @@ import jsPDF from "jspdf";
 import { CheckCheck, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
-import { useAddmemeber } from "@/actions/Query/member_Query/member_Query";
 import StepIndicator from "@/components/shared/Stepper/step-indicator";
 import {
 	AlertDialog,
@@ -23,95 +22,62 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAppDispatch, useAppSelector } from "@/hooks/storehooks";
-import {
-	ClearmemberSlice,
-	SetmemberSlice,
-} from "@/lib/store/redux/memberSlice";
-import { type memeberType } from "@/types/memeber/memeber";
+import { SetorganizationSlice } from "@/lib/store/redux/organizationSlice";
+import { ClearProviderSlice } from "@/lib/store/redux/providerSlice";
+import { type organizationType } from "@/types/organization/organization";
 
-import MemberAddressForm from "./MemberAddressForm";
-import MemberPersonalInfoForm from "./MemberPersonalInfoForm";
-import MemberRepresentativeInfoForm from "./MemberRepresentativeInfoForm";
+import OrganizationAddressForm from "./OrganizationAddressForm";
+import OrganizationContactPersonForm from "./OrganizationContactPersonForm";
+import OrganizationInfoForm from "./OrganizationInfoForm";
 import Preview from "./preview";
 
-interface memberInfoType {
+interface organizationInfoType {
 	type?: string;
-	self?: string;
 }
 
-export default function MemberRegForm({ info }: { info: memberInfoType }) {
+export default function OrganizationRegForm({
+	info,
+}: {
+	info: organizationInfoType;
+}) {
 	const [nextActive, setNextActive] = useState(false);
 	const [currentStep, setCurrentStep] = useState(0);
-	const { mutate: MemberMutation } = useAddmemeber();
-	const data = useAppSelector((state) => state.member.memberSlice);
+	// const { mutate: MemberMutation } = useAddmemeber();
+	const data = useAppSelector((state) => state.organization.organizationSlice);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const printRef = useRef<HTMLDivElement>(null);
 	const router = useRouter();
-	const [formData, setFormData] = useState<Partial<memeberType>>({
-		date_of_birth: "",
-		first_name: "",
-		last_name: "",
-		middle_name: "",
-		amharic_first_name: "",
-		amharic_last_name: "",
-		amharic_middle_name: "",
-		gender: "",
-		phone_number: "",
-		email_address: "",
-		marital_status: "",
-		height: 0,
-		weight: 0,
-		tin_number: "",
-
-		insurance_type: "general",
-		member_organization_type: "self",
-		benefit_plan: "basic",
-		member_type: info.type?.toLowerCase() || "individual",
-		member_status: "active",
-		is_representative: info.self === "true" ? true : false || false,
-
+	const [formData, setFormData] = useState<Partial<organizationType>>({
+		name: "",
+		registration_number: "",
+		industry_type: "",
+		number_of_employees: "",
+		company_website: "",
+		plan_coverage_type: "",
+		preferred_start_date: "",
+		preferred_end_date: "",
+		sector: info.type?.toLowerCase() || "private",
+		country_of_origin: "",
 		street_address: "",
-		mailing_address_line1: "",
-		country: "",
 		city: "",
 		region: "",
 		kifle_ketema: "",
-
-		representative_first_name: "",
-		representative_last_name: "",
-		representative_middle_name: "",
-		representative_gender: "",
-		representative_date_of_birth: "",
-		representative_marital_status: "",
-		representative_mailing_address_line1: "",
-		representative_country: "",
-		representative_street_address: "",
-		representative_city: "",
-		representative_region: "",
-		representative_kifle_ketema: "",
-		representative_phone_number: "",
-		representative_email_address: "",
-		relationship_to_member: "",
-
-		// max_out_of_pocket: 0,
-		// max_out_of_pocket_etb: 0,
-		// total_medical_expense: 0,
-		// deductible: 0,
-		// payment_date: "",
-		// benefit_begin_date: "",
-
-		// deductible_type: "with_deductible",
-		dependent_of: 0,
-		// member_payment_duty: 0,
-		// has_transport_subscription: false,
+		phone_number: "",
+		email_address: "",
+		contact_person_first_name: "",
+		contact_person_middle_name: "",
+		contact_person_last_name: "",
+		contact_person_position: "",
+		contact_person_phone_number: "",
+		contact_person_email_address: "",
 	});
 
 	const dispatch = useAppDispatch();
 
-	const updateFormData = (newData: Partial<memeberType>) => {
+	const updateFormData = (newData: Partial<organizationType>) => {
 		const updatedData = { ...formData, ...newData };
 		setFormData(updatedData);
-		dispatch(SetmemberSlice(updatedData));
+		dispatch(SetorganizationSlice(updatedData));
 		setNextActive(true);
 	};
 
@@ -126,7 +92,7 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 			const pdfWidth = pdf.internal.pageSize.getWidth();
 			const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 			pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-			pdf.save("member_information.pdf");
+			pdf.save("provider_information.pdf");
 		}
 	};
 	const handleConfirm = () => {
@@ -138,42 +104,42 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 		setIsSubmitting(true);
 		try {
 			if (!data) {
-				toast.error("No Member data found. Please check your input.");
+				toast.error("No provider data found. Please check your input.");
 				return;
 			}
 
-			await MemberMutation(data);
+			// await MemberMutation(data);
 
-			router.push("/Provider/success" as `/${string}`);
+			router.push("/provider/success" as `/${string}`);
 		} catch (error) {
-			toast.error("Failed to submit Member data. Please try again.");
+			toast.error("Failed to submit provider data. Please try again.");
 		} finally {
 			setIsSubmitting(false);
 
-			dispatch(ClearmemberSlice());
+			dispatch(ClearProviderSlice());
 		}
 	};
 
 	const steps = [
-		...(info.self !== "true"
-			? [
-					{
-						title: "Representative Information",
-						content: (
-							<MemberRepresentativeInfoForm
-								onFormComplete={(data) => {
-									updateFormData(data);
-									nextStep();
-								}}
-							/>
-						),
-					},
-				]
-			: []),
+		// ...(info.type !== "private"
+		// 	? [
+		// 			{
+		// 				title: "Representative Information",
+		// 				content: (
+		// 					<MemberRepresentativeInfoForm
+		// 						onFormComplete={(data) => {
+		// 							updateFormData(data);
+		// 							nextStep();
+		// 						}}
+		// 					/>
+		// 				),
+		// 			},
+		// 		]
+		// 	: []),
 		{
-			title: "The Registered Member Information",
+			title: "Organization Information",
 			content: (
-				<MemberPersonalInfoForm
+				<OrganizationInfoForm
 					onFormComplete={(data) => {
 						updateFormData(data);
 						nextStep();
@@ -182,9 +148,20 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 			),
 		},
 		{
-			title: "Address Information",
+			title: "Organization Address Information",
 			content: (
-				<MemberAddressForm
+				<OrganizationAddressForm
+					onFormComplete={(data) => {
+						updateFormData(data);
+						nextStep();
+					}}
+				/>
+			),
+		},
+		{
+			title: "Contact Person Information",
+			content: (
+				<OrganizationContactPersonForm
 					onFormComplete={(data) => {
 						updateFormData(data);
 						nextStep();
@@ -214,13 +191,11 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 	return (
 		<>
 			<h1 className="text-2xl font-bold mb-6 text-center">
-				{info.type === "diaspora"
-					? "Diaspora Member Registration Form"
-					: info.type === "family"
-						? "Family Member Registration Form"
-						: info.type === "international"
-							? "International Member Registration Form"
-							: "Individual Member Registration Form"}
+				{info.type === "ngo"
+					? "NGO Member Registration Form"
+					: info.type === "private"
+						? "Private Sector Member Registration Form"
+						: "Federal Employee Member Registration Form"}
 			</h1>
 			<Card className="w-full mx-auto">
 				<CardHeader>

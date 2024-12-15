@@ -156,7 +156,7 @@
 			},
 
 			"kifle_ketema": {
-				"label": "Kifle Ketema",
+				"label": "Sub-city",
 				"placeholder": "Mailing Address Line 1",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
@@ -269,7 +269,7 @@
 				"error": "City name must be at least 2 characters long."
 			},
 			"representative_kifle_ketema": {
-				"label": "Representative Kifle Ketema",
+				"label": "Representative Sub-city",
 				"placeholder": "Mailing Address Line 1",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
@@ -285,6 +285,12 @@
 				"placeholder": "Enter representative email address",
 				"description": "Representative's email address.",
 				"error": "A valid email address is required."
+			},
+			"dependent_of": {
+				"label": "Representative Tilla Insurance ID",
+				"placeholder": "Enter your representative tilla insurance id",
+				"description": "Representative's tilla insurance id.",
+				"error": "Representative Tilla Insurance ID must be a valid number."
 			}
 		}
 	},
@@ -391,7 +397,7 @@
 				"error": "City name must be at least 2 characters long."
 			},
 			"business_kifle_ketema": {
-				"label": "Kifle Ketema",
+				"label": "Sub-city",
 				"placeholder": "Mailing Address Line 1",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
@@ -618,6 +624,7 @@
 					"not_prefer_to_say": "Not Prefer To Say"
 				}
 			},
+
 			"provider_date_of_birth": {
 				"label": "Date of Birth",
 				"placeholder": "Select your date of birth",
@@ -737,6 +744,162 @@
 				"placeholder": "Enter address",
 				"description": "The address of the provider group.",
 				"error": "Address is required."
+			}
+		}
+	},
+	"OrganizationInfoForm": {
+		"title": "Organization Information",
+		"description": "Please provide the organization details below.",
+		"successMessage": "Organization information has been successfully submitted.",
+		"organization_information": "Organization Information",
+		"contact_information": "Contact Person Information",
+		"AddressInfo": "Address Information",
+		"representative_info": "Contact Person Information",
+		"relationship": "Relationship",
+		"representative_address": "Contact Person Address",
+		"fields": {
+			"name": {
+				"label": "Name ",
+				"placeholder": "Enter your name",
+				"description": "Your legal name.",
+				"error": "Name must be at least 2 characters long."
+			},
+			"registration_number": {
+				"label": "Registration Number",
+				"placeholder": "Enter registration number",
+				"description": "Unique identifier for the organization.",
+				"error": "Registration number is required."
+			},
+			"industry_type": {
+				"label": "Industry Type",
+				"placeholder": "Enter industry type",
+				"description": "Type of organization (e.g., NGO, private, federal).",
+				"error": "Industry type is required."
+			},
+			"number_of_employees": {
+				"label": "Number of Employees",
+				"placeholder": "Enter number of employees",
+				"description": "The number of employees in the organization.",
+				"error": "Number of employees is required.",
+				"options": {
+					"0_to_10": "0-10",
+					"10_to_50": "10-50",
+					"50_to_100": "50-100",
+					"over_100": "Over 100"
+				}
+			},
+			"company_website": {
+				"label": "Company Website",
+				"placeholder": "Enter company website",
+				"description": "The website of the organization.",
+				"error": "Company website is required."
+			},
+			"plan_coverage_type": {
+				"label": "Plan Coverage Type",
+				"placeholder": "Enter plan coverage type",
+				"description": "Type of plan coverage (e.g., medical, service provider).",
+				"error": "Plan coverage type is required."
+			},
+			"preferred_start_date": {
+				"label": "Preferred Start Date",
+				"placeholder": "Enter preferred start date",
+				"description": "The preferred start date of the plan coverage.",
+				"error": "Preferred start date is required."
+			},
+			"preferred_end_date": {
+				"label": "Preferred End Date",
+				"placeholder": "Enter preferred end date",
+				"description": "The preferred end date of the plan coverage.",
+				"error": "Preferred end date is required."
+			},
+			"sector": {
+				"label": "Sector",
+				"placeholder": "Select sector",
+				"description": "Choose the sector that best describes your organization.",
+				"error": "Sector is required.",
+				"options": {
+					"private": "Private",
+					"ngo": "NGO",
+					"federal": "Federal"
+				}
+			},
+			"phone_number": {
+				"label": "Phone Number",
+				"placeholder": "Enter phone number",
+				"description": "Primary phone number of the organization.",
+				"error": "A valid phone number is required between 10 and 15 digits."
+			},
+			"email_address": {
+				"label": "Email Address",
+				"placeholder": "Enter email address",
+				"description": "Email address of the organization.",
+				"error": "A valid email address is required."
+			},
+			"street_address": {
+				"label": "Street Address",
+				"placeholder": "Enter street address",
+				"description": "Primary address of the organization.",
+				"error": "Street address is required."
+			},
+			"city": {
+				"label": "City",
+				"placeholder": "Enter city",
+				"description": "City where the organization is located.",
+				"error": "City is required."
+			},
+			"region": {
+				"label": "Region",
+				"placeholder": "Enter region",
+				"description": "Region of the organization.",
+				"error": "Region is required."
+			},
+			"country_of_origin": {
+				"label": "Country",
+				"placeholder": "Enter country",
+				"description": "Country of the organization.",
+				"error": "Country is required."
+			},
+			"kifle_ketema": {
+				"label": "Sub-city",
+				"placeholder": "Enter sub-city",
+				"description": "Sub-city of the organization.",
+				"error": "Sub-city is required."
+			},
+			"contact_person_first_name": {
+				"label": "First Name",
+				"placeholder": "Enter first name",
+				"description": "Your legal first name.",
+				"error": "First name is required. Only letters are allowed."
+			},
+			"contact_person_middle_name": {
+				"label": "Middle Name",
+				"placeholder": "Enter middle name",
+				"description": "Your legal middle name.",
+				"error": "Middle name is required. Only letters are allowed."
+			},
+			"contact_person_last_name": {
+				"label": "Last Name",
+				"placeholder": "Enter last name",
+				"description": "Your legal last name.",
+				"error": "Last name is required. Only letters are allowed."
+			},
+			"contact_person_position": {
+				"label": "Position",
+				"placeholder": "Enter position",
+				"description": "Position of the contact person.",
+				"error": "Position is required."
+			},
+			"contact_person_phone_number": {
+				"label": "Phone Number",
+				"placeholder": "Enter phone number",
+				"description": "Primary phone number of the contact person.",
+				"error": "A valid phone number is required between 10 and 15 digits."
+			},
+			"contact_person_email_address": {
+				"label": "Email Address",
+				"placeholder": "Enter email address",
+				"description": "Email address of the contact person.",
+				"error": "A valid email address is required."
 			}
 		}
 	}

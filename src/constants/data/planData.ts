@@ -27,21 +27,21 @@ export const planData = [
 		title: "Private Sector",
 		description: "Insurance plans for employees in the private sector.",
 		image: IMAGES.privateSector, // Image path from the public/images folder
-		link: "/member/private_sector_registration", // The link for the Private Sector plan
+		link: "/organization/register?type=private", // The link for the Private Sector plan
 	},
 	{
 		id: "ngo",
 		title: "NGO",
 		description: "Specialized plans for NGO workers and their families.",
 		image: IMAGES.ngo, // Image path from the public/images folder
-		link: "/member/ngo_registration", // The link for the Individual or Family plan
+		link: "/organization/register?type=ngo", // The link for the Individual or Family plan
 	},
 	{
 		id: "federal-employee",
 		title: "Federal Employee Program",
 		description: "Exclusive plans for federal employees.",
 		image: IMAGES.federal, // Image path from the public/images folder
-		link: "/member/federal_employee-registration", // The link for the Federal Employee Program plan
+		link: "/organization/register?type=federal", // The link for the Federal Employee Program plan
 	},
 ];
 
