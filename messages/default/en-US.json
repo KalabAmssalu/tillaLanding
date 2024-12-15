@@ -1,0 +1,743 @@
+{
+	"metadata": {
+		"description": "Build More Efficient, Engaging, and Profitable Online Stores: Relivator Enhances your eCommerce with the Power of shadcn/ui, Next.js 15, React 19, and more",
+		"title": {
+			"home": "Home"
+		}
+	},
+	"mode-toggle": {
+		"dark": "Dark",
+		"light": "Light",
+		"system": "System",
+		"toggleTheme": "Toggle Theme"
+	},
+	"LocaleSwitcher": {
+		"changeLanguage": "Change Language",
+		"english": "English",
+		"amharic": "Amharic"
+	},
+
+	"banners": {
+		"announcements-1": {
+			"button": "Visit Now",
+			"details": "Visit our Tilla blog post to see what's Here and what's coming next.",
+			"dismiss": "Dismiss",
+			"title": "Tilla Health Insurance is HERE!"
+		}
+	},
+	"personalInfoForm": {
+		"title": "Personal Information",
+		"description": "Please provide your personal details below.",
+		"successMessage": "Your information has been successfully submitted.",
+		"contact_information": "Contact Information",
+		"personal_information": "Personal Information",
+		"physical_attributes": "Physical Attributes",
+		"AddressInfo": "Address Information",
+		"representative_info": "Representative Personal Information",
+		"representative_address": "Representative Address",
+		"relationship": "Relationship",
+
+		"fields": {
+			"first_name": {
+				"label": "First Name - English",
+				"placeholder": "Enter your first name",
+				"description": "Your legal first name.",
+				"error": "First name must be at least 2 characters long."
+			},
+			"middle_name": {
+				"label": "Middle Name - English",
+				"placeholder": "Enter your middle name",
+				"description": "Your legal middle name.",
+				"error": "Middle name must be at least 2 characters long."
+			},
+			"last_name": {
+				"label": "Last Name - English",
+				"placeholder": "Enter your last name",
+				"description": "Your legal last name.",
+				"error": "Last name must be at least 2 characters long."
+			},
+			"amharic_first_name": {
+				"label": "First Name - Amharic",
+				"placeholder": "ስም በአማርኛ",
+				"description": "Your legal first name.",
+				"error": "First name must be at least 2 characters long."
+			},
+			"amharic_middle_name": {
+				"label": "Middle Name - Amharic",
+				"placeholder": "የአባት ስም በአማርኛ",
+				"description": "Your legal middle name.",
+				"error": "Middle name must be at least 2 characters long."
+			},
+			"amharic_last_name": {
+				"label": "Last Name - Amharic",
+				"placeholder": "የአያት ስም በአማርኛ",
+				"description": "Your legal last name.",
+				"error": "Last name must be at least 2 characters long."
+			},
+
+			"gender": {
+				"label": "Gender",
+				"placeholder": "Select your gender",
+				"description": "Please choose your gender.",
+				"error": "please select your gender. It is required",
+				"options": {
+					"male": "Male",
+					"female": "Female",
+					"not_prefer_to_say": "Not Prefer To Say"
+				}
+			},
+			"benefit_plan": {
+				"label": "Benefit Plan",
+				"placeholder": "Select your Benefit Plan",
+				"description": "Please choose your Benefit Plan.",
+				"error": "please select your Benefit Plan. It is required",
+				"options": {
+					"basic": "Basic",
+					"standard": "standard",
+					"comprehensive": "comprehensive",
+					"family": "family"
+				}
+			},
+			"height": {
+				"label": "Height",
+				"placeholder": "Enter your Height",
+				"description": "Provide your valid Height in centimeter.",
+				"error": "Height should have to be selected"
+			},
+			"weight": {
+				"label": "Weight",
+				"placeholder": "Enter your Weight",
+				"description": "Provide your valid weight in kilogram.",
+				"error": "Weight should have to be a decimal."
+			},
+
+			"date_of_birth": {
+				"label": "Date of Birth",
+				"placeholder": "Select your date of birth",
+				"description": "Enter your birth date in the format MM-DD-YYYY.",
+				"error": "Date of birth must be in the format MM-DD-YYYY."
+			},
+
+			"phone_number": {
+				"label": "Phone Number",
+				"placeholder": "Enter your phone number",
+				"description": "Provide a valid phone number.",
+				"error": "Phone number must be numeric and at least 10 digits long."
+			},
+			"email_address": {
+				"label": "Email Address",
+				"placeholder": "Enter your email address",
+				"description": "Provide a valid email address.",
+				"error": "Please enter a valid email address."
+			},
+			"mailing_address_line1": {
+				"label": "Address Line 2",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"city": {
+				"label": "City",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"region": {
+				"label": "Region",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"street_address": {
+				"label": "Street Address",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+
+			"kifle_ketema": {
+				"label": "Kifle Ketema",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"country": {
+				"label": "Country",
+				"placeholder": "country",
+				"description": "Choose a country from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"tin_number": {
+				"label": "TIN Number",
+				"placeholder": "Enter your TIN Number ",
+				"description": "Provide a valid TIN Number .",
+				"error": "TIN Number must be a valid number."
+			},
+			"marital_status": {
+				"label": "Marital Status",
+				"placeholder": "Select your marital status",
+				"description": "Please choose your marital status.",
+				"error": "Marital status is required.",
+				"options": {
+					"single": "Single",
+					"married": "Married",
+					"widowed": "Widowed",
+					"divorced": "Divorced"
+				}
+			},
+			"relationship_to_member": {
+				"label": "Relationship to Member",
+				"placeholder": "Enter your relationship to member",
+				"description": "Please enter your relationship to member.",
+				"error": "Relationship to member must be at least 2 characters long."
+			},
+			"representative_first_name": {
+				"label": "Representative First Name",
+				"placeholder": "Enter representative first name",
+				"description": "Representative's first name.",
+				"error": "Representative first name must be at least 2 characters long."
+			},
+			"representative_middle_name": {
+				"label": "Representative Middle Name",
+				"placeholder": "Enter representative middle name",
+				"description": "Representative's middle name.",
+				"error": "Representative middle name must be at least 2 characters long."
+			},
+			"representative_last_name": {
+				"label": "Representative Last Name",
+				"placeholder": "Enter representative last name",
+				"description": "Representative's last name.",
+				"error": "Representative last name must be at least 2 characters long."
+			},
+			"representative_gender": {
+				"label": "Representative Gender",
+				"placeholder": "Select representative gender",
+				"description": "Please choose representative's gender.",
+				"error": "Representative gender is required.",
+				"options": {
+					"male": "Male",
+					"female": "Female",
+					"not_prefer_to_say": "Not Prefer To Say"
+				}
+			},
+			"representative_date_of_birth": {
+				"label": "Representative Date of Birth",
+				"placeholder": "Select your date of birth",
+				"description": "Enter your birth date in the format MM-DD-YYYY.",
+				"error": "Please enter your date of birth in the format MM-DD-YYYY."
+			},
+			"representative_marital_status": {
+				"label": "Representative Marital Status",
+				"placeholder": "Select representative marital status",
+				"description": "Please choose representative's marital status.",
+				"error": "Representative marital status is required.",
+				"options": {
+					"single": "Single",
+					"married": "Married",
+					"widowed": "Widowed",
+					"divorced": "Divorced"
+				}
+			},
+			"representative_mailing_address_line1": {
+				"label": "Representative Mailing Address Line 2",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"representative_country": {
+				"label": "Representative Country",
+				"placeholder": "Representative Country",
+				"description": "Choose a country from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"representative_city": {
+				"label": "Representative City",
+				"placeholder": "Representative City",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"representative_region": {
+				"label": "Representative Region",
+				"placeholder": "Representative Region",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"representative_street_address": {
+				"label": "Representative Street Address",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"representative_kifle_ketema": {
+				"label": "Representative Kifle Ketema",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"representative_phone_number": {
+				"label": "Representative Phone Number",
+				"placeholder": "Enter representative phone number",
+				"description": "Representative's phone number.",
+				"error": "A valid phone number is required between 10 and 15 digits."
+			},
+			"representative_email_address": {
+				"label": "Representative Email Address",
+				"placeholder": "Enter representative email address",
+				"description": "Representative's email address.",
+				"error": "A valid email address is required."
+			}
+		}
+	},
+	"brokerInfoForm": {
+		"title": "Personal Information",
+		"description": "Please provide your personal details below.",
+		"successMessage": "Your information has been successfully submitted.",
+		"fields": {
+			"firstName": {
+				"label": "First Name - English",
+				"placeholder": "Enter your first name",
+				"description": "Your legal first name.",
+				"error": "First name must be at least 2 characters long."
+			},
+			"middleName": {
+				"label": "Middle Name - English",
+				"placeholder": "Enter your middle name",
+				"description": "Your legal middle name.",
+				"error": "Middle name must be at least 2 characters long."
+			},
+			"lastName": {
+				"label": "Last Name - English",
+				"placeholder": "Enter your last name",
+				"description": "Your legal last name.",
+				"error": "Last name must be at least 2 characters long."
+			},
+			"firstNameAm": {
+				"label": "First Name - Amharic",
+				"placeholder": "ስም በአማርኛ",
+				"description": "Your legal first name.",
+				"error": "First name must be at least 2 characters long."
+			},
+			"middleNameAm": {
+				"label": "Middle Name - Amharic",
+				"placeholder": "የአባት ስም በአማርኛ",
+				"description": "Your legal middle name.",
+				"error": "Middle name must be at least 2 characters long."
+			},
+			"lastNameAm": {
+				"label": "Last Name - Amharic",
+				"placeholder": "የአያት ስም በአማርኛ",
+				"description": "Your legal last name.",
+				"error": "Last name must be at least 2 characters long."
+			},
+
+			"gender": {
+				"label": "Gender",
+				"placeholder": "Select your gender",
+				"description": "Please choose your gender.",
+				"error": "please select your gender. It is required",
+				"options": {
+					"male": "Male",
+					"female": "Female",
+					"not_prefer_to_say": "Not Prefer To Say"
+				}
+			},
+			"dateOfBirth": {
+				"label": "Date of Birth",
+				"placeholder": "Select your date of birth",
+				"description": "Enter your birth date in the format MM-DD-YYYY.",
+				"error": "Please enter your date of birth in the format MM-DD-YYYY."
+			},
+
+			"contactPhone": {
+				"label": "Phone Number",
+				"placeholder": "Enter your phone number",
+				"description": "Provide a valid phone number.",
+				"error": "Phone number must be numeric and at least 10 digits long."
+			},
+			"contactEmail": {
+				"label": "Email Address",
+				"placeholder": "Enter your email address",
+				"description": "Provide a valid email address.",
+				"error": "Please enter a valid email address."
+			},
+			"business_address_line_1": {
+				"label": "Business Mailing Address Line 1",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"business_address_line_2": {
+				"label": "Business Mailing Address Line 2",
+				"placeholder": "Mailing Address Line 2",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"business_city": {
+				"label": "City",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"business_state": {
+				"label": "Region or State",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"street_address": {
+				"label": "Street Address",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"business_kifle_ketema": {
+				"label": "Kifle Ketema",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+
+			"tax_identification_number": {
+				"label": "TIN Number",
+				"placeholder": "Enter your TIN Number ",
+				"description": "Provide a valid TIN Number .",
+				"error": "TIN Number must be a valid number."
+			},
+			"business_type": {
+				"label": "Business Type",
+				"placeholder": "Enter your Business Type ",
+				"description": "Provide a valid Business Type .",
+				"error": "TIN Number must be a Business Type.",
+				"options": {
+					"Private": "Private",
+					"Group": "Group",
+					"Sector": "Sector"
+				}
+			},
+			"license_state": {
+				"label": "License State/Region",
+				"placeholder": "Enter your License State ",
+				"description": "Provide a valid License State .",
+				"error": "TIN Number must be a License State."
+			},
+			"license_issued_date": {
+				"label": "License Issued Date",
+				"placeholder": "Enter your License Issued Date ",
+				"description": "Provide a valid License Issued Date .",
+				"error": "TIN Number must be a License Issued Date."
+			},
+			"license_expired_date": {
+				"label": "License Expired Date",
+				"placeholder": "Enter your License Expired Date ",
+				"description": "Provide a valid License Expired Date .",
+				"error": "TIN Number must be a License Expired Date."
+			},
+
+			"business_zip_code": {
+				"label": "Business zip code",
+				"placeholder": "Enter your Business zip code ",
+				"description": "Provide a valid Business zip code .",
+				"error": "TIN Number must be a Business zip code."
+			},
+			"business_license_number": {
+				"label": "Business license Number",
+				"placeholder": "Enter your Business license Number ",
+				"description": "Provide a valid Business license Number .",
+				"error": "TIN Number must be a Business license Number."
+			},
+			"company_name": {
+				"label": "Company Name",
+				"placeholder": "Enter your Company Name ",
+				"description": "Provide a valid Company Name .",
+				"error": "TIN Number must be a Company Name."
+			}
+		}
+	},
+	"providerInfoForm": {
+		"title": "Provider Information",
+		"description": "Please provide the provider details below.",
+		"successMessage": "Provider information has been successfully submitted.",
+		"identifiation": "Provider Identification",
+		"information": "Provider Information",
+		"AddressInfo": "Address Information",
+		"speciality": "Provider Specialty",
+		"group": "Business Group Information",
+		"personal": "Personal Details",
+		"alert": {
+			"title": "For Professionals!",
+			"description": "If you are a professional please fill this information otherwise reselect the service type."
+		},
+		"fields": {
+			"tin_number": {
+				"label": "TIN Number",
+				"placeholder": "Enter TIN number",
+				"description": "Tax Identification Number of the provider.",
+				"error": "TIN number is required."
+			},
+			"institute_name": {
+				"label": "Institute Name",
+				"placeholder": "Enter institute name",
+				"description": "The name of the provider's institute.",
+				"error": "Institute name is required."
+			},
+			"provider_id": {
+				"label": "Provider ID",
+				"placeholder": "Enter provider ID",
+				"description": "Unique identifier for the provider.",
+				"error": "Provider ID is required."
+			},
+			"provider_last_name": {
+				"label": "Last Name - English",
+				"placeholder": "Enter last name",
+				"description": "Provider's last name in English.",
+				"error": "Last name is required. Only letters are allowed."
+			},
+			"provider_first_name": {
+				"label": "First Name - English",
+				"placeholder": "Enter first name",
+				"description": "Provider's first name in English.",
+				"error": "First name is required. Only letters are allowed."
+			},
+			"provider_middle_initial": {
+				"label": "Middle Initial - English",
+				"placeholder": "Enter middle initial",
+				"description": "Provider's middle initial in English.",
+				"error": "Middle initial must atleast 1 character. Only letters are allowed."
+			},
+			"provider_last_name_amharic": {
+				"label": "Last Name - Amharic",
+				"placeholder": "Enter last name in Amharic",
+				"description": "Provider's last name in Amharic.",
+				"error": "Last name in Amharic Only letters is allowed."
+			},
+			"provider_first_name_amharic": {
+				"label": "First Name - Amharic",
+				"placeholder": "Enter first name in Amharic",
+				"description": "Provider's first name in Amharic.",
+				"error": "First name in Amharic Only letters is allowed."
+			},
+			"provider_middle_initial_amharic": {
+				"label": "Middle Name - Amharic",
+				"placeholder": "Enter middle initial in Amharic",
+				"description": "Provider's middle initial in Amharic.",
+				"error": "Middle name in Amharic Only letters are allowed."
+			},
+			"provider_title": {
+				"label": "Provider Title",
+				"placeholder": "Enter provider title",
+				"description": "Title of the provider (e.g., Dr., Mr., Mrs.).",
+				"error": "Provider title is required. Select the professional title that best describes you",
+				"options": {
+					"Dr": "Dr",
+					"MD": "MD",
+					"DO": "DO",
+					"DPM": "DPM",
+					"PA": "PA",
+					"NP": "NP",
+					"PhD": "PhD",
+					"RN": "RN",
+					"BSN": "BSN",
+					"MSN": "MSN",
+					"Path": "Path",
+					"Orthopedic": "Orthopedic",
+					"PharmD": "PharmD",
+					"Prof": "Prof",
+					"Mr": "Mr",
+					"Mrs": "Mrs",
+					"Ms": "Ms"
+				}
+			},
+			"provider_contact_person": {
+				"label": "Contact Person",
+				"placeholder": "Enter contact person name",
+				"description": "Name of the contact person for the provider.",
+				"error": "Contact person name is required."
+			},
+			"provider_contact_email": {
+				"label": "Contact Email",
+				"placeholder": "Enter contact email",
+				"description": "Email address of the contact person.",
+				"error": "A valid email address is required."
+			},
+			"provider_contact_phone_number": {
+				"label": "Contact Phone Number",
+				"placeholder": "Enter contact phone number",
+				"description": "Phone number of the contact person.",
+				"error": "A valid phone number is required between 10 and 15 digits."
+			},
+			"provider_discount_agreement": {
+				"label": "Discount Agreement",
+				"placeholder": "Enter discount percentage",
+				"description": "Percentage discount agreed upon with the provider.",
+				"error": "Discount agreement must be a valid percentage.",
+				"options": {
+					"NoDiscount": "No Discount",
+					"fivePercent": "5%",
+					"tenPercent": "10%"
+				}
+			},
+
+			"provider_health_tier": {
+				"label": "Provider Health Tier",
+				"placeholder": "Select Health Tier",
+				"description": "Choose the provider health tier that best describes your service level.",
+				"error": "Health tier is required.",
+				"options": {
+					"Primary Level Health Care": "Primary Level Health Care",
+					"Secondary Level Health Care": "Secondary Level Health Care",
+					"Tertiary Level Health Care": "Tertiary Level Health Care"
+				}
+			},
+			"provider_health_sub_tier": {
+				"label": "Provider Health Sub-Tier",
+				"placeholder": "Select Sub-Tier",
+				"no_options_available": "No options available for the selected tier",
+				"description": "Select the sub-tier based on the chosen health tier.",
+				"error": "Sub-tier is required."
+			},
+
+			"provider_service_type": {
+				"label": "Service Type",
+				"placeholder": "Select service type",
+				"description": "Type of service provided (e.g., individual / Professional, inistitue).",
+				"error": "Service type is required.",
+				"options": {
+					"group": "Group",
+					"institute": "Institute",
+					"professional": "Individual / Professional"
+				}
+			},
+			"provider_gender": {
+				"label": "Gender",
+				"placeholder": "Select gender",
+				"description": "Gender of the provider.",
+				"error": "Gender is required.",
+				"options": {
+					"male": "Male",
+					"female": "Female",
+					"not_prefer_to_say": "Not Prefer To Say"
+				}
+			},
+			"provider_date_of_birth": {
+				"label": "Date of Birth",
+				"placeholder": "Select your date of birth",
+				"description": "Enter your birth date in the format MM-DD-YYYY.",
+				"error": "Please enter your date of birth in the format MM-DD-YYYY."
+			},
+			"provider_address": {
+				"label": "Address Line 1",
+				"placeholder": "Enter address",
+				"description": "Primary address of the provider.",
+				"error": "Address is required."
+			},
+			"provider_address_line2": {
+				"label": "Address Line 2",
+				"placeholder": "Enter additional address details",
+				"description": "Additional address information, if any.",
+				"error": "Address line 2 must be valid."
+			},
+			"provider_city": {
+				"label": "City",
+				"placeholder": "Enter city",
+				"description": "City where the provider is located.",
+				"error": "City is required."
+			},
+			"provider_country": {
+				"label": "County",
+				"placeholder": "Enter county",
+				"description": "County of the provider.",
+				"error": "County is required."
+			},
+			"provider_region": {
+				"label": "Region / state",
+				"placeholder": "Enter region",
+				"description": "Region of the provider.",
+				"error": "Region is required."
+			},
+			"provider_kifle_ketema": {
+				"label": "Sub-city",
+				"placeholder": "Enter Sub-city or Kifle Ketema",
+				"description": "Sub-city of the provider.",
+				"error": "Sub-city is required."
+			},
+			"provider_zip_code": {
+				"label": "ZIP Code / Woreda",
+				"placeholder": "Enter (e.g., 12345, or woreda 02)",
+				"description": "ZIP code or Woreda name for the provider's address.",
+				"error": "ZIP code or Woreda name must be valid."
+			},
+			"provider_phone_number": {
+				"label": "Phone Number",
+				"placeholder": "Enter phone number",
+				"description": "Primary phone number of the provider.",
+				"error": "A valid phone number is required between 10 and 15 digits."
+			},
+			"provider_fax": {
+				"label": "Fax",
+				"placeholder": "Enter fax number",
+				"description": "Fax number of the provider, if available.",
+				"error": "Fax number must be valid."
+			},
+			"provider_email": {
+				"label": "Email",
+				"placeholder": "Enter email",
+				"description": "Email address of the provider.",
+				"error": "A valid email address is required."
+			},
+			"provider_type": {
+				"label": "Provider Type",
+				"placeholder": "Enter provider type",
+				"description": "Type of provider (e.g., healthcare, service provider).",
+				"error": "Provider type is required."
+			},
+			"provider_primary_specialty": {
+				"label": "Primary Specialty",
+				"placeholder": "Enter primary specialty",
+				"description": "The primary specialty of the provider.",
+				"error": "Primary specialty is required."
+			},
+			"provider_sub_specialty": {
+				"label": "Sub-specialty",
+				"placeholder": "Enter sub-specialty",
+				"description": "The sub-specialty of the provider.",
+				"error": "Sub-specialty is required."
+			},
+			"medicare_provider_number": {
+				"label": "Medicare Provider Number",
+				"placeholder": "Enter Medicare provider number",
+				"description": "The Medicare provider number assigned to the provider.",
+				"error": "Medicare provider number is required."
+			},
+			"provider_group_name": {
+				"label": "Group Name",
+				"placeholder": "Enter group name",
+				"description": "The name of the provider group.",
+				"error": "Group name is required."
+			},
+			"provider_group_contact_person": {
+				"label": "Group Contact Person",
+				"placeholder": "Enter contact person",
+				"description": "The contact person for the provider group.",
+				"error": "Contact person is required."
+			},
+			"provider_group_contact_email": {
+				"label": "Group Contact person Email",
+				"placeholder": "Enter contact person email",
+				"description": "The contact person email for the provider group.",
+				"error": "Contact person email is required."
+			},
+			"provider_group_phone_number": {
+				"label": "Group Phone Number",
+				"placeholder": "Enter phone number",
+				"description": "The phone number of the provider group.",
+				"error": "A valid phone number is required between 10 and 15 digits."
+			},
+			"provider_group_address": {
+				"label": "Group Address",
+				"placeholder": "Enter address",
+				"description": "The address of the provider group.",
+				"error": "Address is required."
+			}
+		}
+	}
+}
