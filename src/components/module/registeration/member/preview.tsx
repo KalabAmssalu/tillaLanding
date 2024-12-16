@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { forwardRef, useMemo } from "react";
+import { forwardRef, useMemo, useState } from "react";
 
 import Field from "@/components/shared/field/Field";
 import { Button } from "@/components/ui/button";
@@ -10,14 +10,15 @@ import { useAppSelector } from "@/hooks/storehooks";
 
 interface PersonalInfoProps {
 	onConfirm: () => void;
+	isSelf: boolean;
 	ref: React.RefObject<HTMLDivElement>;
 }
 
 // eslint-disable-next-line react/display-name
 const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
-	({ onConfirm }, ref) => {
+	({ onConfirm, isSelf }, ref) => {
 		const data = useAppSelector((state) => state.member.memberSlice);
-
+		const [memberselfs, setMemberselfs] = useState(isSelf);
 		const displayedData = useMemo(() => {
 			if (!data) return null;
 
@@ -82,18 +83,16 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 								{`${data.first_name || ""} ${data.middle_name || ""} ${data.last_name || ""}`}
 							</h2>
 
-							{!data.is_representative && (
+							<h3 className="text-md text-gray-600 mt-1">
+								{`${data.amharic_first_name || ""} ${data.amharic_middle_name || ""} ${data.amharic_last_name || ""}`}
+							</h3>
+
+							{!memberselfs && (
 								<h3 className="text-md text-gray-600 mt-1">
-									{`${data.amharic_first_name || ""} ${data.amharic_middle_name || ""} ${data.amharic_last_name || ""}`}
+									Representative :{" "}
+									{`${data.representative_first_name || ""} ${data.representative_middle_name || ""} ${data.representative_last_name || ""}`}
 								</h3>
 							)}
-
-							{/* {data.is_representative && ( */}
-							<h3 className="text-md text-gray-600 mt-1">
-								Representative :{" "}
-								{`${data.representative_first_name || ""} ${data.representative_middle_name || ""} ${data.representative_last_name || ""}`}
-							</h3>
-							{/* )} */}
 
 							<div className="text-sm text-gray-500 mt-2">
 								Document generated on {new Date().toLocaleDateString()}
@@ -163,29 +162,32 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 								</div>
 								{/* Representative Information Section */}
 
-								<div>
-									<h2 className="text-lg font-semibold text-gray-900 mb-4">
-										Representative Information
-									</h2>
-									<div className="space-y-3">
-										{[
-											"representative_first_name",
-											"representative_middle_name",
-											"representative_last_name",
-											"representative_phone_number",
-											"representative_email_address",
-										].map((key) => (
-											<Field
-												key={key}
-												label={key}
-												value={String(
-													displayedData[key as keyof typeof displayedData] || ""
-												)}
-												local="personalInfoForm.fields"
-											/>
-										))}
+								{!memberselfs && (
+									<div>
+										<h2 className="text-lg font-semibold text-gray-900 mb-4">
+											Representative Information
+										</h2>
+										<div className="space-y-3">
+											{[
+												"representative_first_name",
+												"representative_middle_name",
+												"representative_last_name",
+												"representative_phone_number",
+												"representative_email_address",
+											].map((key) => (
+												<Field
+													key={key}
+													label={key}
+													value={String(
+														displayedData[key as keyof typeof displayedData] ||
+															""
+													)}
+													local="personalInfoForm.fields"
+												/>
+											))}
+										</div>
 									</div>
-								</div>
+								)}
 							</div>
 						) : (
 							<p>No data available to preview.</p>

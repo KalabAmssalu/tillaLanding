@@ -68,7 +68,7 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 		benefit_plan: "basic",
 		member_type: info.type?.toLowerCase() || "individual",
 		member_status: "active",
-		is_representative: info.self === "true" ? true : false || false,
+		is_representative: info.self === "true" ? false : true || false,
 
 		street_address: "",
 		mailing_address_line1: "",
@@ -134,7 +134,6 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 	};
 
 	const handleSubmit = async () => {
-		handleDownloadPDF();
 		setIsSubmitting(true);
 		try {
 			if (!data) {
@@ -150,6 +149,7 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 					`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
 				);
 				dispatch(ClearmemberSlice());
+				handleDownloadPDF();
 			}
 		} catch (error) {
 			toast.error("Failed to submit Member data. Please try again.");
@@ -198,7 +198,13 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 		},
 		{
 			title: "Preview",
-			content: <Preview onConfirm={handleConfirm} ref={printRef} />,
+			content: (
+				<Preview
+					isSelf={info.self === "true" ? true : false}
+					onConfirm={handleConfirm}
+					ref={printRef}
+				/>
+			),
 		},
 	];
 

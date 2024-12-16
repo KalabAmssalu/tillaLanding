@@ -111,7 +111,7 @@ export default function OrganizationContactPersonForm({
 							labelKey="fields.contact_person_phone_number.label"
 							placeholderKey="fields.contact_person_phone_number.placeholder"
 							descriptionKey="fields.contact_person_phone_number.description"
-							local="personalInfoForm"
+							local="OrganizationInfoForm"
 						/>
 						<ReusableFormField
 							control={form.control}

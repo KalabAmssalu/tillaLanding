@@ -103,7 +103,6 @@ export default function OrganizationRegForm({
 	};
 
 	const handleSubmit = async () => {
-		handleDownloadPDF();
 		setIsSubmitting(true);
 		try {
 			if (!data) {
@@ -117,6 +116,7 @@ export default function OrganizationRegForm({
 					"/success?type=organization&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard" as `/${string}`
 				);
 				dispatch(ClearorganizationSlice());
+				handleDownloadPDF();
 			}
 		} catch (error) {
 			toast.error("Failed to submit provider data. Please try again.");

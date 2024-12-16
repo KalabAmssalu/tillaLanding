@@ -111,7 +111,6 @@ const ProviderRegForm = () => {
 	};
 
 	const handleSubmit = async () => {
-		handleDownloadPDF();
 		setIsSubmitting(true);
 		try {
 			if (!data) {
@@ -127,6 +126,7 @@ const ProviderRegForm = () => {
 					`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
 				);
 				dispatch(ClearProviderSlice());
+				handleDownloadPDF();
 			}
 		} catch (error) {
 			toast.error("Failed to submit Member data. Please try again.");
