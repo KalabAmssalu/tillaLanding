@@ -300,6 +300,192 @@
 			}
 		}
 	},
+	"familyInfoForm": {
+		"title": "Family Member Information",
+		"description": "Please provide the family member details below.",
+		"successMessage": "Family member information has been successfully submitted.",
+		"representative_info": "Primary Member Information",
+		"relationship": "Relationship",
+		"contact_information": "Contact Information",
+		"representative_address": "Primary Member Address Information",
+		"personal_information": "Family Member Information",
+		"fields": {
+			"first_name": {
+				"label": "First Name - English",
+				"placeholder": "Enter your first name",
+				"description": "Your legal first name.",
+				"error": "First name must be at least 2 characters long."
+			},
+			"middle_name": {
+				"label": "Middle Name - English",
+				"placeholder": "Enter your middle name",
+				"description": "Your legal middle name.",
+				"error": "Middle name must be at least 2 characters long."
+			},
+			"last_name": {
+				"label": "Last Name - English",
+				"placeholder": "Enter your last name",
+				"description": "Your legal last name.",
+				"error": "Last name must be at least 2 characters long."
+			},
+			"amharic_first_name": {
+				"label": "First Name - Amharic",
+				"placeholder": "ስም በአማርኛ",
+				"description": "Your legal first name.",
+				"error": "First name must be at least 2 characters long."
+			},
+			"amharic_middle_name": {
+				"label": "Middle Name - Amharic",
+				"placeholder": "የአባት ስም በአማርኛ",
+				"description": "Your legal middle name.",
+				"error": "Middle name must be at least 2 characters long."
+			},
+			"amharic_last_name": {
+				"label": "Last Name - Amharic",
+				"placeholder": "የአያት ስም በአማርኛ",
+				"description": "Your legal last name.",
+				"error": "Last name must be at least 2 characters long."
+			},
+
+			"gender": {
+				"label": "Gender",
+				"placeholder": "Select your gender",
+				"description": "Please choose your gender.",
+				"error": "please select your gender. It is required",
+				"options": {
+					"male": "Male",
+					"female": "Female",
+					"not_prefer_to_say": "Not Prefer To Say"
+				}
+			},
+			"date_of_birth": {
+				"label": "Date of Birth",
+				"placeholder": "Select your date of birth",
+				"description": "Enter your birth date in the format MM-DD-YYYY.",
+				"error": "Please enter your date of birth in the format MM-DD-YYYY."
+			},
+			"marital_status": {
+				"label": "Marital Status",
+				"placeholder": "Select your marital status",
+				"description": "Please choose your marital status.",
+				"error": "Marital status is required.",
+				"options": {
+					"single": "Single",
+					"married": "Married",
+					"widowed": "Widowed",
+					"divorced": "Divorced"
+				}
+			},
+			"relationship_to_member": {
+				"label": "Relationship to Member",
+				"placeholder": "Enter your relationship to member",
+				"description": "Please enter your relationship to member.",
+				"error": "Relationship to member must be at least 2 characters long."
+			},
+			"relationship_to_member_other": {
+				"label": "Relationship to Member",
+				"placeholder": "Enter your relationship to member",
+				"description": "Please enter your relationship to member.",
+				"error": "Relationship to member must be at least 2 characters long."
+			},
+
+			"representative_first_name": {
+				"label": "Primary Member First Name",
+				"placeholder": "Enter Primary Member first name",
+				"description": "Primary Member's first name.",
+				"error": "Primary Member first name must be at least 2 characters long."
+			},
+			"representative_middle_name": {
+				"label": "Primary Member Middle Name",
+				"placeholder": "Enter Primary Member middle name",
+				"description": "Primary Member's middle name.",
+				"error": "Primary Member middle name must be at least 2 characters long."
+			},
+			"representative_last_name": {
+				"label": "Primary Member Last Name",
+				"placeholder": "Enter Primary Member last name",
+				"description": "Primary Member's last name.",
+				"error": "Primary Member last name must be at least 2 characters long."
+			},
+			"representative_gender": {
+				"label": "Primary Member Gender",
+				"placeholder": "Select Primary Member gender",
+				"description": "Please choose Primary Member's gender.",
+				"error": "Primary Member gender is required.",
+				"options": {
+					"male": "Male",
+					"female": "Female",
+					"not_prefer_to_say": "Not Prefer To Say"
+				}
+			},
+			"representative_date_of_birth": {
+				"label": "Primary Member Date of Birth",
+				"placeholder": "Select your date of birth",
+				"description": "Enter your birth date in the format MM-DD-YYYY.",
+				"error": "Please enter your date of birth in the format MM-DD-YYYY."
+			},
+			"representative_marital_status": {
+				"label": "Primary Member Marital Status",
+				"placeholder": "Select Primary Member marital status",
+				"description": "Please choose Primary Member's marital status.",
+				"error": "Primary Member marital status is required.",
+				"options": {
+					"single": "Single",
+					"married": "Married",
+					"widowed": "Widowed",
+					"divorced": "Divorced"
+				}
+			},
+			"representative_mailing_address_line1": {
+				"label": "Primary Member Stret Address Line 2",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"representative_country": {
+				"label": "Primary Member Country",
+				"placeholder": "Primary Member Country",
+				"description": "Choose a country from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"representative_city": {
+				"label": "Primary Member City",
+				"placeholder": "Primary Member City",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"representative_region": {
+				"label": "Primary Member Region / State",
+				"placeholder": "Primary Member Region",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"representative_street_address": {
+				"label": "Primary Member Street Address Line 1",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"representative_kifle_ketema": {
+				"label": "Primary Member Sub-city / Kifle Ketema",
+				"placeholder": "Mailing Address Line 1",
+				"description": "Choose a city from the list.",
+				"error": "City name must be at least 2 characters long."
+			},
+			"representative_phone_number": {
+				"label": "Primary Member Phone Number",
+				"placeholder": "Enter Primary Member phone number",
+				"description": "Primary Member's phone number.",
+				"error": "A valid phone number is required between 10 and 15 digits."
+			},
+			"representative_email_address": {
+				"label": "Primary Member Email Address",
+				"placeholder": "Enter Primary Member email address",
+				"description": "Primary Member's email address.",
+				"error": "A valid email address is required."
+			}
+		}
+	},
 	"brokerInfoForm": {
 		"title": "Personal Information",
 		"description": "Please provide your personal details below.",
@@ -908,5 +1094,60 @@
 				"error": "A valid email address is required."
 			}
 		}
+	},
+	"Questionnaire": {
+		"memberQuestionnaire": "Member Questionnaire (Optional)",
+		"healthAndLifestyleQuestionnaire": "Health and Lifestyle Questionnaire",
+		"helpUsUnderstand": "Help us understand your health history and lifestyle to provide you with the best care.",
+		"familyMedicalHistory": "Family Medical History",
+		"familyHistoryQuestion": "Does your family have a history of the following conditions? (Check all that apply)",
+		"Heart Disease": "Heart Disease",
+		"Diabetes": "Diabetes",
+		"Hypertension": "Hypertension",
+		"Cancer": "Cancer",
+		"Stroke": "Stroke",
+		"Mental Health Disorders": "Mental Health Disorders",
+		"specifyType": "Specify type of cancer (if applicable):",
+		"enterCancerType": "Enter cancer type",
+		"otherCondition": "Other condition (please specify):",
+		"specifyOtherCondition": "Specify other condition",
+		"personalMedicalHistory": "Personal Medical History",
+		"currentConditionsQuestion": "Are you currently being treated for any of the following conditions? (Check all that apply)",
+		"Asthma or Respiratory Conditions": "Asthma or Respiratory Conditions",
+		"Chronic Pain": "Chronic Pain",
+		"Mental Health Conditions": "Mental Health Conditions",
+		"takingMedications": "Are you currently taking any medications?",
+		"yes": "Yes",
+		"no": "No",
+		"listMedications": "List medications:",
+		"enterMedications": "Enter medications",
+		"lifestyleQuestions": "Lifestyle Questions",
+		"doYouSmoke": "Do you smoke?",
+		"specifyAmount": "Specify amount:",
+		"enterAmount": "Enter amount",
+		"doYouDrinkAlcohol": "Do you consume alcohol?",
+		"specifyFrequency": "Specify frequency:",
+		"enterFrequency": "Enter frequency",
+		"howOftenExercise": "How often do you exercise?",
+		"daily": "Daily",
+		"threeFiveTimes": "3-5 times a week",
+		"rarely": "Rarely",
+		"none": "None",
+		"allergies": "Allergies",
+		"anyAllergies": "Do you have any allergies to medications, foods, or other substances?",
+		"listAllergies": "List allergies:",
+		"enterAllergies": "Enter allergies",
+		"preventiveHealth": "Preventive Health",
+		"preventiveScreeningsQuestion": "Have you undergone the following screenings in the past year? (Check all that apply)",
+		"Annual Physical": "Annual Physical",
+		"Blood Pressure Check": "Blood Pressure Check",
+		"Blood Sugar Test": "Blood Sugar Test",
+		"Cancer Screenings": "Cancer Screenings",
+		"Dental Checkup": "Dental Checkup",
+		"Eye Exam": "Eye Exam",
+		"womensHealth": "Women's Health (Optional)",
+		"pregnantOrPlanning": "Are you currently pregnant or planning to become pregnant?",
+		"hadMammogramLastYear": "Have you had a mammogram or pap smear in the last year?",
+		"submitQuestionnaire": "Submit Questionnaire"
 	}
 }

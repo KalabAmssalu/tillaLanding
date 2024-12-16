@@ -24,14 +24,20 @@ import {
 } from "@/types/provider/ProviderInfoType";
 
 interface MemberRepresentativeInfoFormProps {
+	type: string;
 	onFormComplete: (data: MemberRepresentativeFormValues) => void;
 }
 
 export default function MemberRepresentativeInfoForm({
+	type,
 	onFormComplete,
 }: MemberRepresentativeInfoFormProps) {
 	const [visible, setVisible] = useState(true);
-	const t = useTranslations("personalInfoForm");
+	type = type.toLowerCase();
+	const local = type === "family" ? "familyInfoForm" : "personalInfoForm";
+	const namespace = local || "personalInfoForm";
+	const t = useTranslations(namespace);
+
 	const memberRepInfoSchema = createMemberRepresentativeSchema(t);
 	const DataInfo = useAppSelector((state) => state.member.memberSlice);
 	const form = useForm<MemberRepresentativeFormValues>({
@@ -53,22 +59,22 @@ export default function MemberRepresentativeInfoForm({
 			representative_kifle_ketema: DataInfo.representative_kifle_ketema || "",
 			representative_phone_number: DataInfo.representative_phone_number || "",
 			representative_email_address: DataInfo.representative_email_address || "",
-			relationship_to_member: DataInfo.relationship_to_member || "",
-			dependent_of: DataInfo.dependent_of || 0,
+			// relationship_to_member: DataInfo.relationship_to_member || "",
+			// dependent_of: DataInfo.dependent_of || 0,
 		},
 	});
 
 	function onSubmit(data: MemberRepresentativeFormValues) {
 		// If "Other" is selected, replace relationship_to_member with the custom value
-		if (
-			data.relationship_to_member === "other" &&
-			data.relationship_to_member_other
-		) {
-			data.relationship_to_member = data.relationship_to_member_other;
-		}
-		// Remove the custom input field value from the form data
-		delete data.relationship_to_member_other;
-		console.log("data to submit", data);
+		// if (
+		// 	data.relationship_to_member === "other" &&
+		// 	data.relationship_to_member_other
+		// ) {
+		// 	data.relationship_to_member = data.relationship_to_member_other;
+		// }
+		// // Remove the custom input field value from the form data
+		// delete data.relationship_to_member_other;
+		// console.log("data to submit", data);
 
 		onFormComplete(data);
 		setVisible(false);
@@ -83,39 +89,39 @@ export default function MemberRepresentativeInfoForm({
 		}
 	}, [selectedCountry, form]);
 
-	const [selectedRelationship, setSelectedRelationship] = useState<string>("");
-	useEffect(() => {
-		const selectedValue = form.getValues("relationship_to_member");
-		if (selectedValue && selectedValue !== selectedRelationship) {
-			setSelectedRelationship(selectedValue);
-			setOtherRelationship(selectedValue === "other");
-		}
-	}, [form]);
+	// const [selectedRelationship, setSelectedRelationship] = useState<string>("");
+	// useEffect(() => {
+	// 	const selectedValue = form.getValues("relationship_to_member");
+	// 	if (selectedValue && selectedValue !== selectedRelationship) {
+	// 		setSelectedRelationship(selectedValue);
+	// 		setOtherRelationship(selectedValue === "other");
+	// 	}
+	// }, [form]);
 
 	const countryOptions = useMemo(() => {
 		return getAllCountries();
 	}, []);
-	const relationshipOptions = useMemo(() => {
-		return getAllRelationships();
-	}, []);
+	// const relationshipOptions = useMemo(() => {
+	// 	return getAllRelationships();
+	// }, []);
 
-	const [otherRelationship, setOtherRelationship] = useState(false);
+	// const [otherRelationship, setOtherRelationship] = useState(false);
 
-	const handleRelationshipChange = (value: string) => {
-		setSelectedRelationship(value);
+	// const handleRelationshipChange = (value: string) => {
+	// 	setSelectedRelationship(value);
 
-		if (value === "other") {
-			setOtherRelationship(true);
-		} else {
-			setOtherRelationship(false);
-			// Clear custom input field value and ensure the selected relationship is set
-			form.setValue("relationship_to_member_other", "");
-			form.setValue("relationship_to_member", value);
-		}
-	};
-	const handleCustomInputChange = (value: string | number) => {
-		form.setValue("relationship_to_member_other", String(value));
-	};
+	// 	if (value === "other") {
+	// 		setOtherRelationship(true);
+	// 	} else {
+	// 		setOtherRelationship(false);
+	// 		// Clear custom input field value and ensure the selected relationship is set
+	// 		form.setValue("relationship_to_member_other", "");
+	// 		form.setValue("relationship_to_member", value);
+	// 	}
+	// };
+	// const handleCustomInputChange = (value: string | number) => {
+	// 	form.setValue("relationship_to_member_other", String(value));
+	// };
 	const handleCountryValueChange = (value: string) => {
 		setSelectedCountry(value);
 
@@ -135,7 +141,7 @@ export default function MemberRepresentativeInfoForm({
 							control={form.control}
 							name="representative_first_name"
 							type="text"
-							local="personalInfoForm"
+							local={local}
 							labelKey="fields.representative_first_name.label"
 							placeholderKey="fields.representative_first_name.placeholder"
 							descriptionKey="fields.representative_first_name.description"
@@ -146,7 +152,7 @@ export default function MemberRepresentativeInfoForm({
 							control={form.control}
 							name="representative_middle_name"
 							type="text"
-							local="personalInfoForm"
+							local={local}
 							labelKey="fields.representative_middle_name.label"
 							placeholderKey="fields.representative_middle_name.placeholder"
 							descriptionKey="fields.representative_middle_name.description"
@@ -157,7 +163,7 @@ export default function MemberRepresentativeInfoForm({
 							control={form.control}
 							name="representative_last_name"
 							type="text"
-							local="personalInfoForm"
+							local={local}
 							labelKey="fields.representative_last_name.label"
 							placeholderKey="fields.representative_last_name.placeholder"
 							descriptionKey="fields.representative_last_name.description"
@@ -168,7 +174,7 @@ export default function MemberRepresentativeInfoForm({
 							control={form.control}
 							name="representative_gender"
 							labelKey="fields.representative_gender.label"
-							local="personalInfoForm"
+							local={local}
 							placeholderKey="fields.representative_gender.placeholder"
 							descriptionKey="fields.representative_gender.description"
 							options={[
@@ -203,7 +209,7 @@ export default function MemberRepresentativeInfoForm({
 							descriptionKey="fields.representative_date_of_birth.description"
 							required
 							buttonClassName="custom-button-class"
-							local="personalInfoForm"
+							local={local}
 							max={new Date(
 								Date.now() - 1000 * 60 * 60 * 24 * 365.25 * 16
 							).getFullYear()}
@@ -247,20 +253,20 @@ export default function MemberRepresentativeInfoForm({
 									value as "single" | "married" | "widowed" | "divorced"
 								);
 							}}
-							local="personalInfoForm"
+							local={local}
 							required={true}
 						/>
 					</div>
 				</fieldset>
 
-				<fieldset className="border p-4 rounded-md bg-background mt-6 ">
+				{/* <fieldset className="border p-4 rounded-md bg-background mt-6 ">
 					<legend className="text-lg font-semibold">{t("relationship")}</legend>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
 						<ReusableSelectField
 							control={form.control}
 							name="relationship_to_member"
 							labelKey="fields.relationship_to_member.label"
-							local="personalInfoForm"
+							local={local}
 							placeholderKey="fields.relationship_to_member.placeholder"
 							descriptionKey="fields.relationship_to_member.description"
 							options={relationshipOptions}
@@ -268,12 +274,12 @@ export default function MemberRepresentativeInfoForm({
 							required
 						/>
 
-						{/* Render custom input field if "Other" is selected */}
+						
 						{otherRelationship && (
 							<ReusableFormField
 								name="relationship_to_member_other"
 								type="text"
-								local="personalInfoForm"
+								local={local}
 								labelKey="fields.relationship_to_member_other.label"
 								placeholderKey="fields.relationship_to_member_other.placeholder"
 								descriptionKey="fields.relationship_to_member_other.description"
@@ -287,13 +293,13 @@ export default function MemberRepresentativeInfoForm({
 							control={form.control}
 							name="dependent_of"
 							type="number"
-							local="personalInfoForm"
+							local={local}
 							labelKey="fields.dependent_of.label"
 							placeholderKey="fields.dependent_of.placeholder"
 							descriptionKey="fields.dependent_of.description"
 						/>
 					</div>
-				</fieldset>
+				</fieldset> */}
 
 				<fieldset className="border p-4 rounded-md bg-background mt-6 ">
 					<legend className="text-lg font-semibold">
@@ -306,13 +312,13 @@ export default function MemberRepresentativeInfoForm({
 							labelKey="fields.representative_phone_number.label"
 							placeholderKey="fields.representative_phone_number.placeholder"
 							descriptionKey="fields.representative_phone_number.description"
-							local="personalInfoForm"
+							local={local}
 						/>
 						<ReusableFormField
 							control={form.control}
 							name="representative_email_address"
 							type="email"
-							local="personalInfoForm"
+							local={local}
 							labelKey="fields.representative_email_address.label"
 							placeholderKey="fields.representative_email_address.placeholder"
 							descriptionKey="fields.representative_email_address.description"
@@ -324,57 +330,11 @@ export default function MemberRepresentativeInfoForm({
 						{t("representative_address")}
 					</legend>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-						<ReusableSelectField
-							control={form.control}
-							name="representative_country"
-							labelKey="fields.representative_country.label"
-							local="personalInfoForm"
-							placeholderKey="fields.representative_country.placeholder"
-							descriptionKey="fields.representative_country.description"
-							options={countryOptions}
-							onValueChange={handleCountryValueChange}
-							required
-						/>
-						<ReusableSelectField
-							control={form.control}
-							name="representative_region"
-							labelKey="fields.representative_region.label"
-							local="personalInfoForm"
-							placeholderKey="fields.representative_region.placeholder"
-							descriptionKey="fields.representative_region.description"
-							options={subStates}
-							onValueChange={(value) =>
-								form.setValue("representative_region", value)
-							}
-							required
-						/>
-
-						<ReusableFormField
-							control={form.control}
-							name="representative_city"
-							type="text"
-							local="personalInfoForm"
-							labelKey="fields.representative_city.label"
-							placeholderKey="fields.representative_city.placeholder"
-							descriptionKey="fields.representative_city.description"
-							required
-							isRequired={true}
-						/>
-
-						<ReusableFormField
-							control={form.control}
-							name="representative_kifle_ketema"
-							type="text"
-							local="personalInfoForm"
-							labelKey="fields.representative_kifle_ketema.label"
-							placeholderKey="fields.representative_kifle_ketema.placeholder"
-							descriptionKey="fields.representative_kifle_ketema.description"
-						/>
 						<ReusableFormField
 							control={form.control}
 							name="representative_street_address"
 							type="text"
-							local="personalInfoForm"
+							local={local}
 							labelKey="fields.representative_street_address.label"
 							placeholderKey="fields.representative_street_address.placeholder"
 							descriptionKey="fields.representative_street_address.description"
@@ -385,10 +345,56 @@ export default function MemberRepresentativeInfoForm({
 							control={form.control}
 							name="representative_mailing_address_line1"
 							type="text"
-							local="personalInfoForm"
+							local={local}
 							labelKey="fields.representative_mailing_address_line1.label"
 							placeholderKey="fields.representative_mailing_address_line1.placeholder"
 							descriptionKey="fields.representative_mailing_address_line1.description"
+						/>
+						<ReusableFormField
+							control={form.control}
+							name="representative_city"
+							type="text"
+							local={local}
+							labelKey="fields.representative_city.label"
+							placeholderKey="fields.representative_city.placeholder"
+							descriptionKey="fields.representative_city.description"
+							required
+							isRequired={true}
+						/>
+						{type !== "diaspora" && (
+							<ReusableFormField
+								control={form.control}
+								name="representative_kifle_ketema"
+								type="text"
+								local={local}
+								labelKey="fields.representative_kifle_ketema.label"
+								placeholderKey="fields.representative_kifle_ketema.placeholder"
+								descriptionKey="fields.representative_kifle_ketema.description"
+							/>
+						)}
+						<ReusableSelectField
+							control={form.control}
+							name="representative_country"
+							labelKey="fields.representative_country.label"
+							local={local}
+							placeholderKey="fields.representative_country.placeholder"
+							descriptionKey="fields.representative_country.description"
+							options={countryOptions}
+							onValueChange={handleCountryValueChange}
+							required
+						/>
+						<ReusableSelectField
+							control={form.control}
+							name="representative_region"
+							labelKey="fields.representative_region.label"
+							local={local}
+							placeholderKey="fields.representative_region.placeholder"
+							descriptionKey="fields.representative_region.description"
+							options={subStates}
+							onValueChange={(value) =>
+								form.setValue("representative_region", value)
+							}
+							required
 						/>
 					</div>
 				</fieldset>

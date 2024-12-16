@@ -29,9 +29,11 @@ import {
 } from "@/lib/store/redux/memberSlice";
 import { type memeberType } from "@/types/memeber/memeber";
 
+import FamilyMember from "./FamilyMember";
 import MemberAddressForm from "./MemberAddressForm";
 import MemberPersonalInfoForm from "./MemberPersonalInfoForm";
 import MemberRepresentativeInfoForm from "./MemberRepresentativeInfoForm";
+import HealthQuestionnaire from "./memberQuestionnaire";
 import Preview from "./preview";
 
 interface memberInfoType {
@@ -162,9 +164,13 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 		...(info.self !== "true"
 			? [
 					{
-						title: "Representative Information",
+						title:
+							info.type === "family"
+								? "Primary Member Information"
+								: "Representative Information",
 						content: (
 							<MemberRepresentativeInfoForm
+								type={info.type ? info.type.toLowerCase() : "individual"}
 								onFormComplete={(data) => {
 									updateFormData(data);
 									nextStep();
@@ -174,28 +180,68 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 					},
 				]
 			: []),
+		...(info.type === "family"
+			? [
+					{
+						title: "Family Member Information",
+						// content: (
+						// 	<FamilyMemberInfoForm
+						// 		onFormComplete={(data) => {
+						// 			updateFormData(data);
+						// 			nextStep();
+						// 		}}
+						// 	/>
+						// ),
+						content: (
+							<FamilyMember
+								onFormComplete={(data) => {
+									updateFormData(data);
+									nextStep();
+								}}
+							/>
+						),
+					},
+				]
+			: []),
+		...(info.type !== "family"
+			? [
+					{
+						title: "Member Information",
+						content: (
+							<MemberPersonalInfoForm
+								onFormComplete={(data) => {
+									updateFormData(data);
+									nextStep();
+								}}
+							/>
+						),
+					},
+					{
+						title: "Address Information",
+						content: (
+							<MemberAddressForm
+								onFormComplete={(data) => {
+									updateFormData(data);
+									nextStep();
+								}}
+							/>
+						),
+					},
+				]
+			: []),
+
 		{
-			title: "The Registered Member Information",
+			title: "Health and Lifestyle Questionnaire",
 			content: (
-				<MemberPersonalInfoForm
+				<HealthQuestionnaire
 					onFormComplete={(data) => {
-						updateFormData(data);
+						// updateFormData(data);
 						nextStep();
 					}}
 				/>
 			),
 		},
-		{
-			title: "Address Information",
-			content: (
-				<MemberAddressForm
-					onFormComplete={(data) => {
-						updateFormData(data);
-						nextStep();
-					}}
-				/>
-			),
-		},
+
 		{
 			title: "Preview",
 			content: (

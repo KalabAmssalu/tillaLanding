@@ -196,14 +196,115 @@ export const createMemberRepresentativeSchema = (t: (key: string) => string) =>
 				.string()
 				.email({ message: t("fields.representative_email_address.error") }),
 		]),
+		// relationship_to_member: z.union([
+		// 	z.literal(""),
+		// 	z.string().min(2, { message: t("fields.relationship_to_member.error") }),
+		// ]),
+		// relationship_to_member_other: z.string().optional(),
+	});
+
+export type MemberRepresentativeFormValues = z.infer<
+	ReturnType<typeof createMemberRepresentativeSchema>
+>;
+
+export const QuestionnaireformSchema = (t: (key: string) => string) =>
+	z.object({
+		familyHistory: z.array(z.string()).optional(),
+		cancerType: z.string().optional(),
+		otherCondition: z.string().optional(),
+		currentConditions: z.array(z.string()).optional(),
+		currentMedications: z
+			.object({
+				taking: z.enum(["yes", "no"]).optional(),
+				medications: z.string().optional(),
+			})
+			.optional(),
+		lifestyle: z
+			.object({
+				smoking: z.object({
+					smokes: z.enum(["yes", "no"]).optional(),
+					amount: z.string().optional(),
+				}),
+				alcohol: z.object({
+					drinks: z.enum(["yes", "no"]).optional(),
+					frequency: z.string().optional(),
+				}),
+				exercise: z.string().optional(),
+			})
+			.optional(),
+		allergies: z
+			.object({
+				hasAllergies: z.enum(["yes", "no"]).optional(),
+				allergyList: z.string().optional(),
+			})
+			.optional(),
+		preventiveHealth: z.array(z.string()).optional(),
+		womensHealth: z
+			.object({
+				pregnant: z.enum(["yes", "no"]).optional(),
+				hadMammogram: z.enum(["yes", "no"]).optional(),
+			})
+			.optional(),
+	});
+
+export type QuestionnaireformSchemaValues = z.infer<
+	ReturnType<typeof QuestionnaireformSchema>
+>;
+
+export const createFamilyInfoSchema = (t: (key: string) => string) =>
+	z.object({
 		relationship_to_member: z.union([
 			z.literal(""),
 			z.string().min(2, { message: t("fields.relationship_to_member.error") }),
 		]),
 		relationship_to_member_other: z.string().optional(),
 		dependent_of: z.number().optional(),
+		first_name: z.union([
+			z.literal(""),
+			z.string().regex(/^[^\d]*$/, {
+				message: t("fields.first_name.error"),
+			}),
+		]),
+		middle_name: z.union([
+			z.literal(""),
+			z
+				.string()
+				.min(2, {
+					message: t("fields.middle_name.error"),
+				})
+				.regex(/^[^\d]*$/, {
+					message: t("fields.middle_name.error"),
+				}),
+		]),
+		last_name: z.union([
+			z.literal(""),
+			z.string().regex(/^[^\d]*$/, {
+				message: t("fields.last_name.error"),
+			}),
+		]),
+
+		gender: z.union([
+			z.literal(""),
+			z.enum(["male", "female", "not_prefer_to_say"], {
+				invalid_type_error: t("fields.gender.error"),
+			}),
+		]),
+		date_of_birth: z.union([
+			z.literal(""),
+			z.string().min(1, {
+				message: t("fields.date_of_birth.error"),
+			}),
+		]),
+		phone_number: z.string().refine((val) => RPNInput.isValidPhoneNumber(val), {
+			message: t("fields.phone_number.error"),
+		}),
+
+		email_address: z.union([
+			z.literal(""),
+			z.string().email({ message: t("fields.email_address.error") }),
+		]),
 	});
 
-export type MemberRepresentativeFormValues = z.infer<
-	ReturnType<typeof createMemberRepresentativeSchema>
+export type FamilyInfoFormValues = z.infer<
+	ReturnType<typeof createFamilyInfoSchema>
 >;
