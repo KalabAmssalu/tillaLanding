@@ -8,6 +8,7 @@ import jsPDF from "jspdf";
 import { CheckCheck, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
+import { useAddOrganization } from "@/actions/Query/member_Query/organization_Query";
 import StepIndicator from "@/components/shared/Stepper/step-indicator";
 import {
 	AlertDialog,
@@ -22,8 +23,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAppDispatch, useAppSelector } from "@/hooks/storehooks";
-import { SetorganizationSlice } from "@/lib/store/redux/organizationSlice";
-import { ClearProviderSlice } from "@/lib/store/redux/providerSlice";
+import {
+	ClearorganizationSlice,
+	SetorganizationSlice,
+} from "@/lib/store/redux/organizationSlice";
 import { type organizationType } from "@/types/organization/organization";
 
 import OrganizationAddressForm from "./OrganizationAddressForm";
@@ -42,7 +45,7 @@ export default function OrganizationRegForm({
 }) {
 	const [nextActive, setNextActive] = useState(false);
 	const [currentStep, setCurrentStep] = useState(0);
-	// const { mutate: MemberMutation } = useAddmemeber();
+	const { mutate: OrganizationMutation, isSuccess } = useAddOrganization();
 	const data = useAppSelector((state) => state.organization.organizationSlice);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const printRef = useRef<HTMLDivElement>(null);
@@ -108,15 +111,17 @@ export default function OrganizationRegForm({
 				return;
 			}
 
-			// await MemberMutation(data);
-
-			router.push("/provider/success" as `/${string}`);
+			await OrganizationMutation(data);
+			if (isSuccess) {
+				router.push(
+					"/success?type=organization&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard" as `/${string}`
+				);
+				dispatch(ClearorganizationSlice());
+			}
 		} catch (error) {
 			toast.error("Failed to submit provider data. Please try again.");
 		} finally {
 			setIsSubmitting(false);
-
-			dispatch(ClearProviderSlice());
 		}
 	};
 

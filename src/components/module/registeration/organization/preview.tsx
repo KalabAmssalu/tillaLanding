@@ -60,7 +60,7 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 						</div>
 
 						<Image
-							src={IMAGES.OrginalLogo}
+							src={IMAGES.blueLogo}
 							width={60}
 							alt={"logo"}
 							className="absolute top-12 right-12"
@@ -134,7 +134,7 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 											"street_address",
 											"city",
 											"region",
-											"country",
+											"country_of_origin",
 											"kifle_ketema",
 										].map((key) => (
 											<Field

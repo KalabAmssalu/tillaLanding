@@ -1,3 +1,4 @@
+import * as RPNInput from "react-phone-number-input";
 import * as z from "zod";
 
 import { CountryData } from "@/constants/data/countryData";
@@ -94,17 +95,16 @@ export const createProviderInfoSchema = (t: (key: string) => string) =>
 			z.literal(""),
 			z.string().email({ message: t("fields.provider_contact_email.error") }),
 		]),
-		provider_contact_phone_number: z.union([
-			z.literal(""),
-			z
-				.string()
-				.min(10, { message: t("fields.provider_contact_phone_number.error") })
-				.max(15, { message: t("fields.provider_contact_phone_number.error") }),
-		]),
+		provider_contact_phone_number: z
+			.string()
+			.refine((val) => RPNInput.isValidPhoneNumber(val), {
+				message: t("fields.contact_person_phone_number.error"),
+			}),
 		provider_phone_number: z
 			.string()
-			.min(10, { message: t("fields.provider_phone_number.error") })
-			.max(15, { message: t("fields.provider_phone_number.error") }),
+			.refine((val) => RPNInput.isValidPhoneNumber(val), {
+				message: t("fields.contact_person_phone_number.error"),
+			}),
 		provider_email: z
 			.string()
 			.email({ message: t("fields.provider_email.error") }),
@@ -184,13 +184,11 @@ export const createProviderGroupSchema = (t: (key: string) => string) =>
 				message: t("fields.provider_group_contact_person.error"),
 			}),
 		]),
-		provider_group_phone_number: z.union([
-			z.literal(""),
-			z
-				.string()
-				.min(10, { message: t("fields.provider_group_phone_number.error") })
-				.max(15, { message: t("fields.provider_group_phone_number.error") }),
-		]),
+		provider_group_phone_number: z
+			.string()
+			.refine((val) => RPNInput.isValidPhoneNumber(val), {
+				message: t("fields.contact_person_phone_number.error"),
+			}),
 		provider_group_contact_email: z.union([
 			z.literal(""),
 			z

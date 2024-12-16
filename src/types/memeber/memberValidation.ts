@@ -1,3 +1,4 @@
+import * as RPNInput from "react-phone-number-input";
 import * as z from "zod";
 
 export const createMemeberInfoSchema = (t: (key: string) => string) =>
@@ -75,13 +76,10 @@ export const createMemeberInfoSchema = (t: (key: string) => string) =>
 				message: t("fields.weight.error"),
 			})
 			.optional(),
-		phone_number: z.union([
-			z.literal(""),
-			z
-				.string()
-				.min(10, { message: t("fields.phone_number.error") })
-				.max(15, { message: t("fields.phone_number.error") }),
-		]),
+		phone_number: z.string().refine((val) => RPNInput.isValidPhoneNumber(val), {
+			message: t("fields.phone_number.error"),
+		}),
+
 		email_address: z.union([
 			z.literal(""),
 			z.string().email({ message: t("fields.email_address.error") }),
@@ -186,13 +184,12 @@ export const createMemberRepresentativeSchema = (t: (key: string) => string) =>
 				.string()
 				.min(2, { message: t("fields.representative_kifle_ketema.error") }),
 		]),
-		representative_phone_number: z.union([
-			z.literal(""),
-			z
-				.string()
-				.min(10, { message: t("fields.representative_phone_number.error") })
-				.max(15, { message: t("fields.representative_phone_number.error") }),
-		]),
+		representative_phone_number: z
+			.string()
+			.refine((val) => RPNInput.isValidPhoneNumber(val), {
+				message: t("fields.representative_phone_number.error"),
+			}),
+
 		representative_email_address: z.union([
 			z.literal(""),
 			z
@@ -203,10 +200,8 @@ export const createMemberRepresentativeSchema = (t: (key: string) => string) =>
 			z.literal(""),
 			z.string().min(2, { message: t("fields.relationship_to_member.error") }),
 		]),
-		dependent_of: z.union([
-			z.literal(0),
-			z.number().min(0, { message: t("fields.dependent_of.error") }),
-		]),
+		relationship_to_member_other: z.string().optional(),
+		dependent_of: z.number().optional(),
 	});
 
 export type MemberRepresentativeFormValues = z.infer<

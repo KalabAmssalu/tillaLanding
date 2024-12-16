@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 
 import ReusableFormField from "@/components/shared/Form/ReusableFormField";
+import ReusablePhoneInputField from "@/components/shared/Form/ReusablePhoneInput";
 import { Button } from "@/components/ui/button";
 import {
 	Form,
@@ -309,14 +310,14 @@ export default function ProviderGroupForm({
 							placeholderKey="fields.provider_group_contact_person.placeholder"
 							descriptionKey="fields.provider_group_contact_person.description"
 						/>
-						<ReusableFormField
+
+						<ReusablePhoneInputField
 							control={form.control}
 							name="provider_group_phone_number"
-							type="text"
-							local="providerInfoForm"
 							labelKey="fields.provider_group_phone_number.label"
 							placeholderKey="fields.provider_group_phone_number.placeholder"
 							descriptionKey="fields.provider_group_phone_number.description"
+							local="providerInfoForm"
 						/>
 						<ReusableFormField
 							control={form.control}

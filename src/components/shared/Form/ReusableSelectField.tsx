@@ -29,7 +29,6 @@ interface SelectOption {
 	value: string;
 	label?: string;
 }
-
 interface SelectFieldProps {
 	control: any; // Control object from react-hook-form or similar
 	name: string;
@@ -40,6 +39,7 @@ interface SelectFieldProps {
 	onValueChange: (value: string) => void;
 	local?: string; // Optional namespace for localization
 	required?: boolean; // Indicates if the field is required
+	defaultValue?: string; // Default value for the select field
 }
 
 const ReusableSelectField: React.FC<SelectFieldProps> = ({
@@ -52,6 +52,7 @@ const ReusableSelectField: React.FC<SelectFieldProps> = ({
 	onValueChange,
 	local,
 	required = false,
+	defaultValue = "", // Default to an empty string if not provided
 }) => {
 	const namespace = local || ""; // Optional namespace if needed
 	const t = useTranslations(namespace); // Hook to fetch translation strings
@@ -84,7 +85,7 @@ const ReusableSelectField: React.FC<SelectFieldProps> = ({
 					</FormLabel>
 					<FormControl>
 						<Select
-							value={field.value}
+							value={field.value || defaultValue} // Use defaultValue if field value is empty
 							onValueChange={(value) => {
 								field.onChange(value); // Update form state
 								onValueChange(value); // Custom change handler

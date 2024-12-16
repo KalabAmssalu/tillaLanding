@@ -57,7 +57,6 @@ export default function OrganizationAddressForm({
 		const selectedCountry = form.getValues("country_of_origin");
 		if (selectedCountry) {
 			setSubStates(getStatesForCountry(selectedCountry) || []);
-			form.setValue("region", "");
 		}
 	}, [selectedCountry, form]);
 

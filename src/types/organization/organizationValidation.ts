@@ -1,3 +1,4 @@
+import * as RPNInput from "react-phone-number-input";
 import * as z from "zod";
 
 export const createorganizationInfoSchema = (t: (key: string) => string) =>
@@ -29,13 +30,9 @@ export const createorganizationInfoSchema = (t: (key: string) => string) =>
 		preferred_end_date: z.string().min(2, {
 			message: t("fields.preferred_end_date.error"),
 		}),
-		phone_number: z.union([
-			z.literal(""),
-			z
-				.string()
-				.min(10, { message: t("fields.phone_number.error") })
-				.max(15, { message: t("fields.phone_number.error") }),
-		]),
+		phone_number: z.string().refine((val) => RPNInput.isValidPhoneNumber(val), {
+			message: t("fields.phone_number.error"),
+		}),
 		email_address: z.union([
 			z.literal(""),
 			z.string().email({ message: t("fields.email_address.error") }),
@@ -102,13 +99,11 @@ export const contactPersonInfoSchema = (t: (key: string) => string) =>
 				message: t("fields.contact_person_position.error"),
 			}),
 		]),
-		contact_person_phone_number: z.union([
-			z.literal(""),
-			z
-				.string()
-				.min(10, { message: t("fields.phone_number.error") })
-				.max(15, { message: t("fields.phone_number.error") }),
-		]),
+		contact_person_phone_number: z
+			.string()
+			.refine((val) => RPNInput.isValidPhoneNumber(val), {
+				message: t("fields.contact_person_phone_number.error"),
+			}),
 		contact_person_email_address: z.union([
 			z.literal(""),
 			z.string().regex(/^[^\d]*$/, {

@@ -8,9 +8,11 @@ import { useForm } from "react-hook-form";
 
 import { ReusableDatePickerField } from "@/components/shared/Form/ReusableDateField";
 import ReusableFormField from "@/components/shared/Form/ReusableFormField";
+import ReusablePhoneInputField from "@/components/shared/Form/ReusablePhoneInput";
 import ReusableSelectField from "@/components/shared/Form/ReusableSelectField";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
+import { getAllRelationships } from "@/constants/data/familyData";
 import { useAppSelector } from "@/hooks/storehooks";
 import {
 	type MemberRepresentativeFormValues,
@@ -57,24 +59,63 @@ export default function MemberRepresentativeInfoForm({
 	});
 
 	function onSubmit(data: MemberRepresentativeFormValues) {
+		// If "Other" is selected, replace relationship_to_member with the custom value
+		if (
+			data.relationship_to_member === "other" &&
+			data.relationship_to_member_other
+		) {
+			data.relationship_to_member = data.relationship_to_member_other;
+		}
+		// Remove the custom input field value from the form data
+		delete data.relationship_to_member_other;
+		console.log("data to submit", data);
+
 		onFormComplete(data);
 		setVisible(false);
-		console.log("data to submit", data);
 	}
 	const [subStates, setSubStates] = useState<string[]>([]);
 	const [selectedCountry, setSelectedCountry] = useState<string>("");
+
 	useEffect(() => {
 		const selectedCountry = form.getValues("representative_country");
 		if (selectedCountry) {
 			setSubStates(getStatesForCountry(selectedCountry) || []);
-			form.setValue("representative_region", "");
 		}
 	}, [selectedCountry, form]);
+
+	const [selectedRelationship, setSelectedRelationship] = useState<string>("");
+	useEffect(() => {
+		const selectedValue = form.getValues("relationship_to_member");
+		if (selectedValue && selectedValue !== selectedRelationship) {
+			setSelectedRelationship(selectedValue);
+			setOtherRelationship(selectedValue === "other");
+		}
+	}, [form]);
 
 	const countryOptions = useMemo(() => {
 		return getAllCountries();
 	}, []);
+	const relationshipOptions = useMemo(() => {
+		return getAllRelationships();
+	}, []);
 
+	const [otherRelationship, setOtherRelationship] = useState(false);
+
+	const handleRelationshipChange = (value: string) => {
+		setSelectedRelationship(value);
+
+		if (value === "other") {
+			setOtherRelationship(true);
+		} else {
+			setOtherRelationship(false);
+			// Clear custom input field value and ensure the selected relationship is set
+			form.setValue("relationship_to_member_other", "");
+			form.setValue("relationship_to_member", value);
+		}
+	};
+	const handleCustomInputChange = (value: string | number) => {
+		form.setValue("relationship_to_member_other", String(value));
+	};
 	const handleCountryValueChange = (value: string) => {
 		setSelectedCountry(value);
 
@@ -163,6 +204,10 @@ export default function MemberRepresentativeInfoForm({
 							required
 							buttonClassName="custom-button-class"
 							local="personalInfoForm"
+							max={new Date(
+								Date.now() - 1000 * 60 * 60 * 24 * 365.25 * 16
+							).getFullYear()}
+							defaultValue={DataInfo.representative_date_of_birth}
 						/>
 						<ReusableSelectField
 							control={form.control}
@@ -211,15 +256,33 @@ export default function MemberRepresentativeInfoForm({
 				<fieldset className="border p-4 rounded-md bg-background mt-6 ">
 					<legend className="text-lg font-semibold">{t("relationship")}</legend>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
-						<ReusableFormField
+						<ReusableSelectField
 							control={form.control}
 							name="relationship_to_member"
-							type="text"
-							local="personalInfoForm"
 							labelKey="fields.relationship_to_member.label"
+							local="personalInfoForm"
 							placeholderKey="fields.relationship_to_member.placeholder"
 							descriptionKey="fields.relationship_to_member.description"
+							options={relationshipOptions}
+							onValueChange={handleRelationshipChange}
+							required
 						/>
+
+						{/* Render custom input field if "Other" is selected */}
+						{otherRelationship && (
+							<ReusableFormField
+								name="relationship_to_member_other"
+								type="text"
+								local="personalInfoForm"
+								labelKey="fields.relationship_to_member_other.label"
+								placeholderKey="fields.relationship_to_member_other.placeholder"
+								descriptionKey="fields.relationship_to_member_other.description"
+								control={form.control}
+								onChange={handleCustomInputChange}
+								required
+							/>
+						)}
+
 						<ReusableFormField
 							control={form.control}
 							name="dependent_of"
@@ -237,14 +300,13 @@ export default function MemberRepresentativeInfoForm({
 						{t("contact_information")}
 					</legend>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
-						<ReusableFormField
+						<ReusablePhoneInputField
 							control={form.control}
 							name="representative_phone_number"
-							type="text"
-							local="personalInfoForm"
 							labelKey="fields.representative_phone_number.label"
 							placeholderKey="fields.representative_phone_number.placeholder"
 							descriptionKey="fields.representative_phone_number.description"
+							local="personalInfoForm"
 						/>
 						<ReusableFormField
 							control={form.control}

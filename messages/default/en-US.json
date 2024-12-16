@@ -191,6 +191,12 @@
 				"description": "Please enter your relationship to member.",
 				"error": "Relationship to member must be at least 2 characters long."
 			},
+			"relationship_to_member_other": {
+				"label": "Relationship to Member",
+				"placeholder": "Enter your relationship to member",
+				"description": "Please enter your relationship to member.",
+				"error": "Relationship to member must be at least 2 characters long."
+			},
 			"representative_first_name": {
 				"label": "Representative First Name",
 				"placeholder": "Enter representative first name",

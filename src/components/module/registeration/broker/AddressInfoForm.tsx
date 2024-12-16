@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 
+import ReusablePhoneInputField from "@/components/shared/Form/ReusablePhoneInput";
 import { Button } from "@/components/ui/button";
 import {
 	Form,
@@ -79,26 +80,14 @@ export default function AddressInfoForm({
 								</FormItem>
 							)}
 						/>
-						<FormField
+
+						<ReusablePhoneInputField
 							control={form.control}
 							name="phone_number"
-							render={({ field }) => (
-								<FormItem className="flex flex-col items-start">
-									<FormLabel className="text-left">
-										{t("fields.contactPhone.label")}
-									</FormLabel>
-									<FormControl className="w-full">
-										<Input
-											placeholder={t("fields.contactPhone.placeholder")}
-											{...field}
-										/>
-									</FormControl>
-									<FormDescription className="text-left">
-										{t("fields.contactPhone.description")}
-									</FormDescription>
-									<FormMessage />
-								</FormItem>
-							)}
+							labelKey="fields.phone_number.label"
+							placeholderKey="fields.phone_number.placeholder"
+							descriptionKey="fields.phone_number.description"
+							local="brokerInfoForm"
 						/>
 						<FormField
 							control={form.control}

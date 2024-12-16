@@ -56,7 +56,6 @@ export default function MemberAddressForm({
 		const selectedCountry = form.getValues("country");
 		if (selectedCountry) {
 			setSubStates(getStatesForCountry(selectedCountry) || []);
-			form.setValue("region", "");
 		}
 	}, [selectedCountry, form]);
 

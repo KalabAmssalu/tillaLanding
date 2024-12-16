@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 
 import ReusableFormField from "@/components/shared/Form/ReusableFormField";
+import ReusablePhoneInputField from "@/components/shared/Form/ReusablePhoneInput";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useAppSelector } from "@/hooks/storehooks";
@@ -87,12 +88,6 @@ export default function OrganizationContactPersonForm({
 							required
 							isRequired={true}
 						/>
-					</div>
-				</fieldset>
-
-				<fieldset className="border p-4 rounded-md bg-background mt-6 ">
-					<legend className="text-lg font-semibold">{t("relationship")}</legend>
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
 						<ReusableFormField
 							control={form.control}
 							name="contact_person_position"
@@ -110,14 +105,13 @@ export default function OrganizationContactPersonForm({
 						{t("contact_information")}
 					</legend>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
-						<ReusableFormField
+						<ReusablePhoneInputField
 							control={form.control}
 							name="contact_person_phone_number"
-							type="text"
-							local="OrganizationInfoForm"
 							labelKey="fields.contact_person_phone_number.label"
 							placeholderKey="fields.contact_person_phone_number.placeholder"
 							descriptionKey="fields.contact_person_phone_number.description"
+							local="personalInfoForm"
 						/>
 						<ReusableFormField
 							control={form.control}

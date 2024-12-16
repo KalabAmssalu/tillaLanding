@@ -69,7 +69,6 @@ export default function ProviderAddressForm({
 		const selectedCountry = form.getValues("provider_country");
 		if (selectedCountry) {
 			setSubStates(getStatesForCountry(selectedCountry) || []);
-			form.setValue("provider_region", "");
 		}
 	}, [selectedCountry, form]);
 

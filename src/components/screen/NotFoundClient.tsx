@@ -14,7 +14,7 @@ export default function NotFoundClient() {
 	return (
 		<main className="flex h-screen flex-col items-center justify-center">
 			<Image
-				src={IMAGES.OrginalLogo}
+				src={IMAGES.blueLogo}
 				alt="logo"
 				height={200}
 				width={200}

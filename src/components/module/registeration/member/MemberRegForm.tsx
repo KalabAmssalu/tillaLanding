@@ -42,7 +42,7 @@ interface memberInfoType {
 export default function MemberRegForm({ info }: { info: memberInfoType }) {
 	const [nextActive, setNextActive] = useState(false);
 	const [currentStep, setCurrentStep] = useState(0);
-	const { mutate: MemberMutation } = useAddmemeber();
+	const { mutate: MemberMutation, isSuccess } = useAddmemeber();
 	const data = useAppSelector((state) => state.member.memberSlice);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const printRef = useRef<HTMLDivElement>(null);
@@ -101,7 +101,7 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 		// benefit_begin_date: "",
 
 		// deductible_type: "with_deductible",
-		dependent_of: 0,
+		dependent_of: null,
 		// member_payment_duty: 0,
 		// has_transport_subscription: false,
 	});
@@ -143,14 +143,18 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 			}
 
 			await MemberMutation(data);
-
-			router.push("/Provider/success" as `/${string}`);
+			if (isSuccess) {
+				// Navigate to the success page with query parameters
+				const type = "member"; // Replace with the actual type source
+				router.push(
+					`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
+				);
+				dispatch(ClearmemberSlice());
+			}
 		} catch (error) {
 			toast.error("Failed to submit Member data. Please try again.");
 		} finally {
 			setIsSubmitting(false);
-
-			dispatch(ClearmemberSlice());
 		}
 	};
 

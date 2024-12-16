@@ -10,12 +10,22 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 const RegistrationSuccess = () => {
-	const route = useRouter();
+	const router = useRouter();
 	const [windowDimension, setWindowDimension] = useState({
 		width: 0,
 		height: 0,
 	});
 	const [confettiShouldStop, setConfettiShouldStop] = useState(false);
+
+	// Extract query parameters
+	const { searchParams } = new URL(window.location.href);
+	const type = searchParams.get("type") || "user";
+	const title = searchParams.get("title") || "Registration Successful!";
+	const message =
+		searchParams.get("message") ||
+		"Congratulations! You're now part of our platform.";
+	const redirectPath = searchParams.get("redirectPath") || "/home";
+	const buttonText = searchParams.get("buttonText") || "Go to Dashboard";
 
 	const detectSize = () => {
 		setWindowDimension({
@@ -52,14 +62,17 @@ const RegistrationSuccess = () => {
 						className="text-center"
 					>
 						<h1 className="text-4xl font-bold mb-6 text-gradient bg-clip-text text-primary">
-							Registration Successful!
+							{title}
 						</h1>
 						<p className="text-xl mb-8">
-							Congratulations! You&apos;re now part of Tilla Health Providers.
+							{message} {type && <span>{type}</span>}.
 						</p>
 						<div className="flex justify-center space-x-4">
-							<Button variant="outline" onClick={() => route.push("/home")}>
-								Go to Dashboard
+							<Button
+								variant="outline"
+								onClick={() => router.push(redirectPath as `/${string}`)}
+							>
+								{buttonText}
 							</Button>
 						</div>
 					</motion.div>

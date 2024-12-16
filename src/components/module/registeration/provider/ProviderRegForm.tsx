@@ -36,7 +36,7 @@ import Preview from "./preview";
 
 const ProviderRegForm = () => {
 	const [currentStep, setCurrentStep] = useState(0);
-	const { mutate: ProviderMutation } = useAddproviderMutation();
+	const { mutate: ProviderMutation, isSuccess } = useAddproviderMutation();
 	const data = useAppSelector((state) => state.provider.providerSlice);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const printRef = useRef<HTMLDivElement>(null);
@@ -120,14 +120,18 @@ const ProviderRegForm = () => {
 			}
 
 			await ProviderMutation(data);
-
-			router.push("/provider/success" as `/${string}`);
+			if (isSuccess) {
+				// Navigate to the success page with query parameters
+				const type = "provider"; // Replace with the actual type source
+				router.push(
+					`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
+				);
+				dispatch(ClearProviderSlice());
+			}
 		} catch (error) {
-			toast.error("Failed to submit provider data. Please try again.");
+			toast.error("Failed to submit Member data. Please try again.");
 		} finally {
 			setIsSubmitting(false);
-
-			dispatch(ClearProviderSlice());
 		}
 	};
 

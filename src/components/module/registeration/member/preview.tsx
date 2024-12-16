@@ -101,7 +101,7 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 						</div>
 
 						<Image
-							src={IMAGES.OrginalLogo}
+							src={IMAGES.blueLogo}
 							width={60}
 							alt={"logo"}
 							className="absolute top-12 right-12"

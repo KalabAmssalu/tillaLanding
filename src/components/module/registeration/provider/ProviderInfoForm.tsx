@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 
 import { ReusableDatePickerField } from "@/components/shared/Form/ReusableDateField";
 import ReusableFormField from "@/components/shared/Form/ReusableFormField";
+import ReusablePhoneInputField from "@/components/shared/Form/ReusablePhoneInput";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
@@ -225,14 +226,14 @@ export default function ProviderInfoForm({
 							required
 							isRequired={true}
 						/>
-						<ReusableFormField
+
+						<ReusablePhoneInputField
 							control={form.control}
 							name="provider_phone_number"
-							type="text"
-							local="providerInfoForm"
 							labelKey="fields.provider_phone_number.label"
 							placeholderKey="fields.provider_phone_number.placeholder"
 							descriptionKey="fields.provider_phone_number.description"
+							local="providerInfoForm"
 							required
 							isRequired={true}
 						/>
@@ -560,14 +561,16 @@ export default function ProviderInfoForm({
 							placeholderKey="fields.provider_contact_email.placeholder"
 							descriptionKey="fields.provider_contact_email.description"
 						/>
-						<ReusableFormField
+
+						<ReusablePhoneInputField
 							control={form.control}
 							name="provider_contact_phone_number"
-							type="text"
-							local="providerInfoForm"
 							labelKey="fields.provider_contact_phone_number.label"
 							placeholderKey="fields.provider_contact_phone_number.placeholder"
 							descriptionKey="fields.provider_contact_phone_number.description"
+							local="providerInfoForm"
+							required
+							isRequired={true}
 						/>
 					</div>
 				</fieldset>

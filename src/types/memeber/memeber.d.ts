@@ -30,7 +30,7 @@ export type memeberType = {
 	representative_last_name: string;
 	representative_middle_name: string;
 	representative_gender: string;
-	representative_date_of_birth: string;
+	representative_date_of_birth: string | null;
 	representative_marital_status: string;
 	representative_mailing_address_line1: string;
 	representative_country: string;
@@ -52,5 +52,5 @@ export type memeberType = {
 	deductible: number;
 	payment_date: string;
 	benefit_begin_date: string;
-	dependent_of: number;
+	dependent_of: number | null;
 };

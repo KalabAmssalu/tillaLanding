@@ -26,9 +26,9 @@
 		"title": "የግል መረጃ",
 		"description": "እባኮትን በታች የግል መረጃዎችዎን ያቅርቡ።",
 		"successMessage": "መረጃዎችዎ በተሳካ ሁኔታ ተሳክቷል።",
-		"contact_information": "የተወካይ መረጃ",
+		"contact_information": "የመግንኙነት መረጃ",
 		"personal_information": "የግል መረጃ",
-		"physical_attributes": "የአካል ባህሪያት",
+		"physical_attributes": "የአካላዊ መረጃ",
 		"AddressInfo": "የአድራሻ መረጃ",
 		"representative_info": "የተወካዩ የግል መረጃ",
 		"representative_address": "የተወካዩ አድራሻ",
@@ -182,6 +182,12 @@
 			"relationship_to_member": {
 				"label": "ከአባል ጋር ያለህ/ሽ ግንኙነት",
 				"placeholder": "ከአባል ጋር ያለህ/ሽ ግንኙነት ያስገቡ",
+				"description": "ከአባል ጋር ያለህ/ሽ ግንኙነት እባኮትን ያስገቡ።",
+				"error": "ከአባል ጋር ያለህ/ሽ ግንኙነት ቢያንስ 2 ቁምፊ እንዲሆን አስፈላጊ ነው።"
+			},
+			"relationship_to_member_other": {
+				"label": "ከአባል ጋር ያለህ/ሽ ግንኙነት ስም",
+				"placeholder": "ከአባል ጋር ያለህ/ሽ ግንኙነት ስም ያስገቡ",
 				"description": "ከአባል ጋር ያለህ/ሽ ግንኙነት እባኮትን ያስገቡ።",
 				"error": "ከአባል ጋር ያለህ/ሽ ግንኙነት ቢያንስ 2 ቁምፊ እንዲሆን አስፈላጊ ነው።"
 			},
@@ -741,10 +747,10 @@
 		"description": "እባኮትን የድርጅቱን ዝርዝሮች በስተቀርቡ።",
 		"successMessage": "የድርጅት መረጃ በተሳካ ሁኔታ ተሳክቷል።",
 		"organization_information": "የድርጅት መረጃ",
-		"contact_information": "የተወካይ ሰው መረጃ",
+		"contact_information": "የመግንኙነት መረጃ",
 		"AddressInfo": "የአድራሻ መረጃ",
 		"representative_info": "የተወካይ ሰው መረጃ",
-		"relationship": "ግንኙነት",
+
 		"representative_address": "የተወካይ ሰው አድራሻ",
 		"fields": {
 			"name": {

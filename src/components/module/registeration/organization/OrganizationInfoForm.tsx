@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 
 import { ReusableDatePickerField } from "@/components/shared/Form/ReusableDateField";
 import ReusableFormField from "@/components/shared/Form/ReusableFormField";
+import ReusablePhoneInputField from "@/components/shared/Form/ReusablePhoneInput";
 import ReusableSelectField from "@/components/shared/Form/ReusableSelectField";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
@@ -180,14 +181,13 @@ export default function OrganizationInfoForm({
 						{t("contact_information")}
 					</legend>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
-						<ReusableFormField
+						<ReusablePhoneInputField
 							control={form.control}
 							name="phone_number"
-							type="text"
-							local="OrganizationInfoForm"
 							labelKey="fields.phone_number.label"
 							placeholderKey="fields.phone_number.placeholder"
 							descriptionKey="fields.phone_number.description"
+							local="OrganizationInfoForm"
 						/>
 						<ReusableFormField
 							control={form.control}
