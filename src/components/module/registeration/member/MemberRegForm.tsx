@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -27,6 +27,7 @@ import {
 	ClearmemberSlice,
 	SetmemberSlice,
 } from "@/lib/store/redux/memberSlice";
+import { type FamilyInfoFormValues } from "@/types/memeber/memberValidation";
 import { type memeberType } from "@/types/memeber/memeber";
 
 import FamilyMember from "./FamilyMember";
@@ -64,21 +65,18 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 		height: 0,
 		weight: 0,
 		tin_number: "",
-
 		insurance_type: "general",
 		member_organization_type: "self",
 		benefit_plan: "basic",
 		member_type: info.type?.toLowerCase() || "individual",
 		member_status: "active",
 		is_representative: info.self === "true" ? false : true || false,
-
 		street_address: "",
 		mailing_address_line1: "",
 		country: "",
 		city: "",
 		region: "",
 		kifle_ketema: "",
-
 		representative_first_name: "",
 		representative_last_name: "",
 		representative_middle_name: "",
@@ -91,9 +89,10 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 		representative_city: "",
 		representative_region: "",
 		representative_kifle_ketema: "",
+		representative_zip_code: "",
 		representative_phone_number: "",
 		representative_email_address: "",
-		relationship_to_member: "",
+		// relationship_to_member: "",
 
 		// max_out_of_pocket: 0,
 		// max_out_of_pocket_etb: 0,
@@ -109,6 +108,26 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 	});
 
 	const dispatch = useAppDispatch();
+	const [familyMembers, setFamilyMembers] = useState<FamilyInfoFormValues[]>(
+		[]
+	);
+
+	useEffect(() => {
+		if (familyMembers.length > 0) {
+			const familyMember = familyMembers[0];
+			setFormData((prevData) => ({
+				...prevData,
+				first_name: familyMember.first_name,
+				middle_name: familyMember.middle_name,
+				last_name: familyMember.last_name,
+				gender: familyMember.gender,
+				date_of_birth: familyMember.date_of_birth,
+				phone_number: familyMember.phone_number,
+				email_address: familyMember.email_address,
+				relationship_to_member: familyMember.relationship_to_member,
+			}));
+		}
+	}, [familyMembers]);
 
 	const updateFormData = (newData: Partial<memeberType>) => {
 		const updatedData = { ...formData, ...newData };
@@ -142,8 +161,13 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 				toast.error("No Member data found. Please check your input.");
 				return;
 			}
+			const submissionData = {
+				...data,
+				familyMembers:
+					info.type === "family" ? formData.familyMembers : undefined,
+			};
 
-			await MemberMutation(data);
+			await MemberMutation(submissionData);
 			if (isSuccess) {
 				// Navigate to the success page with query parameters
 				const type = "member"; // Replace with the actual type source
@@ -184,18 +208,10 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 			? [
 					{
 						title: "Family Member Information",
-						// content: (
-						// 	<FamilyMemberInfoForm
-						// 		onFormComplete={(data) => {
-						// 			updateFormData(data);
-						// 			nextStep();
-						// 		}}
-						// 	/>
-						// ),
 						content: (
 							<FamilyMember
-								onFormComplete={(data) => {
-									updateFormData(data);
+								onFormComplete={(data: FamilyInfoFormValues[]) => {
+									setFamilyMembers(data);
 									nextStep();
 								}}
 							/>

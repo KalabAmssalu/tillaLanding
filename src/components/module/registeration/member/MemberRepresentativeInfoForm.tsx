@@ -12,7 +12,6 @@ import ReusablePhoneInputField from "@/components/shared/Form/ReusablePhoneInput
 import ReusableSelectField from "@/components/shared/Form/ReusableSelectField";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import { getAllRelationships } from "@/constants/data/familyData";
 import { useAppSelector } from "@/hooks/storehooks";
 import {
 	type MemberRepresentativeFormValues,
@@ -57,6 +56,7 @@ export default function MemberRepresentativeInfoForm({
 			representative_city: DataInfo.representative_city || "",
 			representative_region: DataInfo.representative_region || "",
 			representative_kifle_ketema: DataInfo.representative_kifle_ketema || "",
+			representative_zip_code: DataInfo.representative_zip_code || "",
 			representative_phone_number: DataInfo.representative_phone_number || "",
 			representative_email_address: DataInfo.representative_email_address || "",
 			// relationship_to_member: DataInfo.relationship_to_member || "",
@@ -350,28 +350,6 @@ export default function MemberRepresentativeInfoForm({
 							placeholderKey="fields.representative_mailing_address_line1.placeholder"
 							descriptionKey="fields.representative_mailing_address_line1.description"
 						/>
-						<ReusableFormField
-							control={form.control}
-							name="representative_city"
-							type="text"
-							local={local}
-							labelKey="fields.representative_city.label"
-							placeholderKey="fields.representative_city.placeholder"
-							descriptionKey="fields.representative_city.description"
-							required
-							isRequired={true}
-						/>
-						{type !== "diaspora" && (
-							<ReusableFormField
-								control={form.control}
-								name="representative_kifle_ketema"
-								type="text"
-								local={local}
-								labelKey="fields.representative_kifle_ketema.label"
-								placeholderKey="fields.representative_kifle_ketema.placeholder"
-								descriptionKey="fields.representative_kifle_ketema.description"
-							/>
-						)}
 						<ReusableSelectField
 							control={form.control}
 							name="representative_country"
@@ -396,6 +374,38 @@ export default function MemberRepresentativeInfoForm({
 							}
 							required
 						/>
+						<ReusableFormField
+							control={form.control}
+							name="representative_city"
+							type="text"
+							local={local}
+							labelKey="fields.representative_city.label"
+							placeholderKey="fields.representative_city.placeholder"
+							descriptionKey="fields.representative_city.description"
+							required
+							isRequired={true}
+						/>
+						{type !== "diaspora" ? (
+							<ReusableFormField
+								control={form.control}
+								name="representative_kifle_ketema"
+								type="text"
+								local={local}
+								labelKey="fields.representative_kifle_ketema.label"
+								placeholderKey="fields.representative_kifle_ketema.placeholder"
+								descriptionKey="fields.representative_kifle_ketema.description"
+							/>
+						) : (
+							<ReusableFormField
+								control={form.control}
+								name="representative_zip_code"
+								type="text"
+								local={local}
+								labelKey="fields.representative_zip_code.label"
+								placeholderKey="fields.representative_zip_code.placeholder"
+								descriptionKey="fields.representative_zip_code.description"
+							/>
+						)}
 					</div>
 				</fieldset>
 				{visible && (

@@ -36,20 +36,20 @@
 
 		"fields": {
 			"first_name": {
-				"label": "ስም - በእንግሊዝኛ",
-				"placeholder": "ስምዎን ያስገቡ",
+				"label": "ስም - በአማርኛ",
+				"placeholder": "ስም በአማርኛ",
 				"description": "በህጋዊ መሠረት ስምዎ።",
 				"error": "ስም ቢያንስ ሁለት ቁምፊ መሆን አለበት።"
 			},
 			"middle_name": {
-				"label": "የአባት ስም - በእንግሊዝኛ",
-				"placeholder": "የአባት ስምዎን ያስገቡ",
+				"label": "የአባት ስም - በአማርኛ",
+				"placeholder": "የአባት ስም በአማርኛ",
 				"description": "በህጋዊ መሠረት የአባት ስምዎ።",
 				"error": "የአባት ስም ቢያንስ ሁለት ቁምፊ መሆን አለበት።"
 			},
 			"last_name": {
-				"label": "የአያት ስም - በእንግሊዝኛ",
-				"placeholder": "የአያት ስምዎን ያስገቡ",
+				"label": "የአያት ስም - በአማርኛ",
+				"placeholder": "የአያት ስም በአማርኛ",
 				"description": "በህጋዊ መሠረት የአያት ስምዎ።",
 				"error": "የአያት ስም ቢያንስ ሁለት ቁምፊ መሆን አለበት።"
 			},

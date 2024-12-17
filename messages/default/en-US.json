@@ -39,19 +39,19 @@
 
 		"fields": {
 			"first_name": {
-				"label": "First Name - English",
+				"label": "First Name ",
 				"placeholder": "Enter your first name",
 				"description": "Your legal first name.",
 				"error": "First name must be at least 2 characters long."
 			},
 			"middle_name": {
-				"label": "Middle Name - English",
+				"label": "Middle Name ",
 				"placeholder": "Enter your middle name",
 				"description": "Your legal middle name.",
 				"error": "Middle name must be at least 2 characters long."
 			},
 			"last_name": {
-				"label": "Last Name - English",
+				"label": "Last Name ",
 				"placeholder": "Enter your last name",
 				"description": "Your legal last name.",
 				"error": "Last name must be at least 2 characters long."
@@ -131,41 +131,41 @@
 				"error": "Please enter a valid email address."
 			},
 			"mailing_address_line1": {
-				"label": "Address Line 2",
-				"placeholder": "Mailing Address Line 1",
-				"description": "Choose a city from the list.",
+				"label": "Street Address Line 2",
+				"placeholder": "Enter street address line 2",
+				"description": "Choose a street address.",
 				"error": "City name must be at least 2 characters long."
 			},
 			"city": {
 				"label": "City",
-				"placeholder": "Mailing Address Line 1",
-				"description": "Choose a city from the list.",
+				"placeholder": "Enter a city",
+				"description": "Choose a city .",
 				"error": "City name must be at least 2 characters long."
 			},
 			"region": {
 				"label": "Region / State",
-				"placeholder": "Mailing Address Line 1",
-				"description": "Choose a city from the list.",
-				"error": "City name must be at least 2 characters long."
+				"placeholder": "Enter region or state name",
+				"description": "Choose a region from the list.",
+				"error": "region name must be at least 2 characters long."
 			},
 			"street_address": {
-				"label": "Street Address",
-				"placeholder": "Mailing Address Line 1",
-				"description": "Choose a city from the list.",
-				"error": "City name must be at least 2 characters long."
+				"label": "Street Address Line 1",
+				"placeholder": "Enter street address line 1",
+				"description": "Choose a street address.",
+				"error": "street address name must be at least 2 characters long."
 			},
 
 			"kifle_ketema": {
 				"label": "Sub-city / Kifle Ketema",
-				"placeholder": "Mailing Address Line 1",
-				"description": "Choose a city from the list.",
-				"error": "City name must be at least 2 characters long."
+				"placeholder": "Enter a sub-city",
+				"description": "Choose a sub-city from the list.",
+				"error": "street address name must be at least 2 characters long."
 			},
 			"country": {
 				"label": "Country",
 				"placeholder": "country",
 				"description": "Choose a country from the list.",
-				"error": "City name must be at least 2 characters long."
+				"error": "Country name must be at least 2 characters long."
 			},
 			"tin_number": {
 				"label": "TIN Number / Social Security Number",
@@ -265,7 +265,7 @@
 			"representative_region": {
 				"label": "Representative Region / State",
 				"placeholder": "Representative Region / State",
-				"description": "Choose a city from the list.",
+				"description": "Choose a region from the list.",
 				"error": "City name must be at least 2 characters long."
 			},
 			"representative_street_address": {
@@ -297,6 +297,12 @@
 				"placeholder": "Enter your representative tilla insurance id",
 				"description": "Representative's tilla insurance id.",
 				"error": "Representative Tilla Insurance ID must be a valid number."
+			},
+			"zip_code": {
+				"label": " ZIP Code / Woreda",
+				"placeholder": "Enter  ZIP code or Woreda name",
+				"description": "ZIP code or Woreda name for 's address.",
+				"error": "ZIP code or Woreda name must be valid."
 			}
 		}
 	},
@@ -390,28 +396,28 @@
 			},
 
 			"representative_first_name": {
-				"label": "Primary Member First Name",
-				"placeholder": "Enter Primary Member first name",
-				"description": "Primary Member's first name.",
-				"error": "Primary Member first name must be at least 2 characters long."
+				"label": " First Name",
+				"placeholder": "Enter  first name",
+				"description": "'s first name.",
+				"error": " first name must be at least 2 characters long."
 			},
 			"representative_middle_name": {
-				"label": "Primary Member Middle Name",
-				"placeholder": "Enter Primary Member middle name",
-				"description": "Primary Member's middle name.",
-				"error": "Primary Member middle name must be at least 2 characters long."
+				"label": " Middle Name",
+				"placeholder": "Enter  middle name",
+				"description": "'s middle name.",
+				"error": " middle name must be at least 2 characters long."
 			},
 			"representative_last_name": {
-				"label": "Primary Member Last Name",
-				"placeholder": "Enter Primary Member last name",
-				"description": "Primary Member's last name.",
-				"error": "Primary Member last name must be at least 2 characters long."
+				"label": " Last Name",
+				"placeholder": "Enter  last name",
+				"description": "'s last name.",
+				"error": " last name must be at least 2 characters long."
 			},
 			"representative_gender": {
-				"label": "Primary Member Gender",
-				"placeholder": "Select Primary Member gender",
-				"description": "Please choose Primary Member's gender.",
-				"error": "Primary Member gender is required.",
+				"label": " Gender",
+				"placeholder": "Select  gender",
+				"description": "Please choose 's gender.",
+				"error": " gender is required.",
 				"options": {
 					"male": "Male",
 					"female": "Female",
@@ -419,16 +425,16 @@
 				}
 			},
 			"representative_date_of_birth": {
-				"label": "Primary Member Date of Birth",
+				"label": " Date of Birth",
 				"placeholder": "Select your date of birth",
 				"description": "Enter your birth date in the format MM-DD-YYYY.",
 				"error": "Please enter your date of birth in the format MM-DD-YYYY."
 			},
 			"representative_marital_status": {
-				"label": "Primary Member Marital Status",
-				"placeholder": "Select Primary Member marital status",
-				"description": "Please choose Primary Member's marital status.",
-				"error": "Primary Member marital status is required.",
+				"label": " Marital Status",
+				"placeholder": "Select  marital status",
+				"description": "Please choose 's marital status.",
+				"error": " marital status is required.",
 				"options": {
 					"single": "Single",
 					"married": "Married",
@@ -437,52 +443,58 @@
 				}
 			},
 			"representative_mailing_address_line1": {
-				"label": "Primary Member Stret Address Line 2",
+				"label": " Stret Address Line 2",
 				"placeholder": "Mailing Address Line 1",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
 			},
 			"representative_country": {
-				"label": "Primary Member Country",
-				"placeholder": "Primary Member Country",
+				"label": " Country",
+				"placeholder": " Country",
 				"description": "Choose a country from the list.",
 				"error": "City name must be at least 2 characters long."
 			},
 			"representative_city": {
-				"label": "Primary Member City",
-				"placeholder": "Primary Member City",
+				"label": " City",
+				"placeholder": " City",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
 			},
 			"representative_region": {
-				"label": "Primary Member Region / State",
-				"placeholder": "Primary Member Region / State",
+				"label": " Region / State",
+				"placeholder": " Region / State",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
 			},
 			"representative_street_address": {
-				"label": "Primary Member Street Address Line 1",
+				"label": " Street Address Line 1",
 				"placeholder": "Mailing Address Line 1",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
 			},
 			"representative_kifle_ketema": {
-				"label": "Primary Member Sub-city / Kifle Ketema",
+				"label": " Sub-city / Kifle Ketema",
 				"placeholder": "Mailing Address Line 1",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
 			},
 			"representative_phone_number": {
-				"label": "Primary Member Phone Number",
-				"placeholder": "Enter Primary Member phone number",
-				"description": "Primary Member's phone number.",
+				"label": " Phone Number",
+				"placeholder": "Enter  phone number",
+				"description": "'s phone number.",
 				"error": "A valid phone number is required between 10 and 15 digits."
 			},
 			"representative_email_address": {
-				"label": "Primary Member Email Address",
-				"placeholder": "Enter Primary Member email address",
-				"description": "Primary Member's email address.",
+				"label": " Email Address",
+				"placeholder": "Enter  email address",
+				"description": "'s email address.",
 				"error": "A valid email address is required."
+			},
+			"representative_zip_code": {
+				"label": " ZIP Code / Woreda",
+				"placeholder": "Enter  ZIP code or Woreda name",
+				"description": "ZIP code or Woreda name for 's address.",
+				"error": "ZIP code or Woreda name must be valid."
 			}
 		}
 	},

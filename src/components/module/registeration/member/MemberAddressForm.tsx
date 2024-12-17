@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useAppSelector } from "@/hooks/storehooks";
 import {
-	MemberAddressFormValues,
+	type MemberAddressFormValues,
 	createMemberAddressSchema,
 } from "@/types/memeber/memberValidation";
 import {
@@ -41,7 +41,7 @@ export default function MemberAddressForm({
 			country: DataInfo.country || "",
 			city: DataInfo.city || "",
 			region: DataInfo.region || "",
-			// zip_code: DataInfo.zip_code || "",
+			zip_code: DataInfo.zip_code || "",
 		},
 	});
 
@@ -74,7 +74,27 @@ export default function MemberAddressForm({
 			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
 				<fieldset className="border p-4 rounded-md bg-background pb-6">
 					<legend className="text-lg font-semibold">{t("AddressInfo")}</legend>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 space-y-2">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+						<ReusableFormField
+							control={form.control}
+							name="street_address"
+							type="text"
+							local="personalInfoForm"
+							labelKey="fields.street_address.label"
+							placeholderKey="fields.street_address.placeholder"
+							descriptionKey="fields.street_address.description"
+							required
+							isRequired={true}
+						/>
+						<ReusableFormField
+							control={form.control}
+							name="mailing_address_line1"
+							type="text"
+							local="personalInfoForm"
+							labelKey="fields.mailing_address_line1.label"
+							placeholderKey="fields.mailing_address_line1.placeholder"
+							descriptionKey="fields.mailing_address_line1.description"
+						/>
 						<ReusableSelectField
 							control={form.control}
 							name="country"
@@ -119,27 +139,8 @@ export default function MemberAddressForm({
 							placeholderKey="fields.kifle_ketema.placeholder"
 							descriptionKey="fields.kifle_ketema.description"
 						/>
+
 						<ReusableFormField
-							control={form.control}
-							name="street_address"
-							type="text"
-							local="personalInfoForm"
-							labelKey="fields.street_address.label"
-							placeholderKey="fields.street_address.placeholder"
-							descriptionKey="fields.street_address.description"
-							required
-							isRequired={true}
-						/>
-						<ReusableFormField
-							control={form.control}
-							name="mailing_address_line1"
-							type="text"
-							local="personalInfoForm"
-							labelKey="fields.mailing_address_line1.label"
-							placeholderKey="fields.mailing_address_line1.placeholder"
-							descriptionKey="fields.mailing_address_line1.description"
-						/>
-						{/* <ReusableFormField
 							control={form.control}
 							name="zip_code"
 							type="text"
@@ -147,7 +148,7 @@ export default function MemberAddressForm({
 							labelKey="fields.zip_code.label"
 							placeholderKey="fields.zip_code.placeholder"
 							descriptionKey="fields.zip_code.description"
-						/> */}
+						/>
 					</div>
 				</fieldset>
 				{visible && (

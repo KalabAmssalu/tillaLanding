@@ -33,7 +33,7 @@ export default function DiscoverPlans({
 
 	return (
 		<section
-			className={`py-12  ${chooseplan ? "bg-primary" : "bg-transparent"}  `}
+			className={`pb-12  ${chooseplan ? "bg-primary py-12" : "bg-transparent"}  `}
 			ref={descRef}
 		>
 			<div className="container mx-auto px-4">

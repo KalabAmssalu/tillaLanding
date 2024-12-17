@@ -4,42 +4,48 @@ export const planData = [
 	{
 		id: "diaspora",
 		title: "Diaspora",
-		description: "International insurance plan for Diaspora members.",
+		description:
+			"Designed for Diaspora families and loved ones living in Ethiopia.",
 		image: IMAGES.diaspora, // Image path from the public/images folder
 		link: "/membership/diaspora", // The link for the Diaspora plan
 	},
 	{
 		id: "individual-or-family",
 		title: "Individual or Family",
-		description: "Plans for individuals or families seeking coverage.",
+		description:
+			"Personalized health insurance solutions for individuals and families residing in Ethiopia. ",
 		image: IMAGES.family, // Image path from the public/images folder
 		link: "/membership/select", // The link for the Individual or Family plan
 	},
 	{
 		id: "international",
 		title: "International",
-		description: "International insurance plan for Diaspora members.",
+		description:
+			"Tailored for international members traveling to Ethiopia for work or leisure..",
 		image: IMAGES.internationalGlob, // Image path from the public/images folder
 		link: "/membership/international", // The link for the Federal Employee Program plan
 	},
 	{
 		id: "private-sector",
 		title: "Private Sector",
-		description: "Insurance plans for employees in the private sector.",
+		description:
+			"Comprehensive and reliable coverage specifically designed for employees working in Ethiopia's private sector.",
 		image: IMAGES.privateSector, // Image path from the public/images folder
 		link: "/organization/register?type=private", // The link for the Private Sector plan
 	},
 	{
 		id: "ngo",
 		title: "NGO",
-		description: "Specialized plans for NGO workers and their families.",
+		description:
+			"Specialized insurance solutions for NGO workers and their families living in Ethiopia.",
 		image: IMAGES.ngo, // Image path from the public/images folder
 		link: "/organization/register?type=ngo", // The link for the Individual or Family plan
 	},
 	{
 		id: "federal-employee",
 		title: "Federal Employee Program",
-		description: "Exclusive plans for federal employees.",
+		description:
+			"Exclusive health insurance coverage tailored for federal employees in Ethiopia.",
 		image: IMAGES.federal, // Image path from the public/images folder
 		link: "/organization/register?type=federal", // The link for the Federal Employee Program plan
 	},

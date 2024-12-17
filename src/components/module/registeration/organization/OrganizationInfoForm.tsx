@@ -20,10 +20,12 @@ import {
 import { getAllCountries } from "@/types/provider/ProviderInfoType";
 
 interface OrganizationInfoFormProps {
+	type: string;
 	onFormComplete: (data: OrganizationInfoFormValues) => void;
 }
 
 export default function OrganizationInfoForm({
+	type,
 	onFormComplete,
 }: OrganizationInfoFormProps) {
 	const [visible, setVisible] = useState(true);
@@ -161,17 +163,19 @@ export default function OrganizationInfoForm({
 							buttonClassName="custom-button-class"
 							local="OrganizationInfoForm"
 						/>
-						<ReusableSelectField
-							control={form.control}
-							name="country_of_origin"
-							labelKey="fields.country_of_origin.label"
-							local="OrganizationInfoForm"
-							placeholderKey="fields.country_of_origin.placeholder"
-							descriptionKey="fields.country_of_origin.description"
-							options={countryOptions}
-							onValueChange={handleCountryValueChange}
-							required
-						/>
+						{type === "ngo" && (
+							<ReusableSelectField
+								control={form.control}
+								name="country_of_origin"
+								labelKey="fields.country_of_origin.label"
+								local="OrganizationInfoForm"
+								placeholderKey="fields.country_of_origin.placeholder"
+								descriptionKey="fields.country_of_origin.description"
+								options={countryOptions}
+								onValueChange={handleCountryValueChange}
+								required
+							/>
+						)}
 					</div>
 				</fieldset>
 

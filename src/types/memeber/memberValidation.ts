@@ -112,10 +112,10 @@ export const createMemberAddressSchema = (t: (key: string) => string) =>
 			z.literal(""),
 			z.string().min(2, { message: t("fields.kifle_ketema.error") }),
 		]),
-		// zip_code: z.union([
-		// 	z.literal(""),
-		// 	z.string().min(2, { message: t("fields.provider_zip_code.error") }),
-		// ]),
+		zip_code: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.provider_zip_code.error") }),
+		]),
 	});
 
 export type MemberAddressFormValues = z.infer<
@@ -183,6 +183,10 @@ export const createMemberRepresentativeSchema = (t: (key: string) => string) =>
 			z
 				.string()
 				.min(2, { message: t("fields.representative_kifle_ketema.error") }),
+		]),
+		representative_zip_code: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.representative_zip_code.error") }),
 		]),
 		representative_phone_number: z
 			.string()

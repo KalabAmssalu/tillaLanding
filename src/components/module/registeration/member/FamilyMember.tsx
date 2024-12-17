@@ -12,7 +12,7 @@ import { type FamilyInfoFormValues } from "@/types/memeber/memberValidation";
 import FamilyMemberInfoForm from "./MemberFamilyForm";
 
 interface FamilyMemberInfoFormProps {
-	onFormComplete: (data: FamilyInfoFormValues) => void;
+	onFormComplete: (data: FamilyInfoFormValues[]) => void;
 }
 
 export default function FamilyMember({
@@ -24,13 +24,22 @@ export default function FamilyMember({
 	);
 	const [showForm, setShowForm] = useState(true);
 
+	// const handleAddMember = (data: FamilyInfoFormValues) => {
+	// 	setFamilyMembers([...familyMembers, data]);
+	// 	setShowForm(false);
+	// };
+	// const handleSubmit = (data: FamilyInfoFormValues) => {
+	// 	onFormComplete([...familyMembers, data]);
+	// 	console.log("submitted family member", data);
+	// 	setVisible(false);
+	// };
 	const handleAddMember = (data: FamilyInfoFormValues) => {
-		setFamilyMembers([...familyMembers, data]);
+		setFamilyMembers((prevMembers) => [...prevMembers, data]);
 		setShowForm(false);
 	};
-	const handleSubmit = (data: FamilyInfoFormValues) => {
-		onFormComplete(data);
-		console.log("submitted family member", familyMembers);
+	const handleSubmit = () => {
+		onFormComplete(familyMembers);
+		console.log("submitted family members", familyMembers);
 		setVisible(false);
 	};
 
@@ -90,7 +99,7 @@ export default function FamilyMember({
 				<div className="flex w-full justify-end items-end">
 					<Button
 						type="submit"
-						onClick={() => handleSubmit(familyMembers[0])}
+						onClick={handleSubmit}
 						className="bg-green-500 flex items"
 					>
 						Save and Continue

@@ -1,3 +1,5 @@
+import { type FamilyInfoFormValues } from "./memberValidation";
+
 export type memeberType = {
 	id?: number;
 	member_id?: string;
@@ -38,9 +40,11 @@ export type memeberType = {
 	representative_city: string;
 	representative_region: string;
 	representative_kifle_ketema: string;
+	representative_zip_code: string;
 	representative_phone_number: string;
 	representative_email_address: string;
 	relationship_to_member: string;
+	familyMembers: FamilyInfoFormValues[];
 	is_representative: boolean;
 	height: number;
 	weight: number;

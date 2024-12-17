@@ -37,9 +37,9 @@ export default function MemberPersonalInfoForm({
 			first_name: DataInfo.first_name || "",
 			middle_name: DataInfo.middle_name || "",
 			last_name: DataInfo.last_name || "",
-			amharic_first_name: DataInfo.amharic_first_name || "",
-			amharic_middle_name: DataInfo.amharic_middle_name || "",
-			amharic_last_name: DataInfo.amharic_last_name || "",
+			// amharic_first_name: DataInfo.amharic_first_name || "",
+			// amharic_middle_name: DataInfo.amharic_middle_name || "",
+			// amharic_last_name: DataInfo.amharic_last_name || "",
 			gender: "male",
 			marital_status: "single",
 			date_of_birth: DataInfo.date_of_birth || "",
@@ -97,7 +97,7 @@ export default function MemberPersonalInfoForm({
 							required
 							isRequired={true}
 						/>
-						<ReusableFormField
+						{/* <ReusableFormField
 							control={form.control}
 							name="amharic_first_name"
 							type="text"
@@ -129,7 +129,7 @@ export default function MemberPersonalInfoForm({
 							descriptionKey="fields.amharic_last_name.description"
 							required
 							isRequired={true}
-						/>
+						/> */}
 						<ReusableFormField
 							control={form.control}
 							name="tin_number"

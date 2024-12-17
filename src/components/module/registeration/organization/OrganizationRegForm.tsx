@@ -148,9 +148,10 @@ export default function OrganizationRegForm({
 					? "Private Company Inforamtion"
 					: info.type?.toLowerCase() === "ngo"
 						? "NGO Inforamtion"
-						: "Federal Inforamtion",
+						: "Federal Organization Inforamtion",
 			content: (
 				<OrganizationInfoForm
+					type={info.type ? info.type.toLowerCase() : "private"}
 					onFormComplete={(data) => {
 						updateFormData(data);
 						nextStep();
@@ -203,10 +204,10 @@ export default function OrganizationRegForm({
 		<>
 			<h1 className="text-2xl font-bold mb-6 text-center">
 				{info.type === "ngo"
-					? "NGO Member Registration Form"
+					? "NGO Registration Form"
 					: info.type === "private"
-						? "Private Sector Member Registration Form"
-						: "Federal Employee Member Registration Form"}
+						? "Private Company Registration Form"
+						: "Federal Organization Registration Form"}
 			</h1>
 			<Card className="w-full mx-auto">
 				<CardHeader>
