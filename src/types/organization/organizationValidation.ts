@@ -21,15 +21,15 @@ export const createorganizationInfoSchema = (t: (key: string) => string) =>
 		company_website: z.string().min(2, {
 			message: t("fields.company_website.error"),
 		}),
-		plan_coverage_type: z.string().min(2, {
-			message: t("fields.plan_coverage_type.error"),
-		}),
+		// plan_coverage_type: z.string().min(2, {
+		// 	message: t("fields.plan_coverage_type.error"),
+		// }),
 		preferred_start_date: z.string().min(2, {
 			message: t("fields.preferred_start_date.error"),
 		}),
-		preferred_end_date: z.string().min(2, {
-			message: t("fields.preferred_end_date.error"),
-		}),
+		// preferred_end_date: z.string().min(2, {
+		// 	message: t("fields.preferred_end_date.error"),
+		// }),
 		phone_number: z.string().refine((val) => RPNInput.isValidPhoneNumber(val), {
 			message: t("fields.phone_number.error"),
 		}),
@@ -37,6 +37,9 @@ export const createorganizationInfoSchema = (t: (key: string) => string) =>
 			z.literal(""),
 			z.string().email({ message: t("fields.email_address.error") }),
 		]),
+		country_of_origin: z.string().min(2, {
+			message: t("fields.country_of_origin.error"),
+		}),
 	});
 
 export type OrganizationInfoFormValues = z.infer<
@@ -45,8 +48,8 @@ export type OrganizationInfoFormValues = z.infer<
 
 export const organizationAddressSchema = (t: (key: string) => string) =>
 	z.object({
-		country_of_origin: z.string().min(2, {
-			message: t("fields.country_of_origin.error"),
+		country: z.string().min(2, {
+			message: t("fields.country.error"),
 		}),
 		street_address: z.string().min(2, {
 			message: t("fields.street_address.error"),
@@ -63,10 +66,10 @@ export const organizationAddressSchema = (t: (key: string) => string) =>
 			z.literal(""),
 			z.string().min(2, { message: t("fields.kifle_ketema.error") }),
 		]),
-		// zip_code: z.union([
-		// 	z.literal(""),
-		// 	z.string().min(2, { message: t("fields.provider_zip_code.error") }),
-		// ]),
+		zip_code: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.provider_zip_code.error") }),
+		]),
 	});
 
 export type OrganizationAddressFormValues = z.infer<

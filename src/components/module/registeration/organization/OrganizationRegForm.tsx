@@ -56,11 +56,12 @@ export default function OrganizationRegForm({
 		industry_type: "",
 		number_of_employees: "",
 		company_website: "",
-		plan_coverage_type: "",
+		// plan_coverage_type: "",
 		preferred_start_date: "",
-		preferred_end_date: "",
+		// preferred_end_date: "",
 		sector: info.type?.toLowerCase() || "private",
 		country_of_origin: "",
+		country: "",
 		street_address: "",
 		city: "",
 		region: "",
@@ -142,7 +143,12 @@ export default function OrganizationRegForm({
 		// 		]
 		// 	: []),
 		{
-			title: "Organization Information",
+			title:
+				info.type?.toLowerCase() === "private"
+					? "Private Company Inforamtion"
+					: info.type?.toLowerCase() === "ngo"
+						? "NGO Inforamtion"
+						: "Federal Inforamtion",
 			content: (
 				<OrganizationInfoForm
 					onFormComplete={(data) => {

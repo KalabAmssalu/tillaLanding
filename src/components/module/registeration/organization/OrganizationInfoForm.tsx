@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
@@ -17,6 +17,7 @@ import {
 	type OrganizationInfoFormValues,
 	createorganizationInfoSchema,
 } from "@/types/organization/organizationValidation";
+import { getAllCountries } from "@/types/provider/ProviderInfoType";
 
 interface OrganizationInfoFormProps {
 	onFormComplete: (data: OrganizationInfoFormValues) => void;
@@ -40,11 +41,12 @@ export default function OrganizationInfoForm({
 			industry_type: DataInfo.industry_type || "",
 			number_of_employees: DataInfo.number_of_employees || "",
 			company_website: DataInfo.company_website || "",
-			plan_coverage_type: DataInfo.plan_coverage_type || "",
+			// plan_coverage_type: DataInfo.plan_coverage_type || "",
 			preferred_start_date: DataInfo.preferred_start_date || "",
-			preferred_end_date: DataInfo.preferred_end_date || "",
+			// preferred_end_date: DataInfo.preferred_end_date || "",
 			phone_number: DataInfo.phone_number || "",
 			email_address: DataInfo.email_address || "",
+			country_of_origin: DataInfo.country_of_origin || "",
 		},
 	});
 
@@ -53,6 +55,14 @@ export default function OrganizationInfoForm({
 		console.log("submitted data 1", data);
 		setVisible(false);
 	}
+
+	const countryOptions = useMemo(() => {
+		return getAllCountries();
+	}, []);
+
+	const handleCountryValueChange = (value: string) => {
+		form.setValue("country_of_origin", value);
+	};
 
 	return (
 		<Form {...form}>
@@ -107,18 +117,6 @@ export default function OrganizationInfoForm({
 							isRequired={true}
 						/>
 
-						<ReusableFormField
-							control={form.control}
-							name="plan_coverage_type"
-							type="text"
-							local="OrganizationInfoForm"
-							labelKey="fields.plan_coverage_type.label"
-							placeholderKey="fields.plan_coverage_type.placeholder"
-							descriptionKey="fields.plan_coverage_type.description"
-							required
-							isRequired={true}
-						/>
-
 						<ReusableSelectField
 							control={form.control}
 							name="number_of_employees"
@@ -163,15 +161,16 @@ export default function OrganizationInfoForm({
 							buttonClassName="custom-button-class"
 							local="OrganizationInfoForm"
 						/>
-						<ReusableDatePickerField
+						<ReusableSelectField
 							control={form.control}
-							name="preferred_end_date"
-							labelKey="fields.preferred_end_date.label"
-							placeholderKey="fields.preferred_end_date.placeholder"
-							descriptionKey="fields.preferred_end_date.description"
-							required
-							buttonClassName="custom-button-class"
+							name="country_of_origin"
+							labelKey="fields.country_of_origin.label"
 							local="OrganizationInfoForm"
+							placeholderKey="fields.country_of_origin.placeholder"
+							descriptionKey="fields.country_of_origin.description"
+							options={countryOptions}
+							onValueChange={handleCountryValueChange}
+							required
 						/>
 					</div>
 				</fieldset>

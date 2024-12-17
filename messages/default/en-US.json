@@ -143,7 +143,7 @@
 				"error": "City name must be at least 2 characters long."
 			},
 			"region": {
-				"label": "Region",
+				"label": "Region / State",
 				"placeholder": "Mailing Address Line 1",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
@@ -156,7 +156,7 @@
 			},
 
 			"kifle_ketema": {
-				"label": "Sub-city",
+				"label": "Sub-city / Kifle Ketema",
 				"placeholder": "Mailing Address Line 1",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
@@ -168,9 +168,9 @@
 				"error": "City name must be at least 2 characters long."
 			},
 			"tin_number": {
-				"label": "TIN Number",
-				"placeholder": "Enter your TIN Number ",
-				"description": "Provide a valid TIN Number .",
+				"label": "TIN Number / Social Security Number",
+				"placeholder": "Enter your TIN Number / SSN",
+				"description": "Provide a valid TIN Number for ethiopia, SSN for USA or an alternative number for other countries.",
 				"error": "TIN Number must be a valid number."
 			},
 			"marital_status": {
@@ -263,8 +263,8 @@
 				"error": "City name must be at least 2 characters long."
 			},
 			"representative_region": {
-				"label": "Representative Region",
-				"placeholder": "Representative Region",
+				"label": "Representative Region / State",
+				"placeholder": "Representative Region / State",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
 			},
@@ -275,7 +275,7 @@
 				"error": "City name must be at least 2 characters long."
 			},
 			"representative_kifle_ketema": {
-				"label": "Representative Sub-city",
+				"label": "Representative Sub-city / Kifle Ketema",
 				"placeholder": "Mailing Address Line 1",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
@@ -456,7 +456,7 @@
 			},
 			"representative_region": {
 				"label": "Primary Member Region / State",
-				"placeholder": "Primary Member Region",
+				"placeholder": "Primary Member Region / State",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
 			},
@@ -589,7 +589,7 @@
 				"error": "City name must be at least 2 characters long."
 			},
 			"business_kifle_ketema": {
-				"label": "Sub-city",
+				"label": "Sub-city / Kifle Ketema",
 				"placeholder": "Mailing Address Line 1",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
@@ -613,7 +613,7 @@
 				}
 			},
 			"license_state": {
-				"label": "License State/Region",
+				"label": "License State / Region",
 				"placeholder": "Enter your License State ",
 				"description": "Provide a valid License State .",
 				"error": "TIN Number must be a License State."
@@ -849,12 +849,12 @@
 			},
 			"provider_region": {
 				"label": "Region / state",
-				"placeholder": "Enter region",
-				"description": "Region of the provider.",
-				"error": "Region is required."
+				"placeholder": "Enter Region / State",
+				"description": "Region / State of the provider.",
+				"error": "Region / State is required."
 			},
 			"provider_kifle_ketema": {
-				"label": "Sub-city",
+				"label": "Sub-city / Kifle Ketema",
 				"placeholder": "Enter Sub-city or Kifle Ketema",
 				"description": "Sub-city of the provider.",
 				"error": "Sub-city is required."
@@ -951,13 +951,13 @@
 		"representative_address": "Contact Person Address",
 		"fields": {
 			"name": {
-				"label": "Name ",
+				"label": "Company Name",
 				"placeholder": "Enter your name",
 				"description": "Your legal name.",
 				"error": "Name must be at least 2 characters long."
 			},
 			"registration_number": {
-				"label": "Registration Number",
+				"label": "Registration Number / Tax ID",
 				"placeholder": "Enter registration number",
 				"description": "Unique identifier for the organization.",
 				"error": "Registration number is required."
@@ -986,24 +986,14 @@
 				"description": "The website of the organization.",
 				"error": "Company website is required."
 			},
-			"plan_coverage_type": {
-				"label": "Plan Coverage Type",
-				"placeholder": "Enter plan coverage type",
-				"description": "Type of plan coverage (e.g., medical, service provider).",
-				"error": "Plan coverage type is required."
-			},
+
 			"preferred_start_date": {
 				"label": "Preferred Start Date",
 				"placeholder": "Enter preferred start date",
 				"description": "The preferred start date of the plan coverage.",
 				"error": "Preferred start date is required."
 			},
-			"preferred_end_date": {
-				"label": "Preferred End Date",
-				"placeholder": "Enter preferred end date",
-				"description": "The preferred end date of the plan coverage.",
-				"error": "Preferred end date is required."
-			},
+
 			"sector": {
 				"label": "Sector",
 				"placeholder": "Select sector",
@@ -1040,22 +1030,34 @@
 				"error": "City is required."
 			},
 			"region": {
-				"label": "Region",
-				"placeholder": "Enter region",
-				"description": "Region of the organization.",
-				"error": "Region is required."
+				"label": "Region / State ",
+				"placeholder": "Enter Region / State",
+				"description": "Region / State of the organization.",
+				"error": "Region / State is required."
 			},
 			"country_of_origin": {
+				"label": "Country Of Origin",
+				"placeholder": "Enter country Of Origin",
+				"description": "Country of the organization.",
+				"error": "Country is required."
+			},
+			"country": {
 				"label": "Country",
 				"placeholder": "Enter country",
 				"description": "Country of the organization.",
 				"error": "Country is required."
 			},
 			"kifle_ketema": {
-				"label": "Sub-city",
+				"label": "Sub-city / Kifle Ketema",
 				"placeholder": "Enter sub-city",
 				"description": "Sub-city of the organization.",
 				"error": "Sub-city is required."
+			},
+			"zip_code": {
+				"label": "ZIP Code / Woreda",
+				"placeholder": "Enter (e.g., 12345, or woreda 02)",
+				"description": "ZIP code or Woreda name for the organization's address.",
+				"error": "ZIP code or Woreda name must be valid."
 			},
 			"contact_person_first_name": {
 				"label": "First Name",

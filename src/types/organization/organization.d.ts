@@ -10,6 +10,7 @@ export interface organizationType {
 	preferred_start_date: string;
 	preferred_end_date: string;
 	country_of_origin: string;
+	country: string;
 	street_address: string;
 	city: string;
 	region: string;
