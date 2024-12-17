@@ -154,6 +154,36 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 		setIsOpen(true);
 	};
 
+	// const handleSubmit = async () => {
+	// 	setIsSubmitting(true);
+	// 	try {
+	// 		if (!data) {
+	// 			toast.error("No Member data found. Please check your input.");
+	// 			return;
+	// 		}
+	// 		const submissionData = {
+	// 			...data,
+	// 			familyMembers:
+	// 				info.type === "family" ? formData.familyMembers : undefined,
+	// 		};
+
+	// 		await MemberMutation(submissionData);
+	// 		if (isSuccess) {
+	// 			// Navigate to the success page with query parameters
+	// 			const type = "member"; // Replace with the actual type source
+	// 			router.push(
+	// 				`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
+	// 			);
+	// 			dispatch(ClearmemberSlice());
+	// 			handleDownloadPDF();
+	// 		}
+	// 	} catch (error) {
+	// 		toast.error("Failed to submit Member data. Please try again.");
+	// 	} finally {
+	// 		setIsSubmitting(false);
+	// 	}
+	// };
+
 	const handleSubmit = async () => {
 		setIsSubmitting(true);
 		try {
@@ -167,19 +197,25 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 					info.type === "family" ? formData.familyMembers : undefined,
 			};
 
-			await MemberMutation(submissionData);
-			if (isSuccess) {
-				// Navigate to the success page with query parameters
-				const type = "member"; // Replace with the actual type source
-				router.push(
-					`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
-				);
-				dispatch(ClearmemberSlice());
-				handleDownloadPDF();
-			}
+			MemberMutation(submissionData, {
+				onSuccess: () => {
+					// Navigate to the success page with query parameters
+					const type = "member"; // Replace with the actual type source
+					router.push(
+						`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
+					);
+					dispatch(ClearmemberSlice());
+					handleDownloadPDF();
+				},
+				onError: () => {
+					toast.error("Failed to submit Member data. Please try again.");
+				},
+				onSettled: () => {
+					setIsSubmitting(false);
+				},
+			});
 		} catch (error) {
-			toast.error("Failed to submit Member data. Please try again.");
-		} finally {
+			toast.error("Something went wrong. Please try again.");
 			setIsSubmitting(false);
 		}
 	};

@@ -30,24 +30,24 @@ export const createMemeberInfoSchema = (t: (key: string) => string) =>
 				message: t("fields.last_name.error"),
 			}),
 		]),
-		amharic_first_name: z.union([
-			z.literal(""),
-			z.string().regex(/^[^\d]*$/, {
-				message: t("fields.amharic_first_name.error"),
-			}),
-		]),
-		amharic_middle_name: z.union([
-			z.literal(""),
-			z.string().regex(/^[^\d]*$/, {
-				message: t("fields.amharic_middle_name.error"),
-			}),
-		]),
-		amharic_last_name: z.union([
-			z.literal(""),
-			z.string().regex(/^[^\d]*$/, {
-				message: t("fields.amharic_last_name.error"),
-			}),
-		]),
+		// amharic_first_name: z.union([
+		// 	z.literal(""),
+		// 	z.string().regex(/^[^\d]*$/, {
+		// 		message: t("fields.amharic_first_name.error"),
+		// 	}),
+		// ]),
+		// amharic_middle_name: z.union([
+		// 	z.literal(""),
+		// 	z.string().regex(/^[^\d]*$/, {
+		// 		message: t("fields.amharic_middle_name.error"),
+		// 	}),
+		// ]),
+		// amharic_last_name: z.union([
+		// 	z.literal(""),
+		// 	z.string().regex(/^[^\d]*$/, {
+		// 		message: t("fields.amharic_last_name.error"),
+		// 	}),
+		// ]),
 
 		gender: z.union([
 			z.literal(""),
