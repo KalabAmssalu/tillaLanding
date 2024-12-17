@@ -7,7 +7,7 @@ import getErrorMessage from "../getErrorMessage";
 
 export async function useAddorganization(data: Partial<organizationType>) {
 	try {
-		const response = await axiosInstance.post("members/organization", data);
+		const response = await axiosInstance.post("members/organization/", data);
 		console.log("response", response.data);
 		return {
 			ok: true,

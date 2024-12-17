@@ -191,13 +191,8 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 				toast.error("No Member data found. Please check your input.");
 				return;
 			}
-			const submissionData = {
-				...data,
-				familyMembers:
-					info.type === "family" ? formData.familyMembers : undefined,
-			};
 
-			MemberMutation(submissionData, {
+			MemberMutation(data, {
 				onSuccess: () => {
 					// Navigate to the success page with query parameters
 					const type = "member"; // Replace with the actual type source

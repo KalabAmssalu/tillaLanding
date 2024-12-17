@@ -36,8 +36,8 @@ export function NavigationMenuConf({ closeMenu }: NavigationMenuConfProps) {
 											(isActive("/am/home") ||
 												isActive("/en-US/member") ||
 												isActive("/am/member")) &&
-												"border-b-4 border-primary text-secondary",
-											"hover:border-b-4 hover:border-primary hover:bg-transparent hover:text-secondary rounded-none transition"
+												"border-b-4 border-primary text-primary",
+											"hover:border-b-4 hover:border-primary hover:bg-transparent hover:text-primary rounded-none transition"
 										)}
 										variant="ghost"
 										onClick={closeMenu}
@@ -59,8 +59,8 @@ export function NavigationMenuConf({ closeMenu }: NavigationMenuConfProps) {
 										className={cn(
 											(isActive("/am/provider") ||
 												isActive("/en-US/provider")) &&
-												"border-b-4 border-primary text-secondary",
-											"hover:border-b-4 hover:border-primary hover:bg-transparent hover:text-secondary rounded-none transition"
+												"border-b-4 border-primary text-primary",
+											"hover:border-b-4 hover:border-primary hover:bg-transparent hover:text-primary rounded-none transition"
 										)}
 										variant="ghost"
 										onClick={closeMenu}
@@ -81,8 +81,8 @@ export function NavigationMenuConf({ closeMenu }: NavigationMenuConfProps) {
 									<Button
 										className={cn(
 											(isActive("/am/broker") || isActive("/en-US/broker")) &&
-												"border-b-4 border-primary text-secondary",
-											"hover:border-b-4 hover:border-primary hover:bg-transparent hover:text-secondary rounded-none transition"
+												"border-b-4 border-primary text-primary",
+											"hover:border-b-4 hover:border-primary hover:bg-transparent hover:text-primary rounded-none transition"
 										)}
 										variant="ghost"
 										onClick={closeMenu}

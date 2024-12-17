@@ -22,7 +22,7 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 		const displayedData = useMemo(() => {
 			if (!data) return null;
 
-			if (data.is_representative) {
+			if (isSelf) {
 				const {
 					representative_first_name,
 					representative_last_name,
