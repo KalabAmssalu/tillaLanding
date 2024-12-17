@@ -39,7 +39,7 @@ const TopNav = () => {
 						<ModeToggle />
 						{/* Hamburger Menu Icon */}
 						<button className="md:hidden p-2" onClick={toggleMenu}>
-							<span>☰</span>
+							<span className="text-secondary">☰</span>
 						</button>
 					</div>
 				</div>
@@ -47,7 +47,7 @@ const TopNav = () => {
 
 			{/* Dropdown Menu for Mobile */}
 			{isMenuOpen && (
-				<div className="md:hidden">
+				<div className="md:hidden shadow-lg p-4">
 					<NavigationMenuConf closeMenu={() => setIsMenuOpen(false)} />
 				</div>
 			)}
