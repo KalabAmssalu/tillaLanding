@@ -38,6 +38,7 @@ export default function OrganizationAddressForm({
 		resolver: zodResolver(addressInfoSchema),
 		defaultValues: {
 			street_address: DataInfo.street_address || "",
+			street_address_line2: DataInfo.street_address_line2 || "",
 			kifle_ketema: DataInfo.kifle_ketema || "",
 			country: DataInfo.country || "",
 			city: DataInfo.city || "",
@@ -87,15 +88,38 @@ export default function OrganizationAddressForm({
 							required
 							isRequired={true}
 						/>
-
 						<ReusableFormField
 							control={form.control}
-							name="zip_code"
+							name="street_address_line2"
 							type="text"
 							local="OrganizationInfoForm"
-							labelKey="fields.zip_code.label"
-							placeholderKey="fields.zip_code.placeholder"
-							descriptionKey="fields.zip_code.description"
+							labelKey="fields.street_address_line2.label"
+							placeholderKey="fields.street_address_line2.placeholder"
+							descriptionKey="fields.street_address_line2.description"
+							required
+							isRequired={true}
+						/>
+						<ReusableSelectField
+							control={form.control}
+							name="country"
+							labelKey="fields.country.label"
+							local="OrganizationInfoForm"
+							placeholderKey="fields.country.placeholder"
+							descriptionKey="fields.country.description"
+							options={countryOptions}
+							onValueChange={handleCountryValueChange}
+							required
+						/>
+						<ReusableSelectField
+							control={form.control}
+							name="region"
+							labelKey="fields.region.label"
+							local="OrganizationInfoForm"
+							placeholderKey="fields.region.placeholder"
+							descriptionKey="fields.region.description"
+							options={subStates}
+							onValueChange={(value) => form.setValue("region", value)}
+							required
 						/>
 
 						<ReusableFormField
@@ -119,27 +143,15 @@ export default function OrganizationAddressForm({
 							placeholderKey="fields.kifle_ketema.placeholder"
 							descriptionKey="fields.kifle_ketema.description"
 						/>
-						<ReusableSelectField
+
+						<ReusableFormField
 							control={form.control}
-							name="country"
-							labelKey="fields.country.label"
+							name="zip_code"
+							type="text"
 							local="OrganizationInfoForm"
-							placeholderKey="fields.country.placeholder"
-							descriptionKey="fields.country.description"
-							options={countryOptions}
-							onValueChange={handleCountryValueChange}
-							required
-						/>
-						<ReusableSelectField
-							control={form.control}
-							name="region"
-							labelKey="fields.region.label"
-							local="OrganizationInfoForm"
-							placeholderKey="fields.region.placeholder"
-							descriptionKey="fields.region.description"
-							options={subStates}
-							onValueChange={(value) => form.setValue("region", value)}
-							required
+							labelKey="fields.zip_code.label"
+							placeholderKey="fields.zip_code.placeholder"
+							descriptionKey="fields.zip_code.description"
 						/>
 					</div>
 				</fieldset>

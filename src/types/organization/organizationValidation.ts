@@ -54,6 +54,9 @@ export const organizationAddressSchema = (t: (key: string) => string) =>
 		street_address: z.string().min(2, {
 			message: t("fields.street_address.error"),
 		}),
+		street_address_line2: z.string().min(2, {
+			message: t("fields.street_address_line2.error"),
+		}),
 
 		city: z.string().min(2, {
 			message: t("fields.city.error"),

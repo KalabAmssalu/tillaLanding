@@ -15,6 +15,7 @@ const initialState = {
 		country_of_origin: "",
 		country: "",
 		street_address: "",
+		street_address_line2: "",
 		city: "",
 		region: "",
 		kifle_ketema: "",

@@ -1030,7 +1030,13 @@
 				"error": "A valid email address is required."
 			},
 			"street_address": {
-				"label": "Street Address",
+				"label": "Street Address line 1",
+				"placeholder": "Enter street address",
+				"description": "Primary address of the organization.",
+				"error": "Street address is required."
+			},
+			"street_address_line2": {
+				"label": "Street Address line 2",
 				"placeholder": "Enter street address",
 				"description": "Primary address of the organization.",
 				"error": "Street address is required."
