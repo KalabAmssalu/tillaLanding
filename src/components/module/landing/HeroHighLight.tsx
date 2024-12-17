@@ -19,7 +19,7 @@ export function HeroHighlightDemo({ text, link, btnText }: HeroProps) {
 	const route = useRouter();
 	return (
 		<div className="relative bg-primary ">
-			<HeroHighlight className="flex flex-col md:flex-row items-center h-[10rem] ">
+			<HeroHighlight className="flex flex-col md:flex-row items-center justify-center h-[10rem] ">
 				<motion.h1
 					initial={{
 						opacity: 0,

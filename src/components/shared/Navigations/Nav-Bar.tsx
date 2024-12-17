@@ -39,7 +39,7 @@ const Navbar = () => {
 			<div className="bg-primary py-1 px-4 sm:px-8 text-center">
 				<div className="flex justify-between items-center mx-auto">
 					<p className="text-white text-sm flex gap-1">
-						Hi! &#128400; <span className="hidden sm:flex"> {typewriter}</span>
+						&#128400; <span className="hidden sm:flex"> {typewriter}</span>
 					</p>
 					<div className="flex space-x-3 justify-center items-center">
 						<LocaleSwitcher />

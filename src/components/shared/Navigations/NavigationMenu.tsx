@@ -23,11 +23,11 @@ export function NavigationMenuConf({ closeMenu }: NavigationMenuConfProps) {
 
 	return (
 		<NavigationMenu>
-			<NavigationMenuList>
-				{isActive("/am/provider/register") ||
-					isActive("/am/broker/register") ||
-					isActive("/en-US/provider/register") ||
-					isActive("/en-US/broker/register") || (
+			<NavigationMenuList className="flex-col md:flex-row">
+				{!isActive("/am/provider/register") &&
+					!isActive("/am/broker/register") &&
+					!isActive("/en-US/provider/register") &&
+					!isActive("/en-US/broker/register") && (
 						<NavigationMenuItem>
 							<Link href="/am/home" legacyBehavior passHref>
 								<NavigationMenuLink className="bg-transparent">
@@ -36,7 +36,8 @@ export function NavigationMenuConf({ closeMenu }: NavigationMenuConfProps) {
 											(isActive("/am/home") ||
 												isActive("/en-US/member") ||
 												isActive("/am/member")) &&
-												"bg-primary text-white"
+												"border-b-4 border-primary text-secondary",
+											"hover:border-b-4 hover:border-primary hover:bg-transparent hover:text-secondary rounded-none transition"
 										)}
 										variant="ghost"
 										onClick={closeMenu}
@@ -47,10 +48,10 @@ export function NavigationMenuConf({ closeMenu }: NavigationMenuConfProps) {
 							</Link>
 						</NavigationMenuItem>
 					)}
-				{isActive("/am/member/register") ||
-					isActive("/am/broker/register") ||
-					isActive("/en-US/member/register") ||
-					isActive("/en-US/broker/register") || (
+				{!isActive("/am/member/register") &&
+					!isActive("/am/broker/register") &&
+					!isActive("/en-US/member/register") &&
+					!isActive("/en-US/broker/register") && (
 						<NavigationMenuItem>
 							<Link href="/am/provider" legacyBehavior passHref>
 								<NavigationMenuLink className="bg-transparent">
@@ -58,7 +59,8 @@ export function NavigationMenuConf({ closeMenu }: NavigationMenuConfProps) {
 										className={cn(
 											(isActive("/am/provider") ||
 												isActive("/en-US/provider")) &&
-												"bg-primary text-white"
+												"border-b-4 border-primary text-secondary",
+											"hover:border-b-4 hover:border-primary hover:bg-transparent hover:text-secondary rounded-none transition"
 										)}
 										variant="ghost"
 										onClick={closeMenu}
@@ -69,17 +71,18 @@ export function NavigationMenuConf({ closeMenu }: NavigationMenuConfProps) {
 							</Link>
 						</NavigationMenuItem>
 					)}
-				{isActive("/am/member/register") ||
-					isActive("/am/provider/register") ||
-					isActive("/en-US/member/register") ||
-					isActive("/en-US/provider/register") || (
+				{!isActive("/am/member/register") &&
+					!isActive("/am/provider/register") &&
+					!isActive("/en-US/member/register") &&
+					!isActive("/en-US/provider/register") && (
 						<NavigationMenuItem>
 							<Link href="/am/broker" legacyBehavior passHref>
 								<NavigationMenuLink className="bg-transparent">
 									<Button
 										className={cn(
 											(isActive("/am/broker") || isActive("/en-US/broker")) &&
-												"bg-primary text-white"
+												"border-b-4 border-primary text-secondary",
+											"hover:border-b-4 hover:border-primary hover:bg-transparent hover:text-secondary rounded-none transition"
 										)}
 										variant="ghost"
 										onClick={closeMenu}
