@@ -3,6 +3,8 @@ import { persistReducer, persistStore } from "redux-persist";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 
 import brokerReducer from "./redux/brokerSlice";
+import familyMemberReducer from "./redux/familyMemberSlice";
+import familyReducer from "./redux/familySlice";
 import memberReducer from "./redux/memberSlice";
 import organizationReducer from "./redux/organizationSlice";
 import providerReducer from "./redux/providerSlice";
@@ -34,6 +36,8 @@ const rootReducer = combineReducers({
 	broker: brokerReducer,
 	provider: providerReducer,
 	organization: organizationReducer,
+	family: familyReducer,
+	familyMember: familyMemberReducer,
 });
 
 // Persist configuration

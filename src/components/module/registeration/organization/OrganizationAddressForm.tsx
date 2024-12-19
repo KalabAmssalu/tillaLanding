@@ -77,6 +77,17 @@ export default function OrganizationAddressForm({
 				<fieldset className="border p-4 rounded-md bg-background pb-6">
 					<legend className="text-lg font-semibold">{t("AddressInfo")}</legend>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 space-y-2">
+						<ReusableSelectField
+							control={form.control}
+							name="country"
+							labelKey="fields.country.label"
+							local="OrganizationInfoForm"
+							placeholderKey="fields.country.placeholder"
+							descriptionKey="fields.country.description"
+							options={countryOptions}
+							onValueChange={handleCountryValueChange}
+							required
+						/>
 						<ReusableFormField
 							control={form.control}
 							name="street_address"
@@ -96,30 +107,6 @@ export default function OrganizationAddressForm({
 							labelKey="fields.street_address_line2.label"
 							placeholderKey="fields.street_address_line2.placeholder"
 							descriptionKey="fields.street_address_line2.description"
-							required
-							isRequired={true}
-						/>
-						<ReusableSelectField
-							control={form.control}
-							name="country"
-							labelKey="fields.country.label"
-							local="OrganizationInfoForm"
-							placeholderKey="fields.country.placeholder"
-							descriptionKey="fields.country.description"
-							options={countryOptions}
-							onValueChange={handleCountryValueChange}
-							required
-						/>
-						<ReusableSelectField
-							control={form.control}
-							name="region"
-							labelKey="fields.region.label"
-							local="OrganizationInfoForm"
-							placeholderKey="fields.region.placeholder"
-							descriptionKey="fields.region.description"
-							options={subStates}
-							onValueChange={(value) => form.setValue("region", value)}
-							required
 						/>
 
 						<ReusableFormField
@@ -134,14 +121,15 @@ export default function OrganizationAddressForm({
 							isRequired={true}
 						/>
 
-						<ReusableFormField
+						<ReusableSelectField
 							control={form.control}
-							name="kifle_ketema"
-							type="text"
+							name="region"
+							labelKey="fields.region.label"
 							local="OrganizationInfoForm"
-							labelKey="fields.kifle_ketema.label"
-							placeholderKey="fields.kifle_ketema.placeholder"
-							descriptionKey="fields.kifle_ketema.description"
+							placeholderKey="fields.region.placeholder"
+							descriptionKey="fields.region.description"
+							options={subStates}
+							onValueChange={(value) => form.setValue("region", value)}
 						/>
 
 						<ReusableFormField
@@ -152,6 +140,16 @@ export default function OrganizationAddressForm({
 							labelKey="fields.zip_code.label"
 							placeholderKey="fields.zip_code.placeholder"
 							descriptionKey="fields.zip_code.description"
+						/>
+
+						<ReusableFormField
+							control={form.control}
+							name="kifle_ketema"
+							type="text"
+							local="OrganizationInfoForm"
+							labelKey="fields.kifle_ketema.label"
+							placeholderKey="fields.kifle_ketema.placeholder"
+							descriptionKey="fields.kifle_ketema.description"
 						/>
 					</div>
 				</fieldset>

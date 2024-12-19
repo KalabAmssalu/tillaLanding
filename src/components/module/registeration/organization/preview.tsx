@@ -81,9 +81,7 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 											"number_of_employees",
 											"company_website",
 											"sector",
-											"plan_coverage_type",
 											"preferred_start_date",
-											"preferred_end_date",
 										].map((key) => (
 											<Field
 												key={key}
@@ -132,6 +130,7 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 									<div className="space-y-3">
 										{[
 											"street_address",
+											"country",
 											"city",
 											"region",
 											"country_of_origin",

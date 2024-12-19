@@ -82,4 +82,43 @@ export const pricingTiers: PricingTier[] = [
 			},
 		],
 	},
+	{
+		title: "Family Plan",
+		price: { monthly: 150, yearly: 1620 },
+		features: [
+			{
+				name: "All Standard services + comprehensive diagnostics",
+				covered: true,
+			},
+			{ name: "Full access to a wide range of specialists", covered: true },
+			{
+				name: "Full coverage for emergency, urgent care, and ambulance services",
+				covered: true,
+			},
+			{
+				name: "Full coverage for planned and emergency hospitalizations",
+				covered: true,
+			},
+			{
+				name: "Comprehensive management for chronic conditions",
+				covered: true,
+			},
+			{
+				name: "Full coverage for prenatal, delivery, and postnatal care",
+				covered: true,
+			},
+			{
+				name: "Comprehensive mental health services, including psychiatric care",
+				covered: true,
+			},
+			{
+				name: "Full telemedicine access for both general and specialty consultations",
+				covered: true,
+			},
+			{
+				name: "Second opinion services, international care options",
+				covered: true,
+			},
+		],
+	},
 ];

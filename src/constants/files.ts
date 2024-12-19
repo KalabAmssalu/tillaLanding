@@ -1,3 +1,4 @@
+// import orgDoc from "../../public/docs/company.xlsx";
 import provider2 from "../../public/images/Experiencedblackdoctor.jpeg";
 import provider5 from "../../public/images/Healthcare Consultation.jpeg";
 import kadiscoHospital from "../../public/images/Kadisco.jpeg";
@@ -43,6 +44,10 @@ import transportWithHelicopter2 from "../../public/images/transportemergency.jpe
 import transportToClinic from "../../public/images/transporttoclinic.jpeg";
 import whoLogo from "../../public/images/who.png";
 import zewdituHospital from "../../public/images/zewditu.jpeg";
+
+export const DOCS = Object.freeze({
+	OrgRegistration: "../../public/docs/company.xlsx",
+});
 
 export const IMAGES = Object.freeze({
 	blackLion: blackLion,

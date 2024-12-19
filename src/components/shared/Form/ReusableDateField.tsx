@@ -2,7 +2,12 @@
 
 import { Info } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { type Control, type FieldValues, type Path } from "react-hook-form";
+import {
+	type Control,
+	Controller,
+	type FieldValues,
+	type Path,
+} from "react-hook-form";
 
 import { DateSelector } from "@/components/ui/custom/date-selector";
 import {
@@ -77,25 +82,34 @@ export function ReusableDatePickerField<TFieldValues extends FieldValues>({
 						{required && <span className="text-destructive">*</span>}
 					</FormLabel>
 					<FormControl>
-						<DateSelector
-							selectedDate={
-								field.value
-									? new Date(field.value)
-									: defaultValue
-										? new Date(defaultValue)
-										: undefined
-							}
-							onDateChange={(date) => {
-								if (!disabled) {
-									field.onChange(date ? formatToMMDDYYYY(date) : "");
-								}
-							}}
-							yearValidation={{ min, max }}
-							placeholder={
-								placeholderKey ? t(placeholderKey) : t("default.placeholder")
-							}
-							buttonClassName={buttonClassName}
-							// disabled={disabled}
+						<Controller
+							control={control}
+							name={name}
+							rules={{ required: required ? t("fieldRequired") : false }}
+							render={({ field }) => (
+								<DateSelector
+									selectedDate={
+										field.value
+											? new Date(field.value)
+											: defaultValue
+												? new Date(defaultValue)
+												: undefined
+									}
+									onDateChange={(date) => {
+										if (!disabled) {
+											field.onChange(date ? formatToMMDDYYYY(date) : "");
+										}
+									}}
+									yearValidation={{ min, max }}
+									placeholder={
+										placeholderKey
+											? t(placeholderKey)
+											: t("default.placeholder")
+									}
+									buttonClassName={buttonClassName}
+									// disabled={disabled}
+								/>
+							)}
 						/>
 					</FormControl>
 					<FormMessage />

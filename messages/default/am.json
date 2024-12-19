@@ -36,41 +36,24 @@
 
 		"fields": {
 			"first_name": {
-				"label": "ስም - በአማርኛ",
+				"label": "ስም ",
 				"placeholder": "ስም በአማርኛ",
 				"description": "በህጋዊ መሠረት ስምዎ።",
 				"error": "ስም ቢያንስ ሁለት ቁምፊ መሆን አለበት።"
 			},
 			"middle_name": {
-				"label": "የአባት ስም - በአማርኛ",
+				"label": "የአባት ስም ",
 				"placeholder": "የአባት ስም በአማርኛ",
 				"description": "በህጋዊ መሠረት የአባት ስምዎ።",
 				"error": "የአባት ስም ቢያንስ ሁለት ቁምፊ መሆን አለበት።"
 			},
 			"last_name": {
-				"label": "የአያት ስም - በአማርኛ",
+				"label": "የአያት ስም ",
 				"placeholder": "የአያት ስም በአማርኛ",
 				"description": "በህጋዊ መሠረት የአያት ስምዎ።",
 				"error": "የአያት ስም ቢያንስ ሁለት ቁምፊ መሆን አለበት።"
 			},
-			"amharic_first_name": {
-				"label": "ስም - በአማርኛ",
-				"placeholder": "ስም በአማርኛ",
-				"description": "በህጋዊ መሠረት ስምዎ።",
-				"error": "ስም ቢያንስ ሁለት ቁምፊ መሆን አለበት።"
-			},
-			"amharic_middle_name": {
-				"label": "የአባት ስም - በአማርኛ",
-				"placeholder": "የአባት ስም በአማርኛ",
-				"description": "በህጋዊ መሠረት የአባት ስምዎ።",
-				"error": "የአባት ስም ቢያንስ ሁለት ቁምፊ መሆን አለበት።"
-			},
-			"amharic_last_name": {
-				"label": "የአያት ስም - በአማርኛ",
-				"placeholder": "የአያት ስም በአማርኛ",
-				"description": "በህጋዊ መሠረት የአያት ስምዎ።",
-				"error": "የአያት ስም ቢያንስ ሁለት ቁምፊ መሆን አለበት።"
-			},
+
 			"gender": {
 				"label": "ፆታ",
 				"placeholder": "ፆታዎን ይምረጡ",
@@ -175,7 +158,6 @@
 				"options": {
 					"single": "ያላገባ/ች",
 					"married": "ያገባ/ች",
-					"widowed": "መበለት",
 					"divorced": "ፍቺ ያገኘ/ች"
 				}
 			},
@@ -234,7 +216,7 @@
 				"options": {
 					"single": "ያላገባ/ች",
 					"married": "ያገባ/ች",
-					"widowed": "መበለት",
+
 					"divorced": "ፍቺ ያገኘ/ች"
 				}
 			},
@@ -750,7 +732,6 @@
 		"contact_information": "የመግንኙነት መረጃ",
 		"AddressInfo": "የአድራሻ መረጃ",
 		"representative_info": "የተወካይ ሰው መረጃ",
-
 		"representative_address": "የተወካይ ሰው አድራሻ",
 		"fields": {
 			"name": {
@@ -849,7 +830,7 @@
 				"error": "ክልል ያስፈልጋል።"
 			},
 			"country_of_origin": {
-				"label": "አገር",
+				"label": "አገር ",
 				"placeholder": "አገር ያስገቡ",
 				"description": "የድርጅቱ አገር።",
 				"error": "አገር ያስፈልጋል።"
@@ -898,6 +879,197 @@
 			}
 		}
 	},
+
+	"familyInfoForm": {
+		"title": "የቤተሰብ አባል መረጃ",
+		"description": "እባኮትን በታች ያሉትን የቤተሰብ አባል መረጃዎች ያቀርቡ።",
+		"successMessage": "የቤተሰብ አባል መረጃ በተሳካ ሁኔታ ተልኳል።",
+		"representative_info": "ዋና አባል መረጃ",
+		"relationship": "ዝምድና",
+		"contact_information": "የመገኛ መረጃ",
+		"representative_address": "ዋና አባል የአድራሻ መረጃ",
+		"personal_information": "የቤተሰብ አባል መረጃ",
+		"fields": {
+			"first_name": {
+				"label": "ስም - በእንግሊዝኛ",
+				"placeholder": "ስምዎን ያስገቡ",
+				"description": "ሕጋዊ ስምዎ።",
+				"error": "ስም ቢያንስ 2 ቁምፊዎች መካከል ሊሆን አለበት።"
+			},
+			"middle_name": {
+				"label": "የአባት ስም - በእንግሊዝኛ",
+				"placeholder": "የአባት ስምዎን ያስገቡ",
+				"description": "ሕጋዊ የአባት ስምዎ።",
+				"error": "የአባት ስም ቢያንስ 2 ቁምፊዎች መካከል ሊሆን አለበት።"
+			},
+			"last_name": {
+				"label": "የአያት ስም - በእንግሊዝኛ",
+				"placeholder": "የአያት ስምዎን ያስገቡ",
+				"description": "ሕጋዊ የአያት ስምዎ።",
+				"error": "የአያት ስም ቢያንስ 2 ቁምፊዎች መካከል ሊሆን አለበት።"
+			},
+			"amharic_first_name": {
+				"label": "ስም - በአማርኛ",
+				"placeholder": "ስም በአማርኛ",
+				"description": "ሕጋዊ ስምዎ።",
+				"error": "ስም ቢያንስ 2 ቁምፊዎች መካከል ሊሆን አለበት።"
+			},
+			"amharic_middle_name": {
+				"label": "የአባት ስም - በአማርኛ",
+				"placeholder": "የአባት ስም በአማርኛ",
+				"description": "ሕጋዊ የአባት ስምዎ።",
+				"error": "የአባት ስም ቢያንስ 2 ቁምፊዎች መካከል ሊሆን አለበት።"
+			},
+			"amharic_last_name": {
+				"label": "የአያት ስም - በአማርኛ",
+				"placeholder": "የአያት ስም በአማርኛ",
+				"description": "ሕጋዊ የአያት ስምዎ።",
+				"error": "የአያት ስም ቢያንስ 2 ቁምፊዎች መካከል ሊሆን አለበት።"
+			},
+			"gender": {
+				"label": "ፆታ",
+				"placeholder": "ፆታዎን ይምረጡ",
+				"description": "እባኮትን ፆታዎን ይምረጡ።",
+				"error": "ፆታ መምረጥ አለብዎት።",
+				"options": {
+					"male": "ወንድ",
+					"female": "ሴት",
+					"not_prefer_to_say": "እንዳልናገር"
+				}
+			},
+			"date_of_birth": {
+				"label": "የትውልድ ቀን",
+				"placeholder": "የትውልድ ቀንዎን ይምረጡ",
+				"description": "በMM-DD-YYYY ቅርጸት የትውልድ ቀንዎን ያስገቡ።",
+				"error": "እባኮትን የትውልድ ቀንዎን በMM-DD-YYYY ቅርጸት ያስገቡ።"
+			},
+			"marital_status": {
+				"label": "የጋብቻ ሁኔታ",
+				"placeholder": "የጋብቻ ሁኔታዎን ይምረጡ",
+				"description": "እባኮትን የጋብቻ ሁኔታዎን ይምረጡ።",
+				"error": "የጋብቻ ሁኔታ አስፈላጊ ነው።",
+				"options": {
+					"single": "ያላገባ",
+					"married": "ያገባ",
+					"divorced": "የፈታ"
+				}
+			},
+
+			"relationship_to_member": {
+				"label": "ከአባል ጋር ያለዎት ግንኙነት",
+				"placeholder": "ከአባል ጋር ያለዎትን ግንኙነት ያስገቡ",
+				"description": "ከአባል ጋር ያለዎትን ግንኙነት ያስገቡ።",
+				"error": "ከአባል ጋር ያለዎት ግንኙነት ቢያንስ 2 ቁምፊ መሆን አለበት።"
+			},
+			"relationship_to_member_other": {
+				"label": "ከአባል ጋር ያለዎት ግንኙነት",
+				"placeholder": "ከአባል ጋር ያለዎትን ግንኙነት ያስገቡ",
+				"description": "ከአባል ጋር ያለዎትን ግንኙነት ያስገቡ።",
+				"error": "ከአባል ጋር ያለዎት ግንኙነት ቢያንስ 2 ቁምፊ መሆን አለበት።"
+			},
+			"representative_first_name": {
+				"label": "የተወካይ የመጀመሪያ ስም",
+				"placeholder": "የተወካይ የመጀመሪያ ስም ያስገቡ",
+				"description": "የተወካዩ የመጀመሪያ ስም።",
+				"error": "የተወካይ የመጀመሪያ ስም ቢያንስ 2 ቁምፊ መሆን አለበት።"
+			},
+			"representative_middle_name": {
+				"label": "የተወካይ የአባት ስም",
+				"placeholder": "የተወካይ የአባት ስም ያስገቡ",
+				"description": "የተወካዩ የአባት ስም።",
+				"error": "የተወካይ የአባት ስም ቢያንስ 2 ቁምፊ መሆን አለበት።"
+			},
+			"representative_last_name": {
+				"label": "የተወካይ የአያት ስም",
+				"placeholder": "የተወካይ የአያት ስም ያስገቡ",
+				"description": "የተወካዩ የአያት ስም።",
+				"error": "የተወካይ የአያት ስም ቢያንስ 2 ቁምፊ መሆን አለበት።"
+			},
+			"representative_gender": {
+				"label": "የተወካይ ፆታ",
+				"placeholder": "የተወካይ ፆታ ይምረጡ",
+				"description": "እባኮትን የተወካይ ፆታ ይምረጡ።",
+				"error": "የተወካይ ፆታ አስፈላጊ ነው።",
+				"options": {
+					"male": "ወንድ",
+					"female": "ሴት",
+					"not_prefer_to_say": "እንደማይስሙ"
+				}
+			},
+			"representative_date_of_birth": {
+				"label": "የተወካይ የልደት ቀን",
+				"placeholder": "የልደት ቀን ይምረጡ",
+				"description": "የልደት ቀንን በMM-DD-YYYY ቅርጸት ያስገቡ።",
+				"error": "እባኮትን የልደት ቀንን በMM-DD-YYYY ቅርጸት ያስገቡ።"
+			},
+			"representative_marital_status": {
+				"label": "የተወካይ የጋብቻ ሁኔታ",
+				"placeholder": "የተወካይ የጋብቻ ሁኔታ ይምረጡ",
+				"description": "እባኮትን የተወካይ የጋብቻ ሁኔታ ይምረጡ።",
+				"error": "የተወካይ የጋብቻ ሁኔታ አስፈላጊ ነው።",
+				"options": {
+					"single": "ያላገባ/ች",
+					"married": "ያገባ/ች",
+					"divorced": "የፈታ"
+				}
+			},
+			"representative_mailing_address_line1": {
+				"label": " አድራሻ መስመር 1",
+				"placeholder": "የፖስታ አድራሻ መስመር 1",
+				"description": "ከዝርዝር ውስጥ ከተማ ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊ መሆን አለበት።"
+			},
+			"representative_country": {
+				"label": "አገር",
+				"placeholder": "አገር",
+				"description": "ከዝርዝሩ አገር ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊዎች ርዝመት ሊኖረው አለ።"
+			},
+			"representative_city": {
+				"label": "ከተማ",
+				"placeholder": "ከተማ",
+				"description": "ከዝርዝሩ ከተማ ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊዎች ርዝመት ሊኖረው አለ።"
+			},
+			"representative_region": {
+				"label": "ክልል ",
+				"placeholder": "ክልል / ግዛት",
+				"description": "ከዝርዝሩ ክልል ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊዎች ርዝመት ሊኖረው አለ።"
+			},
+			"representative_street_address": {
+				"label": "አድራሻ መስመር 1",
+				"placeholder": "የመንገድ አድራሻ መስመር 1",
+				"description": "ከዝርዝሩ ከተማ ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊዎች ርዝመት ሊኖረው አለ።"
+			},
+			"representative_kifle_ketema": {
+				"label": "ክፍለ ከተማ ",
+				"placeholder": "የመንገድ አድራሻ መስመር 1",
+				"description": "ከዝርዝሩ ከተማ ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊዎች ርዝመት ሊኖረው አለ።"
+			},
+			"representative_phone_number": {
+				"label": "ስልክ ቁጥር",
+				"placeholder": "ስልክ ቁጥር ያስገቡ",
+				"description": "የምክትል ስልክ ቁጥር።",
+				"error": "ትክክለኛ እና ከ10 እስከ 15 አሃዝ መካከል የሆነ ስልክ ቁጥር ያስፈልጋል።"
+			},
+			"representative_email_address": {
+				"label": "ኢሜል አድራሻ",
+				"placeholder": "ኢሜል አድራሻ ያስገቡ",
+				"description": "የምክትል ኢሜል አድራሻ።",
+				"error": "ትክክለኛ ኢሜል አድራሻ ያስፈልጋል።"
+			},
+			"representative_zip_code": {
+				"label": "ዚፕ ኮድ / ወረዳ",
+				"placeholder": "ዚፕ ኮድ ወይም የወረዳ ስም ያስገቡ",
+				"description": "ዚፕ ኮድ ወይም የወረዳ ስም።",
+				"error": "ትክክለኛ ዚፕ ኮድ ወይም የወረዳ ስም ሊኖር አለ።"
+			}
+		}
+	},
+
 	"Questionnaire": {
 		"memberQuestionnaire": "የአባል መጠይቅ",
 		"healthAndLifestyleQuestionnaire": "የጤና እና የኑሮ መንገድ መጠይቅ",

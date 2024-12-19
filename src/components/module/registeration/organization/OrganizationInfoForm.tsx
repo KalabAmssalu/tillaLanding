@@ -43,9 +43,7 @@ export default function OrganizationInfoForm({
 			industry_type: DataInfo.industry_type || "",
 			number_of_employees: DataInfo.number_of_employees || "",
 			company_website: DataInfo.company_website || "",
-			// plan_coverage_type: DataInfo.plan_coverage_type || "",
 			preferred_start_date: DataInfo.preferred_start_date || "",
-			// preferred_end_date: DataInfo.preferred_end_date || "",
 			phone_number: DataInfo.phone_number || "",
 			email_address: DataInfo.email_address || "",
 			country_of_origin: DataInfo.country_of_origin || "",
@@ -152,7 +150,6 @@ export default function OrganizationInfoForm({
 							}}
 							required
 						/>
-
 						<ReusableDatePickerField
 							control={form.control}
 							name="preferred_start_date"

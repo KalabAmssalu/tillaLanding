@@ -3,108 +3,180 @@
 import { useState } from "react";
 
 import { format } from "date-fns";
-import { CirclePlus } from "lucide-react";
+import { CirclePlus, Pencil, Trash } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { type FamilyInfoFormValues } from "@/types/memeber/memberValidation";
+import { useAppDispatch, useAppSelector } from "@/hooks/storehooks";
+import {
+	addFamilyMember,
+	clearFamilyMembers,
+	removeFamilyMember,
+	setFamilyMemberSlice,
+	updateFamilyMember,
+} from "@/lib/store/redux/familyMemberSlice";
+import { type FamilyInfoType } from "@/types/memeber/memeber";
 
 import FamilyMemberInfoForm from "./MemberFamilyForm";
 
-interface FamilyMemberInfoFormProps {
-	onFormComplete: (data: FamilyInfoFormValues[]) => void;
-}
-
 export default function FamilyMember({
 	onFormComplete,
-}: FamilyMemberInfoFormProps) {
-	const [visible, setVisible] = useState(true);
-	const [familyMembers, setFamilyMembers] = useState<FamilyInfoFormValues[]>(
-		[]
+}: {
+	onFormComplete: (data: FamilyInfoType[]) => void;
+}) {
+	const dispatch = useAppDispatch();
+	const familyMembers = useAppSelector(
+		(state) => state.familyMember.familyMember
 	);
-	const [showForm, setShowForm] = useState(true);
+	const [showForm, setShowForm] = useState(false);
+	const [userData, setUserdata] = useState<FamilyInfoType>();
 
-	// const handleAddMember = (data: FamilyInfoFormValues) => {
-	// 	setFamilyMembers([...familyMembers, data]);
-	// 	setShowForm(false);
-	// };
-	// const handleSubmit = (data: FamilyInfoFormValues) => {
-	// 	onFormComplete([...familyMembers, data]);
-	// 	console.log("submitted family member", data);
-	// 	setVisible(false);
-	// };
-	const handleAddMember = (data: FamilyInfoFormValues) => {
-		setFamilyMembers((prevMembers) => [...prevMembers, data]);
+	const handleAddMember = (data: FamilyInfoType) => {
+		if (userData) {
+			handleUpdateMember(data); // Editing
+		} else {
+			dispatch(addFamilyMember(data)); // Adding
+		}
 		setShowForm(false);
 	};
+
+	// Submit all members and notify parent
 	const handleSubmit = () => {
+		dispatch(setFamilyMemberSlice(familyMembers));
 		onFormComplete(familyMembers);
-		console.log("submitted family members", familyMembers);
-		setVisible(false);
 	};
 
-	const handleAddAnotherMember = () => {
+	// Clear all members
+	const handleClear = () => {
+		setShowForm(false);
+		dispatch(clearFamilyMembers());
+	};
+
+	// Open form to edit an existing member
+	const handleEdit = (data: FamilyInfoType) => {
+		setUserdata(data);
 		setShowForm(true);
+	};
+	const handleDelete = (data: FamilyInfoType) => {
+		const id = data.id ? data.id : "";
+		dispatch(removeFamilyMember(id));
+	};
+	const handleUpdateMember = (updatedMember: FamilyInfoType) => {
+		if (userData?.id) {
+			dispatch(
+				updateFamilyMember({ id: userData.id, updatedMember: updatedMember })
+			);
+		}
+		setShowForm(false);
+		setUserdata(undefined);
 	};
 
 	return (
 		<div className="p-4">
-			{showForm ? (
-				<FamilyMemberInfoForm onFormComplete={handleAddMember} />
-			) : (
-				<div className="flex justify-center mt-4">
-					<Button onClick={handleAddAnotherMember} className="flex gap-2">
-						Add Another Family Member
+			{familyMembers.length === 0 && !showForm ? (
+				<div className="flex justify-center mt-4 h-[300px]">
+					<Button onClick={() => setShowForm(true)} className="flex gap-2">
+						Add A Family Member
 						<CirclePlus size={20} />
 					</Button>
 				</div>
-			)}
-			{familyMembers.length > 0 && (
-				<Card className="my-6 ">
-					<CardHeader>
-						<CardTitle>Family Members</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<ul className="space-y-4">
-							{familyMembers.map((member, index) => (
-								<li key={index} className="bg-muted rounded p-4">
-									<h3 className="font-bold text-lg mb-2">
-										{member.first_name} {member.middle_name} {member.last_name}
-									</h3>
-									<p className="text-muted-foreground mb-1">
-										Relationship: {member.relationship_to_member}
-									</p>
-									<p className="text-muted-foreground mb-1">
-										Gender: {member.gender}
-									</p>
-									<p className="text-muted-foreground mb-1">
-										Date of Birth:{" "}
-										{member.date_of_birth
-											? format(new Date(member.date_of_birth), "MMMM d, yyyy")
-											: "Not provided"}
-									</p>
-									<p className="text-muted-foreground mb-1">
-										Phone: {member.phone_number || "Not provided"}
-									</p>
-									<p className="text-muted-foreground">
-										Email: {member.email_address || "Not provided"}
-									</p>
-								</li>
-							))}
-						</ul>
-					</CardContent>
-				</Card>
-			)}
-			{visible && familyMembers.length > 0 && (
-				<div className="flex w-full justify-end items-end">
-					<Button
-						type="submit"
-						onClick={handleSubmit}
-						className="bg-green-500 flex items"
-					>
-						Save and Continue
-					</Button>
-				</div>
+			) : (
+				<>
+					{showForm && (
+						<FamilyMemberInfoForm
+							onFormComplete={handleAddMember}
+							user={userData}
+						/>
+					)}
+
+					{familyMembers.length > 0 && (
+						<>
+							{!showForm && (
+								<div className="flex justify-center mt-4">
+									<Button
+										onClick={() => setShowForm(true)}
+										className="flex gap-2"
+									>
+										Add Another Member
+										<CirclePlus size={20} />
+									</Button>
+								</div>
+							)}
+							<Card className="my-6">
+								<CardHeader>
+									<div className="flex items-center justify-between">
+										<CardTitle>Family Members</CardTitle>
+										<Button
+											onClick={handleClear}
+											className="flex gap-2"
+											variant="destructive"
+										>
+											Remove All Family Members
+											<Trash size={20} />
+										</Button>
+									</div>
+								</CardHeader>
+								<CardContent>
+									<ul className="space-y-4">
+										{familyMembers.map((member) => (
+											<li key={member.id} className="bg-muted rounded p-4">
+												<h3 className="font-bold text-lg mb-2">
+													{member.first_name} {member.middle_name}{" "}
+													{member.last_name}
+												</h3>
+												<p>Relationship: {member.relationship_to_member}</p>
+												<p>Gender: {member.gender}</p>
+												<p>
+													Date of Birth:{" "}
+													{member.date_of_birth
+														? format(
+																new Date(member.date_of_birth),
+																"MMMM d, yyyy"
+															)
+														: "Not provided"}
+												</p>
+												<p>Phone: {member.phone_number || "Not provided"}</p>
+												<p>Email: {member.email_address || "Not provided"}</p>
+												<div className="flex justify-end gap-2">
+													<Button
+														onClick={() => handleEdit(member)}
+														className="flex "
+														variant={"outline"}
+														size={"sm"}
+													>
+														<Pencil className="mr-2" size={12} />
+														Edit
+													</Button>
+													<Button
+														onClick={() => handleDelete(member)}
+														className="flex "
+														variant={"destructive"}
+														size={"sm"}
+													>
+														<Trash className="mr-2" size={12} />
+														Delete
+													</Button>
+												</div>
+											</li>
+										))}
+									</ul>
+								</CardContent>
+							</Card>
+						</>
+					)}
+
+					{familyMembers.length > 0 && (
+						<div className="flex w-full justify-end items-end mt-4">
+							<Button
+								type="submit"
+								onClick={handleSubmit}
+								className="bg-green-500"
+							>
+								Save and Continue
+							</Button>
+						</div>
+					)}
+				</>
 			)}
 		</div>
 	);

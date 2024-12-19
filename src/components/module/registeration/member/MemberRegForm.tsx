@@ -8,6 +8,7 @@ import jsPDF from "jspdf";
 import { CheckCheck, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
+import { useAddFamily } from "@/actions/Query/member_Query/family_Query";
 import { useAddmemeber } from "@/actions/Query/member_Query/member_Query";
 import StepIndicator from "@/components/shared/Stepper/step-indicator";
 import {
@@ -23,18 +24,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAppDispatch, useAppSelector } from "@/hooks/storehooks";
-import {
-	ClearmemberSlice,
-	SetmemberSlice,
-} from "@/lib/store/redux/memberSlice";
-import { type FamilyInfoFormValues } from "@/types/memeber/memberValidation";
-import { type memeberType } from "@/types/memeber/memeber";
+import { setFamily } from "@/lib/store/redux/familySlice";
+import { SetmemberSlice } from "@/lib/store/redux/memberSlice";
+import { type FamilyInfoType, type memeberType } from "@/types/memeber/memeber";
 
 import FamilyMember from "./FamilyMember";
 import MemberAddressForm from "./MemberAddressForm";
 import MemberPersonalInfoForm from "./MemberPersonalInfoForm";
 import MemberRepresentativeInfoForm from "./MemberRepresentativeInfoForm";
-import HealthQuestionnaire from "./memberQuestionnaire";
 import Preview from "./preview";
 
 interface memberInfoType {
@@ -45,8 +42,10 @@ interface memberInfoType {
 export default function MemberRegForm({ info }: { info: memberInfoType }) {
 	const [nextActive, setNextActive] = useState(false);
 	const [currentStep, setCurrentStep] = useState(0);
-	const { mutate: MemberMutation, isSuccess } = useAddmemeber();
+	const { mutate: MemberMutation } = useAddmemeber();
+	const { mutate: FamilyMutation } = useAddFamily();
 	const data = useAppSelector((state) => state.member.memberSlice);
+	const familyData = useAppSelector((state) => state.family.familyMembers);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const printRef = useRef<HTMLDivElement>(null);
 	const router = useRouter();
@@ -55,9 +54,6 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 		first_name: "",
 		last_name: "",
 		middle_name: "",
-		amharic_first_name: "",
-		amharic_last_name: "",
-		amharic_middle_name: "",
 		gender: "",
 		phone_number: "",
 		email_address: "",
@@ -108,26 +104,59 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 	});
 
 	const dispatch = useAppDispatch();
-	const [familyMembers, setFamilyMembers] = useState<FamilyInfoFormValues[]>(
-		[]
-	);
+	const [familyMembers, setFamilymember] = useState<FamilyInfoType[]>([]);
 
 	useEffect(() => {
-		if (familyMembers.length > 0) {
-			const familyMember = familyMembers[0];
-			setFormData((prevData) => ({
-				...prevData,
-				first_name: familyMember.first_name,
-				middle_name: familyMember.middle_name,
-				last_name: familyMember.last_name,
-				gender: familyMember.gender,
-				date_of_birth: familyMember.date_of_birth,
-				phone_number: familyMember.phone_number,
-				email_address: familyMember.email_address,
-				relationship_to_member: familyMember.relationship_to_member,
+		const processFamilyData = (
+			familyMembers: FamilyInfoType[],
+			info: memberInfoType
+		) => {
+			return familyMembers.map((member) => ({
+				...member,
+				member_type: "individual",
+				insurance_type: "general",
+				member_organization_type: "self",
+				benefit_plan: "basic",
+				member_status: "active",
+				is_representative: info.self === "true" ? false : true || false,
+
+				representative_first_name: formData.representative_first_name || "",
+				representative_last_name: formData.representative_last_name || "",
+				representative_middle_name: formData.representative_middle_name || "",
+				representative_gender: formData.representative_gender || "",
+				representative_date_of_birth:
+					formData.representative_date_of_birth || "",
+				representative_marital_status:
+					formData.representative_marital_status || "",
+				representative_mailing_address_line1:
+					formData.representative_mailing_address_line1 || "",
+				representative_country: formData.representative_country || "",
+				representative_street_address:
+					formData.representative_street_address || "",
+				representative_city: formData.representative_city || "",
+				representative_region: formData.representative_region || "",
+				representative_kifle_ketema: formData.representative_kifle_ketema || "",
+				representative_zip_code: formData.representative_zip_code || "",
+				representative_phone_number: formData.representative_phone_number || "",
+				representative_email_address:
+					formData.representative_email_address || "",
 			}));
-		}
-	}, [familyMembers]);
+		};
+
+		const updateFamilyData = async () => {
+			try {
+				if (familyMembers.length > 0) {
+					const updatedfamilies = await processFamilyData(familyMembers, info);
+					dispatch(setFamily(updatedfamilies));
+					console.log("Set a new family information:", updatedfamilies);
+				}
+			} catch (error) {
+				console.error("Error processing family data:", error);
+			}
+		};
+
+		updateFamilyData();
+	}, [familyMembers, info, dispatch]);
 
 	const updateFormData = (newData: Partial<memeberType>) => {
 		const updatedData = { ...formData, ...newData };
@@ -147,42 +176,12 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 			const pdfWidth = pdf.internal.pageSize.getWidth();
 			const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 			pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-			pdf.save("member_information.pdf");
+			pdf.save("member Information.pdf");
 		}
 	};
 	const handleConfirm = () => {
 		setIsOpen(true);
 	};
-
-	// const handleSubmit = async () => {
-	// 	setIsSubmitting(true);
-	// 	try {
-	// 		if (!data) {
-	// 			toast.error("No Member data found. Please check your input.");
-	// 			return;
-	// 		}
-	// 		const submissionData = {
-	// 			...data,
-	// 			familyMembers:
-	// 				info.type === "family" ? formData.familyMembers : undefined,
-	// 		};
-
-	// 		await MemberMutation(submissionData);
-	// 		if (isSuccess) {
-	// 			// Navigate to the success page with query parameters
-	// 			const type = "member"; // Replace with the actual type source
-	// 			router.push(
-	// 				`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
-	// 			);
-	// 			dispatch(ClearmemberSlice());
-	// 			handleDownloadPDF();
-	// 		}
-	// 	} catch (error) {
-	// 		toast.error("Failed to submit Member data. Please try again.");
-	// 	} finally {
-	// 		setIsSubmitting(false);
-	// 	}
-	// };
 
 	const handleSubmit = async () => {
 		setIsSubmitting(true);
@@ -191,24 +190,59 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 				toast.error("No Member data found. Please check your input.");
 				return;
 			}
+			if (info.type === "family") {
+				const submittedData = familyData.map(({ id, ...rest }) => ({
+					...rest,
+					max_out_of_pocket: 0,
+					max_out_of_pocket_etb: 0,
+					total_medical_expense: 0,
+					deductible: 0,
 
-			MemberMutation(data, {
-				onSuccess: () => {
-					// Navigate to the success page with query parameters
-					const type = "member"; // Replace with the actual type source
-					router.push(
-						`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
-					);
-					dispatch(ClearmemberSlice());
-					handleDownloadPDF();
-				},
-				onError: () => {
-					toast.error("Failed to submit Member data. Please try again.");
-				},
-				onSettled: () => {
-					setIsSubmitting(false);
-				},
-			});
+					member_payment_duty: 0,
+					has_transport_subscription: false,
+				}));
+
+				console.log("submittedData", submittedData); // Ensure it's a flat array
+				FamilyMutation(submittedData, {
+					onSuccess: () => {
+						// Navigate to the success page with query parameters
+						// const type = "family"; // Replace with the actual type source
+						// router.push(
+						// 	`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
+						// );
+						const type = "family"; // Replace with the actual type source
+
+						router.push(`/pricing/${type}` as `/${string}`);
+
+						handleDownloadPDF();
+					},
+					onError: () => {
+						toast.error("Failed to submit Member data. Please try again.");
+					},
+					onSettled: () => {
+						setIsSubmitting(false);
+					},
+				});
+			} else {
+				MemberMutation(data, {
+					onSuccess: () => {
+						// Navigate to the success page with query parameters
+						const type = info.type?.toLowerCase(); // Replace with the actual type source
+						// router.push(
+						// 	`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
+						// );
+						router.push(`/pricing/${type}` as `/${string}`);
+
+						handleDownloadPDF();
+					},
+					onError: () => {
+						toast.error("Failed to submit Member data. Please try again.");
+					},
+					onSettled: () => {
+						setIsSubmitting(false);
+					},
+				});
+			}
 		} catch (error) {
 			toast.error("Something went wrong. Please try again.");
 			setIsSubmitting(false);
@@ -241,8 +275,8 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 						title: "Family Member Information",
 						content: (
 							<FamilyMember
-								onFormComplete={(data: FamilyInfoFormValues[]) => {
-									setFamilyMembers(data);
+								onFormComplete={(data: FamilyInfoType[]) => {
+									setFamilymember(data);
 									nextStep();
 								}}
 							/>
@@ -276,24 +310,27 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 					},
 				]
 			: []),
-
-		{
-			title: "Health and Lifestyle Questionnaire",
-			content: (
-				<HealthQuestionnaire
-					onFormComplete={(data) => {
-						// updateFormData(data);
-						nextStep();
-					}}
-				/>
-			),
-		},
-
+		// ...(info.self
+		// 	? [
+		// 			{
+		// 				title: "Health and Lifestyle Questionnaire",
+		// 				content: (
+		// 					<HealthQuestionnaire
+		// 						onFormComplete={(data) => {
+		// 							// updateFormData(data);
+		// 							nextStep();
+		// 						}}
+		// 					/>
+		// 				),
+		// 			},
+		// 		]
+		// 	: []),
 		{
 			title: "Preview",
 			content: (
 				<Preview
 					isSelf={info.self === "true" ? true : false}
+					isFamily={info.type === "family" ? true : false}
 					onConfirm={handleConfirm}
 					ref={printRef}
 				/>

@@ -30,24 +30,6 @@ export const createMemeberInfoSchema = (t: (key: string) => string) =>
 				message: t("fields.last_name.error"),
 			}),
 		]),
-		// amharic_first_name: z.union([
-		// 	z.literal(""),
-		// 	z.string().regex(/^[^\d]*$/, {
-		// 		message: t("fields.amharic_first_name.error"),
-		// 	}),
-		// ]),
-		// amharic_middle_name: z.union([
-		// 	z.literal(""),
-		// 	z.string().regex(/^[^\d]*$/, {
-		// 		message: t("fields.amharic_middle_name.error"),
-		// 	}),
-		// ]),
-		// amharic_last_name: z.union([
-		// 	z.literal(""),
-		// 	z.string().regex(/^[^\d]*$/, {
-		// 		message: t("fields.amharic_last_name.error"),
-		// 	}),
-		// ]),
 
 		gender: z.union([
 			z.literal(""),
@@ -55,13 +37,10 @@ export const createMemeberInfoSchema = (t: (key: string) => string) =>
 				invalid_type_error: t("fields.gender.error"),
 			}),
 		]),
-		date_of_birth: z.union([
-			z.literal(""),
-			z.string().min(1, {
-				message: t("fields.date_of_birth.error"),
-			}),
-		]),
-		marital_status: z.enum(["single", "married", "widowed", "divorced"], {
+		date_of_birth: z.string().min(1, {
+			message: t("fields.date_of_birth.error"),
+		}),
+		marital_status: z.enum(["single", "married", "divorced"], {
 			invalid_type_error: t("fields.marital_status.error"),
 		}),
 		height: z
@@ -105,9 +84,11 @@ export const createMemberAddressSchema = (t: (key: string) => string) =>
 		country: z.string().min(2, {
 			message: t("fields.country.error"),
 		}),
-		region: z.string().min(2, {
-			message: t("fields.region.error"),
-		}),
+		region: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.region.error") }),
+		]),
+
 		kifle_ketema: z.union([
 			z.literal(""),
 			z.string().min(2, { message: t("fields.kifle_ketema.error") }),
@@ -148,15 +129,13 @@ export const createMemberRepresentativeSchema = (t: (key: string) => string) =>
 				invalid_type_error: t("fields.representative_gender.error"),
 			}),
 		]),
-		representative_date_of_birth: z.union([
-			z.literal(""),
-			z.string().min(1, {
-				message: t("fields.representative_date_of_birth.error"),
-			}),
-		]),
+		representative_date_of_birth: z.string().min(1, {
+			message: t("fields.representative_date_of_birth.error"),
+		}),
+
 		representative_marital_status: z.union([
 			z.literal(""),
-			z.enum(["single", "married", "widowed", "divorced"], {
+			z.enum(["single", "married", "divorced"], {
 				invalid_type_error: t("fields.representative_marital_status.error"),
 			}),
 		]),
@@ -175,9 +154,10 @@ export const createMemberRepresentativeSchema = (t: (key: string) => string) =>
 		representative_city: z.string().min(2, {
 			message: t("fields.representative_city.error"),
 		}),
-		representative_region: z.string().min(2, {
-			message: t("fields.representative_region.error"),
-		}),
+		representative_region: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.representative_region.error") }),
+		]),
 		representative_kifle_ketema: z.union([
 			z.literal(""),
 			z
@@ -200,11 +180,6 @@ export const createMemberRepresentativeSchema = (t: (key: string) => string) =>
 				.string()
 				.email({ message: t("fields.representative_email_address.error") }),
 		]),
-		// relationship_to_member: z.union([
-		// 	z.literal(""),
-		// 	z.string().min(2, { message: t("fields.relationship_to_member.error") }),
-		// ]),
-		// relationship_to_member_other: z.string().optional(),
 	});
 
 export type MemberRepresentativeFormValues = z.infer<
@@ -262,7 +237,6 @@ export const createFamilyInfoSchema = (t: (key: string) => string) =>
 			z.string().min(2, { message: t("fields.relationship_to_member.error") }),
 		]),
 		relationship_to_member_other: z.string().optional(),
-		dependent_of: z.number().optional(),
 		first_name: z.union([
 			z.literal(""),
 			z.string().regex(/^[^\d]*$/, {
@@ -293,12 +267,10 @@ export const createFamilyInfoSchema = (t: (key: string) => string) =>
 				invalid_type_error: t("fields.gender.error"),
 			}),
 		]),
-		date_of_birth: z.union([
-			z.literal(""),
-			z.string().min(1, {
-				message: t("fields.date_of_birth.error"),
-			}),
-		]),
+		date_of_birth: z.string().min(1, {
+			message: t("fields.date_of_birth.error"),
+		}),
+
 		phone_number: z.string().refine((val) => RPNInput.isValidPhoneNumber(val), {
 			message: t("fields.phone_number.error"),
 		}),
@@ -306,6 +278,55 @@ export const createFamilyInfoSchema = (t: (key: string) => string) =>
 		email_address: z.union([
 			z.literal(""),
 			z.string().email({ message: t("fields.email_address.error") }),
+		]),
+		height: z
+			.number()
+			.min(0, {
+				message: t("fields.height.error"),
+			})
+			.optional(),
+		weight: z
+			.number()
+			.min(0, {
+				message: t("fields.weight.error"),
+			})
+			.optional(),
+		marital_status: z.enum(["single", "married", "divorced"], {
+			invalid_type_error: t("fields.marital_status.error"),
+		}),
+		tin_number: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.tin_number.error") }),
+		]),
+		street_address: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.street_address.error") }),
+		]),
+		mailing_address_line1: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.mailing_address_line1.error") }),
+		]),
+		country: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.country.error") }),
+		]),
+
+		city: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.city.error") }),
+		]),
+
+		region: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.region.error") }),
+		]),
+		kifle_ketema: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.kifle_ketema.error") }),
+		]),
+		zip_code: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.zip_code.error") }),
 		]),
 	});
 

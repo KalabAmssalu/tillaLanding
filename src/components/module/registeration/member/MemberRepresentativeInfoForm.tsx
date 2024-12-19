@@ -89,39 +89,10 @@ export default function MemberRepresentativeInfoForm({
 		}
 	}, [selectedCountry, form]);
 
-	// const [selectedRelationship, setSelectedRelationship] = useState<string>("");
-	// useEffect(() => {
-	// 	const selectedValue = form.getValues("relationship_to_member");
-	// 	if (selectedValue && selectedValue !== selectedRelationship) {
-	// 		setSelectedRelationship(selectedValue);
-	// 		setOtherRelationship(selectedValue === "other");
-	// 	}
-	// }, [form]);
-
 	const countryOptions = useMemo(() => {
 		return getAllCountries();
 	}, []);
-	// const relationshipOptions = useMemo(() => {
-	// 	return getAllRelationships();
-	// }, []);
 
-	// const [otherRelationship, setOtherRelationship] = useState(false);
-
-	// const handleRelationshipChange = (value: string) => {
-	// 	setSelectedRelationship(value);
-
-	// 	if (value === "other") {
-	// 		setOtherRelationship(true);
-	// 	} else {
-	// 		setOtherRelationship(false);
-	// 		// Clear custom input field value and ensure the selected relationship is set
-	// 		form.setValue("relationship_to_member_other", "");
-	// 		form.setValue("relationship_to_member", value);
-	// 	}
-	// };
-	// const handleCustomInputChange = (value: string | number) => {
-	// 	form.setValue("relationship_to_member_other", String(value));
-	// };
 	const handleCountryValueChange = (value: string) => {
 		setSelectedCountry(value);
 
@@ -207,7 +178,7 @@ export default function MemberRepresentativeInfoForm({
 							labelKey="fields.representative_date_of_birth.label"
 							placeholderKey="fields.representative_date_of_birth.placeholder"
 							descriptionKey="fields.representative_date_of_birth.description"
-							required
+							required={true}
 							buttonClassName="custom-button-class"
 							local={local}
 							max={new Date(
@@ -236,12 +207,6 @@ export default function MemberRepresentativeInfoForm({
 								},
 								{
 									label: t(
-										"fields.representative_marital_status.options.widowed"
-									),
-									value: "widowed",
-								},
-								{
-									label: t(
 										"fields.representative_marital_status.options.divorced"
 									),
 									value: "divorced",
@@ -250,7 +215,7 @@ export default function MemberRepresentativeInfoForm({
 							onValueChange={(value) => {
 								form.setValue(
 									"representative_marital_status",
-									value as "single" | "married" | "widowed" | "divorced"
+									value as "single" | "married" | "divorced"
 								);
 							}}
 							local={local}
@@ -330,6 +295,17 @@ export default function MemberRepresentativeInfoForm({
 						{t("representative_address")}
 					</legend>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+						<ReusableSelectField
+							control={form.control}
+							name="representative_country"
+							labelKey="fields.representative_country.label"
+							local={local}
+							placeholderKey="fields.representative_country.placeholder"
+							descriptionKey="fields.representative_country.description"
+							options={countryOptions}
+							onValueChange={handleCountryValueChange}
+							required
+						/>
 						<ReusableFormField
 							control={form.control}
 							name="representative_street_address"
@@ -350,16 +326,17 @@ export default function MemberRepresentativeInfoForm({
 							placeholderKey="fields.representative_mailing_address_line1.placeholder"
 							descriptionKey="fields.representative_mailing_address_line1.description"
 						/>
-						<ReusableSelectField
+
+						<ReusableFormField
 							control={form.control}
-							name="representative_country"
-							labelKey="fields.representative_country.label"
+							name="representative_city"
+							type="text"
 							local={local}
-							placeholderKey="fields.representative_country.placeholder"
-							descriptionKey="fields.representative_country.description"
-							options={countryOptions}
-							onValueChange={handleCountryValueChange}
+							labelKey="fields.representative_city.label"
+							placeholderKey="fields.representative_city.placeholder"
+							descriptionKey="fields.representative_city.description"
 							required
+							isRequired={true}
 						/>
 						<ReusableSelectField
 							control={form.control}
@@ -374,38 +351,27 @@ export default function MemberRepresentativeInfoForm({
 							}
 							required
 						/>
+
 						<ReusableFormField
 							control={form.control}
-							name="representative_city"
+							name="representative_zip_code"
 							type="text"
 							local={local}
-							labelKey="fields.representative_city.label"
-							placeholderKey="fields.representative_city.placeholder"
-							descriptionKey="fields.representative_city.description"
-							required
-							isRequired={true}
+							labelKey="fields.representative_zip_code.label"
+							placeholderKey="fields.representative_zip_code.placeholder"
+							descriptionKey="fields.representative_zip_code.description"
+							isRequired={type === "diaspora" ? true : false}
 						/>
-						{type !== "diaspora" ? (
-							<ReusableFormField
-								control={form.control}
-								name="representative_kifle_ketema"
-								type="text"
-								local={local}
-								labelKey="fields.representative_kifle_ketema.label"
-								placeholderKey="fields.representative_kifle_ketema.placeholder"
-								descriptionKey="fields.representative_kifle_ketema.description"
-							/>
-						) : (
-							<ReusableFormField
-								control={form.control}
-								name="representative_zip_code"
-								type="text"
-								local={local}
-								labelKey="fields.representative_zip_code.label"
-								placeholderKey="fields.representative_zip_code.placeholder"
-								descriptionKey="fields.representative_zip_code.description"
-							/>
-						)}
+
+						<ReusableFormField
+							control={form.control}
+							name="representative_kifle_ketema"
+							type="text"
+							local={local}
+							labelKey="fields.representative_kifle_ketema.label"
+							placeholderKey="fields.representative_kifle_ketema.placeholder"
+							descriptionKey="fields.representative_kifle_ketema.description"
+						/>
 					</div>
 				</fieldset>
 				{visible && (

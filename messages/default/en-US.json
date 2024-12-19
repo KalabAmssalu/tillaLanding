@@ -56,24 +56,6 @@
 				"description": "Your legal last name.",
 				"error": "Last name must be at least 2 characters long."
 			},
-			"amharic_first_name": {
-				"label": "First Name - Amharic",
-				"placeholder": "ስም በአማርኛ",
-				"description": "Your legal first name.",
-				"error": "First name must be at least 2 characters long."
-			},
-			"amharic_middle_name": {
-				"label": "Middle Name - Amharic",
-				"placeholder": "የአባት ስም በአማርኛ",
-				"description": "Your legal middle name.",
-				"error": "Middle name must be at least 2 characters long."
-			},
-			"amharic_last_name": {
-				"label": "Last Name - Amharic",
-				"placeholder": "የአያት ስም በአማርኛ",
-				"description": "Your legal last name.",
-				"error": "Last name must be at least 2 characters long."
-			},
 
 			"gender": {
 				"label": "Gender",
@@ -181,7 +163,6 @@
 				"options": {
 					"single": "Single",
 					"married": "Married",
-					"widowed": "Widowed",
 					"divorced": "Divorced"
 				}
 			},
@@ -315,6 +296,9 @@
 		"contact_information": "Contact Information",
 		"representative_address": "Primary Member Address Information",
 		"personal_information": "Family Member Information",
+		"AddressInfo": "Address Information",
+		"physical_attributes": "Physical Attributes",
+		"use_representative_address": "Use Representative Address",
 		"fields": {
 			"first_name": {
 				"label": "First Name - English",
@@ -1054,7 +1038,7 @@
 				"error": "Region / State is required."
 			},
 			"country_of_origin": {
-				"label": "Country Of Origin",
+				"label": "NGO Origin Country",
 				"placeholder": "Enter country Of Origin",
 				"description": "Country of the organization.",
 				"error": "Country is required."

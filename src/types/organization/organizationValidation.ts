@@ -21,15 +21,11 @@ export const createorganizationInfoSchema = (t: (key: string) => string) =>
 		company_website: z.string().min(2, {
 			message: t("fields.company_website.error"),
 		}),
-		// plan_coverage_type: z.string().min(2, {
-		// 	message: t("fields.plan_coverage_type.error"),
-		// }),
+
 		preferred_start_date: z.string().min(2, {
 			message: t("fields.preferred_start_date.error"),
 		}),
-		// preferred_end_date: z.string().min(2, {
-		// 	message: t("fields.preferred_end_date.error"),
-		// }),
+
 		phone_number: z.string().refine((val) => RPNInput.isValidPhoneNumber(val), {
 			message: t("fields.phone_number.error"),
 		}),
@@ -37,9 +33,12 @@ export const createorganizationInfoSchema = (t: (key: string) => string) =>
 			z.literal(""),
 			z.string().email({ message: t("fields.email_address.error") }),
 		]),
-		country_of_origin: z.string().min(2, {
-			message: t("fields.country_of_origin.error"),
-		}),
+		country_of_origin: z.union([
+			z.literal(""),
+			z.string().min(2, {
+				message: t("fields.country_of_origin.error"),
+			}),
+		]),
 	});
 
 export type OrganizationInfoFormValues = z.infer<
@@ -54,17 +53,18 @@ export const organizationAddressSchema = (t: (key: string) => string) =>
 		street_address: z.string().min(2, {
 			message: t("fields.street_address.error"),
 		}),
-		street_address_line2: z.string().min(2, {
-			message: t("fields.street_address_line2.error"),
-		}),
-
+		street_address_line2: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.street_address_line2.error") }),
+		]),
 		city: z.string().min(2, {
 			message: t("fields.city.error"),
 		}),
 
-		region: z.string().min(2, {
-			message: t("fields.region.error"),
-		}),
+		region: z.union([
+			z.literal(""),
+			z.string().min(2, { message: t("fields.region.error") }),
+		]),
 		kifle_ketema: z.union([
 			z.literal(""),
 			z.string().min(2, { message: t("fields.kifle_ketema.error") }),

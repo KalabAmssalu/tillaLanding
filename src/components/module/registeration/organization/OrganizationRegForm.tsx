@@ -27,6 +27,7 @@ import {
 	ClearorganizationSlice,
 	SetorganizationSlice,
 } from "@/lib/store/redux/organizationSlice";
+import { downloadFile } from "@/lib/utils/fileDownload";
 import { type organizationType } from "@/types/organization/organization";
 
 import OrganizationAddressForm from "./OrganizationAddressForm";
@@ -56,9 +57,7 @@ export default function OrganizationRegForm({
 		industry_type: "",
 		number_of_employees: "",
 		company_website: "",
-		// plan_coverage_type: "",
 		preferred_start_date: "",
-		// preferred_end_date: "",
 		sector: info.type?.toLowerCase() || "private",
 		country_of_origin: "",
 		country: "",
@@ -96,7 +95,7 @@ export default function OrganizationRegForm({
 			const pdfWidth = pdf.internal.pageSize.getWidth();
 			const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 			pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-			pdf.save("provider_information.pdf");
+			pdf.save("Organization Information.pdf");
 		}
 	};
 	const handleConfirm = () => {
@@ -111,14 +110,28 @@ export default function OrganizationRegForm({
 				return;
 			}
 
-			await OrganizationMutation(data);
-			if (isSuccess) {
-				router.push(
-					"/success?type=organization&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard" as `/${string}`
-				);
-				dispatch(ClearorganizationSlice());
-				handleDownloadPDF();
-			}
+			OrganizationMutation(data, {
+				onSuccess: () => {
+					router.push(
+						"/success?type=organization&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard" as `/${string}`
+					);
+					dispatch(ClearorganizationSlice());
+					handleDownloadPDF();
+					{
+						info.type?.toLowerCase() !== "federal" &&
+							downloadFile(
+								`${window.location.origin}/docs/company.xlsx`,
+								"company.xlsx"
+							);
+					}
+				},
+				onError: () => {
+					toast.error("Failed to submit Member data. Please try again.");
+				},
+				onSettled: () => {
+					setIsSubmitting(false);
+				},
+			});
 		} catch (error) {
 			toast.error("Failed to submit provider data. Please try again.");
 		} finally {

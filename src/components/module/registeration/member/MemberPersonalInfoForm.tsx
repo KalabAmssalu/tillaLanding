@@ -37,9 +37,6 @@ export default function MemberPersonalInfoForm({
 			first_name: DataInfo.first_name || "",
 			middle_name: DataInfo.middle_name || "",
 			last_name: DataInfo.last_name || "",
-			// amharic_first_name: DataInfo.amharic_first_name || "",
-			// amharic_middle_name: DataInfo.amharic_middle_name || "",
-			// amharic_last_name: DataInfo.amharic_last_name || "",
 			gender: "male",
 			marital_status: "single",
 			date_of_birth: DataInfo.date_of_birth || "",
@@ -189,10 +186,6 @@ export default function MemberPersonalInfoForm({
 									value: "married",
 								},
 								{
-									label: t("fields.marital_status.options.widowed"),
-									value: "widowed",
-								},
-								{
 									label: t("fields.marital_status.options.divorced"),
 									value: "divorced",
 								},
@@ -200,7 +193,7 @@ export default function MemberPersonalInfoForm({
 							onValueChange={(value) => {
 								form.setValue(
 									"marital_status",
-									value as "single" | "married" | "widowed" | "divorced"
+									value as "single" | "married" | "divorced"
 								);
 							}}
 							local="personalInfoForm"

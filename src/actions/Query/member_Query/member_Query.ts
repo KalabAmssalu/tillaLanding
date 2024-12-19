@@ -1,7 +1,10 @@
 import { setMemeberIndividual } from "@/actions/member/action";
 import { useAppDispatch } from "@/hooks/storehooks";
 import useToastMutation from "@/hooks/useToastMutation";
-import { SetmemberSlice } from "@/lib/store/redux/memberSlice";
+import {
+	ClearmemberSlice,
+	SetmemberSlice,
+} from "@/lib/store/redux/memberSlice";
 import { type memeberType } from "@/types/memeber/memeber";
 
 // export const useFetchmemebers = () => {
@@ -42,11 +45,13 @@ export const useAddmemeber = () => {
 		setMemeberIndividual,
 		"Member creating...",
 		{
-			onSuccess: (data, variables) => {
+			onSuccess: async (data, variables) => {
 				// 'data' contains the response from the server
 				// 'variables' contains the memeber data you passed in
 				console.log("memeber created successfully:", data.message);
 				console.log("New memeber Data:", data);
+
+				await dispatch(ClearmemberSlice());
 
 				dispatch(SetmemberSlice(data.data));
 				// queryClient.invalidateQueries({ queryKey: ["memebers"] });
