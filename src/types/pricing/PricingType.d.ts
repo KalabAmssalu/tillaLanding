@@ -5,18 +5,33 @@ export interface Feature {
 
 export interface PricingTier {
 	title: string;
-	price: {
-		monthly: number;
-		yearly: number;
+	with_deductible: {
+		deductible_amount: number;
+		max_out_of_pocket: number;
+		coInsurance: number;
+		price: {
+			monthly: number;
+			yearly: number;
+		};
+		features: Feature[];
 	};
-	features: Feature[];
+	non_deductible: {
+		max_out_of_pocket: number;
+		coInsurance: number;
+		price: {
+			monthly: number;
+			yearly: number;
+		};
+		features: Feature[];
+	};
 }
 
 export type checkoutType = {
-	member_id?: string;
+	member_id: string | string[] | undefined;
 	email?: string;
 	billing_cycle: string;
 	plan_type: string;
 	members_count: number;
 	amount?: number;
+	deductible_type?: string;
 };

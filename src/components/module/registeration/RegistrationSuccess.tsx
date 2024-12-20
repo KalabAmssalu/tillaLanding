@@ -4,10 +4,12 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { motion } from "framer-motion";
+import { ArrowDownToLine } from "lucide-react";
 import Confetti from "react-confetti";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { downloadFile } from "@/lib/utils/fileDownload";
 
 const RegistrationSuccess = () => {
 	const router = useRouter();
@@ -44,6 +46,9 @@ const RegistrationSuccess = () => {
 			clearTimeout(timer);
 		};
 	}, []);
+	const handleDownloadPDF = () => {
+		downloadFile(`${window.location.origin}/docs/company.xlsx`, "company.xlsx");
+	};
 
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
@@ -64,16 +69,25 @@ const RegistrationSuccess = () => {
 						<h1 className="text-4xl font-bold mb-6 text-gradient bg-clip-text text-primary">
 							{title}
 						</h1>
-						<p className="text-xl mb-8">
-							{message} {type && <span>{type}</span>}.
-						</p>
+						<p className="text-xl mb-8">{message} .</p>
 						<div className="flex justify-center space-x-4">
-							<Button
-								variant="outline"
-								onClick={() => router.push(redirectPath as `/${string}`)}
-							>
-								{buttonText}
-							</Button>
+							{type === "ngo" || type === "private" ? (
+								<Button
+									variant={"default"}
+									className="h-16 w-44 flex gap-4"
+									onClick={() => handleDownloadPDF()}
+								>
+									<ArrowDownToLine size={20} />
+									{buttonText}
+								</Button>
+							) : (
+								<Button
+									variant="outline"
+									onClick={() => router.push(redirectPath as `/${string}`)}
+								>
+									{buttonText}
+								</Button>
+							)}
 						</div>
 					</motion.div>
 				</CardContent>

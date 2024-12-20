@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { Check, X } from "lucide-react";
+import { BookOpenText, Check, X } from "lucide-react";
 
 import {
 	useCheckoutChapa,
@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { pricingTiers } from "@/constants/data/PricingPlanData";
 import { useAppSelector } from "@/hooks/storehooks";
 import { cn } from "@/lib/utils";
@@ -34,6 +35,10 @@ export default function PlanSelection({ userType }: { userType: string }) {
 	const memberData = useAppSelector((state) => state.member.memberSlice);
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
 	const [selectedPlan, setSelectedPlan] = useState<PricingTier | null>(null);
+	const [deductable, setDeductable] = useState<
+		"with_deductible" | "non_deductible"
+	>("with_deductible");
+
 	const router = useRouter();
 	const isDiaspora = userType === "diaspora" || userType === "international";
 	const currency = isDiaspora ? "USD" : "ETB";
@@ -41,7 +46,11 @@ export default function PlanSelection({ userType }: { userType: string }) {
 		setBillingCycle(checked ? "yearly" : "monthly");
 	};
 
-	const handlePlanSelection = (plan: PricingTier) => {
+	const handlePlanSelection = (
+		plan: PricingTier,
+		deductible: "with_deductible" | "non_deductible"
+	) => {
+		setDeductable(deductible);
 		setSelectedPlan(plan);
 		setIsDialogOpen(true);
 	};
@@ -53,7 +62,9 @@ export default function PlanSelection({ userType }: { userType: string }) {
 		: `${memberData.first_name} ${memberData.last_name}`;
 
 	const planPrice =
-		selectedPlan?.price[billingCycle as keyof typeof selectedPlan.price] || 0;
+		selectedPlan?.[deductable].price[
+			billingCycle as keyof typeof selectedPlan.with_deductible.price
+		] || 0;
 
 	const memberCount = 1;
 	const totalPrice = planPrice * memberCount;
@@ -67,12 +78,15 @@ export default function PlanSelection({ userType }: { userType: string }) {
 			if (selectedPlan) {
 				checkoutStripMutation(
 					{
-						email: memberData.representative_email_address,
+						email: memberData.is_representative
+							? memberData.representative_email_address
+							: memberData.email_address,
 						member_id: memberData.id.toString(),
 						billing_cycle: billingCycle,
 						plan_type: selectedPlan.title.toLowerCase().replace(" ", "_"),
 						members_count: memberCount,
 						amount: totalPrice,
+						deductible_type: deductable,
 					},
 					{
 						onSuccess: () => {
@@ -88,12 +102,15 @@ export default function PlanSelection({ userType }: { userType: string }) {
 			if (selectedPlan) {
 				checkoutChapaMutation(
 					{
-						email: memberData.representative_email_address,
+						email: memberData.is_representative
+							? memberData.representative_email_address
+							: memberData.email_address,
 						member_id: memberData.id.toString(),
 						billing_cycle: billingCycle === "yearly" ? "annual" : "monthly",
 						plan_type: selectedPlan.title.toLowerCase().replace(" ", "_"),
 						members_count: memberCount,
 						amount: totalPrice,
+						deductible_type: deductable,
 					},
 					{
 						onSuccess: () => {
@@ -116,6 +133,18 @@ export default function PlanSelection({ userType }: { userType: string }) {
 	return (
 		<>
 			<div className="container mx-auto pb-12 px-4">
+				<div className="absolute top-[5rem] right-[5rem] rounded-lg p-4 text-xs text-white w-[300px] h-[100px] bg-primary ">
+					If you need any assistance, please contact us at a contact page or
+					Read this document
+					<a
+						href="https://www.google.com"
+						target="_blank"
+						className="text-secondary text-lg mt-2 flex items-center justify-center"
+					>
+						<BookOpenText size={16} className="mr-2 text-secondary" />
+						Here
+					</a>
+				</div>
 				<div className="text-center mb-8">
 					<h2 className="text-3xl font-bold  ">
 						{" "}
@@ -147,47 +176,134 @@ export default function PlanSelection({ userType }: { userType: string }) {
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-4 gap-4">
 					{pricingTiers.map((tier, index) => (
-						<Card key={index} className="flex flex-col">
-							<CardHeader>
-								<CardTitle className="text-2xl font-bold">
-									{tier.title}
-								</CardTitle>
-								<CardDescription>
-									{currency} {tier.price[billingCycle]}
-									<span className="text-sm font-normal text-muted-foreground">
-										/{billingCycle === "monthly" ? "mo" : "yr"}
-									</span>
-								</CardDescription>
-							</CardHeader>
-							<CardContent className="flex-grow p-4">
-								<ul className="space-y-2">
-									{tier.features.map((feature, featureIndex) => (
-										<li key={featureIndex} className="flex items-center">
-											{feature.covered ? (
-												<Check className=" text-primary mr-2" size={15} />
-											) : (
-												<X className=" text-muted-foreground mr-2" size={15} />
-											)}
-											<span
-												className={cn(
-													feature.covered ? "" : "text-muted-foreground",
-													"text-xs w-[90%]"
-												)}
-											>
-												{feature.name}
+						<Card
+							key={index}
+							className={`flex flex-col ${index === 1 || index === 2 ? "border-primary border-2" : ""}`}
+						>
+							<CardTitle className="p-2 px-4 text-2xl text-center font-bold">
+								{tier.title}
+							</CardTitle>
+							<Tabs defaultValue="with_deductible">
+								<TabsList className="w-full">
+									<TabsTrigger value="with_deductible">
+										With Deductible
+									</TabsTrigger>
+									<TabsTrigger value="non_deductible">
+										Non-Deductible
+									</TabsTrigger>
+								</TabsList>
+								<TabsContent value="with_deductible">
+									<CardHeader className="text-center p-0">
+										<CardDescription className="text-2xl">
+											{currency} {tier.with_deductible.price[billingCycle]}
+											<span className="font-normal text-muted-foreground">
+												/{billingCycle === "monthly" ? "mo" : "yr"}
 											</span>
-										</li>
-									))}
-								</ul>
-							</CardContent>
-							<CardFooter>
-								<Button
-									className="w-full mt-4"
-									onClick={() => handlePlanSelection(tier)}
-								>
-									Select {tier.title}
-								</Button>
-							</CardFooter>
+										</CardDescription>
+									</CardHeader>
+									<CardContent className="flex-grow p-4 h-[400px]">
+										<div className="flex items-center justify-center">
+											<span className="text-sm font-normal text-muted-foreground">
+												Co-Insurance -{" "}
+											</span>
+											<span className="text-sm font-normal text-muted-foreground">
+												{tier.with_deductible.coInsurance}%
+											</span>
+										</div>
+
+										<ul className="space-y-2 mt-4">
+											{tier.with_deductible.features.map(
+												(feature, featureIndex) => (
+													<li key={featureIndex} className="flex items-center">
+														{feature.covered ? (
+															<Check className="text-primary mr-2" size={15} />
+														) : (
+															<X
+																className="text-muted-foreground mr-2"
+																size={15}
+															/>
+														)}
+														<span
+															className={cn(
+																feature.covered ? "" : "text-muted-foreground",
+																"text-xs w-[90%]"
+															)}
+														>
+															{feature.name}
+														</span>
+													</li>
+												)
+											)}
+										</ul>
+									</CardContent>
+									<CardFooter>
+										<Button
+											className={`w-full mt-4 ${index === 0 || index === 3 ? "bg-secondary text-white" : ""}`}
+											onClick={() =>
+												handlePlanSelection(tier, "with_deductible")
+											}
+										>
+											Select {tier.title}
+										</Button>
+									</CardFooter>
+								</TabsContent>
+
+								<TabsContent value="non_deductible">
+									<CardHeader className="text-center p-0">
+										<CardDescription className="text-2xl">
+											{currency} {tier.non_deductible.price[billingCycle]}
+											<span className="font-normal text-muted-foreground">
+												/{billingCycle === "monthly" ? "mo" : "yr"}
+											</span>
+										</CardDescription>
+									</CardHeader>
+									<CardContent className="flex-grow p-4 h-[400px]">
+										<div className="flex items-center justify-center">
+											<span className="text-sm font-normal text-muted-foreground">
+												Co-Insurance -{" "}
+											</span>
+											<span className="text-sm font-normal text-muted-foreground">
+												{tier.with_deductible.coInsurance}%
+											</span>
+										</div>
+
+										<ul className="space-y-2 mt-4">
+											{tier.non_deductible.features.map(
+												(feature, featureIndex) => (
+													<li key={featureIndex} className="flex items-center">
+														{feature.covered ? (
+															<Check className="text-primary mr-2" size={15} />
+														) : (
+															<X
+																className="text-muted-foreground mr-2"
+																size={15}
+															/>
+														)}
+														<span
+															className={cn(
+																feature.covered ? "" : "text-muted-foreground",
+																"text-xs w-[90%]"
+															)}
+														>
+															{feature.name}
+														</span>
+													</li>
+												)
+											)}
+										</ul>
+									</CardContent>
+									<CardFooter>
+										<Button
+											className={`w-full mt-4 ${index === 0 || index === 3 ? "bg-secondary text-white" : ""}`}
+											onClick={() =>
+												handlePlanSelection(tier, "non_deductible")
+											}
+										>
+											Select {tier.title}
+										</Button>
+									</CardFooter>
+								</TabsContent>
+							</Tabs>
 						</Card>
 					))}
 				</div>
@@ -200,6 +316,7 @@ export default function PlanSelection({ userType }: { userType: string }) {
 				totalPrice={totalPrice}
 				familyMembers={memberCount}
 				billingCycle={billingCycle}
+				deductable={deductable}
 				name={fullName}
 				currency={currency}
 				onSubmit={handleSubmit}

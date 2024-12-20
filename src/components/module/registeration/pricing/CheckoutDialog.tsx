@@ -21,6 +21,7 @@ interface CheckoutDialogProps {
 	familyMembers: number;
 	billingCycle: string;
 	currency: string;
+	deductable: "with_deductible" | "non_deductible";
 	totalPrice: number;
 	name: string;
 	onSubmit: (paymentMethod: "stripe" | "chapa") => void;
@@ -32,13 +33,16 @@ export function CheckoutDialog({
 	selectedPlan,
 	familyMembers,
 	billingCycle,
+	deductable,
 	totalPrice,
 	name,
 	currency,
 	onSubmit,
 }: CheckoutDialogProps) {
 	const planPrice =
-		selectedPlan?.price[billingCycle as keyof typeof selectedPlan.price] || 0;
+		selectedPlan?.[deductable].price[
+			billingCycle as keyof typeof selectedPlan.with_deductible.price
+		] || 0;
 
 	return (
 		<Dialog open={isOpen} onOpenChange={onOpenChange}>

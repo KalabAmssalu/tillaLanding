@@ -27,7 +27,6 @@ import {
 	ClearorganizationSlice,
 	SetorganizationSlice,
 } from "@/lib/store/redux/organizationSlice";
-import { downloadFile } from "@/lib/utils/fileDownload";
 import { type organizationType } from "@/types/organization/organization";
 
 import OrganizationAddressForm from "./OrganizationAddressForm";
@@ -113,17 +112,17 @@ export default function OrganizationRegForm({
 			OrganizationMutation(data, {
 				onSuccess: () => {
 					router.push(
-						"/success?type=organization&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard" as `/${string}`
+						`/success?type=${info.type}&title=Registration Successful&message=Congratulations! You're now part of our tilla member Please download the Member registration excel file and fill it out and send us with email.&redirectPath=/home&buttonText=Download` as `/${string}`
 					);
 					dispatch(ClearorganizationSlice());
 					handleDownloadPDF();
-					{
-						info.type?.toLowerCase() !== "federal" &&
-							downloadFile(
-								`${window.location.origin}/docs/company.xlsx`,
-								"company.xlsx"
-							);
-					}
+					// {
+					// 	info.type?.toLowerCase() !== "federal" &&
+					// 		downloadFile(
+					// 			`${window.location.origin}/docs/company.xlsx`,
+					// 			"company.xlsx"
+					// 		);
+					// }
 				},
 				onError: () => {
 					toast.error("Failed to submit Member data. Please try again.");
