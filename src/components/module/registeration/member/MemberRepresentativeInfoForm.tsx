@@ -349,7 +349,6 @@ export default function MemberRepresentativeInfoForm({
 							onValueChange={(value) =>
 								form.setValue("representative_region", value)
 							}
-							required
 						/>
 
 						<ReusableFormField

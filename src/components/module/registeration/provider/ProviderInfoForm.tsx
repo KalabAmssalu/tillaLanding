@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { ReusableDatePickerField } from "@/components/shared/Form/ReusableDateField";
 import ReusableFormField from "@/components/shared/Form/ReusableFormField";
 import ReusablePhoneInputField from "@/components/shared/Form/ReusablePhoneInput";
+import ReusableSelectField from "@/components/shared/Form/ReusableSelectField";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
@@ -60,10 +61,6 @@ export default function ProviderInfoForm({
 			provider_first_name: DataInfo.provider_first_name || "",
 			provider_middle_initial: DataInfo.provider_middle_initial || "",
 			provider_last_name: DataInfo.provider_last_name || "",
-			provider_first_name_amharic: DataInfo.provider_first_name_amharic || "",
-			provider_middle_initial_amharic:
-				DataInfo.provider_middle_initial_amharic || "",
-			provider_last_name_amharic: DataInfo.provider_last_name_amharic || "",
 			provider_title: DataInfo.provider_title || "",
 			provider_gender: "male",
 			provider_date_of_birth: DataInfo.provider_date_of_birth || "",
@@ -92,9 +89,6 @@ export default function ProviderInfoForm({
 			form.setValue("provider_first_name", "");
 			form.setValue("provider_middle_initial", "");
 			form.setValue("provider_last_name", "");
-			form.setValue("provider_first_name_amharic", "");
-			form.setValue("provider_middle_initial_amharic", "");
-			form.setValue("provider_last_name_amharic", "");
 			form.setValue("provider_title", "");
 			form.setValue("provider_gender", "");
 		}
@@ -152,7 +146,6 @@ export default function ProviderInfoForm({
 							required
 							isRequired={true}
 						/>
-
 						<FormField
 							control={form.control}
 							name="provider_service_type"
@@ -215,6 +208,36 @@ export default function ProviderInfoForm({
 								</FormItem>
 							)}
 						/>
+						{/* <ReusableSelectField
+							control={form.control}
+							name="provider_service_type"
+							labelKey="fields.provider_service_type.label"
+							local="providerInfoForm"
+							placeholderKey="fields.provider_service_type.placeholder"
+							descriptionKey="fields.provider_service_type.description"
+							options={[
+								{
+									label: t("fields.provider_service_type.options.group"),
+									value: "group",
+								},
+								{
+									label: t("fields.provider_service_type.options.institute"),
+									value: "institute",
+								},
+								{
+									label: t("fields.provider_service_type.options.professional"),
+									value: "professional",
+								},
+							]}
+							onValueChange={(value) => {
+								form.setValue(
+									"provider_service_type",
+									value as "group" | "institute" | "professional"
+								);
+							}}
+							required
+						/> */}
+
 						<ReusableFormField
 							control={form.control}
 							name="provider_email"
@@ -250,7 +273,42 @@ export default function ProviderInfoForm({
 							<legend className="text-lg font-semibold ">
 								{t("personal")}
 							</legend>
-							<div className="grid grid-cols-1 gap-6 md:grid-cols-3 my-4">
+							<div className="grid grid-cols-1 gap-6 md:grid-cols-3 mb-6 ">
+								<ReusableFormField
+									control={form.control}
+									name="provider_first_name"
+									type="text"
+									local="providerInfoForm"
+									labelKey="fields.provider_first_name.label"
+									placeholderKey="fields.provider_first_name.placeholder"
+									descriptionKey="fields.provider_first_name.description"
+									required
+									isRequired={true}
+								/>
+								<ReusableFormField
+									control={form.control}
+									name="provider_middle_initial"
+									type="text"
+									local="providerInfoForm"
+									labelKey="fields.provider_middle_initial.label"
+									placeholderKey="fields.provider_middle_initial.placeholder"
+									descriptionKey="fields.provider_middle_initial.description"
+									required
+									isRequired={true}
+								/>
+								<ReusableFormField
+									control={form.control}
+									name="provider_last_name"
+									type="text"
+									local="providerInfoForm"
+									labelKey="fields.provider_last_name.label"
+									placeholderKey="fields.provider_last_name.placeholder"
+									descriptionKey="fields.provider_last_name.description"
+									required
+									isRequired={true}
+								/>
+							</div>
+							<div className="grid grid-cols-1 gap-6 md:grid-cols-3 mt-4">
 								<FormField
 									control={form.control}
 									name="provider_title"
@@ -298,61 +356,36 @@ export default function ProviderInfoForm({
 										</FormItem>
 									)}
 								/>
-								<FormField
+								<ReusableSelectField
 									control={form.control}
 									name="provider_gender"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>{t("fields.provider_gender.label")}</FormLabel>
-											<FormControl>
-												<Select
-													onValueChange={(value) => {
-														form.setValue(
-															"provider_gender",
-															value as "male" | "female" | "not_prefer_to_say"
-														);
-													}}
-												>
-													<SelectTrigger className="items-start [&_[data-description]]:hidden">
-														<SelectValue
-															placeholder={t(
-																"fields.provider_gender.placeholder"
-															)}
-														/>
-													</SelectTrigger>
-													<SelectContent>
-														<SelectItem value="male">
-															<div className="flex items-start gap-3 text-muted-foreground">
-																<p>
-																	{t("fields.provider_gender.options.male")}
-																</p>
-															</div>
-														</SelectItem>
-														<SelectItem value="female">
-															<div className="flex items-start gap-3 text-muted-foreground">
-																<p>
-																	{t("fields.provider_gender.options.female")}
-																</p>
-															</div>
-														</SelectItem>
-														<SelectItem value="not_prefer_to_say">
-															<div className="flex items-start gap-3 text-muted-foreground">
-																<p>
-																	{t(
-																		"fields.provider_gender.options.not_prefer_to_say"
-																	)}
-																</p>
-															</div>
-														</SelectItem>
-													</SelectContent>
-												</Select>
-											</FormControl>
-											<FormMessage />
-											<FormDescription>
-												{t("fields.provider_gender.description")}
-											</FormDescription>
-										</FormItem>
-									)}
+									labelKey="fields.provider_gender.label"
+									local="providerInfoForm"
+									placeholderKey="fields.provider_gender.placeholder"
+									descriptionKey="fields.provider_gender.description"
+									options={[
+										{
+											label: t("fields.provider_gender.options.male"),
+											value: "male",
+										},
+										{
+											label: t("fields.provider_gender.options.female"),
+											value: "female",
+										},
+										{
+											label: t(
+												"fields.provider_gender.options.not_prefer_to_say"
+											),
+											value: "not_prefer_to_say",
+										},
+									]}
+									onValueChange={(value) => {
+										form.setValue(
+											"provider_gender",
+											value as "male" | "female" | "not_prefer_to_say"
+										);
+									}}
+									required
 								/>
 								<ReusableDatePickerField
 									control={form.control}
@@ -363,74 +396,6 @@ export default function ProviderInfoForm({
 									required
 									buttonClassName="custom-button-class"
 									local="providerInfoForm"
-								/>
-							</div>
-							<div className="grid grid-cols-1 gap-6 md:grid-cols-3 mt-6 ">
-								<ReusableFormField
-									control={form.control}
-									name="provider_first_name"
-									type="text"
-									local="providerInfoForm"
-									labelKey="fields.provider_first_name.label"
-									placeholderKey="fields.provider_first_name.placeholder"
-									descriptionKey="fields.provider_first_name.description"
-									required
-									isRequired={true}
-								/>
-								<ReusableFormField
-									control={form.control}
-									name="provider_middle_initial"
-									type="text"
-									local="providerInfoForm"
-									labelKey="fields.provider_middle_initial.label"
-									placeholderKey="fields.provider_middle_initial.placeholder"
-									descriptionKey="fields.provider_middle_initial.description"
-									required
-									isRequired={true}
-								/>
-								<ReusableFormField
-									control={form.control}
-									name="provider_last_name"
-									type="text"
-									local="providerInfoForm"
-									labelKey="fields.provider_last_name.label"
-									placeholderKey="fields.provider_last_name.placeholder"
-									descriptionKey="fields.provider_last_name.description"
-									required
-									isRequired={true}
-								/>
-								<ReusableFormField
-									control={form.control}
-									name="provider_first_name_amharic"
-									type="text"
-									local="providerInfoForm"
-									labelKey="fields.provider_first_name_amharic.label"
-									placeholderKey="fields.provider_first_name_amharic.placeholder"
-									descriptionKey="fields.provider_first_name_amharic.description"
-									required
-									isRequired={true}
-								/>
-								<ReusableFormField
-									control={form.control}
-									name="provider_middle_initial_amharic"
-									type="text"
-									local="providerInfoForm"
-									labelKey="fields.provider_middle_initial_amharic.label"
-									placeholderKey="fields.provider_middle_initial_amharic.placeholder"
-									descriptionKey="fields.provider_middle_initial_amharic.description"
-									required
-									isRequired={true}
-								/>
-								<ReusableFormField
-									control={form.control}
-									name="provider_last_name_amharic"
-									type="text"
-									local="providerInfoForm"
-									labelKey="fields.provider_last_name_amharic.label"
-									placeholderKey="fields.provider_last_name_amharic.placeholder"
-									descriptionKey="fields.provider_last_name_amharic.description"
-									required
-									isRequired={true}
 								/>
 							</div>
 						</fieldset>

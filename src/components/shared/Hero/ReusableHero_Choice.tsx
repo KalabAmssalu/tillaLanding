@@ -29,7 +29,7 @@ const ReusableHero: React.FC<ReusableHeroProps> = ({
 	className,
 }) => {
 	return (
-		<HeroHighlight className={`flex items-center h-[40rem]${className || ""}`}>
+		<HeroHighlight className={`flex items-center h-screen ${className || ""}`}>
 			<div className="flex flex-col items-center justify-center min-h-screen p-8 space-y-8">
 				<h2 className="text-4xl font-extrabold text-primary text-white text-center">
 					{title}
@@ -39,11 +39,11 @@ const ReusableHero: React.FC<ReusableHeroProps> = ({
 					{description}
 				</p>
 
-				<div className="flex justify-center space-x-6">
+				<div className="flex flex-col md:flex-row justify-center items-center space-x-0 md:space-x-6 space-y-4 md:space-y-0">
 					{options.map((option, index) => (
 						<Button
 							key={index}
-							className="h-10 border-2 border-secondary hover:bg-secondary"
+							className="h-10 border-2 bg-secondary/40 hover:bg-secondary flex items-center"
 							onClick={option.onClick}
 						>
 							{option.label}
@@ -54,9 +54,9 @@ const ReusableHero: React.FC<ReusableHeroProps> = ({
 					))}
 				</div>
 
-				<footer className="text-sm  text-secondary text-center">
+				<footer className="text-sm text-secondary text-center">
 					{footerText}{" "}
-					<Link href={footerLink.href as `/${string}`} className=" underline">
+					<Link href={footerLink.href as `/${string}`} className="underline">
 						{footerLink.label}
 					</Link>
 				</footer>

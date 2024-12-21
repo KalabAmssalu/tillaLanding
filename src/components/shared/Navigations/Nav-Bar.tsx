@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import {
 	BriefcaseMedical,
 	Hospital,
@@ -33,6 +35,7 @@ const Navbar = () => {
 		deleteSpeed: 40,
 		typeSpeed: 100,
 	});
+	const route = useRouter();
 
 	return (
 		<>
@@ -43,7 +46,11 @@ const Navbar = () => {
 					</p>
 					<div className="flex space-x-3 justify-center items-center">
 						<LocaleSwitcher />
-						<Button className="h-6" variant={"outline"}>
+						<Button
+							className="h-6"
+							variant={"outline"}
+							onClick={() => route.push("/contact-us")}
+						>
 							<PhoneOutgoing className="mr-2 h-4 w-4" />
 							<span className="sm:flex hidden">Contact</span>
 						</Button>

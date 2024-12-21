@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { format } from "date-fns";
 import { CirclePlus, Pencil, Trash } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -24,6 +25,8 @@ export default function FamilyMember({
 }: {
 	onFormComplete: (data: FamilyInfoType[]) => void;
 }) {
+	const t = useTranslations("familyInfoForm");
+
 	const dispatch = useAppDispatch();
 	const familyMembers = useAppSelector(
 		(state) => state.familyMember.familyMember
@@ -76,7 +79,7 @@ export default function FamilyMember({
 			{familyMembers.length === 0 && !showForm ? (
 				<div className="flex justify-center mt-4 h-[300px]">
 					<Button onClick={() => setShowForm(true)} className="flex gap-2">
-						Add A Family Member
+						{t("AddAFamilyMember")}
 						<CirclePlus size={20} />
 					</Button>
 				</div>
@@ -97,7 +100,7 @@ export default function FamilyMember({
 										onClick={() => setShowForm(true)}
 										className="flex gap-2"
 									>
-										Add Another Member
+										{t("AddAnotherMember")}
 										<CirclePlus size={20} />
 									</Button>
 								</div>

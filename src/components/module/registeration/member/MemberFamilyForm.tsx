@@ -521,7 +521,7 @@ export default function FamilyMemberInfoForm({
 				</fieldset>
 				<div className="flex w-full justify-center items-center">
 					<Button className="flex gap-2">
-						Add This Member <CirclePlus size={20} />
+						{t("AddThisMember")} <CirclePlus size={20} />
 					</Button>
 				</div>
 				{/* {visible && (

@@ -132,6 +132,29 @@ export default function MemberAddressForm({
 
 						<ReusableFormField
 							control={form.control}
+							name="city"
+							type="text"
+							local="personalInfoForm"
+							labelKey="fields.city.label"
+							placeholderKey="fields.city.placeholder"
+							descriptionKey="fields.city.description"
+							required
+							isRequired={true}
+						/>
+
+						<ReusableSelectField
+							control={form.control}
+							name="region"
+							labelKey="fields.region.label"
+							local="personalInfoForm"
+							placeholderKey="fields.region.placeholder"
+							descriptionKey="fields.region.description"
+							options={subStates}
+							onValueChange={(value) => form.setValue("region", value)}
+						/>
+
+						<ReusableFormField
+							control={form.control}
 							name="zip_code"
 							type="text"
 							local="personalInfoForm"

@@ -38,24 +38,7 @@ export const createProviderInfoSchema = (t: (key: string) => string) =>
 				message: t("fields.provider_last_name.error"),
 			}),
 		]),
-		provider_first_name_amharic: z.union([
-			z.literal(""),
-			z.string().regex(/^[^\d]*$/, {
-				message: t("fields.provider_first_name_amharic.error"),
-			}),
-		]),
-		provider_middle_initial_amharic: z.union([
-			z.literal(""),
-			z.string().regex(/^[^\d]*$/, {
-				message: t("fields.provider_middle_initial_amharic.error"),
-			}),
-		]),
-		provider_last_name_amharic: z.union([
-			z.literal(""),
-			z.string().regex(/^[^\d]*$/, {
-				message: t("fields.provider_last_name_amharic.error"),
-			}),
-		]),
+
 		provider_title: z.union([
 			z.literal(""),
 			z.string().min(2, { message: t("fields.provider_title.error") }),
@@ -103,7 +86,7 @@ export const createProviderInfoSchema = (t: (key: string) => string) =>
 		provider_phone_number: z
 			.string()
 			.refine((val) => RPNInput.isValidPhoneNumber(val), {
-				message: t("fields.contact_person_phone_number.error"),
+				message: t("fields.provider_phone_number.error"),
 			}),
 		provider_email: z
 			.string()
@@ -129,9 +112,12 @@ export const createProviderAddressSchema = (t: (key: string) => string) =>
 		provider_country: z.string().min(2, {
 			message: t("fields.provider_country.error"),
 		}),
-		provider_region: z.string().min(2, {
-			message: t("fields.provider_region.error"),
-		}),
+		provider_region: z.union([
+			z.literal(""),
+			z.string().min(2, {
+				message: t("fields.provider_region.error"),
+			}),
+		]),
 		provider_kifle_ketema: z.union([
 			z.literal(""),
 			z.string().min(2, { message: t("fields.provider_kifle_ketema.error") }),

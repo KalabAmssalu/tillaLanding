@@ -102,7 +102,7 @@ export default function OrganizationContactPersonForm({
 
 				<fieldset className="border p-4 rounded-md bg-background mt-6 ">
 					<legend className="text-lg font-semibold">
-						{t("contact_information")}
+						{t("representative_contact_information")}
 					</legend>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
 						<ReusablePhoneInputField

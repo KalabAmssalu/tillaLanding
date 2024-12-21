@@ -29,10 +29,10 @@ export const createorganizationInfoSchema = (t: (key: string) => string) =>
 		phone_number: z.string().refine((val) => RPNInput.isValidPhoneNumber(val), {
 			message: t("fields.phone_number.error"),
 		}),
-		email_address: z.union([
-			z.literal(""),
-			z.string().email({ message: t("fields.email_address.error") }),
-		]),
+		email_address: z
+			.string()
+			.email({ message: t("fields.email_address.error") }),
+
 		country_of_origin: z.union([
 			z.literal(""),
 			z.string().min(2, {

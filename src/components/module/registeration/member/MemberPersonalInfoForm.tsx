@@ -223,6 +223,7 @@ export default function MemberPersonalInfoForm({
 							labelKey="fields.email_address.label"
 							placeholderKey="fields.email_address.placeholder"
 							descriptionKey="fields.email_address.description"
+							required
 						/>
 					</div>
 				</fieldset>

@@ -226,10 +226,10 @@
 				}
 			},
 			"representative_mailing_address_line1": {
-				"label": "Representative Mailing Address Line 2",
-				"placeholder": "Mailing Address Line 1",
-				"description": "Choose a city from the list.",
-				"error": "City name must be at least 2 characters long."
+				"label": "Representative Street Address Line 2",
+				"placeholder": "Representative Street Address Line 2",
+				"description": "Choose a Representative Street Address.",
+				"error": "Representative Street Address name must be at least 2 characters long."
 			},
 			"representative_country": {
 				"label": "Representative Country",
@@ -284,6 +284,12 @@
 				"placeholder": "Enter  ZIP code or Woreda name",
 				"description": "ZIP code or Woreda name for 's address.",
 				"error": "ZIP code or Woreda name must be valid."
+			},
+			"representative_zip_code": {
+				"label": " ZIP Code / Woreda",
+				"placeholder": "Enter  ZIP code or Woreda name",
+				"description": "ZIP code or Woreda name for 's address.",
+				"error": "ZIP code or Woreda name must be valid."
 			}
 		}
 	},
@@ -291,48 +297,33 @@
 		"title": "Family Member Information",
 		"description": "Please provide the family member details below.",
 		"successMessage": "Family member information has been successfully submitted.",
-		"representative_info": "Primary Member Information",
+		"representative_info": "Primary Member/Family Representative Information",
 		"relationship": "Relationship",
 		"contact_information": "Contact Information",
-		"representative_address": "Primary Member Address Information",
+		"representative_address": "Primary Member/Family Representative Address Information",
 		"personal_information": "Family Member Information",
 		"AddressInfo": "Address Information",
 		"physical_attributes": "Physical Attributes",
-		"use_representative_address": "Use Representative Address",
+		"AddAFamilyMember": "Add A Family Member",
+		"AddAnotherMember": "Add Another Member",
+		"AddThisMember": "Add This Member",
+		"use_representative_address": "Use Family Representative Address",
 		"fields": {
 			"first_name": {
-				"label": "First Name - English",
+				"label": "First Name",
 				"placeholder": "Enter your first name",
 				"description": "Your legal first name.",
 				"error": "First name must be at least 2 characters long."
 			},
 			"middle_name": {
-				"label": "Middle Name - English",
+				"label": "Middle Name",
 				"placeholder": "Enter your middle name",
 				"description": "Your legal middle name.",
 				"error": "Middle name must be at least 2 characters long."
 			},
 			"last_name": {
-				"label": "Last Name - English",
+				"label": "Last Name",
 				"placeholder": "Enter your last name",
-				"description": "Your legal last name.",
-				"error": "Last name must be at least 2 characters long."
-			},
-			"amharic_first_name": {
-				"label": "First Name - Amharic",
-				"placeholder": "ስም በአማርኛ",
-				"description": "Your legal first name.",
-				"error": "First name must be at least 2 characters long."
-			},
-			"amharic_middle_name": {
-				"label": "Middle Name - Amharic",
-				"placeholder": "የአባት ስም በአማርኛ",
-				"description": "Your legal middle name.",
-				"error": "Middle name must be at least 2 characters long."
-			},
-			"amharic_last_name": {
-				"label": "Last Name - Amharic",
-				"placeholder": "የአያት ስም በአማርኛ",
 				"description": "Your legal last name.",
 				"error": "Last name must be at least 2 characters long."
 			},
@@ -380,13 +371,13 @@
 			},
 
 			"representative_first_name": {
-				"label": " First Name",
-				"placeholder": "Enter  first name",
-				"description": "'s first name.",
-				"error": " first name must be at least 2 characters long."
+				"label": "First Name",
+				"placeholder": "Enter first name",
+				"description": "representative's first name.",
+				"error": "first name must be at least 2 characters long."
 			},
 			"representative_middle_name": {
-				"label": " Middle Name",
+				"label": "Middle Name",
 				"placeholder": "Enter  middle name",
 				"description": "'s middle name.",
 				"error": " middle name must be at least 2 characters long."
@@ -427,7 +418,7 @@
 				}
 			},
 			"representative_mailing_address_line1": {
-				"label": " Stret Address Line 2",
+				"label": "Stret Address Line 2",
 				"placeholder": "Mailing Address Line 1",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
@@ -452,19 +443,19 @@
 			},
 			"representative_street_address": {
 				"label": " Street Address Line 1",
-				"placeholder": "Mailing Address Line 1",
+				"placeholder": "Street Address Line 1",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
 			},
 			"representative_kifle_ketema": {
-				"label": " Sub-city / Kifle Ketema",
+				"label": "Sub-city / Kifle Ketema",
 				"placeholder": "Mailing Address Line 1",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
 			},
 			"representative_phone_number": {
-				"label": " Phone Number",
-				"placeholder": "Enter  phone number",
+				"label": "Phone Number",
+				"placeholder": "Enter phone number",
 				"description": "'s phone number.",
 				"error": "A valid phone number is required between 10 and 15 digits."
 			},
@@ -488,42 +479,23 @@
 		"successMessage": "Your information has been successfully submitted.",
 		"fields": {
 			"firstName": {
-				"label": "First Name - English",
+				"label": "First Name",
 				"placeholder": "Enter your first name",
 				"description": "Your legal first name.",
 				"error": "First name must be at least 2 characters long."
 			},
 			"middleName": {
-				"label": "Middle Name - English",
+				"label": "Middle Name",
 				"placeholder": "Enter your middle name",
 				"description": "Your legal middle name.",
 				"error": "Middle name must be at least 2 characters long."
 			},
 			"lastName": {
-				"label": "Last Name - English",
+				"label": "Last Name",
 				"placeholder": "Enter your last name",
 				"description": "Your legal last name.",
 				"error": "Last name must be at least 2 characters long."
 			},
-			"firstNameAm": {
-				"label": "First Name - Amharic",
-				"placeholder": "ስም በአማርኛ",
-				"description": "Your legal first name.",
-				"error": "First name must be at least 2 characters long."
-			},
-			"middleNameAm": {
-				"label": "Middle Name - Amharic",
-				"placeholder": "የአባት ስም በአማርኛ",
-				"description": "Your legal middle name.",
-				"error": "Middle name must be at least 2 characters long."
-			},
-			"lastNameAm": {
-				"label": "Last Name - Amharic",
-				"placeholder": "የአያት ስም በአማርኛ",
-				"description": "Your legal last name.",
-				"error": "Last name must be at least 2 characters long."
-			},
-
 			"gender": {
 				"label": "Gender",
 				"placeholder": "Select your gender",
@@ -555,28 +527,28 @@
 				"error": "Please enter a valid email address."
 			},
 			"business_address_line_1": {
-				"label": "Business Mailing Address Line 1",
-				"placeholder": "Mailing Address Line 1",
-				"description": "Choose a city from the list.",
-				"error": "City name must be at least 2 characters long."
+				"label": "Business Street Address Line 1",
+				"placeholder": "Street Address Line 1",
+				"description": "Provide a valid Street Address.",
+				"error": "Street Address name must be at least 2 characters long."
 			},
 			"business_address_line_2": {
-				"label": "Business Mailing Address Line 2",
-				"placeholder": "Mailing Address Line 2",
-				"description": "Choose a city from the list.",
-				"error": "City name must be at least 2 characters long."
+				"label": "Business Street Address Line 2",
+				"placeholder": "Street Address Line 2",
+				"description": "Provide a valid Street Address 2.",
+				"error": "Street Address 2 name must be at least 2 characters long."
 			},
 			"business_city": {
 				"label": "City",
-				"placeholder": "Mailing Address Line 1",
+				"placeholder": "City",
 				"description": "Choose a city from the list.",
 				"error": "City name must be at least 2 characters long."
 			},
 			"business_state": {
 				"label": "Region or State",
-				"placeholder": "Mailing Address Line 1",
-				"description": "Choose a city from the list.",
-				"error": "City name must be at least 2 characters long."
+				"placeholder": "Region or State",
+				"description": "Choose a Region or State from the list.",
+				"error": "Region or State name must be at least 2 characters long."
 			},
 			"street_address": {
 				"label": "Street Address",
@@ -603,16 +575,16 @@
 				"description": "Provide a valid Business Type .",
 				"error": "TIN Number must be a Business Type.",
 				"options": {
-					"Private": "Private",
-					"Group": "Group",
-					"Sector": "Sector"
+					"private": "Private",
+					"group": "Group",
+					"sector": "Sector"
 				}
 			},
 			"license_state": {
-				"label": "License State / Region",
-				"placeholder": "Enter your License State ",
-				"description": "Provide a valid License State .",
-				"error": "TIN Number must be a License State."
+				"label": "Business Licensing Agency/ Organization",
+				"placeholder": "Enter your Business Licensing Agency/ Organization",
+				"description": "Provide a valid Business Licensing Agency/ Organization you got your license from",
+				"error": "TIN Number must be a License given by the state."
 			},
 			"license_issued_date": {
 				"label": "License Issued Date",
@@ -628,16 +600,16 @@
 			},
 
 			"business_zip_code": {
-				"label": "Business zip code",
-				"placeholder": "Enter your Business zip code ",
-				"description": "Provide a valid Business zip code .",
-				"error": "TIN Number must be a Business zip code."
+				"label": "Business ZIP code/ Woreda",
+				"placeholder": "Enter your Business ZIP code / Woreda ",
+				"description": "Provide a valid Business ZIP code .",
+				"error": "TIN Number must be a Business ZIP code."
 			},
 			"business_license_number": {
-				"label": "Business license Number",
-				"placeholder": "Enter your Business license Number ",
-				"description": "Provide a valid Business license Number .",
-				"error": "TIN Number must be a Business license Number."
+				"label": "Business License Number",
+				"placeholder": "Enter your Business License Number ",
+				"description": "Provide a valid Business License Number .",
+				"error": "TIN Number must be a Business License Number."
 			},
 			"company_name": {
 				"label": "Company Name",
@@ -652,7 +624,7 @@
 		"description": "Please provide the provider details below.",
 		"successMessage": "Provider information has been successfully submitted.",
 		"identifiation": "Provider Identification",
-		"information": "Provider Information",
+		"information": "Facility Details",
 		"AddressInfo": "Address Information",
 		"speciality": "Provider Specialty",
 		"group": "Business Group Information",
@@ -663,10 +635,10 @@
 		},
 		"fields": {
 			"tin_number": {
-				"label": "TIN Number",
-				"placeholder": "Enter TIN number",
+				"label": "TIN Number/ TAX ID",
+				"placeholder": "Enter TIN number/ TAX ID",
 				"description": "Tax Identification Number of the provider.",
-				"error": "TIN number is required."
+				"error": "TIN number/ TAX ID is required."
 			},
 			"institute_name": {
 				"label": "Institute Name",
@@ -681,40 +653,22 @@
 				"error": "Provider ID is required."
 			},
 			"provider_last_name": {
-				"label": "Last Name - English",
+				"label": "Last Name",
 				"placeholder": "Enter last name",
 				"description": "Provider's last name in English.",
 				"error": "Last name is required. Only letters are allowed."
 			},
 			"provider_first_name": {
-				"label": "First Name - English",
+				"label": "First Name",
 				"placeholder": "Enter first name",
 				"description": "Provider's first name in English.",
 				"error": "First name is required. Only letters are allowed."
 			},
 			"provider_middle_initial": {
-				"label": "Middle Initial - English",
+				"label": "Middle Initial",
 				"placeholder": "Enter middle initial",
 				"description": "Provider's middle initial in English.",
 				"error": "Middle initial must atleast 1 character. Only letters are allowed."
-			},
-			"provider_last_name_amharic": {
-				"label": "Last Name - Amharic",
-				"placeholder": "Enter last name in Amharic",
-				"description": "Provider's last name in Amharic.",
-				"error": "Last name in Amharic Only letters is allowed."
-			},
-			"provider_first_name_amharic": {
-				"label": "First Name - Amharic",
-				"placeholder": "Enter first name in Amharic",
-				"description": "Provider's first name in Amharic.",
-				"error": "First name in Amharic Only letters is allowed."
-			},
-			"provider_middle_initial_amharic": {
-				"label": "Middle Name - Amharic",
-				"placeholder": "Enter middle initial in Amharic",
-				"description": "Provider's middle initial in Amharic.",
-				"error": "Middle name in Amharic Only letters are allowed."
 			},
 			"provider_title": {
 				"label": "Provider Title",
@@ -940,7 +894,7 @@
 		"description": "Please provide the organization details below.",
 		"successMessage": "Organization information has been successfully submitted.",
 		"organization_information": "Organization Information",
-		"contact_information": "Contact Person Information",
+		"contact_information": "Organization Contact Information",
 		"AddressInfo": "Address Information",
 		"representative_info": "Contact Person Information",
 		"relationship": "Relationship",
@@ -1022,7 +976,7 @@
 			"street_address_line2": {
 				"label": "Street Address line 2",
 				"placeholder": "Enter street address",
-				"description": "Primary address of the organization.",
+				"description": "Secondary address of the organization.",
 				"error": "Street address is required."
 			},
 			"city": {

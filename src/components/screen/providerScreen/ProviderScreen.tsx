@@ -51,7 +51,7 @@ export default function ProviderScreen() {
 			<main ref={mainRef} className="min-h-screen bg-background">
 				<HeroHighlightDemo
 					text="Provide A good Health Service"
-					link="/provider/register"
+					link="/providerpow/select"
 					btnText="Register as a Provider"
 				/>
 				<ProviderInfo />

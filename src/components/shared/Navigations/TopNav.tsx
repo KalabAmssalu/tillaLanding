@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/custom/modeToggle";
 import { IMAGES } from "@/constants/files";
 
@@ -38,9 +39,13 @@ const TopNav = () => {
 					<div className="mr-0 flex items-center gap-2 md:mr-2">
 						<ModeToggle />
 						{/* Hamburger Menu Icon */}
-						<button className="md:hidden p-2" onClick={toggleMenu}>
-							<span className="text-secondary">☰</span>
-						</button>
+						<Button
+							className="md:hidden p-2"
+							variant="secondary"
+							onClick={toggleMenu}
+						>
+							<span className="text-primary">☰</span>
+						</Button>
 					</div>
 				</div>
 			</div>

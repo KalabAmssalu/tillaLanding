@@ -11,15 +11,15 @@ export const createPersonalInfoSchema = (t: (key: string) => string) =>
 		last_name: z.string().min(2, {
 			message: t("fields.lastName.error"),
 		}),
-		first_name_amharic: z.string().min(2, {
-			message: t("fields.firstNameAm.error"),
-		}),
-		middle_initial_amharic: z.string().min(2, {
-			message: t("fields.middleNameAm.error"),
-		}),
-		last_name_amharic: z.string().min(2, {
-			message: t("fields.lastNameAm.error"),
-		}),
+		// first_name_amharic: z.string().min(2, {
+		// 	message: t("fields.firstNameAm.error"),
+		// }),
+		// middle_initial_amharic: z.string().min(2, {
+		// 	message: t("fields.middleNameAm.error"),
+		// }),
+		// last_name_amharic: z.string().min(2, {
+		// 	message: t("fields.lastNameAm.error"),
+		// }),
 		gender: z.enum(["male", "female", "not_prefer_to_say"], {
 			invalid_type_error: t("fields.gender.error"),
 		}),
@@ -43,7 +43,7 @@ export const createbusinessInfoSchema = (t: (key: string) => string) =>
 		tax_identification_number: z.string().min(5, {
 			message: t("fields.tax_identification_number.error"),
 		}),
-		business_type: z.enum(["Private", "Group", "Sector"], {
+		business_type: z.enum(["private", "group", "sector"], {
 			invalid_type_error: t("fields.business_type.error"),
 		}),
 

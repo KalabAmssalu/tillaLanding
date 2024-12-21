@@ -7,23 +7,9 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 
 import ReusableFormField from "@/components/shared/Form/ReusableFormField";
+import ReusableSelectField from "@/components/shared/Form/ReusableSelectField";
 import { Button } from "@/components/ui/button";
-import {
-	Form,
-	FormControl,
-	FormDescription,
-	FormField,
-	FormItem,
-	FormLabel,
-	FormMessage,
-} from "@/components/ui/form";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
+import { Form } from "@/components/ui/form";
 import { useAppSelector } from "@/hooks/storehooks";
 import {
 	type ProviderAddressFormValues,
@@ -76,114 +62,28 @@ export default function ProviderAddressForm({
 		return getAllCountries();
 	}, []);
 
+	const handleCountryValueChange = (value: string) => {
+		setSelectedCountry(value);
+
+		form.setValue("provider_country", value);
+		form.setValue("provider_region", "");
+	};
 	return (
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
 				<fieldset className="border p-4 rounded-md bg-background pb-6">
 					<legend className="text-lg font-semibold">{t("AddressInfo")}</legend>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4 space-y-2">
-						<FormField
+						<ReusableSelectField
 							control={form.control}
 							name="provider_country"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel className="flex gap-1">
-										{t("fields.provider_country.label")}
-
-										<p className="text-red-500">*</p>
-									</FormLabel>
-									<FormControl>
-										<Select
-											value={field.value}
-											onValueChange={(value) => {
-												setSelectedCountry(value);
-
-												form.setValue("provider_country", value);
-												form.setValue("provider_region", "");
-											}}
-										>
-											<SelectTrigger className="items-start [&_[data-description]]:hidden">
-												<SelectValue
-													placeholder={t("fields.provider_country.placeholder")}
-												/>
-											</SelectTrigger>
-											<SelectContent>
-												{countryOptions.map((country) => (
-													<SelectItem key={country} value={country}>
-														<div className="flex items-start gap-3 text-muted-foreground">
-															<p>{country}</p>
-														</div>
-													</SelectItem>
-												))}
-											</SelectContent>
-										</Select>
-									</FormControl>
-									<FormMessage />
-									<FormDescription>
-										{t("fields.provider_country.description")}
-									</FormDescription>
-								</FormItem>
-							)}
-						/>
-						<FormField
-							control={form.control}
-							name="provider_region"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel className="flex gap-1">
-										{t("fields.provider_region.label")}
-										<p className="text-red-500">*</p>
-									</FormLabel>
-									<FormControl>
-										<Select
-											value={field.value}
-											onValueChange={(value) =>
-												form.setValue("provider_region", value)
-											}
-										>
-											<SelectTrigger className="items-start [&_[data-description]]:hidden">
-												<SelectValue
-													placeholder={t("fields.provider_region.placeholder")}
-												/>
-											</SelectTrigger>
-											<SelectContent>
-												{subStates.map((state, index) => (
-													<SelectItem key={index} value={state}>
-														<div className="flex items-start gap-3 text-muted-foreground">
-															<p>{state}</p>
-														</div>
-													</SelectItem>
-												))}
-											</SelectContent>
-										</Select>
-									</FormControl>
-									<FormMessage />
-									<FormDescription>
-										{t("fields.provider_region.description")}
-									</FormDescription>
-								</FormItem>
-							)}
-						/>
-						<ReusableFormField
-							control={form.control}
-							name="provider_city"
-							type="text"
+							labelKey="fields.provider_country.label"
 							local="providerInfoForm"
-							labelKey="fields.provider_city.label"
-							placeholderKey="fields.provider_city.placeholder"
-							descriptionKey="fields.provider_city.description"
+							placeholderKey="fields.provider_country.placeholder"
+							descriptionKey="fields.provider_country.description"
+							options={countryOptions}
+							onValueChange={handleCountryValueChange}
 							required
-							isRequired={true}
-						/>
-
-						<ReusableFormField
-							control={form.control}
-							name="provider_kifle_ketema"
-							type="text"
-							local="providerInfoForm"
-							labelKey="fields.provider_kifle_ketema.label"
-							placeholderKey="fields.provider_kifle_ketema.placeholder"
-							descriptionKey="fields.provider_kifle_ketema.description"
 						/>
 						<ReusableFormField
 							control={form.control}
@@ -207,6 +107,28 @@ export default function ProviderAddressForm({
 						/>
 						<ReusableFormField
 							control={form.control}
+							name="provider_city"
+							type="text"
+							local="providerInfoForm"
+							labelKey="fields.provider_city.label"
+							placeholderKey="fields.provider_city.placeholder"
+							descriptionKey="fields.provider_city.description"
+							required
+							isRequired={true}
+						/>
+						<ReusableSelectField
+							control={form.control}
+							name="provider_region"
+							labelKey="fields.provider_region.label"
+							local="providerInfoForm"
+							placeholderKey="fields.provider_region.placeholder"
+							descriptionKey="fields.provider_region.description"
+							options={subStates}
+							onValueChange={(value) => form.setValue("provider_region", value)}
+						/>
+
+						<ReusableFormField
+							control={form.control}
 							name="provider_zip_code"
 							type="text"
 							local="providerInfoForm"
@@ -216,13 +138,23 @@ export default function ProviderAddressForm({
 						/>
 						<ReusableFormField
 							control={form.control}
+							name="provider_kifle_ketema"
+							type="text"
+							local="providerInfoForm"
+							labelKey="fields.provider_kifle_ketema.label"
+							placeholderKey="fields.provider_kifle_ketema.placeholder"
+							descriptionKey="fields.provider_kifle_ketema.description"
+						/>
+
+						{/* <ReusableFormField
+							control={form.control}
 							name="provider_fax"
-							type="number"
+							type="text"
 							local="providerInfoForm"
 							labelKey="fields.provider_fax.label"
 							placeholderKey="fields.provider_fax.placeholder"
 							descriptionKey="fields.provider_fax.description"
-						/>
+						/> */}
 					</div>
 				</fieldset>
 				{visible && (

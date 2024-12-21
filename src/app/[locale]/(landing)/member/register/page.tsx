@@ -20,7 +20,7 @@ export default function MemberRegistration() {
 				]}
 			/>
 
-			<div className="container mx-auto py-10">
+			<div className="mx-auto py-10">
 				{type ? (
 					<MemberRegForm info={{ type, self }} />
 				) : (

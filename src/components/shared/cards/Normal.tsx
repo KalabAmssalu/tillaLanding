@@ -29,9 +29,14 @@ export function NormalCard({ portal }: { portal: PortalType }) {
 
 	return (
 		<motion.div
-			whileHover={{ scale: 1.05 }}
-			whileTap={{ scale: 0.9 }}
-			transition={{ type: "spring", stiffness: 50, damping: 20 }}
+			whileHover={{ scale: 1.02 }}
+			whileTap={{ scale: 0.98 }}
+			transition={{
+				type: "spring",
+				stiffness: 400, // Increased from 50 for snappier response
+				damping: 25, // Slightly increased from 20 to reduce bounce
+				mass: 0.5, // Added lower mass for lighter, quicker movement
+			}}
 		>
 			<Card
 				className="cursor-pointer w-full max-w-sm h-[500px] bg-background dark:bg-zinc-900 overflow-hidden"
