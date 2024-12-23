@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 
 import ReusableFormField from "@/components/shared/Form/ReusableFormField";
 import ReusablePhoneInputField from "@/components/shared/Form/ReusablePhoneInput";
+import ReusableSelectField from "@/components/shared/Form/ReusableSelectField";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useAppSelector } from "@/hooks/storehooks";
@@ -15,6 +16,10 @@ import {
 	type AddressInfoFormValues,
 	createaddressInfoSchema,
 } from "@/types/broker/BrokerInfoType";
+import {
+	getAllCountries,
+	getStatesForCountry,
+} from "@/types/provider/ProviderInfoType";
 
 interface AddressInfoFormProps {
 	onFormComplete: (data: AddressInfoFormValues) => void;
@@ -35,11 +40,31 @@ export default function AddressInfoForm({
 			business_address_line_1: DataInfo.business_address_line_1 || "",
 			business_address_line_2: DataInfo.business_address_line_2 || "",
 			business_kifle_ketema: DataInfo.business_kifle_ketema || "",
+			business_country: DataInfo.business_country || "",
 			business_city: DataInfo.business_city || "",
 			business_state: DataInfo.business_state || "",
 			business_zip_code: DataInfo.business_zip_code || "",
 		},
 	});
+	const [subStates, setSubStates] = useState<string[]>([]);
+	const [selectedCountry, setSelectedCountry] = useState<string>("");
+	useEffect(() => {
+		const selectedCountry = form.getValues("business_country");
+		if (selectedCountry) {
+			setSubStates(getStatesForCountry(selectedCountry) || []);
+		}
+	}, [selectedCountry, form]);
+
+	const countryOptions = useMemo(() => {
+		return getAllCountries();
+	}, []);
+
+	const handleCountryValueChange = (value: string) => {
+		setSelectedCountry(value);
+
+		form.setValue("business_country", value);
+		form.setValue("business_state", "");
+	};
 
 	function onSubmit(data: AddressInfoFormValues) {
 		onFormComplete(data);
@@ -74,6 +99,17 @@ export default function AddressInfoForm({
 				<fieldset className="border p-4 rounded-md">
 					<legend className="text-lg font-semibold">Address Information</legend>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+						<ReusableSelectField
+							control={form.control}
+							name="country"
+							labelKey="fields.country.label"
+							local="personalInfoForm"
+							placeholderKey="fields.country.placeholder"
+							descriptionKey="fields.country.description"
+							options={countryOptions}
+							onValueChange={handleCountryValueChange}
+							required
+						/>
 						<ReusableFormField
 							control={form.control}
 							name="business_address_line_1"
@@ -93,7 +129,6 @@ export default function AddressInfoForm({
 							placeholderKey="fields.business_address_line_2.placeholder"
 							descriptionKey="fields.business_address_line_2.description"
 						/>
-
 						<ReusableFormField
 							control={form.control}
 							name="business_city"
@@ -105,15 +140,18 @@ export default function AddressInfoForm({
 							required
 							isRequired={true}
 						/>
-						<ReusableFormField
+						<ReusableSelectField
 							control={form.control}
 							name="business_state"
-							type="text"
-							local="brokerInfoForm"
 							labelKey="fields.business_state.label"
+							local="personalInfoForm"
 							placeholderKey="fields.business_state.placeholder"
 							descriptionKey="fields.business_state.description"
+							options={subStates}
+							onValueChange={(value) => form.setValue("business_state", value)}
+							required
 						/>
+
 						<ReusableFormField
 							control={form.control}
 							name="business_zip_code"

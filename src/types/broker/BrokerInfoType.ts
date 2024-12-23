@@ -75,6 +75,7 @@ export const createaddressInfoSchema = (t: (key: string) => string) =>
 			.min(5, { message: t("fields.business_address_line_1.error") }),
 		business_address_line_2: z.string().optional(),
 		business_kifle_ketema: z.string().optional(),
+		business_country: z.string().optional(),
 		business_city: z
 			.string()
 			.min(2, { message: t("fields.business_city.error") }),

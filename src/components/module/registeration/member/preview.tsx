@@ -46,6 +46,7 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 					representative_email_address,
 					...Saved
 				} = data;
+
 				return Saved;
 			} else {
 				return data;
@@ -57,10 +58,10 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 		};
 
 		return (
-			<div className="min-h-screen bg-gray-100 p-8 flex justify-center">
+			<div className="min-h-screen bg-gray-100 p-0 flex justify-center md:p-8">
 				{/* A4 size container */}
 				<div
-					className="bg-white w-[210mm] h-[297mm] shadow-lg p-12 relative overflow-hidden"
+					className="bg-white w-full max-w-[250mm] h-[297mm] shadow-lg p-6 relative overflow-hidden mb-20"
 					ref={ref}
 				>
 					<div className="border-b pb-6 mb-6">
@@ -89,17 +90,17 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 						src={IMAGES.blueLogo}
 						width={60}
 						alt={"logo"}
-						className="absolute top-12 right-12"
+						className=" top-12 right-12 hidden md:absolute"
 					/>
 
 					{/* Content Grid */}
 					{displayedData ? (
-						<div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6 text-sm mt-6">
+						<div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6 text-sm my-6 pb-10">
 							{/* Basic Information */}
 							{!isFamily && (
 								<>
 									<div>
-										<h2 className="text-lg font-semibold text-gray-900 mb-4 text-sm">
+										<h2 className="text-lg font-semibold text-gray-900 mb-4 ">
 											Basic Information
 										</h2>
 										<div className="space-y-3">
@@ -260,7 +261,7 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 				</div>
 
 				{/* Submit Button */}
-				<div className="absolute bottom-20 right-12 ">
+				<div className="absolute bottom-12 right-12 ">
 					<Button
 						onClick={handlemodal}
 						className="bg-green-500 hover:bg-green-600 text-white"

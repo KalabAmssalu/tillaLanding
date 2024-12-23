@@ -1,12 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useRef, useState } from "react";
 
+import { CheckCheck, Loader2 } from "lucide-react";
+import { toast } from "sonner";
+
+import { useAddbroker } from "@/actions/Query/broker_Query/broker_Query";
 import StepIndicator from "@/components/shared/Stepper/step-indicator";
+import {
+	AlertDialog,
+	AlertDialogAction,
+	AlertDialogCancel,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useAppDispatch } from "@/hooks/storehooks";
-import { SetBrokerSlice } from "@/lib/store/redux/brokerSlice";
+import { useAppDispatch, useAppSelector } from "@/hooks/storehooks";
+import {
+	ClearBrokerSlice,
+	SetBrokerSlice,
+} from "@/lib/store/redux/brokerSlice";
 import { type BrokerType } from "@/types/broker/BrokerType";
 
 import AddressInfoForm from "./AddressInfoForm";
@@ -17,6 +35,13 @@ import Preview from "./preview";
 export default function BrokerRegForm({ brokerType }: { brokerType: string }) {
 	const [currentStep, setCurrentStep] = useState(0);
 	const [brokerTypeState, setBrokerTypeState] = useState(brokerType);
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [nextActive, setNextActive] = useState(false);
+	const { mutate: BrokerMutation } = useAddbroker();
+	const data = useAppSelector((state) => state.broker.brokerSlice);
+
+	const printRef = useRef<HTMLDivElement>(null);
+	const router = useRouter();
 	const [formData, setFormData] = useState<Partial<BrokerType>>({
 		business_address_line_1: "",
 		business_address_line_2: "",
@@ -34,17 +59,12 @@ export default function BrokerRegForm({ brokerType }: { brokerType: string }) {
 		date_of_birth: "",
 		email_address: "",
 		first_name: "",
-		first_name_amharic: "",
 		gender: "",
 		last_name: "",
-		last_name_amharic: "",
 		middle_initial: "",
-		middle_initial_amharic: "",
 		phone_number: "",
 		tax_identification_number: "",
 	});
-
-	const [nextActive, setNextActive] = useState(false);
 
 	const dispatch = useAppDispatch();
 
@@ -54,7 +74,54 @@ export default function BrokerRegForm({ brokerType }: { brokerType: string }) {
 		dispatch(SetBrokerSlice(updatedData));
 		setNextActive(true);
 	};
+	const [isOpen, setIsOpen] = useState(false);
 
+	const handleConfirm = () => {
+		setIsOpen(true);
+	};
+
+	const handleSubmit = async () => {
+		setIsSubmitting(true);
+		try {
+			console.log(data);
+			const dataSend = {
+				...data,
+				monthly_premium: 0,
+				yearly_premium: 0,
+				in_network: true,
+			};
+			await BrokerMutation(dataSend, {
+				onSuccess: () => {
+					router.push(
+						`/success?type=${brokerType}&title=Registration Successful&message=Congratulations! You're now part of our tilla Health Broker.&redirectPath=/home&buttonText=Home` as `/${string}`
+					);
+					dispatch(ClearBrokerSlice());
+
+					// {
+					// 	info.type?.toLowerCase() !== "federal" &&
+					// 		downloadFile(
+					// 			`${window.location.origin}/docs/company.xlsx`,
+					// 			"company.xlsx"
+					// 		);
+					// }
+				},
+				onError: () => {
+					toast.error(
+						"Failed to submit Broker registration data. Please try again."
+					);
+				},
+				onSettled: () => {
+					setIsSubmitting(false);
+				},
+			});
+		} catch (error) {
+			toast.error(
+				"Failed to submit Broker registration data. Please try again."
+			);
+		} finally {
+			setIsSubmitting(false);
+		}
+	};
 	const steps = [
 		{
 			title: "Personal Information",
@@ -93,8 +160,9 @@ export default function BrokerRegForm({ brokerType }: { brokerType: string }) {
 			title: "Preview",
 			content: (
 				<Preview
-					onFormComplete={() => setNextActive(true)}
-					active={nextActive}
+					onConfirm={handleConfirm}
+					isBroker={brokerType === "broker" ? true : false}
+					ref={printRef}
 				/>
 			),
 		},
@@ -114,24 +182,64 @@ export default function BrokerRegForm({ brokerType }: { brokerType: string }) {
 	};
 
 	return (
-		<Card className="w-full mx-auto">
-			<CardHeader>
-				<CardTitle>{steps[currentStep].title}</CardTitle>
-				<StepIndicator currentStep={currentStep} totalSteps={steps.length} />
-			</CardHeader>
-			<CardContent className="p-6 relative">
-				{steps[currentStep].content}
-				<div className="mt-6 flex justify-between">
-					<Button
-						onClick={prevStep}
-						disabled={currentStep === 0}
-						variant="outline"
-						className="absolute bottom-[3.05rem]"
-					>
-						Previous
-					</Button>
-				</div>
-			</CardContent>
-		</Card>
+		<>
+			<Card className="w-full mx-auto">
+				<CardHeader>
+					<CardTitle>{steps[currentStep].title}</CardTitle>
+					<StepIndicator currentStep={currentStep} totalSteps={steps.length} />
+				</CardHeader>
+				<CardContent className="p-6 relative">
+					{steps[currentStep].content}
+					<div className="mt-6 flex justify-between">
+						<Button
+							onClick={prevStep}
+							disabled={currentStep === 0}
+							variant="outline"
+							className="absolute bottom-[3.05rem]"
+						>
+							Previous
+						</Button>
+					</div>
+				</CardContent>
+			</Card>
+
+			<p className=" text-center mt-20 border-primary py-32 border-t-2">
+				The Tilla Health Insurance Registration Form is designed to capture
+				essential details from applicants for seamless onboarding. The form
+				ensures data accuracy, security, and user-friendliness, accommodating
+				individuals, families, or businesses.
+			</p>
+			<AlertDialog open={isOpen} onOpenChange={setIsOpen}>
+				<AlertDialogContent>
+					<AlertDialogHeader>
+						<AlertDialogTitle className="flex gap-4 items-center">
+							<CheckCheck className="h-6 w-6 p-1 bg-green-300 rounded-full" />
+							Form Submission
+						</AlertDialogTitle>
+						<AlertDialogDescription>
+							To finish your form submission, please submut the form. and you
+							can download the pdf file.
+						</AlertDialogDescription>
+					</AlertDialogHeader>
+					<AlertDialogFooter>
+						<AlertDialogCancel>Cancel</AlertDialogCancel>
+						<AlertDialogAction
+							className="bg-green-500"
+							disabled={isSubmitting}
+							onClick={handleSubmit}
+						>
+							{isSubmitting ? (
+								<>
+									<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+									Submitting...
+								</>
+							) : (
+								"Download and Submit"
+							)}
+						</AlertDialogAction>
+					</AlertDialogFooter>
+				</AlertDialogContent>
+			</AlertDialog>
+		</>
 	);
 }

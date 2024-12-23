@@ -2,6 +2,7 @@ export interface BrokerType {
 	business_address_line_1: string;
 	business_address_line_2: string;
 	business_city: string;
+	business_country: string;
 	business_kifle_ketema: string;
 	business_license_number: string;
 	business_state: string;
@@ -11,12 +12,9 @@ export interface BrokerType {
 	date_of_birth: string;
 	email_address: string;
 	first_name: string;
-	first_name_amharic: string;
 	gender: string;
 	last_name: string;
-	last_name_amharic: string;
 	middle_initial: string;
-	middle_initial_amharic: string;
 	phone_number: string;
 	tax_identification_number: string;
 	broker_type: string;
