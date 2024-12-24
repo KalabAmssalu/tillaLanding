@@ -18,7 +18,7 @@ export const createMemeberInfoSchema = (t: (key: string) => string) =>
 			z.literal(""),
 			z
 				.string()
-				.min(2, {
+				.max(1, {
 					message: t("fields.middle_name.error"),
 				})
 				.regex(/^[^\d]*$/, {
@@ -116,9 +116,14 @@ export const createMemberRepresentativeSchema = (t: (key: string) => string) =>
 		]),
 		representative_middle_name: z.union([
 			z.literal(""),
-			z.string().regex(/^[^\d]*$/, {
-				message: t("fields.representative_middle_name.error"),
-			}),
+			z
+				.string()
+				.max(1, {
+					message: t("fields.representative_middle_name.error"),
+				})
+				.regex(/^[^\d]*$/, {
+					message: t("fields.representative_middle_name.error"),
+				}),
 		]),
 		representative_gender: z.union([
 			z.literal(""),

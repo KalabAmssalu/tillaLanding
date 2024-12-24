@@ -12,7 +12,7 @@ export async function setCheckoutChapa(data: checkoutType) {
 
 		return {
 			ok: true,
-			message: "ወደ ክፍያ መክፈያው ሄደው ይሙሉ!",
+			message: "GO to the payement platform!",
 			data: response.data,
 		};
 	} catch (error: any) {
@@ -27,7 +27,7 @@ export async function setCheckoutStrip(data: checkoutType) {
 
 		return {
 			ok: true,
-			message: "ወደ ክፍያ መክፈያው ሄደው ይሙሉ!",
+			message: "GO to the payement platform!",
 			data: response.data,
 		};
 	} catch (error: any) {

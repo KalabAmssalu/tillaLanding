@@ -32,7 +32,7 @@ export const createProviderInfoSchema = (t: (key: string) => string) =>
 					message: t("fields.provider_middle_initial.error"),
 				}),
 		]),
-		provider_last_name: z.union([
+		provider_last_name: z.z.union([
 			z.literal(""),
 			z.string().regex(/^[^\d]*$/, {
 				message: t("fields.provider_last_name.error"),

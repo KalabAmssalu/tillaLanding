@@ -13,7 +13,7 @@ export async function setBroker(data: BrokerType) {
 		console.log("response", response.data);
 		return {
 			ok: true,
-			message: "አዲስ ተጠቃሚ በተሳካ ሁኔታ ፈጥረዋል!",
+			message: "New Broker is Added",
 			data: response.data,
 		};
 	} catch (error: any) {

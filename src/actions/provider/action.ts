@@ -1,6 +1,6 @@
 "use server";
 
-import { ProviderType } from "@/types/provider/ProviderType";
+import { type ProviderType } from "@/types/provider/ProviderType";
 
 import axiosInstance from "../axiosInstance";
 import getErrorMessage from "../getErrorMessage";
@@ -12,7 +12,7 @@ export async function setProvider(data: ProviderType) {
 		console.log("response", response.data);
 		return {
 			ok: true,
-			message: "አዲስ የጤና አቅራቢ ተጠቃሚ በተሳካ ሁኔታ ፈጥረዋል!",
+			message: "New Provider is created!",
 			data: response.data,
 		};
 	} catch (error: any) {

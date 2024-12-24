@@ -93,9 +93,14 @@ export const contactPersonInfoSchema = (t: (key: string) => string) =>
 		]),
 		contact_person_middle_name: z.union([
 			z.literal(""),
-			z.string().regex(/^[^\d]*$/, {
-				message: t("fields.contact_person_middle_name.error"),
-			}),
+			z
+				.string()
+				.min(2, {
+					message: t("fields.contact_person_middle_name.error"),
+				})
+				.regex(/^[^\d]*$/, {
+					message: t("fields.contact_person_middle_name.error"),
+				}),
 		]),
 		contact_person_position: z.union([
 			z.literal(""),

@@ -11,7 +11,7 @@ export async function useAddorganization(data: Partial<organizationType>) {
 		console.log("response", response.data);
 		return {
 			ok: true,
-			message: "አዲስ የድርጅት መረጃ በተሳካ ሁኔታ ፈጥረዋል!",
+			message: "New Organization is created!",
 			data: response.data,
 		};
 	} catch (error: any) {

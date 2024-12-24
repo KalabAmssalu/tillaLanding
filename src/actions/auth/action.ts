@@ -98,7 +98,7 @@ export async function signIn(credentials: ICredentials) {
 
 		return {
 			ok: true,
-			message: "እንኳን ደህና መጡ! በተሳካ ሁኔታ ገብተዋል።",
+			message: "Wellcom! you are logged in",
 			data: response.data,
 		};
 	} catch (error: any) {

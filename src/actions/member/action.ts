@@ -11,7 +11,7 @@ export async function setMemeberIndividual(data: Partial<memeberType>) {
 		console.log("response", response.data);
 		return {
 			ok: true,
-			message: "አዲስ ተጠቃሚ በተሳካ ሁኔታ ፈጥረዋል!",
+			message: "New Member is Added",
 			data: response.data,
 		};
 	} catch (error: any) {
@@ -28,7 +28,7 @@ export async function setFamilyMember(data: Partial<familyType[]>) {
 		console.log("response", response.data);
 		return {
 			ok: true,
-			message: "አዲስ የቤተሰብ ተጠቃሚ በተሳካ ሁኔታ ፈጥረዋል!",
+			message: "New Family Record is Added!",
 			data: response.data,
 		};
 	} catch (error: any) {

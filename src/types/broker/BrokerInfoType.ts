@@ -5,21 +5,22 @@ export const createPersonalInfoSchema = (t: (key: string) => string) =>
 		first_name: z.string().min(2, {
 			message: t("fields.firstName.error"),
 		}),
-		middle_initial: z.string().min(2, {
-			message: t("fields.middleName.error"),
-		}),
+		middle_initial: z.union([
+			z.literal(""),
+			z
+				.string()
+				.min(2, {
+					message: t("fields.middle_initial.error"),
+				})
+				.regex(/^[^\d]*$/, {
+					message: t("fields.middle_initial.error"),
+				}),
+		]),
+
 		last_name: z.string().min(2, {
 			message: t("fields.lastName.error"),
 		}),
-		// first_name_amharic: z.string().min(2, {
-		// 	message: t("fields.firstNameAm.error"),
-		// }),
-		// middle_initial_amharic: z.string().min(2, {
-		// 	message: t("fields.middleNameAm.error"),
-		// }),
-		// last_name_amharic: z.string().min(2, {
-		// 	message: t("fields.lastNameAm.error"),
-		// }),
+
 		gender: z.enum(["male", "female", "not_prefer_to_say"], {
 			invalid_type_error: t("fields.gender.error"),
 		}),
