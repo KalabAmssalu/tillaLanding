@@ -93,6 +93,7 @@ export default function FamilyPlanSelection({
 					members_count: familyMembers,
 					amount: totalPrice * 100,
 					deductible_type: deductable,
+					cancel_url: `${process.env.NEXT_STRIP_CANCEL_URL}/${userType}`,
 				});
 			}
 		} else {

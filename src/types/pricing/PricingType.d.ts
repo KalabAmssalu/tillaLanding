@@ -34,4 +34,5 @@ export type checkoutType = {
 	members_count: number;
 	amount?: number;
 	deductible_type?: string;
+	cancel_url?: string;
 };

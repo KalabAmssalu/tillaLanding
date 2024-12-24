@@ -89,13 +89,14 @@ export default function PlanSelection({ userType }: { userType: string }) {
 						members_count: memberCount,
 						amount: totalPrice * 100,
 						deductible_type: deductable,
+						cancel_url: `${process.env.NEXT_STRIP_CANCEL_URL}/${userType}`,
 					},
 					{
 						onSuccess: () => {
-							const type = userType.toLowerCase();
-							router.push(
-								`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
-							);
+							// const type = userType.toLowerCase();
+							// router.push(
+							// 	`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
+							// );
 						},
 					}
 				);
