@@ -89,7 +89,7 @@ export default function PlanSelection({ userType }: { userType: string }) {
 						members_count: memberCount,
 						amount: totalPrice * 100,
 						deductible_type: deductable,
-						cancel_url: `${process.env.NEXT_STRIP_CANCEL_URL}/${userType}`,
+						// cancel_url: `${process.env.NEXT_STRIP_CANCEL_URL}/${userType}`,
 					},
 					{
 						onSuccess: () => {
