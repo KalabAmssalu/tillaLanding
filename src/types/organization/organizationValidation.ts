@@ -61,10 +61,8 @@ export const organizationAddressSchema = (t: (key: string) => string) =>
 			message: t("fields.city.error"),
 		}),
 
-		region: z.union([
-			z.literal(""),
-			z.string().min(2, { message: t("fields.region.error") }),
-		]),
+		region: z.string().min(2, { message: t("fields.region.error") }),
+
 		kifle_ketema: z.union([
 			z.literal(""),
 			z.string().min(2, { message: t("fields.kifle_ketema.error") }),

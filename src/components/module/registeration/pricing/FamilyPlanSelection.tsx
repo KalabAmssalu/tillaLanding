@@ -71,23 +71,27 @@ export default function FamilyPlanSelection({
 
 	const { mutate: checkoutStripMutation } = useCheckoutStrip();
 	const { mutate: checkoutChapaMutation } = useCheckoutChapa();
+	const memberIds =
+		familyData.length > 0
+			? familyData
+					.map((member) => Number(member.id)) // Converts ids to numbers
+					.filter((id): id is number => !isNaN(id)) // Filters only valid numbers
+			: [];
+
+	const idToSend = JSON.stringify(memberIds);
 
 	const handleSubmit = (paymentMethod: "stripe" | "chapa") => {
-		console.log("paymentMethod", paymentMethod);
+		console.log("id", JSON.stringify(memberIds));
+
 		if (paymentMethod === "stripe") {
 			if (selectedPlan) {
 				checkoutStripMutation({
 					email: familyData[0].representative_email_address,
-					member_id:
-						familyData.length > 0
-							? familyData
-									.map((member) => member.id)
-									.filter((id): id is string => typeof id === "string")
-							: [],
+					member_id: idToSend,
 					billing_cycle: billingCycle,
 					plan_type: selectedPlan.title.toLowerCase().replace(" ", "_"),
 					members_count: familyMembers,
-					amount: totalPrice,
+					amount: totalPrice * 100,
 					deductible_type: deductable,
 				});
 			}
@@ -95,12 +99,7 @@ export default function FamilyPlanSelection({
 			if (selectedPlan) {
 				checkoutChapaMutation({
 					email: familyData[0].representative_email_address,
-					member_id:
-						familyData.length > 0
-							? familyData
-									.map((member) => member.id)
-									.filter((id): id is string => typeof id === "string")
-							: [],
+					member_id: idToSend,
 					billing_cycle: billingCycle === "yearly" ? "annual" : "monthly",
 					plan_type: selectedPlan.title.toLowerCase().replace(" ", "_"),
 					members_count: familyMembers,

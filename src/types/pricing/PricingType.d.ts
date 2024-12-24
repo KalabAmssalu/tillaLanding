@@ -27,7 +27,7 @@ export interface PricingTier {
 }
 
 export type checkoutType = {
-	member_id: string | string[] | undefined;
+	member_id: string | number[] | undefined;
 	email?: string;
 	billing_cycle: string;
 	plan_type: string;

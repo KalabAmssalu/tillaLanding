@@ -70,6 +70,9 @@ export default function ProviderInfoForm({
 				DataInfo.provider_contact_phone_number || "",
 			provider_phone_number: DataInfo.provider_phone_number || "",
 			provider_email: DataInfo.provider_email || "",
+			provider_health_sub_tier: DataInfo.provider_health_sub_tier || "",
+			provider_health_tier: DataInfo.provider_health_tier || "",
+			provider_service_type: "institute",
 		},
 	});
 
@@ -98,8 +101,6 @@ export default function ProviderInfoForm({
 		const selectedTier = form.getValues("provider_health_tier");
 		if (selectedTier) {
 			setSubTiers(getSubTiersForTier(selectedTier) || []);
-
-			form.setValue("provider_health_sub_tier", "");
 		}
 	}, [selectedMainTier, form]);
 

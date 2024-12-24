@@ -34,7 +34,7 @@ import ProviderGroupForm from "./ProviderGroupForm";
 import ProviderInfoForm from "./ProviderInfoForm";
 import Preview from "./preview";
 
-const ProviderRegForm = () => {
+const ProviderRegForm = ({ type }: { type: string }) => {
 	const [currentStep, setCurrentStep] = useState(0);
 	const { mutate: ProviderMutation, isSuccess } = useAddproviderMutation();
 	const data = useAppSelector((state) => state.provider.providerSlice);
@@ -59,7 +59,7 @@ const ProviderRegForm = () => {
 		provider_discount_agreement: 0,
 		provider_health_sub_tier: "",
 		provider_health_tier: "",
-		provider_service_type: "individual",
+		provider_service_type: "institute",
 		provider_gender: "male",
 		provider_date_of_birth: "",
 		provider_address: "",
@@ -79,6 +79,7 @@ const ProviderRegForm = () => {
 		provider_group_contact_person: "",
 		provider_group_phone_number: "",
 		provider_group_address: "",
+		provider_place_of_work: type.toLowerCase(),
 	});
 
 	const [nextActive, setNextActive] = useState(false);
@@ -118,16 +119,17 @@ const ProviderRegForm = () => {
 				return;
 			}
 
-			await ProviderMutation(data);
-			if (isSuccess) {
-				// Navigate to the success page with query parameters
-				const type = "provider"; // Replace with the actual type source
-				router.push(
-					`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
-				);
-				dispatch(ClearProviderSlice());
-				handleDownloadPDF();
-			}
+			ProviderMutation(data, {
+				onSuccess: (data) => {
+					// Navigate to the success page with query parameters
+					const type = "provider"; // Replace with the actual type source
+					router.push(
+						`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
+					);
+					handleDownloadPDF();
+					dispatch(ClearProviderSlice());
+				},
+			});
 		} catch (error) {
 			toast.error("Failed to submit Member data. Please try again.");
 		} finally {

@@ -20,7 +20,7 @@ const initialState = {
 		provider_discount_agreement: 0,
 		provider_health_sub_tier: "",
 		provider_health_tier: "",
-		provider_service_type: "individual",
+		provider_service_type: "institute",
 		provider_address: "",
 		provider_address_line2: "",
 		provider_city: "",
@@ -39,6 +39,7 @@ const initialState = {
 		provider_group_phone_number: "",
 		provider_group_contact_email: "",
 		provider_group_address: "",
+		provider_place_of_work: "",
 	},
 };
 

@@ -6,7 +6,7 @@ export const useAddproviderMutation = () => {
 	return useToastMutation<ProviderType>(
 		"addprovider",
 		setProvider,
-		"Member creating...",
+		"Provider creating...",
 		{
 			onSuccess: (data, variables) => {
 				// 'data' contains the response from the server

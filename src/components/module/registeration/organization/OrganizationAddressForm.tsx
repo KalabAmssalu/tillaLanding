@@ -130,6 +130,7 @@ export default function OrganizationAddressForm({
 							descriptionKey="fields.region.description"
 							options={subStates}
 							onValueChange={(value) => form.setValue("region", value)}
+							required={true}
 						/>
 
 						<ReusableFormField

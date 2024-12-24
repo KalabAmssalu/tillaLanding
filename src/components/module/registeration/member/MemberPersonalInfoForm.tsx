@@ -19,10 +19,12 @@ import {
 } from "@/types/memeber/memberValidation";
 
 interface MemberInfoFormProps {
+	type: string;
 	onFormComplete: (data: MemberInfoFormValues) => void;
 }
 
 export default function MemberPersonalInfoForm({
+	type,
 	onFormComplete,
 }: MemberInfoFormProps) {
 	const [visible, setVisible] = useState(true);
@@ -135,6 +137,8 @@ export default function MemberPersonalInfoForm({
 							labelKey="fields.tin_number.label"
 							placeholderKey="fields.tin_number.placeholder"
 							descriptionKey="fields.tin_number.description"
+							isRequired={type === "diaspora" ? true : false}
+							required={type === "diaspora" ? true : false}
 						/>
 						<ReusableSelectField
 							control={form.control}

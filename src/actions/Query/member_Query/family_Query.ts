@@ -21,6 +21,7 @@ export const useAddFamily = () => {
 				await dispatch(clearFamily());
 				await dispatch(ClearmemberSlice());
 				await dispatch(clearFamilyMembers());
+				console.log("data", data.data);
 				dispatch(setFamily(data.data as familyType[]));
 				// queryClient.invalidateQueries({ queryKey: ["memebers"] });
 				// Example: Display a message with the memeber name

@@ -8,19 +8,19 @@ import ReusableHero from "@/components/shared/Hero/ReusableHero_Choice";
 import BreadcrumbNav from "@/components/shared/Navigations/breadcrambNav";
 
 const ProviderOptions = [
-	{ label: "Based in Ethiopia", icon: <MapPin size={16} />, self: true },
+	{ label: "Based in Ethiopia", icon: <MapPin size={16} />, value: "local" },
 	{
 		label: "Based outside of Ethiopia",
 		icon: <Globe size={16} />,
-		self: false,
+		value: "inter",
 	},
 ];
 
 export default function ProviderSelection() {
 	const router = useRouter();
 
-	const handleSelection = (option: { label: string; self?: boolean }) => {
-		const query = `workplace=${option.label.toLowerCase()}`;
+	const handleSelection = (option: { label: string; value: string }) => {
+		const query = `workplace=${option.value.toLowerCase()}`;
 		router.push(`/provider/register?${query}` as `/${string}`);
 	};
 

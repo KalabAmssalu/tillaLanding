@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { format } from "date-fns";
+import { format, set } from "date-fns";
 import { CirclePlus, Pencil, Trash } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -32,6 +32,7 @@ export default function FamilyMember({
 		(state) => state.familyMember.familyMember
 	);
 	const [showForm, setShowForm] = useState(false);
+	const [isfirst, setIsfirst] = useState(true);
 	const [userData, setUserdata] = useState<FamilyInfoType>();
 
 	const handleAddMember = (data: FamilyInfoType) => {
@@ -71,12 +72,13 @@ export default function FamilyMember({
 			);
 		}
 		setShowForm(false);
+		setIsfirst(false);
 		setUserdata(undefined);
 	};
 
 	return (
 		<div className="p-4">
-			{familyMembers.length === 0 && !showForm ? (
+			{familyMembers.length === 0 && !showForm && isfirst ? (
 				<div className="flex justify-center mt-4 h-[300px]">
 					<Button onClick={() => setShowForm(true)} className="flex gap-2">
 						{t("AddAFamilyMember")}
@@ -105,66 +107,69 @@ export default function FamilyMember({
 									</Button>
 								</div>
 							)}
-							<Card className="my-6">
-								<CardHeader>
-									<div className="flex items-center justify-between">
-										<CardTitle>Family Members</CardTitle>
-										<Button
-											onClick={handleClear}
-											className="flex gap-2"
-											variant="destructive"
-										>
-											Remove All Family Members
-											<Trash size={20} />
-										</Button>
-									</div>
-								</CardHeader>
-								<CardContent>
-									<ul className="space-y-4">
-										{familyMembers.map((member) => (
-											<li key={member.id} className="bg-muted rounded p-4">
-												<h3 className="font-bold text-lg mb-2">
-													{member.first_name} {member.middle_name}{" "}
-													{member.last_name}
-												</h3>
-												<p>Relationship: {member.relationship_to_member}</p>
-												<p>Gender: {member.gender}</p>
-												<p>
-													Date of Birth:{" "}
-													{member.date_of_birth
-														? format(
-																new Date(member.date_of_birth),
-																"MMMM d, yyyy"
-															)
-														: "Not provided"}
-												</p>
-												<p>Phone: {member.phone_number || "Not provided"}</p>
-												<p>Email: {member.email_address || "Not provided"}</p>
-												<div className="flex justify-end gap-2">
-													<Button
-														onClick={() => handleEdit(member)}
-														className="flex "
-														variant={"outline"}
-														size={"sm"}
-													>
-														<Pencil className="mr-2" size={12} />
-														Edit
-													</Button>
-													<Button
-														onClick={() => handleDelete(member)}
-														className="flex "
-														variant={"destructive"}
-														size={"sm"}
-													>
-														<Trash className="mr-2" size={12} />
-														Delete
-													</Button>
-												</div>
-											</li>
-										))}
-									</ul>
-								</CardContent>
-							</Card>
+							{/* preview */}
+							{familyMembers.length !== 0 && familyMembers[0].id && (
+								<Card className="my-6">
+									<CardHeader>
+										<div className="flex items-center justify-between">
+											<CardTitle>Family Members</CardTitle>
+											<Button
+												onClick={handleClear}
+												className="flex gap-2"
+												variant="destructive"
+											>
+												Remove All Family Members
+												<Trash size={20} />
+											</Button>
+										</div>
+									</CardHeader>
+									<CardContent>
+										<ul className="space-y-4">
+											{familyMembers.map((member) => (
+												<li key={member.id} className="bg-muted rounded p-4">
+													<h3 className="font-bold text-lg mb-2">
+														{member.first_name} {member.middle_name}{" "}
+														{member.last_name}
+													</h3>
+													<p>Relationship: {member.relationship_to_member}</p>
+													<p>Gender: {member.gender}</p>
+													<p>
+														Date of Birth:{" "}
+														{member.date_of_birth
+															? format(
+																	new Date(member.date_of_birth),
+																	"MMMM d, yyyy"
+																)
+															: "Not provided"}
+													</p>
+													<p>Phone: {member.phone_number || "Not provided"}</p>
+													<p>Email: {member.email_address || "Not provided"}</p>
+													<div className="flex justify-end gap-2">
+														<Button
+															onClick={() => handleEdit(member)}
+															className="flex "
+															variant={"outline"}
+															size={"sm"}
+														>
+															<Pencil className="mr-2" size={12} />
+															Edit
+														</Button>
+														<Button
+															onClick={() => handleDelete(member)}
+															className="flex "
+															variant={"destructive"}
+															size={"sm"}
+														>
+															<Trash className="mr-2" size={12} />
+															Delete
+														</Button>
+													</div>
+												</li>
+											))}
+										</ul>
+									</CardContent>
+								</Card>
+							)}
 						</>
 					)}
 

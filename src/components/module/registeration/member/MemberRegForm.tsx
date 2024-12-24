@@ -197,7 +197,6 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 					max_out_of_pocket_etb: 0,
 					total_medical_expense: 0,
 					deductible: 0,
-
 					member_payment_duty: 0,
 					has_transport_subscription: false,
 				}));
@@ -290,6 +289,7 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 						title: "Member Information",
 						content: (
 							<MemberPersonalInfoForm
+								type={info.type ? info.type.toLowerCase() : "individual"}
 								onFormComplete={(data) => {
 									updateFormData(data);
 									nextStep();

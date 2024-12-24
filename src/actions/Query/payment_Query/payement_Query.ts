@@ -25,7 +25,7 @@ export const useCheckoutChapa = () => {
 					// const paymentLink = data.data.payment_link as string;
 					const paymentLink = (data.data as { payment_link: string })
 						.payment_link;
-					window.open(paymentLink, "_blank"); // Open payment link in a new tab
+					window.location.href = paymentLink; // Open payment link in a new tab
 					const type = "family"; // Replace with the actual type source
 					router.push(
 						`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
@@ -62,7 +62,8 @@ export const useCheckoutStrip = () => {
 				// Use a type guard to ensure 'checkout_url' exists
 				if (data.ok && isCheckoutData(data.data)) {
 					const paymentLink = data.data.checkout_url;
-					window.open(paymentLink, "_blank"); // Open payment link in a new tab
+					// window.open(paymentLink, "_blank"); // Open payment link in a new tab
+					window.location.href = paymentLink;
 				} else {
 					console.error("Invalid data structure:", data.data);
 				}

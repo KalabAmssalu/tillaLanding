@@ -10,12 +10,13 @@ import { useAppSelector } from "@/hooks/storehooks";
 
 interface PersonalInfoProps {
 	onConfirm: () => void;
+	type: string;
 	ref: React.RefObject<HTMLDivElement>;
 }
 
 // eslint-disable-next-line react/display-name
 const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
-	({ onConfirm }, ref) => {
+	({ onConfirm, type }, ref) => {
 		const data = useAppSelector(
 			(state) => state.organization.organizationSlice
 		);
@@ -129,12 +130,13 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 									</h2>
 									<div className="space-y-3">
 										{[
-											"street_address",
 											"country",
+											"street_address",
+											"street_address_line2",
 											"city",
 											"region",
-											"country_of_origin",
 											"kifle_ketema",
+											...(type === "ngo" ? ["country_of_origin"] : []), // Conditionally include "country"
 										].map((key) => (
 											<Field
 												key={key}

@@ -145,13 +145,18 @@ export const createProviderGroupSchema = (t: (key: string) => string) =>
 			message: t("fields.provider_type.error"),
 		}),
 
-		provider_primary_specialty: z.string().min(2, {
-			message: t("fields.provider_primary_specialty.error"),
-		}),
-
-		provider_sub_specialty: z.string().min(2, {
-			message: t("fields.provider_sub_specialty.error"),
-		}),
+		provider_primary_specialty: z.union([
+			z.literal(""),
+			z.string().min(2, {
+				message: t("fields.provider_primary_specialty.error"),
+			}),
+		]),
+		provider_sub_specialty: z.union([
+			z.literal(""),
+			z.string().min(2, {
+				message: t("fields.provider_sub_specialty.error"),
+			}),
+		]),
 		provider_discount_agreement: z
 			.number()
 			.nonnegative({
@@ -170,11 +175,12 @@ export const createProviderGroupSchema = (t: (key: string) => string) =>
 				message: t("fields.provider_group_contact_person.error"),
 			}),
 		]),
-		provider_group_phone_number: z
-			.string()
-			.refine((val) => RPNInput.isValidPhoneNumber(val), {
+		provider_group_phone_number: z.union([
+			z.literal(""),
+			z.string().refine((val) => RPNInput.isValidPhoneNumber(val), {
 				message: t("fields.contact_person_phone_number.error"),
 			}),
+		]),
 		provider_group_contact_email: z.union([
 			z.literal(""),
 			z

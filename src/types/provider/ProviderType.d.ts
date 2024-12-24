@@ -36,6 +36,7 @@ export interface ProviderType {
 	provider_group_contact_email: string;
 	provider_group_phone_number: string;
 	provider_group_address: string;
+	provider_place_of_work: string;
 }
 
 export type ProviderTitle =

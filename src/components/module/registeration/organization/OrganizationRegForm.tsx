@@ -111,9 +111,16 @@ export default function OrganizationRegForm({
 
 			OrganizationMutation(data, {
 				onSuccess: () => {
-					router.push(
-						`/success?type=${info.type}&title=Registration Successful&message=Congratulations! You're now part of our tilla member Please download the Member registration excel file and fill it out and send us with email.&redirectPath=/home&buttonText=Download` as `/${string}`
-					);
+					if (info.type?.toLowerCase() === "federal") {
+						router.push(
+							`/success?type=${info.type}&title=Registration Successful&message=Congratulations! You're now part of our tilla Organization member.&redirectPath=/home&buttonText=Home` as `/${string}`
+						);
+					} else {
+						router.push(
+							`/success?type=${info.type}&title=Registration Successful&message=Congratulations! You're now part of our tilla Organization member Please download the Member registration excel file and fill it out and send us with email.&redirectPath=/home&buttonText=Download` as `/${string}`
+						);
+					}
+
 					dispatch(ClearorganizationSlice());
 					handleDownloadPDF();
 					// {
@@ -195,7 +202,13 @@ export default function OrganizationRegForm({
 		},
 		{
 			title: "Preview",
-			content: <Preview onConfirm={handleConfirm} ref={printRef} />,
+			content: (
+				<Preview
+					type={info.type ? info.type.toLowerCase() : "private"}
+					onConfirm={handleConfirm}
+					ref={printRef}
+				/>
+			),
 		},
 	];
 

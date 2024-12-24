@@ -81,11 +81,12 @@ export default function PlanSelection({ userType }: { userType: string }) {
 						email: memberData.is_representative
 							? memberData.representative_email_address
 							: memberData.email_address,
-						member_id: memberData.id.toString(),
+						member_id: [memberData.id],
+						// member_id: JSON.stringify([memberData.id]),
 						billing_cycle: billingCycle,
 						plan_type: selectedPlan.title.toLowerCase().replace(" ", "_"),
 						members_count: memberCount,
-						amount: totalPrice,
+						amount: totalPrice * 100,
 						deductible_type: deductable,
 					},
 					{
@@ -105,7 +106,7 @@ export default function PlanSelection({ userType }: { userType: string }) {
 						email: memberData.is_representative
 							? memberData.representative_email_address
 							: memberData.email_address,
-						member_id: memberData.id.toString(),
+						member_id: [memberData.id],
 						billing_cycle: billingCycle === "yearly" ? "annual" : "monthly",
 						plan_type: selectedPlan.title.toLowerCase().replace(" ", "_"),
 						members_count: memberCount,

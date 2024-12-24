@@ -8,7 +8,7 @@ import getErrorMessage from "../getErrorMessage";
 export async function setProvider(data: ProviderType) {
 	try {
 		console.log("data", data);
-		const response = await axiosInstance.post("providers/", data);
+		const response = await axiosInstance.post("providers", data);
 		console.log("response", response.data);
 		return {
 			ok: true,

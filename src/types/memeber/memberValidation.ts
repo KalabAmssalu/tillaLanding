@@ -3,16 +3,17 @@ import * as z from "zod";
 
 export const createMemeberInfoSchema = (t: (key: string) => string) =>
 	z.object({
-		tin_number: z.string().min(2, {
-			message: t("fields.tin_number.error"),
-		}),
-
-		first_name: z.union([
+		tin_number: z.union([
 			z.literal(""),
-			z.string().regex(/^[^\d]*$/, {
-				message: t("fields.first_name.error"),
+			z.string().min(2, {
+				message: t("fields.tin_number.error"),
 			}),
 		]),
+
+		first_name: z.string().regex(/^[^\d]*$/, {
+			message: t("fields.first_name.error"),
+		}),
+
 		middle_name: z.union([
 			z.literal(""),
 			z
@@ -24,12 +25,9 @@ export const createMemeberInfoSchema = (t: (key: string) => string) =>
 					message: t("fields.middle_name.error"),
 				}),
 		]),
-		last_name: z.union([
-			z.literal(""),
-			z.string().regex(/^[^\d]*$/, {
-				message: t("fields.last_name.error"),
-			}),
-		]),
+		last_name: z.string().regex(/^[^\d]*$/, {
+			message: t("fields.last_name.error"),
+		}),
 
 		gender: z.union([
 			z.literal(""),

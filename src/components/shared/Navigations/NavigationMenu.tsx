@@ -29,7 +29,7 @@ export function NavigationMenuConf({ closeMenu }: NavigationMenuConfProps) {
 					!isActive("/en-US/provider/register") &&
 					!isActive("/en-US/broker/register") && (
 						<NavigationMenuItem>
-							<Link href="/am/home" legacyBehavior passHref>
+							<Link href="/en-US/home" legacyBehavior passHref>
 								<NavigationMenuLink className="bg-transparent">
 									<Button
 										className={cn(
@@ -53,7 +53,7 @@ export function NavigationMenuConf({ closeMenu }: NavigationMenuConfProps) {
 					!isActive("/en-US/member/register") &&
 					!isActive("/en-US/broker/register") && (
 						<NavigationMenuItem>
-							<Link href="/am/provider" legacyBehavior passHref>
+							<Link href="/en-US/provider" legacyBehavior passHref>
 								<NavigationMenuLink className="bg-transparent">
 									<Button
 										className={cn(
@@ -76,7 +76,7 @@ export function NavigationMenuConf({ closeMenu }: NavigationMenuConfProps) {
 					!isActive("/en-US/member/register") &&
 					!isActive("/en-US/provider/register") && (
 						<NavigationMenuItem>
-							<Link href="/am/broker" legacyBehavior passHref>
+							<Link href="/en-US/broker" legacyBehavior passHref>
 								<NavigationMenuLink className="bg-transparent">
 									<Button
 										className={cn(
