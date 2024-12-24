@@ -89,6 +89,8 @@ const ReusableFormField: React.FC<ReusableFormFieldProps> = ({
 								// // Convert to number if type is "number"
 								// field.onChange(type === "number" ? Number(value) : value);
 								const inputValue = e.target.value;
+								// Apply character limit
+
 								const stringValue =
 									type === "string"
 										? String(inputValue)

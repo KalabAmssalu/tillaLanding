@@ -108,7 +108,7 @@ export default function FamilyMember({
 								</div>
 							)}
 							{/* preview */}
-							{familyMembers.length !== 0 && familyMembers[0].id && (
+							{familyMembers.length > 0 && (
 								<Card className="my-6">
 									<CardHeader>
 										<div className="flex items-center justify-between">

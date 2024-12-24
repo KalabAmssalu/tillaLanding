@@ -669,7 +669,7 @@
 				"label": "Middle Initial",
 				"placeholder": "Enter middle initial",
 				"description": "Provider's middle initial in English.",
-				"error": "Middle initial must atleast 1 character. Only letters are allowed."
+				"error": "Middle initial must have to be 1 character. Only letters are allowed."
 			},
 			"provider_title": {
 				"label": "Provider Title",

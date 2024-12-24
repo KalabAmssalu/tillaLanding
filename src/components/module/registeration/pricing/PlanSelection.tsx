@@ -3,12 +3,13 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { BookOpenText, Check, X } from "lucide-react";
+import { Check, X } from "lucide-react";
 
 import {
 	useCheckoutChapa,
 	useCheckoutStrip,
 } from "@/actions/Query/payment_Query/payement_Query";
+import InfoPopover from "@/components/shared/Popover/InfoPopover";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -106,7 +107,7 @@ export default function PlanSelection({ userType }: { userType: string }) {
 						email: memberData.is_representative
 							? memberData.representative_email_address
 							: memberData.email_address,
-						member_id: [memberData.id],
+						member_id: [memberData.id].toString(),
 						billing_cycle: billingCycle === "yearly" ? "annual" : "monthly",
 						plan_type: selectedPlan.title.toLowerCase().replace(" ", "_"),
 						members_count: memberCount,
@@ -122,11 +123,6 @@ export default function PlanSelection({ userType }: { userType: string }) {
 						},
 					}
 				);
-
-				const type = { userType };
-				router.push(
-					`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
-				);
 			}
 		}
 		setIsDialogOpen(false);
@@ -134,22 +130,10 @@ export default function PlanSelection({ userType }: { userType: string }) {
 	return (
 		<>
 			<div className="container mx-auto pb-12 px-4">
-				<div className="absolute top-[5rem] right-[5rem] rounded-lg p-4 text-xs text-white w-[300px] h-[100px] bg-primary ">
-					If you need any assistance, please contact us at a contact page or
-					Read this document
-					<a
-						href="https://www.google.com"
-						target="_blank"
-						className="text-secondary text-lg mt-2 flex items-center justify-center"
-					>
-						<BookOpenText size={16} className="mr-2 text-secondary" />
-						Here
-					</a>
-				</div>
 				<div className="text-center mb-8">
 					<h2 className="text-3xl font-bold  ">
 						{" "}
-						Dear, {fullName} , Choose Your Plan
+						Dear, {fullName} , Choose Your Plan <InfoPopover />
 					</h2>
 				</div>
 				<div className="flex items-center justify-center mb-8">

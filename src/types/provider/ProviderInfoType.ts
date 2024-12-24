@@ -25,7 +25,7 @@ export const createProviderInfoSchema = (t: (key: string) => string) =>
 			z.literal(""),
 			z
 				.string()
-				.min(2, {
+				.max(1, {
 					message: t("fields.provider_middle_initial.error"),
 				})
 				.regex(/^[^\d]*$/, {
@@ -81,7 +81,7 @@ export const createProviderInfoSchema = (t: (key: string) => string) =>
 		provider_contact_phone_number: z
 			.string()
 			.refine((val) => RPNInput.isValidPhoneNumber(val), {
-				message: t("fields.contact_person_phone_number.error"),
+				message: t("fields.provider_contact_phone_number.error"),
 			}),
 		provider_phone_number: z
 			.string()
