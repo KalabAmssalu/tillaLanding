@@ -8,6 +8,7 @@ import familyReducer from "./redux/familySlice";
 import memberReducer from "./redux/memberSlice";
 import organizationReducer from "./redux/organizationSlice";
 import providerReducer from "./redux/providerSlice";
+import userReducer from "./redux/userSlice";
 
 // Create noop storage for server-side rendering (SSR)
 const createNoopStorage = () => {
@@ -32,6 +33,7 @@ const storage =
 
 // Combine all reducers into a rootReducer
 const rootReducer = combineReducers({
+	user: userReducer,
 	member: memberReducer,
 	broker: brokerReducer,
 	provider: providerReducer,

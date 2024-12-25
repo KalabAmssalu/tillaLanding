@@ -47,7 +47,12 @@ export default function ProviderInfoForm({
 	onFormComplete,
 }: ProviderInfoFormProps) {
 	const [visible, setVisible] = useState(true);
-	const t = useTranslations("providerInfoForm");
+	const [selectedServiceType, setSelectedServiceType] = useState("");
+	const [isGroup, setIsGroup] = useState(false);
+	const [isInstitute, setIsInstitute] = useState(false);
+	const [isProfessional, setIsProfessional] = useState(false);
+	const repLocal = isGroup ? "groupInfoForm" : "providerInfoForm";
+	const t = useTranslations(repLocal);
 	const providerTitleOptions = createProviderTitleOptions(t);
 	const providerInfoSchema = createProviderInfoSchema(t);
 	const DataInfo = useAppSelector((state) => state.provider.providerSlice);
@@ -78,17 +83,26 @@ export default function ProviderInfoForm({
 
 	const [subTiers, setSubTiers] = useState<string[]>([]);
 	const [selectedMainTier, setSelectedMainTier] = useState("");
-	const [isProfessional, setIsProfessional] = useState(false);
-	const [selectedServiceType, setSelectedServiceType] = useState("");
-	const [isRequired, setIsRequired] = useState(false);
+	const [professional, setProfessional] = useState<boolean>(false);
+
 	const dispatch = useAppDispatch();
+
 	useEffect(() => {
+		console.log("selected service type", selectedServiceType);
+
 		if (selectedServiceType === "professional") {
 			setIsProfessional(true);
+			setIsGroup(false);
+			setIsInstitute(false);
 			form.setValue("institute_name", "");
-			setIsRequired(true);
-		} else {
+		} else if (selectedServiceType === "group") {
+			setIsGroup(true);
+			setIsInstitute(false);
 			setIsProfessional(false);
+		} else {
+			setIsInstitute(true);
+			setIsProfessional(false);
+			setIsGroup(false);
 			form.setValue("provider_first_name", "");
 			form.setValue("provider_middle_initial", "");
 			form.setValue("provider_last_name", "");
@@ -96,6 +110,13 @@ export default function ProviderInfoForm({
 			form.setValue("provider_gender", "");
 		}
 	}, [selectedServiceType, form]);
+
+	// Optional: Log updated state values
+	useEffect(() => {
+		console.log("is professional", isProfessional);
+		console.log("is group", isGroup);
+		console.log("is institute", isInstitute);
+	}, [isProfessional, isGroup, isInstitute]);
 
 	useEffect(() => {
 		const selectedTier = form.getValues("provider_health_tier");
@@ -129,7 +150,7 @@ export default function ProviderInfoForm({
 							control={form.control}
 							name="provider_id"
 							type="text"
-							local="providerInfoForm"
+							local={repLocal}
 							labelKey="fields.provider_id.label"
 							placeholderKey="fields.provider_id.placeholder"
 							descriptionKey="fields.provider_id.description"
@@ -140,7 +161,7 @@ export default function ProviderInfoForm({
 							control={form.control}
 							name="tin_number"
 							type="text"
-							local="providerInfoForm"
+							local={repLocal}
 							labelKey="fields.tin_number.label"
 							placeholderKey="fields.tin_number.placeholder"
 							descriptionKey="fields.tin_number.description"
@@ -209,41 +230,12 @@ export default function ProviderInfoForm({
 								</FormItem>
 							)}
 						/>
-						{/* <ReusableSelectField
-							control={form.control}
-							name="provider_service_type"
-							labelKey="fields.provider_service_type.label"
-							local="providerInfoForm"
-							placeholderKey="fields.provider_service_type.placeholder"
-							descriptionKey="fields.provider_service_type.description"
-							options={[
-								{
-									label: t("fields.provider_service_type.options.group"),
-									value: "group",
-								},
-								{
-									label: t("fields.provider_service_type.options.institute"),
-									value: "institute",
-								},
-								{
-									label: t("fields.provider_service_type.options.professional"),
-									value: "professional",
-								},
-							]}
-							onValueChange={(value) => {
-								form.setValue(
-									"provider_service_type",
-									value as "group" | "institute" | "professional"
-								);
-							}}
-							required
-						/> */}
 
 						<ReusableFormField
 							control={form.control}
 							name="provider_email"
 							type="email"
-							local="providerInfoForm"
+							local={repLocal}
 							labelKey="fields.provider_email.label"
 							placeholderKey="fields.provider_email.placeholder"
 							descriptionKey="fields.provider_email.description"
@@ -257,13 +249,13 @@ export default function ProviderInfoForm({
 							labelKey="fields.provider_phone_number.label"
 							placeholderKey="fields.provider_phone_number.placeholder"
 							descriptionKey="fields.provider_phone_number.description"
-							local="providerInfoForm"
+							local={repLocal}
 							required
 							isRequired={true}
 						/>
 					</div>
 				</fieldset>
-				{isProfessional && (
+				{isProfessional ? (
 					<>
 						<Alert className="border-primary border-[1.5px]">
 							<PersonStanding className="h-4 w-4" />
@@ -279,7 +271,7 @@ export default function ProviderInfoForm({
 									control={form.control}
 									name="provider_first_name"
 									type="text"
-									local="providerInfoForm"
+									local={repLocal}
 									labelKey="fields.provider_first_name.label"
 									placeholderKey="fields.provider_first_name.placeholder"
 									descriptionKey="fields.provider_first_name.description"
@@ -290,18 +282,16 @@ export default function ProviderInfoForm({
 									control={form.control}
 									name="provider_middle_initial"
 									type="text"
-									local="providerInfoForm"
+									local={repLocal}
 									labelKey="fields.provider_middle_initial.label"
 									placeholderKey="fields.provider_middle_initial.placeholder"
 									descriptionKey="fields.provider_middle_initial.description"
-									required
-									isRequired={true}
 								/>
 								<ReusableFormField
 									control={form.control}
 									name="provider_last_name"
 									type="text"
-									local="providerInfoForm"
+									local={repLocal}
 									labelKey="fields.provider_last_name.label"
 									placeholderKey="fields.provider_last_name.placeholder"
 									descriptionKey="fields.provider_last_name.description"
@@ -327,7 +317,7 @@ export default function ProviderInfoForm({
 															value as ProviderTitle
 														); // Ensure type matches your ProviderTitle type
 													}}
-													required={isRequired}
+													required={isProfessional}
 												>
 													<SelectTrigger className="items-start [&_[data-description]]:hidden">
 														<SelectValue
@@ -361,7 +351,7 @@ export default function ProviderInfoForm({
 									control={form.control}
 									name="provider_gender"
 									labelKey="fields.provider_gender.label"
-									local="providerInfoForm"
+									local={repLocal}
 									placeholderKey="fields.provider_gender.placeholder"
 									descriptionKey="fields.provider_gender.description"
 									options={[
@@ -396,12 +386,15 @@ export default function ProviderInfoForm({
 									descriptionKey="fields.provider_date_of_birth.description"
 									required
 									buttonClassName="custom-button-class"
-									local="providerInfoForm"
+									local={repLocal}
 								/>
 							</div>
 						</fieldset>
 					</>
+				) : (
+					<></>
 				)}
+
 				<fieldset className="border p-4 rounded-md bg-background mt-6 ">
 					<legend className="text-lg font-semibold">{t("information")}</legend>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
@@ -410,7 +403,7 @@ export default function ProviderInfoForm({
 								control={form.control}
 								name="institute_name"
 								type="text"
-								local="providerInfoForm"
+								local={repLocal}
 								labelKey="fields.institute_name.label"
 								placeholderKey="fields.institute_name.placeholder"
 								descriptionKey="fields.institute_name.description"
@@ -513,19 +506,23 @@ export default function ProviderInfoForm({
 							control={form.control}
 							name="provider_contact_person"
 							type="text"
-							local="providerInfoForm"
+							local={repLocal}
 							labelKey="fields.provider_contact_person.label"
 							placeholderKey="fields.provider_contact_person.placeholder"
 							descriptionKey="fields.provider_contact_person.description"
+							isRequired={isGroup || isInstitute ? true : false}
+							required={isGroup || isInstitute ? true : false}
 						/>
 						<ReusableFormField
 							control={form.control}
 							name="provider_contact_email"
 							type="email"
-							local="providerInfoForm"
+							local={repLocal}
 							labelKey="fields.provider_contact_email.label"
 							placeholderKey="fields.provider_contact_email.placeholder"
 							descriptionKey="fields.provider_contact_email.description"
+							isRequired={isGroup || isInstitute ? true : false}
+							required={isGroup || isInstitute ? true : false}
 						/>
 
 						<ReusablePhoneInputField
@@ -534,9 +531,9 @@ export default function ProviderInfoForm({
 							labelKey="fields.provider_contact_phone_number.label"
 							placeholderKey="fields.provider_contact_phone_number.placeholder"
 							descriptionKey="fields.provider_contact_phone_number.description"
-							local="providerInfoForm"
-							required
-							isRequired={true}
+							local={repLocal}
+							isRequired={isGroup || isInstitute ? true : false}
+							required={isGroup || isInstitute ? true : false}
 						/>
 					</div>
 				</fieldset>

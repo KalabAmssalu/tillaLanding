@@ -2,6 +2,7 @@ import { useAddorganization } from "@/actions/organization/action";
 import { useAppDispatch } from "@/hooks/storehooks";
 import useToastMutation from "@/hooks/useToastMutation";
 import { SetmemberSlice } from "@/lib/store/redux/memberSlice";
+import { ClearUserSlice } from "@/lib/store/redux/userSlice";
 import { type organizationType } from "@/types/organization/organization";
 
 export const useAddOrganization = () => {
@@ -18,6 +19,7 @@ export const useAddOrganization = () => {
 				console.log("New Organization Data:", data);
 
 				dispatch(SetmemberSlice(data.data));
+				dispatch(ClearUserSlice());
 				// queryClient.invalidateQueries({ queryKey: ["Organizations"] });
 				// Example: Display a message with the Organization name
 			},

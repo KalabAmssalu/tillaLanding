@@ -5,6 +5,7 @@ import {
 	ClearmemberSlice,
 	SetmemberSlice,
 } from "@/lib/store/redux/memberSlice";
+import { ClearUserSlice } from "@/lib/store/redux/userSlice";
 import { type memeberType } from "@/types/memeber/memeber";
 
 // export const useFetchmemebers = () => {
@@ -52,7 +53,7 @@ export const useAddmemeber = () => {
 				console.log("New memeber Data:", data);
 
 				await dispatch(ClearmemberSlice());
-
+				await dispatch(ClearUserSlice());
 				dispatch(SetmemberSlice(data.data));
 				// queryClient.invalidateQueries({ queryKey: ["memebers"] });
 				// Example: Display a message with the memeber name

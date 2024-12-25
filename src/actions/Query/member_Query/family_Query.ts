@@ -4,6 +4,7 @@ import useToastMutation from "@/hooks/useToastMutation";
 import { clearFamilyMembers } from "@/lib/store/redux/familyMemberSlice";
 import { clearFamily, setFamily } from "@/lib/store/redux/familySlice";
 import { ClearmemberSlice } from "@/lib/store/redux/memberSlice";
+import { ClearUserSlice } from "@/lib/store/redux/userSlice";
 import { type familyType } from "@/types/memeber/memeber";
 
 export const useAddFamily = () => {
@@ -23,6 +24,7 @@ export const useAddFamily = () => {
 				await dispatch(clearFamilyMembers());
 				console.log("data", data.data);
 				dispatch(setFamily(data.data as familyType[]));
+				dispatch(ClearUserSlice());
 				// queryClient.invalidateQueries({ queryKey: ["memebers"] });
 				// Example: Display a message with the memeber name
 			},

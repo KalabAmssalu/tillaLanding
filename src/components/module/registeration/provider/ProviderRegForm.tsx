@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -29,6 +29,7 @@ import {
 } from "@/lib/store/redux/providerSlice";
 import { type ProviderType } from "@/types/provider/ProviderType";
 
+import EmailVerification from "../email/EmailVerification";
 import ProviderAddressForm from "./ProviderAddressForm";
 import ProviderGroupForm from "./ProviderGroupForm";
 import ProviderInfoForm from "./ProviderInfoForm";
@@ -38,9 +39,25 @@ const ProviderRegForm = ({ type }: { type: string }) => {
 	const [currentStep, setCurrentStep] = useState(0);
 	const { mutate: ProviderMutation, isSuccess } = useAddproviderMutation();
 	const data = useAppSelector((state) => state.provider.providerSlice);
+	const user = useAppSelector((state) => state.user.userSlice);
+	const [email, setEmail] = useState(user.email);
+	const dispatch = useAppDispatch();
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const printRef = useRef<HTMLDivElement>(null);
 	const router = useRouter();
+	const [isVerificationOpen, setIsVerificationOpen] = useState(false);
+	const [isVerified, setIsVerified] = useState(user.verify);
+
+	const handleVerificationComplete = () => {
+		setIsVerified(true);
+		setIsVerificationOpen(false);
+	};
+
+	useEffect(() => {
+		if (!isVerified) {
+			setIsVerificationOpen(true);
+		}
+	}, [isVerified]);
 
 	const [formData, setFormData] = useState<Partial<ProviderType>>({
 		tin_number: "",
@@ -83,8 +100,6 @@ const ProviderRegForm = ({ type }: { type: string }) => {
 	});
 
 	const [nextActive, setNextActive] = useState(false);
-
-	const dispatch = useAppDispatch();
 
 	const updateFormData = (newData: Partial<ProviderType>) => {
 		const updatedData = { ...formData, ...newData };
@@ -164,6 +179,7 @@ const ProviderRegForm = ({ type }: { type: string }) => {
 			title: "Group Information",
 			content: (
 				<ProviderGroupForm
+					isGroup={formData.provider_service_type === "group" ? true : false}
 					onFormComplete={(data) => {
 						updateFormData(data);
 						nextStep();
@@ -192,6 +208,10 @@ const ProviderRegForm = ({ type }: { type: string }) => {
 
 	return (
 		<>
+			<EmailVerification
+				isOpen={isVerificationOpen}
+				onVerificationComplete={handleVerificationComplete}
+			/>
 			<Card className="w-full mx-auto">
 				<CardHeader>
 					<CardTitle>{steps[currentStep].title}</CardTitle>

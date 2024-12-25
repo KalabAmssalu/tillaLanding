@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -29,6 +29,7 @@ import {
 } from "@/lib/store/redux/organizationSlice";
 import { type organizationType } from "@/types/organization/organization";
 
+import EmailVerification from "../email/EmailVerification";
 import OrganizationAddressForm from "./OrganizationAddressForm";
 import OrganizationContactPersonForm from "./OrganizationContactPersonForm";
 import OrganizationInfoForm from "./OrganizationInfoForm";
@@ -50,6 +51,21 @@ export default function OrganizationRegForm({
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const printRef = useRef<HTMLDivElement>(null);
 	const router = useRouter();
+	const user = useAppSelector((state) => state.user.userSlice);
+	const [isVerificationOpen, setIsVerificationOpen] = useState(false);
+	const [isVerified, setIsVerified] = useState(user.verify);
+
+	const handleVerificationComplete = () => {
+		setIsVerified(true);
+		setIsVerificationOpen(false);
+	};
+
+	useEffect(() => {
+		if (!isVerified) {
+			setIsVerificationOpen(true);
+		}
+	}, [isVerified]);
+
 	const [formData, setFormData] = useState<Partial<organizationType>>({
 		name: "",
 		registration_number: "",
@@ -227,6 +243,10 @@ export default function OrganizationRegForm({
 
 	return (
 		<>
+			<EmailVerification
+				isOpen={isVerificationOpen}
+				onVerificationComplete={handleVerificationComplete}
+			/>
 			<h1 className="text-2xl font-bold mb-6 text-center">
 				{info.type === "ngo"
 					? "NGO Registration Form"

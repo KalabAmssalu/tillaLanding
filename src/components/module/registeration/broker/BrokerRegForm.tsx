@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { CheckCheck, Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -27,6 +27,7 @@ import {
 } from "@/lib/store/redux/brokerSlice";
 import { type BrokerType } from "@/types/broker/BrokerType";
 
+import EmailVerification from "../email/EmailVerification";
 import AddressInfoForm from "./AddressInfoForm";
 import BusinessInfoForm from "./BusinessInfoForm";
 import PersonalInfoForm from "./PersonalInfoForm";
@@ -39,6 +40,20 @@ export default function BrokerRegForm({ brokerType }: { brokerType: string }) {
 	const [nextActive, setNextActive] = useState(false);
 	const { mutate: BrokerMutation } = useAddbroker();
 	const data = useAppSelector((state) => state.broker.brokerSlice);
+	const user = useAppSelector((state) => state.user.userSlice);
+	const [isVerificationOpen, setIsVerificationOpen] = useState(false);
+	const [isVerified, setIsVerified] = useState(user.verify);
+
+	const handleVerificationComplete = () => {
+		setIsVerified(true);
+		setIsVerificationOpen(false);
+	};
+
+	useEffect(() => {
+		if (!isVerified) {
+			setIsVerificationOpen(true);
+		}
+	}, [isVerified]);
 
 	const printRef = useRef<HTMLDivElement>(null);
 	const router = useRouter();
@@ -183,6 +198,10 @@ export default function BrokerRegForm({ brokerType }: { brokerType: string }) {
 
 	return (
 		<>
+			<EmailVerification
+				isOpen={isVerificationOpen}
+				onVerificationComplete={handleVerificationComplete}
+			/>
 			<Card className="w-full mx-auto">
 				<CardHeader>
 					<CardTitle>{steps[currentStep].title}</CardTitle>

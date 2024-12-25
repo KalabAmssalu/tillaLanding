@@ -28,6 +28,7 @@ import { setFamily } from "@/lib/store/redux/familySlice";
 import { SetmemberSlice } from "@/lib/store/redux/memberSlice";
 import { type FamilyInfoType, type memeberType } from "@/types/memeber/memeber";
 
+import EmailVerification from "../email/EmailVerification";
 import FamilyMember from "./FamilyMember";
 import MemberAddressForm from "./MemberAddressForm";
 import MemberPersonalInfoForm from "./MemberPersonalInfoForm";
@@ -49,6 +50,21 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const printRef = useRef<HTMLDivElement>(null);
 	const router = useRouter();
+	const user = useAppSelector((state) => state.user.userSlice);
+	const [isVerificationOpen, setIsVerificationOpen] = useState(false);
+	const [isVerified, setIsVerified] = useState(user.verify);
+
+	const handleVerificationComplete = () => {
+		setIsVerified(true);
+		setIsVerificationOpen(false);
+	};
+
+	useEffect(() => {
+		if (!isVerified) {
+			setIsVerificationOpen(true);
+		}
+	}, [isVerified]);
+
 	const [formData, setFormData] = useState<Partial<memeberType>>({
 		date_of_birth: "",
 		first_name: "",
@@ -353,6 +369,10 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 
 	return (
 		<>
+			<EmailVerification
+				isOpen={isVerificationOpen}
+				onVerificationComplete={handleVerificationComplete}
+			/>
 			<h1 className="text-2xl font-bold mb-6 text-center">
 				{info.type === "diaspora"
 					? "Diaspora Member Registration Form"

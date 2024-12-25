@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import { SignJWT, jwtVerify } from "jose";
 
 import axiosInstance from "@/actions/axiosInstance";
+import { type otpVerifyType } from "@/types/user";
 
 import getErrorMessage from "../getErrorMessage";
 
@@ -169,19 +170,36 @@ export async function forgotPassword(email: string) {
 		};
 	}
 }
-
-export async function verifyOTP(otpArray: number[]) {
-	const email: string = await getEmail();
-	console.log("Email retrieved:", email);
-	const otp: string = otpArray.join("");
+export async function sendOTP(email: string) {
 	try {
-		console.log("Sending OTP:", otp);
-		const response = await axiosInstance.post("/auth/verify-otp/", {
-			otp,
+		console.log("Sending OTP:", email);
+		const response = await axiosInstance.post("/verification/send-otp/", {
 			email,
 		});
+		console.log("response", response.data);
+		await setEmail(email);
+		return { ok: true, message: response.data.message };
+	} catch (error: any) {
+		console.log("failed");
+		return {
+			ok: false,
+			message: getErrorMessage(error),
+		};
+	}
+}
+
+export async function verifyOTP(verify: otpVerifyType) {
+	// console.log("Email retrieved:", email);
+	// const otp: string = otpArray.join("");
+
+	try {
+		console.log("Sending OTP:", verify);
+		const response = await axiosInstance.post(
+			"/verification/verify-otp/",
+			verify
+		);
 		console.log("Response received:", response.data);
-		return { ok: true, message: response.data };
+		return { ok: true, message: response.data.message };
 	} catch (error: any) {
 		console.error(
 			"Error during OTP verification:",

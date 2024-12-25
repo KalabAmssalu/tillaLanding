@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 
 import ReusableFormField from "@/components/shared/Form/ReusableFormField";
 import ReusablePhoneInputField from "@/components/shared/Form/ReusablePhoneInput";
-import ReusableSelectField from "@/components/shared/Form/ReusableSelectField";
 import { Button } from "@/components/ui/button";
 import {
 	Form,
@@ -36,10 +35,12 @@ import {
 } from "@/types/provider/ProviderInfoType";
 
 interface ProviderInfoFormProps {
+	isGroup: boolean;
 	onFormComplete: (data: ProviderGroupFormValues) => void;
 }
 
 export default function ProviderGroupForm({
+	isGroup,
 	onFormComplete,
 }: ProviderInfoFormProps) {
 	const [visible, setVisible] = useState(true);
@@ -290,56 +291,58 @@ export default function ProviderGroupForm({
 						/>
 					</div>
 				</fieldset>
-				<fieldset className="border p-4 rounded-md bg-background">
-					<legend className="text-lg font-semibold">{t("group")}</legend>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-						<ReusableFormField
-							control={form.control}
-							name="provider_group_name"
-							type="text"
-							local="providerInfoForm"
-							labelKey="fields.provider_group_name.label"
-							placeholderKey="fields.provider_group_name.placeholder"
-							descriptionKey="fields.provider_group_name.description"
-						/>
-						<ReusableFormField
-							control={form.control}
-							name="provider_group_contact_person"
-							type="text"
-							local="providerInfoForm"
-							labelKey="fields.provider_group_contact_person.label"
-							placeholderKey="fields.provider_group_contact_person.placeholder"
-							descriptionKey="fields.provider_group_contact_person.description"
-						/>
+				{!isGroup && (
+					<fieldset className="border p-4 rounded-md bg-background">
+						<legend className="text-lg font-semibold">{t("group")}</legend>
+						<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+							<ReusableFormField
+								control={form.control}
+								name="provider_group_name"
+								type="text"
+								local="providerInfoForm"
+								labelKey="fields.provider_group_name.label"
+								placeholderKey="fields.provider_group_name.placeholder"
+								descriptionKey="fields.provider_group_name.description"
+							/>
+							<ReusableFormField
+								control={form.control}
+								name="provider_group_contact_person"
+								type="text"
+								local="providerInfoForm"
+								labelKey="fields.provider_group_contact_person.label"
+								placeholderKey="fields.provider_group_contact_person.placeholder"
+								descriptionKey="fields.provider_group_contact_person.description"
+							/>
 
-						<ReusablePhoneInputField
-							control={form.control}
-							name="provider_group_phone_number"
-							labelKey="fields.provider_group_phone_number.label"
-							placeholderKey="fields.provider_group_phone_number.placeholder"
-							descriptionKey="fields.provider_group_phone_number.description"
-							local="providerInfoForm"
-						/>
-						<ReusableFormField
-							control={form.control}
-							name="provider_group_contact_email"
-							type="email"
-							local="providerInfoForm"
-							labelKey="fields.provider_group_contact_email.label"
-							placeholderKey="fields.provider_group_contact_email.placeholder"
-							descriptionKey="fields.provider_group_contact_email.description"
-						/>
-						<ReusableFormField
-							control={form.control}
-							name="provider_group_address"
-							type="email"
-							local="providerInfoForm"
-							labelKey="fields.provider_group_address.label"
-							placeholderKey="fields.provider_group_address.placeholder"
-							descriptionKey="fields.provider_group_address.description"
-						/>
-					</div>
-				</fieldset>
+							<ReusablePhoneInputField
+								control={form.control}
+								name="provider_group_phone_number"
+								labelKey="fields.provider_group_phone_number.label"
+								placeholderKey="fields.provider_group_phone_number.placeholder"
+								descriptionKey="fields.provider_group_phone_number.description"
+								local="providerInfoForm"
+							/>
+							<ReusableFormField
+								control={form.control}
+								name="provider_group_contact_email"
+								type="email"
+								local="providerInfoForm"
+								labelKey="fields.provider_group_contact_email.label"
+								placeholderKey="fields.provider_group_contact_email.placeholder"
+								descriptionKey="fields.provider_group_contact_email.description"
+							/>
+							<ReusableFormField
+								control={form.control}
+								name="provider_group_address"
+								type="email"
+								local="providerInfoForm"
+								labelKey="fields.provider_group_address.label"
+								placeholderKey="fields.provider_group_address.placeholder"
+								descriptionKey="fields.provider_group_address.description"
+							/>
+						</div>
+					</fieldset>
+				)}
 				{visible && (
 					<div className="flex w-full justify-end items-end">
 						<Button type="submit" className="bg-green-500 flex items">

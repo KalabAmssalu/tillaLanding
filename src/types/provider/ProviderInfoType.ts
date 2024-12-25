@@ -25,7 +25,7 @@ export const createProviderInfoSchema = (t: (key: string) => string) =>
 			z.literal(""),
 			z
 				.string()
-				.max(1, {
+				.min(1, {
 					message: t("fields.provider_middle_initial.error"),
 				})
 				.regex(/^[^\d]*$/, {
@@ -78,11 +78,12 @@ export const createProviderInfoSchema = (t: (key: string) => string) =>
 			z.literal(""),
 			z.string().email({ message: t("fields.provider_contact_email.error") }),
 		]),
-		provider_contact_phone_number: z
-			.string()
-			.refine((val) => RPNInput.isValidPhoneNumber(val), {
+		provider_contact_phone_number: z.union([
+			z.literal(""),
+			z.string().refine((val) => RPNInput.isValidPhoneNumber(val), {
 				message: t("fields.provider_contact_phone_number.error"),
 			}),
+		]),
 		provider_phone_number: z
 			.string()
 			.refine((val) => RPNInput.isValidPhoneNumber(val), {
