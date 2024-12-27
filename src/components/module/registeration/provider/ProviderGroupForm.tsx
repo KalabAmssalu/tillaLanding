@@ -86,7 +86,19 @@ export default function ProviderGroupForm({
 	}, [selectedProviderType, form]);
 
 	function onSubmit(data: ProviderGroupFormValues) {
-		onFormComplete(data);
+		if (isGroup) {
+			const savedData = {
+				...data,
+				provider_group_name: DataInfo.institute_name,
+				provider_group_contact_person: DataInfo.provider_contact_person,
+				provider_group_phone_number: DataInfo.provider_phone_number,
+				provider_group_contact_email: DataInfo.provider_contact_email,
+				provider_group_address: DataInfo.provider_address,
+			};
+			onFormComplete(savedData);
+		} else {
+			onFormComplete(data);
+		}
 		setVisible(false);
 		console.log("data to submit", data);
 	}
