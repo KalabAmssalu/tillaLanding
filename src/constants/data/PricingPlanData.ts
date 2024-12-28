@@ -190,24 +190,52 @@ export const pricingTiers: PricingTier[] = [
 			coInsurance: 20,
 			features: [
 				{
-					name: "All Standard services + comprehensive diagnostics",
-					covered: true,
-				},
-				{ name: "Full access to a wide range of specialists", covered: true },
-				{
-					name: "Full coverage for emergency, urgent care, and ambulance services",
+					name: "All Comprehensive services + Family Plan diagnostics",
 					covered: true,
 				},
 				{
-					name: "Full coverage for planned and emergency hospitalizations",
+					name: "Routine check-ups, vaccinations, and preventive screenings for all family members",
 					covered: true,
 				},
 				{
-					name: "Comprehensive management for chronic conditions",
+					name: "Pediatric care, including growth monitoring and developmental assessments",
 					covered: true,
 				},
 				{
-					name: "Full coverage for prenatal, delivery, and postnatal care",
+					name: "Access to general practitioners and pediatricians",
+					covered: true,
+				},
+				{
+					name: "Coverage for specialists for family-related conditions",
+					covered: true,
+				},
+				{
+					name: "Full coverage for emergencies and urgent care visits for all family members",
+					covered: true,
+				},
+				{
+					name: "Comprehensive coverage for planned and emergency hospital stays",
+					covered: true,
+				},
+				{
+					name: "Maternity and newborn care, including prenatal, delivery, and postnatal services",
+					covered: true,
+				},
+				{
+					name: "Pediatric inpatient care for children",
+					covered: true,
+				},
+
+				{
+					name: "Family-centric chronic disease management (e.g., diabetes, asthma)",
+					covered: true,
+				},
+				{
+					name: "Care coordination for multiple family members",
+					covered: true,
+				},
+				{
+					name: "Family counseling services and individual therapy",
 					covered: true,
 				},
 				{
@@ -215,11 +243,27 @@ export const pricingTiers: PricingTier[] = [
 					covered: true,
 				},
 				{
-					name: "Full telemedicine access for both general and specialty consultations",
+					name: "24/7 access to telemedicine for adults and children",
 					covered: true,
 				},
 				{
-					name: "Second opinion services, international care options",
+					name: "Specialty telemedicine services for second opinions",
+					covered: true,
+				},
+				{
+					name: "Nutritional counseling for family wellness",
+					covered: true,
+				},
+				{
+					name: "Health and wellness programs (e.g., weight management, fitness)",
+					covered: true,
+				},
+				{
+					name: "Coverage for adolescent-specific care, such as counseling and vaccinations",
+					covered: true,
+				},
+				{
+					name: "Family deductible for streamlined coverage",
 					covered: true,
 				},
 			],
@@ -230,24 +274,52 @@ export const pricingTiers: PricingTier[] = [
 			coInsurance: 20,
 			features: [
 				{
-					name: "All Standard services + comprehensive diagnostics",
-					covered: true,
-				},
-				{ name: "Full access to a wide range of specialists", covered: true },
-				{
-					name: "Full coverage for emergency, urgent care, and ambulance services",
+					name: "All Comprehensive services + Family Plan diagnostics",
 					covered: true,
 				},
 				{
-					name: "Full coverage for planned and emergency hospitalizations",
+					name: "Routine check-ups, vaccinations, and preventive screenings for all family members",
 					covered: true,
 				},
 				{
-					name: "Comprehensive management for chronic conditions",
+					name: "Pediatric care, including growth monitoring and developmental assessments",
 					covered: true,
 				},
 				{
-					name: "Full coverage for prenatal, delivery, and postnatal care",
+					name: "Access to general practitioners and pediatricians",
+					covered: true,
+				},
+				{
+					name: "Coverage for specialists for family-related conditions",
+					covered: true,
+				},
+				{
+					name: "Full coverage for emergencies and urgent care visits for all family members",
+					covered: true,
+				},
+				{
+					name: "Comprehensive coverage for planned and emergency hospital stays",
+					covered: true,
+				},
+				{
+					name: "Maternity and newborn care, including prenatal, delivery, and postnatal services",
+					covered: true,
+				},
+				{
+					name: "Pediatric inpatient care for children",
+					covered: true,
+				},
+
+				{
+					name: "Family-centric chronic disease management (e.g., diabetes, asthma)",
+					covered: true,
+				},
+				{
+					name: "Care coordination for multiple family members",
+					covered: true,
+				},
+				{
+					name: "Family counseling services and individual therapy",
 					covered: true,
 				},
 				{
@@ -255,11 +327,27 @@ export const pricingTiers: PricingTier[] = [
 					covered: true,
 				},
 				{
-					name: "Full telemedicine access for both general and specialty consultations",
+					name: "24/7 access to telemedicine for adults and children",
 					covered: true,
 				},
 				{
-					name: "Second opinion services, international care options",
+					name: "Specialty telemedicine services for second opinions",
+					covered: true,
+				},
+				{
+					name: "Nutritional counseling for family wellness",
+					covered: true,
+				},
+				{
+					name: "Health and wellness programs (e.g., weight management, fitness)",
+					covered: true,
+				},
+				{
+					name: "Coverage for adolescent-specific care, such as counseling and vaccinations",
+					covered: true,
+				},
+				{
+					name: "Family deductible for streamlined coverage",
 					covered: true,
 				},
 			],
