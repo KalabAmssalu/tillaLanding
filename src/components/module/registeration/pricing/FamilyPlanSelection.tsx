@@ -183,7 +183,7 @@ export default function FamilyPlanSelection({
 											</span>
 										</div>
 
-										<ul className="space-y-2 mt-4">
+										<ul className="space-y-2 mt-4 max-h-[350px] overflow-y-auto">
 											{tier.with_deductible.features.map(
 												(feature, featureIndex) => (
 													<li key={featureIndex} className="flex items-center">
@@ -239,7 +239,7 @@ export default function FamilyPlanSelection({
 											</span>
 										</div>
 
-										<ul className="space-y-2 mt-4">
+										<ul className="space-y-2 mt-4 max-h-[350px] overflow-y-auto">
 											{tier.non_deductible.features.map(
 												(feature, featureIndex) => (
 													<li key={featureIndex} className="flex items-center">

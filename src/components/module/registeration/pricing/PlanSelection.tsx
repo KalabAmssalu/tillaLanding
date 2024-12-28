@@ -162,10 +162,7 @@ export default function PlanSelection({ userType }: { userType: string }) {
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-4 gap-4">
 					{pricingTiers.map((tier, index) => (
-						<Card
-							key={index}
-							className={`flex flex-col ${index === 1 || index === 2 ? "border-primary border-2" : ""}`}
-						>
+						<Card key={index} className="flex flex-col">
 							<CardTitle className="p-2 px-4 text-2xl text-center font-bold">
 								{tier.title}
 							</CardTitle>
@@ -197,7 +194,7 @@ export default function PlanSelection({ userType }: { userType: string }) {
 											</span>
 										</div>
 
-										<ul className="space-y-2 mt-4">
+										<ul className="space-y-2 mt-4 max-h-[350px] overflow-y-auto">
 											{tier.with_deductible.features.map(
 												(feature, featureIndex) => (
 													<li key={featureIndex} className="flex items-center">
@@ -224,7 +221,7 @@ export default function PlanSelection({ userType }: { userType: string }) {
 									</CardContent>
 									<CardFooter>
 										<Button
-											className={`w-full mt-4 ${index === 0 || index === 3 ? "bg-secondary text-white" : ""}`}
+											className="w-full mt-4 bg-secondary text-white"
 											onClick={() =>
 												handlePlanSelection(tier, "with_deductible")
 											}
@@ -253,7 +250,7 @@ export default function PlanSelection({ userType }: { userType: string }) {
 											</span>
 										</div>
 
-										<ul className="space-y-2 mt-4">
+										<ul className="space-y-2 mt-4 max-h-[350px] overflow-y-auto">
 											{tier.non_deductible.features.map(
 												(feature, featureIndex) => (
 													<li key={featureIndex} className="flex items-center">
@@ -280,7 +277,7 @@ export default function PlanSelection({ userType }: { userType: string }) {
 									</CardContent>
 									<CardFooter>
 										<Button
-											className={`w-full mt-4 ${index === 0 || index === 3 ? "bg-secondary text-white" : ""}`}
+											className="w-full mt-4 bg-secondary text-white"
 											onClick={() =>
 												handlePlanSelection(tier, "non_deductible")
 											}
