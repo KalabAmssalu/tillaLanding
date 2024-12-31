@@ -13,17 +13,20 @@ import ReusableSelectField from "@/components/shared/Form/ReusableSelectField";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useAppSelector } from "@/hooks/storehooks";
+import { UserPayload } from "@/lib/store/redux/userSlice";
 import {
 	type MemberInfoFormValues,
 	createMemeberInfoSchema,
 } from "@/types/memeber/memberValidation";
 
 interface MemberInfoFormProps {
+	user: UserPayload;
 	type: string;
 	onFormComplete: (data: MemberInfoFormValues) => void;
 }
 
 export default function MemberPersonalInfoForm({
+	user,
 	type,
 	onFormComplete,
 }: MemberInfoFormProps) {
@@ -43,7 +46,7 @@ export default function MemberPersonalInfoForm({
 			marital_status: "single",
 			date_of_birth: DataInfo.date_of_birth || "",
 			phone_number: DataInfo.phone_number || "",
-			email_address: DataInfo.email_address || "",
+			email_address: user.email || "",
 			height: DataInfo.height || 0,
 			weight: DataInfo.weight || 0,
 		},
@@ -228,6 +231,8 @@ export default function MemberPersonalInfoForm({
 							placeholderKey="fields.email_address.placeholder"
 							descriptionKey="fields.email_address.description"
 							required
+							value={user.email}
+							disabled={true}
 						/>
 					</div>
 				</fieldset>

@@ -2,11 +2,13 @@
 import { useRouter } from "next/navigation";
 
 import { setCheckoutChapa, setCheckoutStrip } from "@/actions/pricing/action";
+import { useAppDispatch } from "@/hooks/storehooks";
 import useToastMutation from "@/hooks/useToastMutation";
+import { ClearUserSlice } from "@/lib/store/redux/userSlice";
 import { type checkoutType } from "@/types/pricing/PricingType";
 
 export const useCheckoutChapa = () => {
-	// const dispatch = useAppDispatch();
+	const dispatch = useAppDispatch();
 	const router = useRouter();
 
 	return useToastMutation<checkoutType>(
@@ -14,7 +16,7 @@ export const useCheckoutChapa = () => {
 		setCheckoutChapa,
 		"Processing checkout...",
 		{
-			onSuccess: (data, variables) => {
+			onSuccess: async (data, variables) => {
 				// 'data' contains the response from the server
 				// 'variables' contains the checkout data you passed in
 				console.log("Checkout successful:", data.message);
@@ -30,6 +32,7 @@ export const useCheckoutChapa = () => {
 					router.push(
 						`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
 					);
+					await dispatch(ClearUserSlice());
 				} else {
 					console.error("Invalid data structure:", data.data);
 				}
@@ -47,14 +50,14 @@ export const useCheckoutChapa = () => {
 };
 
 export const useCheckoutStrip = () => {
-	// const dispatch = useAppDispatch();
+	const dispatch = useAppDispatch();
 	const router = useRouter();
 	return useToastMutation<checkoutType>(
 		"checkout",
 		setCheckoutStrip,
 		"Processing checkout...",
 		{
-			onSuccess: (data, variables) => {
+			onSuccess: async (data, variables) => {
 				// 'data' contains the response from the server
 				// 'variables' contains the checkout data you passed in
 				console.log("Checkout successful:", data.message);
@@ -64,10 +67,14 @@ export const useCheckoutStrip = () => {
 					const paymentLink = data.data.checkout_url;
 					// window.open(paymentLink, "_blank"); // Open payment link in a new tab
 					window.location.href = paymentLink;
+					const type = "family"; // Replace with the actual type source
+					router.push(
+						`/success?type=${type}&title=Registration Successful&message=Congratulations! You're now part of our platform.&redirectPath=/home&buttonText=Go to Dashboard` as `/${string}`
+					);
 				} else {
 					console.error("Invalid data structure:", data.data);
 				}
-
+				await dispatch(ClearUserSlice());
 				// Optionally, update the Redux state with checkout data
 				// dispatch(SetCheckoutSlice(data.data));
 

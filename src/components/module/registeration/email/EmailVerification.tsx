@@ -64,11 +64,18 @@ export default function EmailVerification({
 		console.log("otp", otp);
 		// Simulate OTP verification
 		const verify = { email, otp_code: otp };
-		await verifyOTP(verify);
+		await verifyOTP(verify, {
+			onSuccess: (data) => {
+				console.log("data", data);
+				onVerificationComplete();
+			},
+			onError: (error) => {
+				console.error("Error verifying OTP:", error);
+			},
+		});
 		await new Promise((resolve) => setTimeout(resolve, 2000));
 
 		setIsSubmitting(false);
-		onVerificationComplete();
 	};
 
 	return (

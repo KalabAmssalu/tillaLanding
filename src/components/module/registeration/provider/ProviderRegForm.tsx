@@ -62,7 +62,7 @@ const ProviderRegForm = ({ type }: { type: string }) => {
 	const [formData, setFormData] = useState<Partial<ProviderType>>({
 		tin_number: "",
 		institute_name: "",
-		provider_id: "",
+		provider_npi_id: "",
 		provider_last_name: "",
 		provider_first_name: "",
 		provider_middle_initial: "",

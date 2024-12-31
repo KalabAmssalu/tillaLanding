@@ -647,7 +647,7 @@
 				"description": "The name of the provider's institute.",
 				"error": "Institute name is required."
 			},
-			"provider_id": {
+			"provider_npi_id": {
 				"label": "Provider ID",
 				"placeholder": "Enter provider ID",
 				"description": "Unique identifier for the provider.",
@@ -906,7 +906,7 @@
 				"error": "TIN number/ TAX ID is required."
 			},
 
-			"provider_id": {
+			"provider_npi_id": {
 				"label": "Provider ID",
 				"placeholder": "Enter provider ID",
 				"description": "Unique identifier for the provider.",

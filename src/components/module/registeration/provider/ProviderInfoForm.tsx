@@ -62,7 +62,7 @@ export default function ProviderInfoForm({
 		defaultValues: {
 			tin_number: DataInfo.tin_number || "",
 			institute_name: DataInfo.institute_name || "",
-			provider_id: DataInfo.provider_id || "",
+			provider_npi_id: DataInfo.provider_npi_id || "",
 			provider_first_name: DataInfo.provider_first_name || "",
 			provider_middle_initial: DataInfo.provider_middle_initial || "",
 			provider_last_name: DataInfo.provider_last_name || "",
@@ -148,12 +148,12 @@ export default function ProviderInfoForm({
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 						<ReusableFormField
 							control={form.control}
-							name="provider_id"
+							name="provider_npi_id"
 							type="text"
 							local={repLocal}
-							labelKey="fields.provider_id.label"
-							placeholderKey="fields.provider_id.placeholder"
-							descriptionKey="fields.provider_id.description"
+							labelKey="fields.provider_npi_id.label"
+							placeholderKey="fields.provider_npi_id.placeholder"
+							descriptionKey="fields.provider_npi_id.description"
 							required
 							isRequired={true}
 						/>

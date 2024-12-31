@@ -123,7 +123,12 @@ export const specialtyMapping: Record<string, string[]> = {
 
 export const fieldDefinitions = {
 	identificationAndPersonalDetails: [
-		{ name: "provider_id", label: "Provider ID", type: "text", required: true },
+		{
+			name: "provider_npi_id",
+			label: "Provider ID",
+			type: "text",
+			required: true,
+		},
 		{ name: "tin_number", label: "TIN Number", type: "text", required: true },
 		{
 			name: "provider_type_selection",

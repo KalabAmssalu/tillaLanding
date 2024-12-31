@@ -107,7 +107,7 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 											{data.provider_service_type === "professional"
 												? [
 														"tin_number",
-														"provider_id",
+														"provider_npi_id",
 														"provider_service_type",
 														"provider_gender",
 														"provider_date_of_birth",
@@ -123,7 +123,7 @@ const Preview = forwardRef<HTMLDivElement, PersonalInfoProps>(
 													))
 												: [
 														"tin_number",
-														"provider_id",
+														"provider_npi_id",
 														"institute_name",
 														"provider_service_type",
 													].map((key) => (

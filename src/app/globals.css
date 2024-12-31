@@ -54,8 +54,8 @@
 		--primary-foreground: 24 9.8% 10%;
 		--secondary: 12 6.5% 15.1%;
 		--secondary-foreground: 60 9.1% 97.8%; */
-		--primary: 220 100% 20%; /* #002664 */
-		--primary-foreground: 220 100% 95%; /* Adjusted for readability */
+		--primary: 250 100% 30%; /* #002664 */
+		--primary-foreground: 250 100% 95%; /* Adjusted for readability */
 		--secondary: 195 92% 65%; /* #59D3FC */
 		--secondary-foreground: 220 100% 20%; /* Adjusted for readability */
 		--muted: 12 6.5% 15.1%;

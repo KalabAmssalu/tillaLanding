@@ -460,7 +460,7 @@
 				"description": "የጤና አገልግሎት አቅራቢው የተቋሙ ስም።",
 				"error": "የተቋም ስም ያስፈልጋል።"
 			},
-			"provider_id": {
+			"provider_npi_id": {
 				"label": " የሙያ መለያ ቁጥር",
 				"placeholder": "1245319599",
 				"description": "የጤና አገልግሎት አቅራቢው ብቸኛ መለያ።",

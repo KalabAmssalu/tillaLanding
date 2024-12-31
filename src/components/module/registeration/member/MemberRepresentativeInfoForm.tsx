@@ -13,6 +13,7 @@ import ReusableSelectField from "@/components/shared/Form/ReusableSelectField";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useAppSelector } from "@/hooks/storehooks";
+import { type UserPayload } from "@/lib/store/redux/userSlice";
 import {
 	type MemberRepresentativeFormValues,
 	createMemberRepresentativeSchema,
@@ -23,11 +24,13 @@ import {
 } from "@/types/provider/ProviderInfoType";
 
 interface MemberRepresentativeInfoFormProps {
+	user: UserPayload;
 	type: string;
 	onFormComplete: (data: MemberRepresentativeFormValues) => void;
 }
 
 export default function MemberRepresentativeInfoForm({
+	user,
 	type,
 	onFormComplete,
 }: MemberRepresentativeInfoFormProps) {
@@ -58,7 +61,7 @@ export default function MemberRepresentativeInfoForm({
 			representative_kifle_ketema: DataInfo.representative_kifle_ketema || "",
 			representative_zip_code: DataInfo.representative_zip_code || "",
 			representative_phone_number: DataInfo.representative_phone_number || "",
-			representative_email_address: DataInfo.representative_email_address || "",
+			representative_email_address: user.email || "",
 			// relationship_to_member: DataInfo.relationship_to_member || "",
 			// dependent_of: DataInfo.dependent_of || 0,
 		},
@@ -287,6 +290,7 @@ export default function MemberRepresentativeInfoForm({
 							labelKey="fields.representative_email_address.label"
 							placeholderKey="fields.representative_email_address.placeholder"
 							descriptionKey="fields.representative_email_address.description"
+							disabled={true}
 						/>
 					</div>
 				</fieldset>

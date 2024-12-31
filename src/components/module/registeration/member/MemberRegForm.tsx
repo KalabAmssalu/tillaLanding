@@ -72,7 +72,7 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 		middle_name: "",
 		gender: "",
 		phone_number: "",
-		email_address: "",
+		email_address: self ? user.email : "",
 		marital_status: "",
 		height: 0,
 		weight: 0,
@@ -103,7 +103,7 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 		representative_kifle_ketema: "",
 		representative_zip_code: "",
 		representative_phone_number: "",
-		representative_email_address: "",
+		representative_email_address: self ? "" : user.email,
 		// relationship_to_member: "",
 
 		// max_out_of_pocket: 0,
@@ -274,6 +274,7 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 								: "Representative Information",
 						content: (
 							<MemberRepresentativeInfoForm
+								user={user}
 								type={info.type ? info.type.toLowerCase() : "individual"}
 								onFormComplete={(data) => {
 									updateFormData(data);
@@ -305,6 +306,7 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 						title: "Member Information",
 						content: (
 							<MemberPersonalInfoForm
+								user={user}
 								type={info.type ? info.type.toLowerCase() : "individual"}
 								onFormComplete={(data) => {
 									updateFormData(data);
