@@ -51,6 +51,7 @@ const ProviderRegForm = ({ type }: { type: string }) => {
 	const handleVerificationComplete = () => {
 		setIsVerified(true);
 		setIsVerificationOpen(false);
+		window.location.reload();
 	};
 
 	useEffect(() => {

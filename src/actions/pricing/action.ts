@@ -22,6 +22,7 @@ export async function setCheckoutChapa(data: checkoutType) {
 
 export async function setCheckoutStrip(data: checkoutType) {
 	try {
+		console.log("Submiting data", data);
 		const response = await axiosInstance.post("payments/stripe-checkout", data);
 		console.log("response", response.data);
 

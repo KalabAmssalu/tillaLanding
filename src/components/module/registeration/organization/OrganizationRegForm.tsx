@@ -58,6 +58,7 @@ export default function OrganizationRegForm({
 	const handleVerificationComplete = () => {
 		setIsVerified(true);
 		setIsVerificationOpen(false);
+		window.location.reload();
 	};
 
 	useEffect(() => {

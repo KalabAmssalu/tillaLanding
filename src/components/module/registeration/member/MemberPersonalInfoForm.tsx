@@ -22,12 +22,14 @@ import {
 interface MemberInfoFormProps {
 	user: UserPayload;
 	type: string;
+	self: boolean;
 	onFormComplete: (data: MemberInfoFormValues) => void;
 }
 
 export default function MemberPersonalInfoForm({
 	user,
 	type,
+	self,
 	onFormComplete,
 }: MemberInfoFormProps) {
 	const [visible, setVisible] = useState(true);
@@ -46,7 +48,7 @@ export default function MemberPersonalInfoForm({
 			marital_status: "single",
 			date_of_birth: DataInfo.date_of_birth || "",
 			phone_number: DataInfo.phone_number || "",
-			email_address: user.email || "",
+			email_address: self ? "" : user.email || "",
 			height: DataInfo.height || 0,
 			weight: DataInfo.weight || 0,
 		},
@@ -232,7 +234,7 @@ export default function MemberPersonalInfoForm({
 							descriptionKey="fields.email_address.description"
 							required
 							value={user.email}
-							disabled={true}
+							disabled={self ? true : false}
 						/>
 					</div>
 				</fieldset>

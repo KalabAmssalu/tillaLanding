@@ -57,6 +57,7 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 	const handleVerificationComplete = () => {
 		setIsVerified(true);
 		setIsVerificationOpen(false);
+		window.location.reload();
 	};
 
 	useEffect(() => {
@@ -308,6 +309,7 @@ export default function MemberRegForm({ info }: { info: memberInfoType }) {
 							<MemberPersonalInfoForm
 								user={user}
 								type={info.type ? info.type.toLowerCase() : "individual"}
+								self={info.self === "true" ? true : false}
 								onFormComplete={(data) => {
 									updateFormData(data);
 									nextStep();

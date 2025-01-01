@@ -88,9 +88,8 @@ export default function FamilyPlanSelection({
 				checkoutStripMutation({
 					email: familyData[0].representative_email_address,
 					member_id: idToSend,
-					billing_cycle: billingCycle,
-					member_plan: selectedPlan.title.toLowerCase().replace(" ", "_"),
-					members_count: familyMembers,
+					plan_cycle: billingCycle === "yearly" ? "annual" : "monthly",
+					member_plan: selectedPlan.title.toLowerCase().split(" ")[0],
 					amount: totalPrice * 100,
 					deductible_type: deductable,
 					cancel_url: `${process.env.NEXT_STRIP_CANCEL_URL}/${userType}`,
@@ -101,9 +100,10 @@ export default function FamilyPlanSelection({
 				checkoutChapaMutation({
 					email: familyData[0].representative_email_address,
 					member_id: idToSend,
-					billing_cycle: billingCycle === "yearly" ? "annual" : "monthly",
-					member_plan: selectedPlan.title.toLowerCase().replace(" ", "_"),
-					members_count: familyMembers,
+					plan_cycle: billingCycle === "yearly" ? "annual" : "monthly",
+					member_plan: selectedPlan.title.toLowerCase().split(" ")[0],
+
+					// members_count: familyMembers,
 					amount: totalPrice,
 					deductible_type: deductable,
 				});
