@@ -1,0 +1,1111 @@
+{
+	"metadata": {
+		"description": "በብሩህ የግብይት መሳሪያዎች እንዲሁም የኔክስት.js 15 እና እንዲሁም የReact 19 እና ሌሎችን ብርቅ ብቁነት ለማሳመም ያለዎትን ንብረት ለመሻሻል አዘጋጅቶ የኤኮማርስ ንብረት አይነት",
+		"title": {
+			"home": "መነሻ ገጽ"
+		}
+	},
+	"PathnamesPage": {
+		"description": "<p>ሪሊቨርስ መጫወቻ | ኔክስት-ኢንትል | አድራሻ አርክሶች በቋንቋ ሊተነቡ ይችላሉ።</p><p>የእንግሊዝኛ ቋንቋ በእርስዎ በነቅናችሁ ከምንቀርባት ጋር ሲሆን፣ በእዚህ ገጽ የእንግሊዝኛ ቋንቋን እየተጠቀሙ በትክክል የሚሰማውን ማድረግ ይችላሉ።</p><p>ቋንቋን ወደ ጀርመን ማሻሻል እንደሚፈልጉት ቋንቋን ቀይር እንደሚሰማ በተንበረከነው እንደሚታወቀ የቋንቋ ምንጭ (ይሄንን እንደገና ሞክሩ)...</p>",
+		"title": "አድራሻ አርክሶች"
+	},
+	"LocaleSwitcher": {
+		"changeLanguage": "ቋንቋን ለውጥ",
+		"english": "እንግሊዝኛ",
+		"amharic": "አማርኛ"
+	},
+	"banners": {
+		"announcements-1": {
+			"button": "ወደ ብሎግ",
+			"details": "የተለወጠውንና የሚመጣውን ለማየት የታተመውን ብሎግ መጽሔት ይጎብኙ።",
+			"dismiss": "ይጥፉ",
+			"title": "Toorax v0.2.0 እነሆ!"
+		}
+	},
+	"personalInfoForm": {
+		"title": "የግል መረጃ",
+		"description": "እባኮትን በታች የግል መረጃዎችዎን ያቅርቡ።",
+		"successMessage": "መረጃዎችዎ በተሳካ ሁኔታ ተሳክቷል።",
+		"contact_information": "የግንኙነት መረጃዎች",
+		"personal_information": "የግል መረጃዎች",
+		"physical_attributes": "የአካላዊ መለኪያዎች መረጃዎች",
+		"AddressInfo": "የአድራሻ መረጃዎች",
+		"representative_info": "የተወካዩ የግል መረጃዎች",
+		"representative_address": "የተወካዩ አድራሻዎች",
+		"relationship": "ግንኙነት",
+
+		"fields": {
+			"first_name": {
+				"label": "ስም ",
+				"placeholder": "ስም በአማርኛ",
+				"description": "በህጋዊ መሠረት ስምዎ።",
+				"error": "ስም ቢያንስ ሁለት ቁምፊ መሆን አለበት።"
+			},
+			"middle_name": {
+				"label": "የአባት ስም ",
+				"placeholder": "የአባት ስም በአማርኛ",
+				"description": "በህጋዊ መሠረት የአባት ስምዎ።",
+				"error": "የአባት ስም ቢያንስ ሁለት ቁምፊ መሆን አለበት።"
+			},
+			"last_name": {
+				"label": "የአያት ስም ",
+				"placeholder": "የአያት ስም በአማርኛ",
+				"description": "በህጋዊ መሠረት የአያት ስምዎ።",
+				"error": "የአያት ስም ቢያንስ ሁለት ቁምፊ መሆን አለበት።"
+			},
+
+			"gender": {
+				"label": "ፆታ",
+				"placeholder": "ፆታዎን ይምረጡ",
+				"description": "እባኮትን ፆታዎን ይምረጡ።",
+				"error": "እባኮትን ፆታዎን ይምረጡ። ይህ አስፈላጊ ነው።",
+				"options": {
+					"male": "ወንድ",
+					"female": "ሴት",
+					"not_prefer_to_say": "ለመግለጽ አልፈልግም"
+				}
+			},
+			"benefit_plan": {
+				"label": "የጥቅም እቅፍ",
+				"placeholder": "የጥቅም እቅፎትን ይምረጡ",
+				"description": "እባኮትን የጥቅም እቅፎትን ይምረጡ።",
+				"error": "እባኮትን የጥቅም እቅፎትን ይምረጡ። ይህ አስፈላጊ ነው።",
+				"options": {
+					"basic": "መሰረታዊ",
+					"standard": "መደበኛ",
+					"comprehensive": "ሙሉ",
+					"family": "ቤተሰብ"
+				}
+			},
+			"height": {
+				"label": "ቁመት",
+				"placeholder": "ቁመትዎን ያስገቡ",
+				"description": "በሴንትሜትር የተመነጨ ቁመትዎን ያስገቡ።",
+				"error": "ቁመት መምረጥ አለበት።"
+			},
+			"weight": {
+				"label": "ክብደት",
+				"placeholder": "ክብደትዎን ያስገቡ",
+				"description": "በኪሎግራም የተመነጨ ክብደትዎን ያስገቡ።",
+				"error": "ክብደት የዲሲማል መሆን አለበት።"
+			},
+
+			"date_of_birth": {
+				"label": "የልደት ቀን",
+				"placeholder": "የልደት ቀንዎን ይምረጡ",
+				"description": "የልደት ቀንዎን በወር-ቀን-ዓመት(MM-DD-YYYY) ቅርጽ ያስገቡ።",
+				"error": "እባኮዎን የልደት ቀኖን በትክክል ያስገቡ።"
+			},
+
+			"phone_number": {
+				"label": "ስልክ ቁጥር",
+				"placeholder": "ስልክ ቁጥርዎን ያስገቡ",
+				"description": "ትክክለኛ የስልክ ቁጥር ስጡ።",
+				"error": "ስልክ ቁጥር በተንኮሉ ምርጥ ናቸው እና በተንኮሉ 10 እንቅስቃሴ አለበት።"
+			},
+			"email_address": {
+				"label": "ኢሜል አድራሻ",
+				"placeholder": "ኢሜል አድራሻ ያስገቡ",
+				"description": "ትክክለኛ ኢሜል አድራሻ ስጡ።",
+				"error": "ትክክለኛ ኢሜል አድራሻ እባኮትን አስገባ።"
+			},
+			"mailing_address_line1": {
+				"label": "የቤት ቁጥር",
+				"placeholder": "የቤት ቁጥር",
+				"description": "ከዝርዝሩ ከተማ ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቃላት ርዝመት ሊኖረው አለበት።"
+			},
+			"city": {
+				"label": "ከተማ",
+				"placeholder": "ከተማ",
+				"description": "ከዝርዝሩ ከተማ ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቃላት ርዝመት ሊኖረው አለበት።"
+			},
+			"region": {
+				"label": "ክልል",
+				"placeholder": "ክልል",
+				"description": "ከዝርዝሩ ክልል ይምረጡ።",
+				"error": "የክልል ስም ቢያንስ 2 ቃላት ርዝመት ሊኖረው አለበት።"
+			},
+			"street_address": {
+				"label": "የመንገድ/ጎዳና አድራሻ ",
+				"placeholder": "የመንገድ/ጎዳና አድራሻ ",
+				"description": "የመንገድ/ጎዳና አድራሻ  ያስገቡ።",
+				"error": "የመንገድ/ጎዳና አድራሻ  ቢያንስ 2 ቃላት ርዝመት ሊኖረው አለበት።"
+			},
+			"kifle_ketema": {
+				"label": "ክፍለ ከተማ",
+				"placeholder": "ክፍለ ከተማ",
+				"description": "ከዝርዝሩ ክፍለ ከተማ ይምረጡ።",
+				"error": "የክፍለ ከተማ ስም ቢያንስ 2 ቃላት ርዝመት ሊኖረው አለበት።"
+			},
+			"country": {
+				"label": "ሀገር",
+				"placeholder": "ሀገር",
+				"description": "ከዝርዝሩ ሀገር ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቃላት ርዝመት ሊኖረው አለበት።"
+			},
+			"tin_number": {
+				"label": "የቲን/TIN ቁጥር",
+				"placeholder": "የቲን/TIN ቁጥር ያስገቡ",
+				"description": "ትክክለኛ የቲን/TIN ቁጥር ያቅርቡ።",
+				"error": "የቲን/TIN ቁጥር ትክክለኛ ቁጥር መሆን አለበት።"
+			},
+			"marital_status": {
+				"label": "የጋብቻ ሁኔታ",
+				"placeholder": "የጋብቻ ሁኔታዎትን ይምረጡ",
+				"description": "እባኮትን የጋብቻ ሁኔታዎትን ይምረጡ።",
+				"options": {
+					"single": "ያላገባ/ች",
+					"married": "ያገባ/ች",
+					"divorced": "የተፋታ/ች"
+				}
+			},
+			"zip_code": {
+				"label": "ወረዳ",
+				"placeholder": "ዚፕ ኮድ ወይም የወረዳ ስም ያስገቡ",
+				"description": "ዚፕ ኮድ ወይም የወረዳ ስም።",
+				"error": "ትክክለኛ ዚፕ ኮድ ወይም የወረዳ ስም ሊኖር አለ።"
+			},
+			"relationship_to_member": {
+				"label": "ከአባል ጋር ያለህ/ሽ ግንኙነት",
+				"placeholder": "ከአባል ጋር ያለህ/ሽ ግንኙነት ያስገቡ",
+				"description": "ከአባል ጋር ያለህ/ሽ ግንኙነት እባኮትን ያስገቡ።",
+				"error": "ከአባል ጋር ያለህ/ሽ ግንኙነት ቢያንስ 2 ቁምፊ እንዲሆን አስፈላጊ ነው።"
+			},
+			"relationship_to_member_other": {
+				"label": "ከአባል ጋር ያለህ/ሽ ግንኙነት ስም",
+				"placeholder": "ከአባል ጋር ያለህ/ሽ ግንኙነት ስም ያስገቡ",
+				"description": "ከአባል ጋር ያለህ/ሽ ግንኙነት እባኮትን ያስገቡ።",
+				"error": "ከአባል ጋር ያለህ/ሽ ግንኙነት ቢያንስ 2 ቁምፊ እንዲሆን አስፈላጊ ነው።"
+			},
+			"representative_first_name": {
+				"label": "የተወካዩ የመጀመሪያ ስም",
+				"placeholder": "የተወካዩ የመጀመሪያ ስም ያስገቡ",
+				"description": "የተወካዩ የመጀመሪያ ስም።",
+				"error": "የተወካዩ የመጀመሪያ ስም ቢያንስ 2 ቁምፊ እንዲሆን አስፈላጊ ነው።"
+			},
+			"representative_middle_name": {
+				"label": "የተወካዩ የአባት ስም",
+				"placeholder": "የተወካዩ የአባት ስም ያስገቡ",
+				"description": "የተወካዩ የአባት ስም።",
+				"error": "የተወካዩ የአባት ስም ቢያንስ 2 ቁምፊ እንዲሆን አስፈላጊ ነው።"
+			},
+			"representative_last_name": {
+				"label": "የተወካዩ የአያት ስም",
+				"placeholder": "የተወካዩ የአያት ስም ያስገቡ",
+				"description": "የተወካዩ የአያት ስም።",
+				"error": "የተወካዩ የአያት ስም ቢያንስ 2 ቁምፊ እንዲሆን አስፈላጊ ነው።"
+			},
+			"representative_gender": {
+				"label": "የተወካዩ ፆታ",
+				"placeholder": "የተወካዩ ፆታ ይምረጡ",
+				"description": "የተወካዩ ፆታ እባኮትን ይምረጡ።",
+				"error": "የተወካዩ ፆታ አስፈላጊ ነው።",
+				"options": {
+					"male": "ወንድ",
+					"female": "ሴት",
+					"not_prefer_to_say": "ማለት አልፈለግም"
+				}
+			},
+			"representative_date_of_birth": {
+				"label": "የተወካዩ የልደት ቀን",
+				"placeholder": "የልደት ቀን ይምረጡ",
+				"description": "የልደት ቀን በወር-ቀን-ዓመት(MM-DD-YYYY) ቅርጽ ያስገቡ።",
+				"error": "የልደት ቀንን በወር-ቀን-ዓመት(MM-DD-YYYY) ቅርጽ ያስገቡ።"
+			},
+			"representative_marital_status": {
+				"label": "የተወካዩ የጋብቻ ሁኔታ",
+				"placeholder": "የተወካዩ የጋብቻ ሁኔታ ይምረጡ",
+				"description": "የተወካዩ የጋብቻ ሁኔታን እባኮትን ይምረጡ።",
+				"error": "የተወካዩ የጋብቻ ሁኔታ አስፈላጊ ነው።",
+				"options": {
+					"single": "ያላገባ/ች",
+					"married": "ያገባ/ች",
+
+					"divorced": "የተፋታ/ች"
+				}
+			},
+			"representative_mailing_address_line1": {
+				"label": "የተወካዩ የቤት ቁጥር",
+				"placeholder": "የተወካዩ የቤት ቁጥር",
+				"description": "የተወካዩ የቤት ቁጥር ይምረጡ።",
+				"error": "የተወካዩ የቤት ቁጥር ቢያንስ 2 ቁምፊ መሆን አለበት።"
+			},
+			"representative_country": {
+				"label": "የተወካዩ አገር",
+				"placeholder": "የተወካዩ አገር",
+				"description": "ከዝርዝሩ አገር ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊ እንዲሆን አስፈላጊ ነው።"
+			},
+			"representative_city": {
+				"label": "የተወካዩ ከተማ",
+				"placeholder": "የተወካዩ ከተማ",
+				"description": "ከዝርዝሩ ከተማ ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊ እንዲሆን አስፈላጊ ነው።"
+			},
+			"representative_region": {
+				"label": "የተወካዩ ክልል",
+				"placeholder": "የተወካዩ ክልል",
+				"description": "ከዝርዝሩ ከተማ ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊ እንዲሆን አስፈላጊ ነው።"
+			},
+			"representative_street_address": {
+				"label": "የተወካዩ የመንገድ/ጎዳና አድራሻ ",
+				"placeholder": "የተወካዩ የመንገድ/ጎዳና አድራሻ ",
+				"description": "የመንገድ/ጎዳና አድራሻ ያስገቡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊ እንዲሆን አስፈላጊ ነው።"
+			},
+			"representative_kifle_ketema": {
+				"label": "የተወካዩ ክፍለ ከተማ",
+				"placeholder": "የተወካዩ ክፍለ ከተማ",
+				"description": "ከዝርዝሩ የተወካዩ ክፍለ ከተማ ይምረጡ።",
+				"error": "የክፍለ ከተማ ስም ቢያንስ 2 ቁምፊ እንዲሆን አስፈላጊ ነው።"
+			},
+			"representative_phone_number": {
+				"label": "የተወካዩ ስልክ ቁጥር",
+				"placeholder": "የተወካዩ ስልክ ቁጥር ያስገቡ",
+				"description": "የተወካዩ ስልክ ቁጥር።",
+				"error": "ትክክለኛ ስልክ ቁጥር ከ10 እስከ 15 አሃዝ መሆን አስፈላጊ ነው።"
+			},
+			"representative_email_address": {
+				"label": "የተወካዩ ኢሜይል አድራሻ",
+				"placeholder": "የተወካዩ ኢሜይል አድራሻ ያስገቡ",
+				"description": "የተወካዩ ኢሜይል አድራሻ።",
+				"error": "ትክክለኛ ኢሜይል አድራሻ አስፈላጊ ነው።"
+			},
+			"dependent_of": {
+				"label": "የተወካዩ ጥላ ኢንሹራንስ መታወቂያ",
+				"placeholder": "የተወካዩ ጥላ ኢንሹራንስ መታወቂያ ያስገቡ",
+				"description": "የተወካዩ ጥላ ኢንሹራንስ መታወቂያ።",
+				"error": "የተወካዩ ጥላ ኢንሹራንስ መታወቂያ ትክክለኛ ቁጥር መሆን አለበት።"
+			},
+			"representative_zip_code": {
+				"label": "የተወካዩ ወረዳ",
+				"placeholder": "ዚፕ ኮድ ወይም የወረዳ ስም ያስገቡ",
+				"description": "ዚፕ ኮድ ወይም የወረዳ ስም።",
+				"error": "ትክክለኛ ዚፕ ኮድ ወይም የወረዳ ስም ሊኖር አለ።"
+			}
+		}
+	},
+	"brokerInfoForm": {
+		"title": "የግል መረጃ",
+		"description": "እባኮትን ከታች ያሉትን የግል ዝርዝሮች ይሙሉ።",
+		"successMessage": "መረጃዎችዎ በተሳካ ሁኔታ ተላልፋል።",
+		"fields": {
+			"firstName": {
+				"label": "ስም",
+				"placeholder": "ስምዎን ያስገቡ",
+				"description": "ህጋዊ ስምዎ።",
+				"error": "ስም ቢያንስ 2 ቁምፊ አጠናቆ መሆን አለበት።"
+			},
+			"middleName": {
+				"label": "የአባት ስም",
+				"placeholder": "የአባት ስምዎን ያስገቡ",
+				"description": "ህጋዊ የአባት ስምዎ።",
+				"error": "የአባት ስም ቢያንስ 2 ቁምፊ አጠናቆ መሆን አለበት።"
+			},
+			"lastName": {
+				"label": "የአያት ስም",
+				"placeholder": "የአያት ስምዎን ያስገቡ",
+				"description": "ህጋዊ የአያት ስምዎ።",
+				"error": "የአያት ስም ቢያንስ 2 ቁምፊ አጠናቆ መሆን አለበት።"
+			},
+			"gender": {
+				"label": "ፆታ",
+				"placeholder": "ፆታዎን ይምረጡ",
+				"description": "እባኮትን ፆታዎን ይምረጡ።",
+				"error": "ፆታ መምረጥ ያስፈልጋል።",
+				"options": {
+					"male": "ወንድ",
+					"female": "ሴት",
+					"not_prefer_to_say": "ለመግለጽ አልፈልግም"
+				}
+			},
+
+			"dateOfBirth": {
+				"label": "የትውልድ ቀን",
+				"placeholder": "የትውልድ ቀንዎን ይምረጡ",
+				"description": "የትውልድ ቀንዎን በ በወር-ቀን-ዓመት(MM-DD-YYYY) ቅርጽ ያስገቡ።",
+				"error": "እባኮዎን የልደት ቀኖን በትክክል ያስገቡ።"
+			},
+			"contactPhone": {
+				"label": "ስልክ ቁጥር",
+				"placeholder": "ስልክ ቁጥርዎን ያስገቡ",
+				"description": "ትክክለኛ ስልክ ቁጥር ያቅርቡ።",
+				"error": "ስልክ ቁጥር በቁጥር መሆንና ቢያንስ 10 አሃዘች መያዝ አለበት።"
+			},
+			"contactEmail": {
+				"label": "ኢሜል አድራሻ",
+				"placeholder": "ኢሜል አድራሻዎን ያስገቡ",
+				"description": "ትክክለኛ ኢሜል አድራሻ ያቅርቡ።",
+				"error": "እባኮትን ትክክለኛ ኢሜል አድራሻ ያስገቡ።"
+			},
+			"business_address_line_1": {
+				"label": "የጎዳና /የመንገድ አድራሻ 2",
+				"placeholder": "የመጎና /የመንገድ አድራሻ 2",
+				"description": "የመንገድ/ጎዳና አድራሻ ያቅርቡ።",
+				"error": "የመንገድ አድራሻ ቢያንስ 2 ቁምፊዎች መያዝ አለበት።"
+			},
+			"business_address_line_2": {
+				"label": "የቤት ቁጥር",
+				"placeholder": "የቤት ቁጥር",
+				"description": "የቤት ቁጥር ያቅርቡ።",
+				"error": "የቤት ቁጥር ቢያንስ 2 ቁምፊዎች መያዝ አለበት።"
+			},
+			"business_city": {
+				"label": "ከተማ",
+				"placeholder": "ማውጫ አድራሻ መስመር 1",
+				"description": "ከዝርዝሩ ከተማ ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊዎች መያዝ አለበት።"
+			},
+			"business_state": {
+				"label": "ክልል",
+				"placeholder": "ክልል",
+				"description": "ከዝርዝሩ ክልል ይምረጡ።",
+				"error": "የክልል ስም ቢያንስ 2 ቁምፊዎች መያዝ አለበት።"
+			},
+			"street_address": {
+				"label": "የመንገድ/ጎዳና አድራሻ 1",
+				"placeholder": "የመንገድ/ጎዳናአድራሻ መስመር 1",
+				"description": "ከዝርዝሩ ከተማ ይምረጡ።",
+				"error": "የመንገድ አድራሻ ቢያንስ 2 ቁምፊዎች መያዝ አለበት።"
+			},
+			"business_kifle_ketema": {
+				"label": "ክፍለ ከተማ",
+				"placeholder": "ክፍለ ከተማ",
+				"description": "ከዝርዝሩ ክፍለ ከተማ ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊዎች መያዝ አለበት።"
+			},
+			"tax_identification_number": {
+				"label": "የቲን/TIN ቁጥር (የግብር መለያ ቁጥር)",
+				"placeholder": "የቲን/TIN ቁጥርዎን ያስገቡ",
+				"description": "ትክክለኛ የቲን/TIN ቁጥር ያቅርቡ።",
+				"error": "የቲን/TIN ቁጥር ትክክለኛ መሆን አለበት።"
+			},
+			"business_type": {
+				"label": "የንግድ አይነት",
+				"placeholder": "የንግድ አይነትዎን ያስገቡ",
+				"description": "ትክክለኛ የንግድ አይነት ያቅርቡ።",
+				"error": "ትክክለኛ የንግድ አይነት አለበት።",
+				"options": {
+					"private": "የግል",
+					"group": "የቡድን",
+					"sector": "የሴክተር"
+				}
+			},
+			"business_zip_code": {
+				"label": "የንግድ ወረዳ",
+				"placeholder": "የንግድ ወረዳዎን ያስገቡ",
+				"description": "ትክክለኛ የንግድ ወረዳዎን ያቅርቡ።",
+				"error": "ትክክለኛ የንግድ ወረዳዎን አለበት።"
+			},
+			"business_license_number": {
+				"label": "የንግድ ፍቃድ ቁጥር",
+				"placeholder": "የንግድ ፍቃድ ቁጥርዎን ያስገቡ",
+				"description": "ትክክለኛ የንግድ ፍቃ ያቅርቡ።",
+				"error": "የቲኤን ቁጥር እቃ እና አገልግሎት ፈቃድ ቁጥር መሆን አለበት።"
+			},
+			"company_name": {
+				"label": "የድርጅት ስም",
+				"placeholder": "የድርጅትዎን ስም ያስገቡ",
+				"description": "ትክክለኛ የድርጅት ስም ያቅርቡ።",
+				"error": "የቲኤን ቁጥር የድርጅት ስም መሆን አለበት።"
+			},
+
+			"license_state": {
+				"label": "የንግድ ፈቃድ ሰጪ ኤጀንሲ/ ድርጅት",
+				"placeholder": "የእርስዎን የንግድ ፈቃድ ሰጪ ኤጀንሲ/ድርጅት ያስገቡ",
+				"description": "ፈቃድ ያገኙበት ትክክለኛ የንግድ ፈቃድ ሰጪ ኤጀንሲ/ድርጅት ያቅርቡ።",
+				"error": "የቲኤን ቁጥር የፈቃድ አይነት መሆን አለበት።"
+			},
+			"license_issued_date": {
+				"label": "የንግድ ፈቃድ ተሰጠበት ቀን",
+				"placeholder": "የፈቃድ ተሰጠበትን ቀን ያስገቡ",
+				"description": "ትክክለኛ የፈቃድ ተሰጠበት ቀን ያቅርቡ።",
+				"error": "የፈቃድ ተሰጠበት ቀን መሆን አለበት።"
+			},
+			"license_expired_date": {
+				"label": "የንግድ ፈቃድ ጊዜው የሚያልፍበት ቀን",
+				"placeholder": "የንግድ ፈቃድዎ ጊዜው የሚያልፍበት ቀን ያስገቡ",
+				"description": "ትክክለኛ የንግድ ፈቃድ ጊዜው የሚያልፍበት ቀን ያቅርቡ።",
+				"error": "የፈቃድ ጊዜው የሚያልፍበት ቀን መኖር አለበት።"
+			}
+		}
+	},
+	"providerInfoForm": {
+		"title": "የጤና አገልግሎት አቅራቢ መረጃ",
+		"description": "እባኮትን የጤና አገልግሎት አቅራቢውን መረጃ በዚህ ስር ያስገቡ።",
+		"successMessage": "የጤና አገልግሎት አቅራቢው መረጃ በተሳካ ሁኔታ ተላክቷል።",
+		"identifiation": "የጤና አገልግሎት አቅራቢው መለያ",
+		"information": "የጤና አገልግሎት አቅራቢው የመገልገያ መረጃ",
+		"AddressInfo": "የጤና አገልግሎት አቅራቢው አድራሻ",
+		"speciality": "የጤና አገልግሎት አቅራቢ ስፔሻሊቲ",
+		"group": "የቡድን",
+		"personal": "የግል መረጃ",
+		"alert": {
+			"title": "ለግል ባለሞያ ብቻ!",
+			"description": "ለግል ባለሞያ ካልሆናቹ በድጋሜ የአገልግሎት አይነቱን ይምረጡ."
+		},
+		"fields": {
+			"tin_number": {
+				"label": "የቲን/TIN ቁጥር ወይም የግብር መክፈያ/TAX ቁጥር",
+				"placeholder": "የቲን/TIN ቁጥር ወይም የግብር መክፈያ/TAX ቁጥር ያስገቡ",
+				"description": "የጤና አገልግሎት አቅራቢው የቲን/TIN ቁጥር ወይም የግብር መክፈያ/TAX ቁጥር።",
+				"error": "የቲን/TIN ቁጥር ወይም የግብር መክፈያ/TAX ቁጥር ያስፈልጋል።"
+			},
+			"institute_name": {
+				"label": "የተቋም ስም",
+				"placeholder": "የተቋም ስም ያስገቡ",
+				"description": "የጤና አገልግሎት አቅራቢው የተቋሙ ስም።",
+				"error": "የተቋም ስም ያስፈልጋል።"
+			},
+			"provider_npi_id": {
+				"label": " የሙያ መለያ ቁጥር",
+				"placeholder": "1245319599",
+				"description": "የጤና አገልግሎት አቅራቢው ብቸኛ መለያ።",
+				"error": "የጤና አገልግሎት አቅራቢ መለያ ያስፈልጋል።"
+			},
+			"provider_last_name": {
+				"label": " የአያት ስም",
+				"placeholder": "የአያት ስም ያስገቡ",
+				"description": "የጤና አገልግሎት አቅራቢው የአያት ስም በእንግሊዝኛ።",
+				"error": "የአያት ስም ያስፈልጋል። ስም ከ1 ፊደል በላይ መሆን አለበት። ፊደላትን ብቻ ያስገቡ ቁጥር መጠቀም አይፈቀድም።"
+			},
+			"provider_first_name": {
+				"label": "ስም",
+				"placeholder": "የመጀመሪያ ስም ያስገቡ",
+				"description": "የጤና አገልግሎት አቅራቢው የመጀመሪያ ስም በእንግሊዝኛ።",
+				"error": "የመጀመሪያ ስም ያስፈልጋል። ስም ከ1 ፊደል በላይ መሆን አለበት። ፊደላትን ብቻ ያስገቡ ቁጥር መጠቀም አይፈቀድም።"
+			},
+			"provider_middle_initial": {
+				"label": "የአባት ስም",
+				"placeholder": "የአባት ስም ያስገቡ",
+				"description": "የጤና አገልግሎት አቅራቢው የአባት ስም በእንግሊዝኛ ፊደላት ያስገቡ ።",
+				"error": "የአባት ስም ከ1 ፊደል በላይ መሆን አለበት። ፊደላትን ብቻ ያስገቡ ቁጥር መጠቀም አይፈቀድም።"
+			},
+			"provider_title": {
+				"label": "የጤና አገልግሎት አቅራቢው ማዕረግ",
+				"placeholder": "የጤና አገልግሎት አቅራቢ ማዕረግ",
+				"description": "የጤና አገልግሎት አቅራቢው ማዕረግ (ምሳሌ፦ አቶ፣ ወ/ሮ፣ ዶ/ር።)",
+				"error": "የጤና አገልግሎት አቅራቢ ማዕረግ አስፈላጊ ነው።",
+				"options": {
+					"Dr": "Dr",
+					"MD": "MD",
+					"DO": "DO",
+					"DPM": "DPM",
+					"PA": "PA",
+					"NP": "NP",
+					"PhD": "PhD",
+					"RN": "RN",
+					"BSN": "BSN",
+					"MSN": "MSN",
+					"Path": "Path",
+					"Orthopedic": "Orthopedic",
+					"PharmD": "PharmD",
+					"Prof": "Prof",
+					"Mr": "Mr",
+					"Mrs": "Mrs",
+					"Ms": "Ms"
+				}
+			},
+			"provider_contact_person": {
+				"label": "የተጠሪ / የተወካይ ሙሉ ሰው",
+				"placeholder": "አበበ ሙሉነህ",
+				"description": "የጤና አገልግሎት አቅራቢው አድራሻ ሰው ሙሉ ስም።",
+				"error": "የተጠሪ / የተወካይ ሰው ስም አስፈላጊ ነው።"
+			},
+			"provider_contact_email": {
+				"label": "የተጠሪ / የተወካይ ኢሜል",
+				"placeholder": "example@gmail.com",
+				"description": "የተጠሪ / የተወካይ ሰው ኢሜል አድራሻ።",
+				"error": "ትክክለኛ ኢሜል አድራሻ አስፈላጊ ነው።"
+			},
+			"provider_contact_phone_number": {
+				"label": "የተጠሪ / የተወካይ ስልክ ቁጥር",
+				"placeholder": "0912345678",
+				"description": "የተጠሪ / የተወካይ ሰው ስልክ ቁጥር።",
+				"error": "ትክክለኛ ስልክ ቁጥር አስፈላጊ ነው።"
+			},
+			"provider_discount_agreement": {
+				"label": "የቅናሽ ስምምነት",
+				"placeholder": "የቅናሽ መጠን በመቶኛ ያስገቡ",
+				"description": "ለተጠቃሚው የሚቀርብ ቅናሽ የተስማሙበት መጠን በመቶኛ።",
+				"error": "የቅናሽ ስምምነት ትክክለኛ መቶኛ መሆን አለበት።",
+				"options": {
+					"NoDiscount": "ቅናሽ አልሰጥም",
+					"fivePercent": "5%",
+					"tenPercent": "10%"
+				}
+			},
+			"provider_health_tier": {
+				"label": "የጤና ደረጃ መደብ",
+				"placeholder": "የጤና ደረጃ መደብ ይምረጡ",
+				"description": "የግምገማ ደረጃን ይምረጡ።",
+				"error": "የጤና ደረጃ መደብ አስፈላጊ ነው።",
+				"options": {
+					"Primary Level Health Care": "የመጀመሪያ ደረጃ ጤና እንክብካቤ",
+					"Secondary Level Health Care": "የሁለተኛ ደረጃ ጤና እንክብካቤ",
+					"Tertiary Level Health Care": "የሶስተኛ ደረጃ ጤና እንክብካቤ"
+				}
+			},
+			"provider_health_sub_tier": {
+				"label": "የጤና ንዑስ ደረጃ",
+				"placeholder": "የንዑስ ደረጃን ይምረጡ",
+				"no_options_available": "ምርጫዎች አልተገኙም።",
+				"description": "እንደተመረጠው የጤና ደረጃ ንዑስ ደረጃ ይምረጡ።",
+				"error": "ንዑስ ደረጃ አስፈላጊ ነው።"
+			},
+			"provider_service_type": {
+				"label": "የአገልግሎት አይነት",
+				"placeholder": "የአገልግሎት አይነት ይምረጡ",
+				"description": "የሚሰጥ አገልግሎት አይነት (ምሳሌ፦ በግል ፣ ቡድን ኢንስቲትዩት)",
+				"error": "የአገልግሎት አይነት አስፈላጊ ነው።",
+				"options": {
+					"group": "ቡድን",
+					"institute": "ኢንስቲትዩት / ተቋም",
+					"professional": "በግል"
+				}
+			},
+			"provider_gender": {
+				"label": "ፆታ",
+				"placeholder": "ፆታ ይምረጡ",
+				"description": "የጤና አገልግሎት አቅራቢው ፆታ።",
+				"error": "ፆታ አስፈላጊ ነው።",
+				"options": {
+					"male": "ወንድ",
+					"female": "ሴት",
+					"not_prefer_to_say": "መግለጽ አልፈልግም"
+				}
+			},
+			"provider_date_of_birth": {
+				"label": "የልደት ቀን",
+				"placeholder": "የልደት ቀንዎን ይምረጡ",
+				"description": "የልደት ቀንዎን በወር-ቀን-ዓመት(MM-DD-YYYY) ቅርጽ ያስገቡ።",
+				"error": "እባኮትን የልደት ቀንዎን በወር-ቀን-ዓመት(MM-DD-YYYY) ቅርጽ ያስገቡ።"
+			},
+			"provider_address": {
+				"label": "የመንገድ/ጎዳና አድራሻ ",
+				"placeholder": "የመንገድ/ጎዳና አድራሻ  ያስገቡ",
+				"description": "ዋና አድራሻው።",
+				"error": "አድራሻ አስፈላጊ ነው።"
+			},
+			"provider_address_line2": {
+				"label": "የመንገድ/ጎዳና አድራሻ",
+				"placeholder": "ተጨማሪ ዝርዝር አስገቡ",
+				"description": "ተጨማሪ ዝርዝር ካለ።",
+				"error": "የመንገድ/ጎዳና አድራሻ  2 ትክክለኛ መሆን አለበት።"
+			},
+			"provider_city": {
+				"label": "ከተማ",
+				"placeholder": "ከተማ ያስገቡ",
+				"description": "የጤና አገልግሎት አቅራቢው እንቅስቃሴ የሚገኝበት ከተማ።",
+				"error": "ከተማ አስፈላጊ ነው።"
+			},
+			"provider_country": {
+				"label": "ሃገር",
+				"placeholder": "ሃገር ያስገቡ",
+				"description": "የጤና አገልግሎት አቅራቢው ሀገር።",
+				"error": "ሃገር አስፈላጊ ነው።"
+			},
+			"provider_region": {
+				"label": "ክልል ",
+				"placeholder": "ክልል ያስገቡ",
+				"description": "የጤና አገልግሎት አቅራቢው ክልል።",
+				"error": "ክልል አስፈላጊ ነው።"
+			},
+			"provider_kifle_ketema": {
+				"label": "ክፍለ ከተማ",
+				"placeholder": "ክፍለ ከተማ ወይም ክፍለ ክልል ያስገቡ",
+				"description": "የጤና አገልግሎት የሚገኝበት ክፍለ ከተማ።",
+				"error": "ክፍለ ከተማ አስፈላጊ ነው።"
+			},
+			"provider_zip_code": {
+				"label": "ወረዳ",
+				"placeholder": "ለምሳሌ (12345 ወይም ወረዳ 02)",
+				"description": "ዚፕ ኮድ ወይም የአድራሻ ወረዳ።",
+				"error": "ዚፕ ኮድ ወይም ወረዳ ትክክለኛ መሆን አለበት።"
+			},
+			"provider_phone_number": {
+				"label": "ስልክ ቁጥር",
+				"placeholder": "ስልክ ቁጥር ያስገቡ",
+				"description": "የድርጅት ዋና ስልክ ቁጥር።",
+				"error": "ትክክለኛ ስልክ ቁጥር አስፈላጊ ነው።"
+			},
+			"provider_fax": {
+				"label": "ፋክስ",
+				"placeholder": "የፋክስ ቁጥር ያስገቡ",
+				"description": "የፋክስ ቁጥር፣ ካለ።",
+				"error": "ፋክስ ቁጥር ትክክለኛ መሆን አለበት።"
+			},
+			"provider_email": {
+				"label": "ኢሜይል",
+				"placeholder": "ኢሜይል ያስገቡ",
+				"description": "የጤና አገልግሎት አቅራቢው ኢሜይል አድራሻ።",
+				"error": "ትክክለኛ ኢሜይል አድራሻ አስፈላጊ ነው።"
+			},
+			"provider_type": {
+				"label": "የጤና አገልግሎት አቅራቢ አይነት",
+				"placeholder": "የጤና አገልግሎት አቅራቢ አይነትን አስገባ",
+				"description": "የጤና አገልግሎት አቅራቢ አይነት (ምሳሌ፡ ጤና አገልግሎት አቅራቢ፣ አገልግሎት አቅራቢ).",
+				"error": "የጤና አገልግሎት አቅራቢ አይነት ያስፈልጋል።"
+			},
+			"provider_primary_specialty": {
+				"label": "ዋና ስፔሻሊቲ",
+				"placeholder": "ዋና ስፔሻሊቲን አስገባ",
+				"description": "የጤና አገልግሎት አቅራቢው ዋና ስፔሻሊቲ።",
+				"error": "ዋና ስፔሻሊቲ ያስፈልጋል።"
+			},
+			"provider_sub_specialty": {
+				"label": "ንዑስ ስፔሻሊቲ",
+				"placeholder": "ንዑስ ስፔሻሊቲን አስገባ",
+				"description": "የጤና አገልግሎት አቅራቢው ንዑስ ስፔሻሊቲ።",
+				"error": "ንዑስ ስፔሻሊቲ ያስፈልጋል።"
+			},
+			"medicare_provider_number": {
+				"label": "የመድካሪ አቅራቢ ቁጥር",
+				"placeholder": "የመድካሪ አቅራቢ ቁጥርን አስገባ",
+				"description": "አቅራቢውን የመድካሪ እቃ ቁጥር።",
+				"error": "የመድካሪ አቅራቢ ቁጥር ያስፈልጋል።"
+			},
+			"provider_group_name": {
+				"label": "የቡድን ስም",
+				"placeholder": "የቡድኑን ስምን አስገባ",
+				"description": "የጤና አገልግሎት አቅራቢው ቡድን ስም።",
+				"error": "የቡድን ስም ያስፈልጋል።"
+			},
+			"provider_group_contact_person": {
+				"label": "የቡድን ተጠሪው ሙሉ ስም",
+				"placeholder": "የቡድን ተጠሪው ሙሉ ስሙን አስገባ",
+				"description": "የጤና አገልግሎት አቅራቢ የቡድኑ ተጠሪ ስም።",
+				"error": "የተጠሪው ስም ያስፈልጋል።"
+			},
+			"provider_group_phone_number": {
+				"label": "የቡድን ስልክ ቁጥር",
+				"placeholder": "ስልክ ቁጥርን አስገባ",
+				"description": "የጤና አገልግሎት አቅራቢው ቡድን ስልክ ቁጥር።",
+				"error": "ትክክለኛ ስልክ ቁጥር ያስፈልጋል።"
+			},
+			"provider_group_contact_email": {
+				"label": "የቡድን ኢሜይል አድራሻ",
+				"placeholder": "ኢሜይል አድራሻን አስገባ",
+				"description": "የጤና አገልግሎት አቅራቢ ቡድኑ ኢሜይል አድራሻ።",
+				"error": "ትክክለኛ ኢሜይል አድራሻ አስፈላጊ ነው።"
+			},
+			"provider_group_address": {
+				"label": "የቡድን አድራሻ",
+				"placeholder": "አድራሻን አስገባ",
+				"description": "የጤና አገልግሎት አቅራቢ የቡድኑ አድራሻ።",
+				"error": "አድራሻ ያስፈልጋል።"
+			}
+		}
+	},
+	"OrganizationInfoForm": {
+		"title": "የድርጅት መረጃዎች",
+		"description": "እባኮትን የድርጅቱን ዝርዝሮች በስተቀርቡ።",
+		"successMessage": "የድርጅቱ መረጃ በተሳካ ሁኔታ ተሳክቷል።",
+		"organization_information": "የድርጅቱ መረጃዎች",
+		"contact_information": "የድርጅቱ የግንኙነት መረጃዎች",
+		"AddressInfo": "የድርጅቱ የአድራሻ መረጃዎች",
+		"representative_info": "የድርጅቱ ተወካይ ሰው መረጃዎች",
+		"representative_address": "የድርጅቱ ተወካይ ሰው አድራሻ",
+		"representative_contact_information": "የድርጅቱ ተወካይ የግንኙነት መረጃዎች",
+		"fields": {
+			"name": {
+				"label": "የድርጅቱ ስም",
+				"placeholder": "የድርጅቱን ስም ያስገቡ",
+				"description": "ሕጋዊ የድርጅቱን ስም።",
+				"error": "የድርጅቱ ስም ቢያንስ 2 ቁምፊዎች ርዝመት ሊኖረው አለበት።"
+			},
+			"registration_number": {
+				"label": "የምዝገባ/የግብር መክፈያ ቁጥር",
+				"placeholder": "የምዝገባ ቁጥር ያስገቡ",
+				"description": "የድርጅቱ በተለየ መለያ ቁጥር።",
+				"error": "የምዝገባ ቁጥር አስፈላጊ ነው።"
+			},
+			"industry_type": {
+				"label": "የንግድ/ኢንዱስትሪ መስክ",
+				"placeholder": "የንግድ/ኢንዱስትሪ መስክ ያስገቡ",
+				"description": "የድርጅቱ የንግድ/ኢንዱስትሪ መስክ(ለምሳሌ፣ ኤንጂኦ፣ ግል፣ ፌደራል።)",
+				"error": "የንግድ/ኢንዱስትሪ መስክ አስፈላጊ ነው።"
+			},
+			"number_of_employees": {
+				"label": "የሰራተኞች ብዛት",
+				"placeholder": "የሰራተኞች ብዛት ያስገቡ",
+				"description": "በድርጅቱ ውስጥ ያሉት የሰራተኞች ብዛት።",
+				"error": "የሰራተኞች ብዛት አስፈላጊ ነው።",
+				"options": {
+					"0_to_10": "0-10",
+					"10_to_50": "10-50",
+					"50_to_100": "50-100",
+					"over_100": "ከ100 በላይ"
+				}
+			},
+			"company_website": {
+				"label": "የድርጅቱ ድህረገፅ",
+				"placeholder": "የድርጅቱ ድህረገፅ ያስገቡ",
+				"description": "የድርጅቱ ድህረገፅ።",
+				"error": "የድርጅቱ ድህረገፅ አስፈላጊ ነው።"
+			},
+			"plan_coverage_type": {
+				"label": "የእቅድ ሽፋን አይነት",
+				"placeholder": "የእቅድ ሽፋን አይነት ያስገቡ",
+				"description": "የእቅድ ሽፋን አይነት (ለምሳሌ፣ ሕክምና፣ አገልግሎት አቅራቢ።)",
+				"error": "የእቅድ ሽፋን አይነት አስፈላጊ ነው።"
+			},
+			"preferred_start_date": {
+				"label": "የዕቅዱ ሽፋን መጀመሪያ ቀን",
+				"placeholder": "መጀመር የሚፈልጉበትን ቀን ያስገቡ",
+				"description": "የዕቅዱ ሽፋን መጀመር የሚፈልጉበትን ቀን።",
+				"error": "መጀመር የሚፈልጉበት ቀን ያስፈልጋል።"
+			},
+			"preferred_end_date": {
+				"label": "የዕቅዱ ሽፋን መጨረሻ ቀን",
+				"placeholder": "የተመረጠ መጨረሻ ቀን ያስገቡ",
+				"description": "የተመረጠ የዕቅዱ ሽፋን መጨረሻ ቀን።",
+				"error": "የተመረጠ መጨረሻ ቀን ያስፈልጋል።"
+			},
+			"sector": {
+				"label": "ዘርፍ",
+				"placeholder": "ዘርፍ ይምረጡ",
+				"description": "ድርጅቶትን በጥልቅ የሚያመላክትን ዘርፍ ይምረጡ።",
+				"error": "ዘርፍ ያስፈልጋል።",
+				"options": {
+					"private": "የግል ድርጅት",
+					"ngo": "መንግሥታዊ ያልሆነ ድርጅት/NGO",
+					"federal": "በመንግስት ባለቤትነት የተያዘ/ፌደራል ድርጅት"
+				}
+			},
+			"phone_number": {
+				"label": "ስልክ ቁጥር",
+				"placeholder": "ስልክ ቁጥር ያስገቡ",
+				"description": "የድርጅቱ ዋና ስልክ ቁጥር።",
+				"error": "ትክክለኛ ስልክ ቁጥር (ከ10 እስከ 15 አሃዝ) ያስፈልጋል።"
+			},
+			"email_address": {
+				"label": "ኢሜል አድራሻ",
+				"placeholder": "ኢሜል አድራሻ ያስገቡ",
+				"description": "የድርጅቱ ኢሜል አድራሻ።",
+				"error": "ትክክለኛ ኢሜል አድራሻ ያስፈልጋል።"
+			},
+			"street_address": {
+				"label": "የመንገድ/ጎዳና አድራሻ",
+				"placeholder": "የመንገድ/ጎዳና አድራሻ  ያስገቡ",
+				"description": "የድርጅቱ ዋና አድራሻ።",
+				"error": "የመንገድ/ጎዳና አድራሻ  ያስፈልጋል።"
+			},
+			"city": {
+				"label": "ከተማ",
+				"placeholder": "ከተማ ያስገቡ",
+				"description": "ድርጅቱ የሚገኝበት ከተማ።",
+				"error": "ከተማ ያስፈልጋል።"
+			},
+			"region": {
+				"label": "ክልል",
+				"placeholder": "ክልል ያስገቡ",
+				"description": "የድርጅቱ ክልል።",
+				"error": "ክልል ያስፈልጋል።"
+			},
+			"country_of_origin": {
+				"label": "አገር ",
+				"placeholder": "አገር ያስገቡ",
+				"description": "የድርጅቱ አገር።",
+				"error": "አገር ያስፈልጋል።"
+			},
+			"kifle_ketema": {
+				"label": "ክፍለ ከተማ",
+				"placeholder": "ክፍለ ከተማ ያስገቡ",
+				"description": "የድርጅቱ ክፍለ ከተማ።",
+				"error": "ክፍለ ከተማ ያስፈልጋል።"
+			},
+			"contact_person_first_name": {
+				"label": "ስም",
+				"placeholder": "ስም ያስገቡ",
+				"description": "የእርስዎ ሕጋዊ ስም።",
+				"error": "ስም ያስፈልጋል። ከፊል ፊደላት ብቻ ናቸው።"
+			},
+			"contact_person_middle_name": {
+				"label": "የአባት ስም",
+				"placeholder": "የአባት ስም ያስገቡ",
+				"description": "የእርስዎ ሕጋዊ የአባት ስም።",
+				"error": "የአባት ስም ያስፈልጋል። ከፊል ፊደላት ብቻ ናቸው።"
+			},
+			"contact_person_last_name": {
+				"label": "የአያት ስም",
+				"placeholder": "የአያት ስም ያስገቡ",
+				"description": "የእርስዎ ሕጋዊ የአያት ስም።",
+				"error": "የአያት ስም ያስፈልጋል። ከፊል ፊደላት ብቻ ናቸው።"
+			},
+			"contact_person_position": {
+				"label": "ኃላፊነት",
+				"placeholder": "ኃላፊነት ያስገቡ",
+				"description": "የኃላፊው ሥርዓተ ሥራ።",
+				"error": "ኃላፊነት ያስፈልጋል።"
+			},
+			"contact_person_phone_number": {
+				"label": "ስልክ ቁጥር",
+				"placeholder": "ስልክ ቁጥር ያስገቡ",
+				"description": "የኃላፊው ዋና ስልክ ቁጥር።",
+				"error": "ትክክለኛ ስልክ ቁጥር (ከ10 እስከ 15 አሃዝ) ያስፈልጋል።"
+			},
+			"contact_person_email_address": {
+				"label": "ኢሜል አድራሻ",
+				"placeholder": "ኢሜል አድራሻ ያስገቡ",
+				"description": "የኃላፊው ኢሜል አድራሻ።",
+				"error": "ትክክለኛ ኢሜል አድራሻ ያስፈልጋል።"
+			},
+			"street_address_line2": {
+				"label": "የመንገድ/ጎዳና አድራሻ  2",
+				"placeholder": "የመንገድ/ጎዳና አድራሻ  ያስገቡ",
+				"description": "የድርጅቱ ሁለተኛ ደረጃ የመንገድ/ጎዳና አድራሻ .",
+				"error": "የመንገድ/ጎዳና አድራሻ  ያስፈልጋል።"
+			},
+			"country": {
+				"label": "ድርጅቱ የተመሰረተበት ሃገር",
+				"placeholder": "ድርጅቱ የተመሰረተበት ሃገር ያስገቡ",
+				"description": "ድርጅቱ የተመሰረተበት ሃገር።",
+				"error": "ሃገር አስፈላጊ ነው።"
+			},
+			"zip_code": {
+				"label": "የድርጅቱ ወረዳ",
+				"placeholder": "ለምሳሌ (12345 ወይም ወረዳ 02)",
+				"description": "ዚፕ ኮድ ወይም የአድራሻ ወረዳ።",
+				"error": "ዚፕ ኮድ ወይም ወረዳ ትክክለኛ መሆን አለበት።"
+			}
+		}
+	},
+
+	"familyInfoForm": {
+		"title": "የቤተሰብ አባል መረጃ",
+		"description": "እባኮትን በታች ያሉትን የቤተሰብ አባል መረጃዎች ያቀርቡ።",
+		"successMessage": "የቤተሰብ አባል መረጃ በተሳካ ሁኔታ ተልኳል።",
+		"representative_info": "የቤተሰብ ዋና ተወካይ/ተጠሪ መረጃዎች",
+		"relationship": "ዝምድና",
+		"contact_information": "የግንኙነት መረጃዎች",
+		"representative_address": "የቤተሰብ ዋና ተወካይ/ተጠሪ የአድራሻ መረጃዎች",
+		"personal_information": "የቤተሰብ አባል የግል መረጃዎች",
+		"physical_attributes": "የቤተሰብ አባል የአካላዊ መለኪያዎች መረጃዎች",
+		"AddressInfo": "የቤተሰብ አባል የአድራሻ መረጃዎች",
+		"AddAFamilyMember": "የቤተሰብ አባል",
+		"AddAnotherMember": "የቤተሰብ አባል ለመጨመር",
+		"AddThisMember": "ይህን አባል ጨምር",
+		"use_representative_address": "የቤተሰብ ዋና ተወካይ/ተጠሪ አድራሻን ተጠቀም",
+		"fields": {
+			"first_name": {
+				"label": "ስም",
+				"placeholder": "ስምዎን ያስገቡ",
+				"description": "ሕጋዊ ስምዎ።",
+				"error": "ስም ቢያንስ 2 ቁምፊዎች መካከል ሊሆን አለበት።"
+			},
+			"middle_name": {
+				"label": "የአባት ስም",
+				"placeholder": "የአባት ስምዎን ያስገቡ",
+				"description": "ሕጋዊ የአባት ስምዎ።",
+				"error": "የአባት ስም ቢያንስ 2 ቁምፊዎች መካከል ሊሆን አለበት።"
+			},
+			"last_name": {
+				"label": "የአያት ስም",
+				"placeholder": "የአያት ስምዎን ያስገቡ",
+				"description": "ሕጋዊ የአያት ስምዎ።",
+				"error": "የአያት ስም ቢያንስ 2 ቁምፊዎች መካከል ሊሆን አለበት።"
+			},
+			"gender": {
+				"label": "ፆታ",
+				"placeholder": "ፆታዎን ይምረጡ",
+				"description": "እባኮትን ፆታዎን ይምረጡ።",
+				"error": "ፆታ መምረጥ አለብዎት።",
+				"options": {
+					"male": "ወንድ",
+					"female": "ሴት",
+					"not_prefer_to_say": "እንዳልናገር"
+				}
+			},
+			"date_of_birth": {
+				"label": "የትውልድ ቀን",
+				"placeholder": "የትውልድ ቀንዎን ይምረጡ",
+				"description": "በወር-ቀን-ዓመት(MM-DD-YYYY) ቅርጽ የትውልድ ቀንዎን ያስገቡ።",
+				"error": "እባኮትን የትውልድ ቀንዎን በወር-ቀን-ዓመት(MM-DD-YYYY) ቅርጽ ያስገቡ።"
+			},
+			"marital_status": {
+				"label": "የጋብቻ ሁኔታ",
+				"placeholder": "የጋብቻ ሁኔታዎን ይምረጡ",
+				"description": "እባኮትን የጋብቻ ሁኔታዎን ይምረጡ።",
+				"error": "የጋብቻ ሁኔታ አስፈላጊ ነው።",
+				"options": {
+					"single": "ያላገባ",
+					"married": "ያገባ",
+					"divorced": "የተፋታ/ች"
+				}
+			},
+
+			"relationship_to_member": {
+				"label": "ከአባል ጋር ያለዎት ግንኙነት",
+				"placeholder": "ከአባል ጋር ያለዎትን ግንኙነት ያስገቡ",
+				"description": "ከአባል ጋር ያለዎትን ግንኙነት ያስገቡ።",
+				"error": "ከአባል ጋር ያለዎት ግንኙነት ቢያንስ 2 ቁምፊ መሆን አለበት።"
+			},
+			"relationship_to_member_other": {
+				"label": "ከአባል ጋር ያለዎት ግንኙነት",
+				"placeholder": "ከአባል ጋር ያለዎትን ግንኙነት ያስገቡ",
+				"description": "ከአባል ጋር ያለዎትን ግንኙነት ያስገቡ።",
+				"error": "ከአባል ጋር ያለዎት ግንኙነት ቢያንስ 2 ቁምፊ መሆን አለበት።"
+			},
+			"representative_first_name": {
+				"label": "ስም",
+				"placeholder": "የቤተሰብ ተወካይ የመጀመሪያ ስም ያስገቡ",
+				"description": "የቤተሰብ ተወካይ የመጀመሪያ ስም።",
+				"error": "የቤተሰብ ተወካይ የመጀመሪያ ስም ቢያንስ 2 ቁምፊ መሆን አለበት።"
+			},
+			"representative_middle_name": {
+				"label": "የአባት ስም",
+				"placeholder": "የቤተሰብ ተወካይ የአባት ስም ያስገቡ",
+				"description": "የተወካዩ የአባት ስም።",
+				"error": "የቤተሰብ ተወካይ የአባት ስም ቢያንስ 2 ቁምፊ መሆን አለበት።"
+			},
+			"representative_last_name": {
+				"label": "የአያት ስም",
+				"placeholder": "የቤተሰብ ተወካይ የአያት ስም ያስገቡ",
+				"description": "የተወካዩ የአያት ስም።",
+				"error": "የቤተሰብ ተወካይ የአያት ስም ቢያንስ 2 ቁምፊ መሆን አለበት።"
+			},
+			"representative_gender": {
+				"label": "የተወካይ ፆታ",
+				"placeholder": "የተወካይ ፆታ ይምረጡ",
+				"description": "እባኮትን የተወካይ ፆታ ይምረጡ።",
+				"error": "የተወካይ ፆታ አስፈላጊ ነው።",
+				"options": {
+					"male": "ወንድ",
+					"female": "ሴት",
+					"not_prefer_to_say": "እንደማይስሙ"
+				}
+			},
+			"representative_date_of_birth": {
+				"label": "የተወካይ የልደት ቀን",
+				"placeholder": "የልደት ቀን ይምረጡ",
+				"description": "የልደት ቀንን በወር-ቀን-ዓመት(MM-DD-YYYY) ቅርጽ ያስገቡ።",
+				"error": "እባኮትን የልደት ቀንን በወር-ቀን-ዓመት(MM-DD-YYYY) ቅርጽ ያስገቡ።"
+			},
+			"representative_marital_status": {
+				"label": "የተወካይ የጋብቻ ሁኔታ",
+				"placeholder": "የተወካይ የጋብቻ ሁኔታ ይምረጡ",
+				"description": "እባኮትን የተወካይ የጋብቻ ሁኔታ ይምረጡ።",
+				"error": "የተወካይ የጋብቻ ሁኔታ አስፈላጊ ነው።",
+				"options": {
+					"single": "ያላገባ/ች",
+					"married": "ያገባ/ች",
+					"divorced": "የተፋታ/ች"
+				}
+			},
+			"representative_mailing_address_line1": {
+				"label": "የቤት ቁጥር",
+				"placeholder": "የቤት ቁጥር",
+				"description": "የቤት ቁጥር ይምረጡ።",
+				"error": "የቤት ቁጥር ቢያንስ 2 ቁምፊ መሆን አለበት።"
+			},
+			"representative_country": {
+				"label": "አገር",
+				"placeholder": "አገር",
+				"description": "ከዝርዝሩ አገር ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊዎች ርዝመት ሊኖረው አለ።"
+			},
+			"representative_city": {
+				"label": "ከተማ",
+				"placeholder": "ከተማ",
+				"description": "ከዝርዝሩ ከተማ ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊዎች ርዝመት ሊኖረው አለ።"
+			},
+			"representative_region": {
+				"label": "ክልል ",
+				"placeholder": "ክልል / ግዛት",
+				"description": "ከዝርዝሩ ክልል ይምረጡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊዎች ርዝመት ሊኖረው አለ።"
+			},
+			"representative_street_address": {
+				"label": "የመንገድ/ጎዳና አድራሻ ",
+				"placeholder": "የመንገድ/ጎዳና አድራሻ ",
+				"description": "የመንገድ/ጎዳና አድራሻ  ያስገቡ።",
+				"error": "የከተማ ስም ቢያንስ 2 ቁምፊዎች ርዝመት ሊኖረው አለ።"
+			},
+			"representative_kifle_ketema": {
+				"label": "ክፍለ ከተማ ",
+				"placeholder": "ክፍለ ከተማ ያስገቡ",
+				"description": "ከዝርዝሩ ክፍለ ከተማ ይምረጡ።",
+				"error": "ክፍለ ከተማ ስም ቢያንስ 2 ቁምፊዎች ርዝመት ሊኖረው አለ።"
+			},
+			"representative_phone_number": {
+				"label": "ስልክ ቁጥር",
+				"placeholder": "ስልክ ቁጥር ያስገቡ",
+				"description": "የምክትል ስልክ ቁጥር።",
+				"error": "ትክክለኛ እና ከ10 እስከ 15 አሃዝ መካከል የሆነ ስልክ ቁጥር ያስፈልጋል።"
+			},
+			"representative_email_address": {
+				"label": "ኢሜል አድራሻ",
+				"placeholder": "ኢሜል አድራሻ ያስገቡ",
+				"description": "የምክትል ኢሜል አድራሻ።",
+				"error": "ትክክለኛ ኢሜል አድራሻ ያስፈልጋል።"
+			},
+			"representative_zip_code": {
+				"label": "ወረዳ",
+				"placeholder": "ዚፕ ኮድ ወይም የወረዳ ስም ያስገቡ",
+				"description": "ዚፕ ኮድ ወይም የወረዳ ስም።",
+				"error": "ትክክለኛ ዚፕ ኮድ ወይም የወረዳ ስም ሊኖር አለ።"
+			}
+		}
+	},
+
+	"Questionnaire": {
+		"memberQuestionnaire": "የአባል መጠይቅ",
+		"healthAndLifestyleQuestionnaire": "የጤና እና የኑሮ መንገድ መጠይቅ",
+		"helpUsUnderstand": "እንደቻልን የጤናዎን ታሪክ እና የኑሮ መንገድ እንድናስተውል ለምርጥ እንክብካቤ ይረዱን።",
+		"familyMedicalHistory": "የቤተሰብ የጤና ታሪክ",
+		"familyHistoryQuestion": "በቤተሰብዎ ውስጥ ከሚከተሉት ሁኔታዎች ታሪክ አለን? (ሁሉንም የሚሆኑትን ይምረጡ)",
+		"Heart Disease": "የልብ በሽታ",
+		"Diabetes": "የስኳር በሽታ",
+		"Hypertension": "ከፍተኛ የደም ግፊት",
+		"Cancer": "ካንሰር",
+		"Stroke": "የአንጎል ድንጋጤ",
+		"Mental Health Disorders": "የአእምሮ ጤና ችግሮች",
+		"specifyType": "የካንሰር አይነትን ይግለጹ (ካለበት):",
+		"enterCancerType": "የካንሰር አይነትን ያስገቡ",
+		"otherCondition": "ሌላ ሁኔታ (እባኮትን ይግለጹ):",
+		"specifyOtherCondition": "ሌላ ሁኔታን ይግለጹ",
+		"personalMedicalHistory": "የግል የጤና ታሪክ",
+		"currentConditionsQuestion": "በአሁኑ ጊዜ ከሚከተሉት ሁኔታዎች አንዱ እየተከታተሉ ነዎት? (ሁሉንም የሚሆኑትን ይምረጡ)",
+		"Asthma or Respiratory Conditions": "አስትማ ወይም የሳት አካላዊ ችግሮች",
+		"Chronic Pain": "ረዘም ያለ ህመም",
+		"Mental Health Conditions": "የአእምሮ ጤና ሁኔታዎች",
+		"takingMedications": "በአሁኑ ጊዜ መድሀኒት ትወስዳለህ/ትወስዳለሽ?",
+		"yes": "አዎ",
+		"no": "አይ",
+		"listMedications": "መድሀኒቶችን ይዝርዝሩ:",
+		"enterMedications": "መድሀኒቶችን ያስገቡ",
+		"lifestyleQuestions": "የኑሮ መንገድ ጥያቄዎች",
+		"doYouSmoke": "ትጨስማለህ/ትጨስማለሽ?",
+		"specifyAmount": "መጠኑን ይግለጹ:",
+		"enterAmount": "መጠንን ያስገቡ",
+		"doYouDrinkAlcohol": "አልኮል ትወሰዳለህ/ትወሰዳለሽ?",
+		"specifyFrequency": "በምን ድግግሞሽ ትወስዳለህ/ትወስዳለሽ?",
+		"enterFrequency": "ድግግሞትን ያስገቡ",
+		"howOftenExercise": "ስንት ጊዜ እንቅስቃሴ ታደርጋለህ/ታደርጋለሽ?",
+		"daily": "በየቀኑ",
+		"threeFiveTimes": "በሳምንት 3-5 ጊዜ",
+		"rarely": "አልፎ አልፎ",
+		"none": "ምንም አልሰራም",
+		"allergies": "አለርጂዎች",
+		"anyAllergies": "በመድሀኒት፣ በምግብ ወይም በሌላ ነገር አለርጂ አለዎት?",
+		"listAllergies": "አለርጂዎችን ይዝርዝሩ:",
+		"enterAllergies": "አለርጂዎችን ያስገቡ",
+		"preventiveHealth": "በቀድሞ የተከለከለ ጤና",
+		"preventiveScreeningsQuestion": "በህንጻው ከዚህ በፊት በዓመት እርምጃዎችን አድርገዋል? (ሁሉንም የሚሆኑትን ይምረጡ)",
+		"Annual Physical": "ዓመታዊ የአካል ምርመራ",
+		"Blood Pressure Check": "የደም ግፊት ምርመራ",
+		"Blood Sugar Test": "የደም ስኳር ምርመራ",
+		"Cancer Screenings": "የካንሰር ምርመራዎች",
+		"Dental Checkup": "የጥርስ ምርመራ",
+		"Eye Exam": "የአይን ምርመራ",
+		"womensHealth": "የሴቶች ጤና (አማራጭ)",
+		"pregnantOrPlanning": "በአሁኑ ጊዜ እርግዝና አለዎት ወይም ማግኘትን ትወዳለህ/ትወዳለሽ?",
+		"hadMammogramLastYear": "በዚህ ዓመት ማሞግራም ወይም ፓፕ ስሚየር አድርገዋል?",
+		"submitQuestionnaire": "መጠይቅ ይላኩ"
+	}
+}

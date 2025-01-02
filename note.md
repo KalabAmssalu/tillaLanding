@@ -1,0 +1,12 @@
+- [-] Add a BreadCramb on Provider
+- [-] Change the Brocker and Agent Form to a reusable form component
+- [-] Change the Provider form to a reusable form
+- [ ] Localization correction
+- [-] Add a local and International Provider choice before the provider form
+- [ ] Device Responsiveness
+- [ ] Questionaires for the member should have to be at the end of the form submission
+- [-] create all the topnav link pages like the contactus page link to the page
+- [-] remove the sign in from the topnav
+- [-] The broker page choice page edit
+- [-] on the broker registration form change the license state to license given by the state and the field to text
+  streatadress
